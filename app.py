@@ -36,7 +36,7 @@ from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
 import pandas as pd
 import os
 from datetime import date, timedelta, datetime
-from helper import transform_to_rupiah_format,transform_format
+from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah
 
 
 ## importing data in here to enable callback
@@ -536,7 +536,7 @@ def update_graphs(rows, derived_virtual_selected_rows):
 def update_actual(date_start, date_end):
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '({})'.format(sales_plot_sel['TRO_NET'].sum())
+    return '({})'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
 
 @app.callback(
     Output('prediction_sales_child', "children"),
@@ -548,7 +548,7 @@ def update_actual(date_start, date_end):
 def update_actual(date_start, date_end):
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '({})'.format(sales_plot_sel['TRO_NET_PRED'].sum())
+    return '({})'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
 # =============================================================================
 # Run app    

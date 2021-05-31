@@ -9,7 +9,7 @@ def get_agsales():
     lower_bond = datetime.today() - timedelta(days=90)
     lower_bond = lower_bond.strftime('%Y-%m-%d')
 
-    sales_plot = sales_plot[sales_plot['index'] > lower_bond]
+    # sales_plot = sales_plot[sales_plot['index'] > lower_bond]
 
     sales_plot['index'] = pd.to_datetime(sales_plot['index'])
 
