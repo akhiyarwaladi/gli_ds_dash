@@ -21,7 +21,10 @@ def transform_to_rupiah(value):
 
     temp_result = temp_reverse_value[::-1]
 
-    if len(str_value) >= 12:
+    if len(str_value) >= 15:
+        unit = 'm'
+        show_result = temp_result.split('.')[0] + temp_result.split('.')[1]
+    elif len(str_value) >= 12:
         unit = 'm'
         show_result = temp_result.split('.')[0]
     elif len(str_value) >= 8:
