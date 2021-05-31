@@ -32,7 +32,7 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.CardHeader(
                           [
                             dbc.Row([
-                              dbc.Col(html.Div("Overall sales, actual and prediction"), md=4),
+                              dbc.Col(html.Div("Overall, actual and prediction"), md=4),
                               dbc.Col(
                                       dcc.DatePickerRange(
                                           id='all_sales_daterange',
@@ -76,7 +76,6 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.CardBody(
                                 dbc.Row([
                                     dbc.Col(html.H5("Actual sales cumulative"), width=4),
-                                    dbc.Col(html.H4(html.Div(id='actual_sales_child')), width=4),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='actual_sales_daterange',
@@ -88,7 +87,9 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date=start_picker,
                                                 end_date=end_picker
                                             )
-                                    , width=4),   
+                                    , width=4),
+                                    dbc.Col(html.H4(html.Div(id='actual_sales_child')), width=4),
+   
                                 ], justify="start",),
 
                             )
@@ -97,7 +98,6 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.CardBody(
                                 dbc.Row([
                                     dbc.Col(html.H5("Prediction sales cumulative"), width=4),
-                                    dbc.Col(html.H4(html.Div(id='prediction_sales_child')), width=4),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='prediction_sales_daterange',
@@ -109,7 +109,9 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date=start_picker,
                                                 end_date=end_picker
                                             )
-                                    , width=4),   
+                                    , width=4), 
+                                    dbc.Col(html.H4(html.Div(id='prediction_sales_child')), width=4),
+  
                                 ], justify="start",),
                             )
                           ),
