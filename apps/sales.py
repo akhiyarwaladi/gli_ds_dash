@@ -15,7 +15,7 @@ from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
 end_picker = dt.today().date().replace(day=1)
 # start_picker = end_picker - relativedelta(months=7)
-start_picker = datetime(2021,1,1)
+start_picker = dt(2021,1,1)
 
 sales_tab = dac.TabItem(id='content_sales', 
                               
