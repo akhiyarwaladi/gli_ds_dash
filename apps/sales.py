@@ -6,11 +6,12 @@ import dash_bootstrap_components as dbc
 from example_plots import (plot_sales_train, plot_sales_test)
 fig_sales_train, fig_sales_test = plot_sales_train(), plot_sales_test()
 
-
+## for load csv file
 from loader.agsales_load import get_agsales
 sales_plot = get_agsales()
 
-
+## for daterange picker
+from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
 end_picker = dt.today().date().replace(day=1)
 start_picker = end_picker - relativedelta(months=7)
