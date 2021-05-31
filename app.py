@@ -506,7 +506,7 @@ def update_plot_cpi(value):
 )
 def update_plot_product(value):
     value_2 = 'TRO_NET'
-    fig = plot_product(product_group, value_1, value_2)
+    fig = plot_product(product_group, value, value_2)
 
     return fig
 
