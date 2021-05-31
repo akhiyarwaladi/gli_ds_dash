@@ -15,8 +15,8 @@ import time
 def plot_sales_all(sales_plot, value, date_start, date_end):
 	gap_anot = 15
 	# sales_plot = sales_plot[sales_plot['index'] >= datetime(2021,1,1)]
-    sales_plot = sales_plot[(sales_plot['index'] >= date_start) &
-                                (sales_plot['index'] <= date_end) ]
+	sales_plot = sales_plot[(sales_plot['index'] >= date_start) &
+	                            (sales_plot['index'] <= date_end) ]
 
 
 	if value == 'Monthly':
