@@ -534,8 +534,8 @@ def update_graphs(rows, derived_virtual_selected_rows):
     ]
 )
 def update_actual(date_start, date_end):
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= start_date) &
-                                (sales_plot['index'] <= end_date) ]
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
+                                (sales_plot['index'] <= date_end) ]
     return '({})'.format(len(sales_plot_sel))
 
 # =============================================================================
