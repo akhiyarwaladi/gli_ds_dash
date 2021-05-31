@@ -11,6 +11,9 @@ from loader.agsales_load import get_agsales
 sales_plot = get_agsales()
 
 
+from dateutil.relativedelta import relativedelta
+end_picker = dt.today().date().replace(day=1)
+start_picker = end_picker - relativedelta(months=7)
 
 sales_tab = dac.TabItem(id='content_sales', 
                               
@@ -53,6 +56,49 @@ sales_tab = dac.TabItem(id='content_sales',
                                         ),className="card-text",
                                 ),
                             ]),
+                        dbc.CardFooter([
+                          dbc.Card(
+                            dbc.CardBody(
+                                dbc.Row([
+                                    dbc.Col(html.H5("Actual sales cumulative"), width=4),
+                                    dbc.Col(
+                                            dcc.DatePickerRange(
+                                                id='actual_sales_daterange',
+                                                min_date_allowed=dt(2020, 1, 1),
+                                                max_date_allowed=dt(2021, 12, 1),
+                                                start_date_placeholder_text="Start Date",
+                                                end_date_placeholder_text="End Date",
+                                                display_format='DD-MM-Y',
+                                                start_date=start_picker,
+                                                end_date=end_picker
+                                            )
+                                    , width=4),   
+                                ], justify="between",),
+
+                            )
+                          ),
+                          dbc.Card(
+                            dbc.CardBody(
+                                dbc.Row([
+                                    dbc.Col(html.H5("Prediction sales cumulative"), width=4),
+                                    dbc.Col(
+                                            dcc.DatePickerRange(
+                                                id='prediction_sales_daterange',
+                                                min_date_allowed=dt(2020, 1, 1),
+                                                max_date_allowed=dt(2021, 12, 1),
+                                                start_date_placeholder_text="Start Date",
+                                                end_date_placeholder_text="End Date",
+                                                display_format='DD-MM-Y',
+                                                start_date=start_picker,
+                                                end_date=end_picker
+                                            )
+                                    , width=4),   
+                                ], justify="between",),
+                            )
+                          ),
+
+                        
+                        ]),
                     ], style={'height':'120vh'}), md=12),
               # dbc.Col(
               #   dbc.Card(
