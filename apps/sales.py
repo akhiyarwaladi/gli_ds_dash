@@ -62,6 +62,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.CardBody(
                                 dbc.Row([
                                     dbc.Col(html.H5("Actual sales cumulative"), width=4),
+                                    dbc.Col(html.H5(html.Div(id='actual_sales_child'))),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='actual_sales_daterange',
@@ -74,7 +75,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 end_date=end_picker
                                             )
                                     , width=4),   
-                                ], justify="between",),
+                                ], justify="start",),
 
                             )
                           ),
@@ -82,6 +83,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.CardBody(
                                 dbc.Row([
                                     dbc.Col(html.H5("Prediction sales cumulative"), width=4),
+                                    dbc.Col(html.H5(html.Div(id='prediction_sales_child'))),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='prediction_sales_daterange',
@@ -94,7 +96,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 end_date=end_picker
                                             )
                                     , width=4),   
-                                ], justify="between",),
+                                ], justify="start",),
                             )
                           ),
 

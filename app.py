@@ -526,6 +526,17 @@ def update_plot_product(value_1):
 def update_graphs(rows, derived_virtual_selected_rows):
     return '({})'.format(len(rows))
 
+@app.callback(
+    Output('actual_sales_child', "children"),
+    [
+        Input('actual_sales_daterange', 'start_date'),
+        Input('actual_sales_daterange', 'end_date'),
+    ]
+)
+def update_actual(date_start, date_end):
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= start_date) &
+                                (sales_plot['index'] <= end_date) ]
+    return '({})'.format(len(sales_plot_sel))
 
 # =============================================================================
 # Run app    
