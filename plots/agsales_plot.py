@@ -12,9 +12,12 @@ import os
 import time
 
 
-def plot_sales_all(sales_plot, value):
+def plot_sales_all(sales_plot, value, date_start, date_end):
 	gap_anot = 15
-	sales_plot = sales_plot[sales_plot['index'] >= datetime(2021,1,1)]
+	# sales_plot = sales_plot[sales_plot['index'] >= datetime(2021,1,1)]
+    sales_plot = sales_plot[(sales_plot['index'] >= date_start) &
+                                (sales_plot['index'] <= date_end) ]
+
 
 	if value == 'Monthly':
 	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')])\
