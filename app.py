@@ -536,7 +536,7 @@ def update_graphs(rows, derived_virtual_selected_rows):
 def update_actual(date_start, date_end):
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '({})'.format(len(sales_plot_sel['TRO_NET'].sum()))
+    return '({})'.format(sales_plot_sel['TRO_NET'].sum())
 
 @app.callback(
     Output('prediction_sales_child', "children"),
@@ -548,7 +548,7 @@ def update_actual(date_start, date_end):
 def update_actual(date_start, date_end):
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '({})'.format(len(sales_plot_sel['TRO_NET_PRED'].sum()))
+    return '({})'.format(sales_plot_sel['TRO_NET_PRED'].sum())
 
 # =============================================================================
 # Run app    
