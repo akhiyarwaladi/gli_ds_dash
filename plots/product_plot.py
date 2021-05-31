@@ -46,3 +46,6 @@ def plot_product(plu_group, value_1, value_2):
                            'showgrid': True, 'gridcolor':'LightPink',  'automargin': True, 'title':'product_name'},
                     bargap=0.2, title="Product {} sort by {}".format(value_1, value_2), title_x=0.5,\
                     legend=legend_dict, margin={'l':70, 'r':70, 't':70, 'b':70})
+
+
+    return fig
