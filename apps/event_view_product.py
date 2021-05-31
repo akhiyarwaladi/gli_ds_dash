@@ -7,12 +7,14 @@ from example_plots import (plot_view_product1, plot_view_product2, plot_search_p
   plot_uvp, plot_usp)
 
 from data_loader import get_vp, get_sp
-from loader.product_load import get_product
+
 
 
 from datetime import datetime
 now_str = datetime.now().date().strftime('%Y-%m')
 
+
+from loader.product_load import get_product
 f_product_group = get_product()
 product_group = f_product_group[0]
 product_date_dropdown_li = f_product_group[1]
