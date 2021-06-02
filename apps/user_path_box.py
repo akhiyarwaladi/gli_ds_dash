@@ -34,7 +34,9 @@ user_path_tab = dac.TabItem(id='content_user_path',
                                     #   ),className="card-text",
                                     
                               # ),
-                              html.Img(src='data:image/png;base64,{}'.format(encoded_image))
+                              html.P(
+                                    html.Img(src='data:image/png;base64,{}'.format(encoded_image))
+                              ),
                           ]),
                   ]) ,md=12),
               ]),
