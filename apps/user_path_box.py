@@ -3,6 +3,8 @@ import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 from example_plots import (plot_store_type_sales, plot_application_type_sales, plot_order_status)
+import base64
+
 from IPython.core.display import HTML
 HTML("""
 <style>
