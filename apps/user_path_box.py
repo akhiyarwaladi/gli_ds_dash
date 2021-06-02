@@ -13,7 +13,7 @@ g.pointtext {display: none;}
 """)
 
 image_filename = '/home/server/gli-data-science/akhiyar/out_plot/path_end_uninstall.png' # replace with your own image
-encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+encoded_image = base64.b64encode(open(image_filename, 'rb').read()).decode('ascii')
 
 user_path_tab = dac.TabItem(id='content_user_path', 
                               
