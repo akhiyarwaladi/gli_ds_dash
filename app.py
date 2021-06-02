@@ -17,12 +17,12 @@ from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
 from apps.value_behave import value_behave_tab
 from apps.sales import sales_tab, sales_plot
-print(sales_plot)
 from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
 from apps.event_view_product import view_product_tab, product_group
+from apps.user_path_box import user_path_tab
 
 from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular, 
     plot_table_sales, plot_vp, plot_sp)
@@ -156,8 +156,12 @@ sub_event = [
                             icon='arrow-circle-right'),
             dac.SidebarMenuSubItem(id='tab_view_product', 
                             label='Event on Product', 
+                            icon='arrow-circle-right'),
+            dac.SidebarMenuSubItem(id='tab_user_path', 
+                            label='User path', 
                             icon='arrow-circle-right')
             ]
+
 
 sub_monitor = [
             dac.SidebarMenuSubItem(id='tab_general_monitor', label='General Monitor', icon='desktop'),
@@ -215,6 +219,7 @@ body = dac.Body(
         events_inapp,
         events_email,
         view_product_tab,
+        user_path_tab,
         dac.TabItem(html.P('Gallery 1 (You can add Dash Bootstrap Components!)'), 
                     id='content_gallery_1'),
         dac.TabItem(html.P('Gallery 2 (You can add Dash Bootstrap Components!)'), 
@@ -258,38 +263,41 @@ app.layout = dac.Page([navbar, sidebar, body, controlbar, footer])
 # =============================================================================
 def activate(input_id, 
              n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave,
-             n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_gallery_1, n_gallery_2):
+             n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
+             n_gallery_2):
     
     # Depending on tab which triggered a callback, show/hide contents of app
     if input_id == 'tab_general_monitor' and n_general_monitor:
-        return True, False, False, False, False, False, False, False, False, False, False, False, False
+        return True, False, False, False, False, False, False, False, False, False, False, False, False, False
     elif input_id == 'tab_basic_boxes' and n_basic_boxes:
-        return False, True, False, False, False, False, False, False, False, False, False, False, False
+        return False, True, False, False, False, False, False, False, False, False, False, False, False, False
     elif input_id == 'tab_price_compare' and n_price_compare:
-        return False, False, True, False, False, False, False, False, False, False, False, False, False
+        return False, False, True, False, False, False, False, False, False, False, False, False, False, False
     elif input_id == 'tab_oos_boxes' and n_oos_boxes:
-        return False, False, False, True, False, False, False, False, False, False, False, False, False
+        return False, False, False, True, False, False, False, False, False, False, False, False, False, False
     elif input_id == 'tab_value_boxes' and n_value_boxes:
-        return False, False, False, False, True, False, False, False, False, False, False, False, False
+        return False, False, False, False, True, False, False, False, False, False, False, False, False, False
     elif input_id == 'tab_value_behave' and n_value_behave:
-        return False, False, False, False, False, True, False, False, False, False, False, False, False
+        return False, False, False, False, False, True, False, False, False, False, False, False, False, False
     elif input_id == 'tab_sales' and n_sales:
-        return False, False, False, False, False, False, True, False, False, False, False, False, False
+        return False, False, False, False, False, False, True, False, False, False, False, False, False, False
     elif input_id == 'tab_events' and n_events:
-        return False, False, False, False, False, False, False, True, False, False, False, False, False
+        return False, False, False, False, False, False, False, True, False, False, False, False, False, False
     elif input_id == 'tab_events_inapp' and n_events_inapp:
-        return False, False, False, False, False, False, False, False, True, False, False, False, False
+        return False, False, False, False, False, False, False, False, True, False, False, False, False, False
     elif input_id == 'tab_events_email' and n_events_email:
-        return False, False, False, False, False, False, False, False, False, True, False, False, False
+        return False, False, False, False, False, False, False, False, False, True, False, False, False, False
     elif input_id == 'tab_view_product' and n_view_product:
-        return False, False, False, False, False, False, False, False, False, False, True, False, False
+        return False, False, False, False, False, False, False, False, False, False, True, False, False, False
+    elif input_id == 'tab_user_path' and n_user_path:
+        return False, False, False, False, False, False, False, False, False, False, False, True, False, False
     elif input_id == 'tab_gallery_1' and n_gallery_1:
-        return False, False, False, False, False, False, False, False, False, False, False, True, False
+        return False, False, False, False, False, False, False, False, False, False, False, False, True, False
     elif input_id == 'tab_gallery_2' and n_gallery_2:
-        return False, False, False, False, False,False, False, False, False, False, False, False, True
+        return False, False, False, False, False, False,False, False, False, False, False, False, False, True
     # initialization
     else:
-        return True, False, False, False, False, False, False, False, False, False, False, False, False
+        return True, False, False, False, False, False, False, False, False, False, False, False, False, False
     
 @app.callback(
         [
@@ -304,6 +312,7 @@ def activate(input_id,
             Output('content_inapp_events', 'active'),
             Output('content_email_events', 'active'),
             Output('content_view_product', 'active'),
+            Output('content_user_path', 'active'),
             Output('content_gallery_1', 'active'),
             Output('content_gallery_2', 'active')
             
@@ -320,6 +329,7 @@ def activate(input_id,
             Input('tab_events_inapp', 'n_clicks'),
             Input('tab_events_email', 'n_clicks'),
             Input('tab_view_product', 'n_clicks'),
+            Input('tab_user_path', 'n_clicks'),
             Input('tab_gallery_1', 'n_clicks'),
             Input('tab_gallery_2', 'n_clicks')
             
@@ -327,7 +337,8 @@ def activate(input_id,
 )
 
 def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
-                n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_gallery_1, n_gallery_2):
+                n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
+                n_gallery_2):
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
@@ -340,7 +351,8 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
-                    n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_gallery_1, n_gallery_2)
+                    n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
+                    n_gallery_2)
 
 @app.callback(
         [
@@ -355,6 +367,7 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
             Output('tab_events_inapp', 'active'),
             Output('tab_events_email', 'active'),
             Output('tab_view_product', 'active'),
+            Output('tab_user_path', 'active'),
             Output('tab_gallery_1', 'active'),
             Output('tab_gallery_2', 'active')
             
@@ -371,13 +384,15 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
             Input('tab_events_inapp', 'n_clicks'),
             Input('tab_events_email', 'n_clicks'),
             Input('tab_view_product', 'n_clicks'),
+            Input('tab_user_path', 'n_clicks'),
             Input('tab_gallery_1', 'n_clicks'),
             Input('tab_gallery_2', 'n_clicks')
         ]
 )
 
 def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
-                n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_gallery_1, n_gallery_2):
+                n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
+                n_gallery_2):
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
@@ -390,7 +405,8 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
-                    n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_gallery_1, n_gallery_2)
+                    n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
+                    n_gallery_2)
 
 
 
