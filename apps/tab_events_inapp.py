@@ -8,8 +8,8 @@ from example_plots import (plot_general_inapp, conversion_general_inapp,
 from plots.campaign_report import g_general_inapp, w_general_inapp
 from data_loader import get_cpi
 
-from datetime import datetime
-now_str = datetime.now().date().strftime('%Y-%m')
+from datetime import datetime, timedelta
+now_str = (datetime.now().date() - timedelta(days=2)).strftime('%Y-%m')
 
 general_inapp = plot_general_inapp()
 f_inapp = get_cpi()

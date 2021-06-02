@@ -9,8 +9,8 @@ general_push = plot_general_push()
 
 from data_loader import get_cpn
 
-from datetime import datetime
-now_str = datetime.now().date().strftime('%Y-%m')
+from datetime import datetime, timedelta
+now_str = (datetime.now().date() - timedelta(days=2)).strftime('%Y-%m')
 
 f_push = get_cpn()
 campaign_push = f_push[0]
