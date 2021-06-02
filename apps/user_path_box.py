@@ -35,7 +35,8 @@ user_path_tab = dac.TabItem(id='content_user_path',
                                     
                               # ),
                               html.P(
-                                    html.Img(src='data:image/png;base64,{}'.format(encoded_image))
+                                    html.Img(src='data:image/png;base64,{}'.format(encoded_image),\
+                                      , style={'width':'90%'})
                               ),
                           ]),
                   ]) ,md=12),
