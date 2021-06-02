@@ -38,6 +38,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                                     html.Img(src='data:image/png;base64,{}'.format(encoded_image),\
                                       style={'width':'95%'})
                               ),
+                              dbc.CardImg(src=image_filename, top=True),
                           ]),
                   ]) ,md=12),
               ]),
