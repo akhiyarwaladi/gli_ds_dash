@@ -26,14 +26,15 @@ user_path_tab = dac.TabItem(id='content_user_path',
                       dbc.CardBody(
                           [
                               # html.H5("Card title", className="card-title"),
-                              html.P(
+                              # html.P(
                                     # dcc.Graph(
                                     #   figure=plot_store_type_sales(),
                                     #   config=dict(displayModeBar=False),
                        
                                     #   ),className="card-text",
-                                    html.Img(src='data:image/png;base64,{}'.format(encoded_image))
-                              ),
+                                    
+                              # ),
+                              html.Img(src='data:image/png;base64,{}'.format(encoded_image))
                           ]),
                   ]) ,md=12),
               ]),
