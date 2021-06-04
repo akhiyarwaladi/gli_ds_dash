@@ -3,8 +3,8 @@ import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 import base64
-from loader.user_path_load import get_app_update, get_device_uninstall
-from plots.user_path_plot import plot_app_update, plot_device_uninstall
+from loader.user_path_load import get_app_update, get_device_uninstall, get_notification_received
+from plots.user_path_plot import plot_app_update, plot_device_uninstall, plot_notification_received
 from IPython.core.display import HTML
 HTML("""
 <style>
@@ -18,6 +18,7 @@ encoded_image = base64.b64encode(open(image_filename, 'rb').read()).decode('asci
 
 df_app_update = get_app_update()
 df_device_uninstall = get_device_uninstall()
+df_notification_received = get_notification_received()
 
 user_path_tab = dac.TabItem(id='content_user_path', 
                               
@@ -67,6 +68,24 @@ user_path_tab = dac.TabItem(id='content_user_path',
                               html.P(
                                     dcc.Graph(
                                       figure=plot_device_uninstall(df_device_uninstall),
+                                      config=dict(displayModeBar=False),
+                       
+                                      ),className="card-text",
+                              ),
+                          ]),
+                  ]) ,md=12),
+              ]),
+            dbc.Row([
+              dbc.Col(
+                dbc.Card(
+                  [
+                      dbc.CardHeader(html.H5("")),
+                      dbc.CardBody(
+                          [
+                              # html.H5("Card title", className="card-title"),
+                              html.P(
+                                    dcc.Graph(
+                                      figure=plot_notification_received(df_notification_received),
                                       config=dict(displayModeBar=False),
                        
                                       ),className="card-text",

@@ -12,3 +12,8 @@ def get_device_uninstall():
 
 	return device_uninstall
 
+def get_notification_received():
+
+	notification_received = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/general_moengage/notification_received.csv')
+	
+	return notification_received
