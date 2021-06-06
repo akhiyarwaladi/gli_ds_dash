@@ -21,7 +21,7 @@ from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
-from apps.event_product import view_product_tab, product_group
+from apps.event_product import view_product_tab, product_group, vp, sp
 from apps.user_path_box import user_path_tab
 
 from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular, 
@@ -89,8 +89,6 @@ sales_plot_table['TRO_NET'] = sales_plot_table['TRO_NET'].astype('float').apply(
 sales_plot_table = sales_plot_table.rename(columns={'index':'date'})
 ############################
 
-vp = get_vp()[0]
-sp = get_sp()[0]
 
 # =============================================================================
 # Dash App and Flask Server

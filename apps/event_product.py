@@ -3,16 +3,19 @@ import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 
-from example_plots import (plot_view_product1, plot_view_product2, plot_search_product, plot_vp, plot_sp,
-  plot_uvp, plot_usp)
-
-from data_loader import get_vp, get_sp
-
-
 
 from datetime import datetime
 now_str = datetime.now().date().strftime('%Y-%m')
 
+from data_loader import get_vp, get_sp
+f_vp = get_vp()
+vp = f_vp[0]
+mean_vp = f_vp[1] 
+options_vp = f_vp[2]
+f_sp = get_sp()
+sp =f_sp[0]
+mean_sp = f_sp[1]
+options_sp = f_sp[2]
 
 from loader.product_load import get_product
 f_product_group = get_product()
@@ -36,7 +39,7 @@ view_product_tab = dac.TabItem(id='content_view_product',
                           dbc.Col(
                             dcc.Dropdown(
                                 id='vp_dropdown',
-                                options=get_vp()[2],
+                                options=options_vp,
                                 value='All'
                             ), md=8),
                         ])
@@ -54,7 +57,7 @@ view_product_tab = dac.TabItem(id='content_view_product',
                                   ),className="card-text",
                             ),
                         ]),
-                    dbc.CardFooter("Mean view product event {}".format(get_vp()[1])),
+                    dbc.CardFooter("Mean view product event {}".format(mean_vp)),
               ]), md=12),
             ]),
             dbc.Row([
@@ -68,7 +71,7 @@ view_product_tab = dac.TabItem(id='content_view_product',
                           dbc.Col(
                             dcc.Dropdown(
                                 id='sp_dropdown',
-                                options=get_sp()[2],
+                                options=options_sp,
                                 value='All'
                             ), md=8),
                         ])
@@ -86,7 +89,7 @@ view_product_tab = dac.TabItem(id='content_view_product',
                                   ),className="card-text",
                             ),
                         ]),
-                    dbc.CardFooter("Mean search product event {}".format(get_sp()[1])),
+                    dbc.CardFooter("Mean search product event {}".format(mean_sp)),
 
               ]), md=12),
             ]),
