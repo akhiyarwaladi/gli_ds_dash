@@ -21,14 +21,15 @@ from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
-from apps.event_view_product import view_product_tab, product_group
+from apps.event_product import view_product_tab, product_group
 from apps.user_path_box import user_path_tab
 
 from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular, 
-    plot_table_sales, plot_vp, plot_sp)
+    plot_table_sales)
 from plots.campaign_report import w_general_push, w_general_email, w_general_inapp
 from plots.product_plot import plot_product
 from plots.agsales_plot import plot_sales_all
+from plots.event_product_plot import plot_vp, plot_sp
 
 
 from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
