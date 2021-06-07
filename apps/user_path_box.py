@@ -40,24 +40,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                           ]),
                   ]) ,md=12),
               ]),
-            dbc.Row([
-              dbc.Col(
-                dbc.Card(
-                  [
-                      dbc.CardHeader(html.H5("")),
-                      dbc.CardBody(
-                          [
-                              # html.H5("Card title", className="card-title"),
-                              html.P(
-                                    dcc.Graph(
-                                      figure=plot_app_update(df_app_update),
-                                      config=dict(displayModeBar=False),
-                       
-                                      ),className="card-text",
-                              ),
-                          ]),
-                  ]) ,md=12),
-              ]),
+
             dbc.Row([
               dbc.Col(
                 dbc.Card(
@@ -112,6 +95,23 @@ user_path_tab = dac.TabItem(id='content_user_path',
                           ]),
                   ]) ,md=12),
               ]),
-
+            dbc.Row([
+              dbc.Col(
+                dbc.Card(
+                  [
+                      dbc.CardHeader(html.H5("")),
+                      dbc.CardBody(
+                          [
+                              # html.H5("Card title", className="card-title"),
+                              html.P(
+                                    dcc.Graph(
+                                      figure=plot_app_update(df_app_update),
+                                      config=dict(displayModeBar=False),
+                       
+                                      ),className="card-text",
+                              ),
+                          ]),
+                  ]) ,md=12),
+              ]),
        ])
 )
