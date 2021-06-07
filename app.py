@@ -157,7 +157,7 @@ sub_event = [
                             label='Event on Product', 
                             icon='arrow-circle-right'),
             dac.SidebarMenuSubItem(id='tab_user_path', 
-                            label='User path', 
+                            label='Uninstall / Update', 
                             icon='arrow-circle-right')
             ]
 

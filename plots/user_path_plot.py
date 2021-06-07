@@ -159,3 +159,35 @@ def plot_notification_received(notification_received):
 	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,title=title)
 
 	return fig
+
+
+
+def plot_review_gram(df_gram):
+
+
+	fig = px.bar(df_gram, y="index", x='value', \
+	                orientation='h', title="Wide-Form Input")
+
+	height_weight = 15
+
+	legend_dict=\
+	    legend=dict(
+	        orientation="h",
+	        traceorder="normal",
+	        yanchor="bottom",
+	        y=1,
+	        xanchor="right",
+	        x=1,
+	        title=''
+	    )
+
+	fig.update_layout(font={'size': 11}, width=1000,template='seaborn',
+	                plot_bgcolor = '#FFFFFF',height=height_weight*45,
+	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+	                       'showgrid': True, 'automargin': True, 'title':'#'},
+	                yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	                       'showgrid': True,  'automargin': True, 'title':'pair word'},
+	                bargap=0.2, title="", title_x=0.5,\
+	                legend=legend_dict, margin={'l':70, 'r':70, 't':70, 'b':70}, barmode='stack')
+
+	return fig

@@ -17,3 +17,9 @@ def get_notification_received():
 	notification_received = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/general_moengage/notification_received.csv')
 	
 	return notification_received
+
+def get_df_3gram():
+	df_3gram = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/df_3gram.csv', sep='\t')
+	df_3gram['index'] = df_3gram['index'].astype(str)
+
+	return df_3gram
