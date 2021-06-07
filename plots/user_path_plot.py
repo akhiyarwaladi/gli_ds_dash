@@ -187,7 +187,7 @@ def plot_review_gram(df_gram):
 	                       'showgrid': True, 'automargin': True, 'title':'#'},
 	                yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                       'showgrid': True,  'automargin': True, 'title':'pair word'},
-	                bargap=0.2, title="", title_x=0.5,\
+	                bargap=0.2, title="Play store review (1-3) star", title_x=0.5,\
 	                legend=legend_dict, margin={'l':70, 'r':70, 't':70, 'b':70}, barmode='stack')
 
 	return fig
