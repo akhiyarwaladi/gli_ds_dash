@@ -72,6 +72,7 @@ def g_general_push(campaign_push):
     return fig
 
 def w_general_push(campaign_push, value):
+
     g_push_wide = campaign_push.groupby([pd.Grouper(key='Campaign Sent Time',freq='M'), 'Campaign Name'])\
            .agg({'Targets':'sum', 'Impressions':'sum', 'Clicks':'sum', 'Conversions':'sum',\
                 'Conversions_percent':'mean', 'Clicks_percent':'mean', 'Impressions_percent':'mean'}).round(2).reset_index()
@@ -86,8 +87,8 @@ def w_general_push(campaign_push, value):
     g_push_wide['Conversions_percent'] =  g_push_wide['Conversions_percent'].astype(str) + '%'
     g_push_wide['Clicks_percent'] =  g_push_wide['Clicks_percent'].astype(str) + '%'
     g_push_wide['Impressions_percent'] =  g_push_wide['Impressions_percent'].astype(str) + '%'
-    
-    
+
+
     g_push_wide['Campaign Sent Time'] = g_push_wide['Campaign Sent Time'].dt.strftime('%Y-%m')
     g_push_wide = g_push_wide[g_push_wide['Campaign Sent Time'] == value]
     height_weight = g_push_wide['Campaign Name'].nunique()
