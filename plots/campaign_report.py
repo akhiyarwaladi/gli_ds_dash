@@ -76,7 +76,13 @@ def w_general_push(campaign_push, value):
            .agg({'Targets':'sum', 'Impressions':'sum', 'Clicks':'sum', 'Conversions':'sum',\
                 'Conversions_percent':'mean', 'Clicks_percent':'mean', 'Impressions_percent':'mean'}).round(2).reset_index()
 
-    
+    g_push_wide['Conversions_percent'] = round(((g_push_wide['Conversions'] / g_push_wide['Impressions']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+    g_push_wide['Clicks_percent'] = round(((g_push_wide['Clicks'] / g_push_wide['Impressions']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+    g_push_wide['Impressions_percent'] = round(((g_push_wide['Impressions'] / g_push_wide['Targets']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+
     g_push_wide['Conversions_percent'] =  g_push_wide['Conversions_percent'].astype(str) + '%'
     g_push_wide['Clicks_percent'] =  g_push_wide['Clicks_percent'].astype(str) + '%'
     g_push_wide['Impressions_percent'] =  g_push_wide['Impressions_percent'].astype(str) + '%'
@@ -232,7 +238,11 @@ def w_general_inapp(campaign_inapp, value):
            .agg({'Impressions':'sum', 'Clicks':'sum', 'Conversions':'sum',\
                 'Conversions_percent':'mean', 'Clicks_percent':'mean'}).round(2).reset_index()
 
-    
+    g_inapp_wide['Conversions_percent'] = round(((g_inapp_wide['Conversions'] / g_inapp_wide['Impressions']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+    g_inapp_wide['Clicks_percent'] = round(((g_inapp_wide['Clicks'] / g_inapp_wide['Impressions']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+
     g_inapp_wide['Conversions_percent'] =  g_inapp_wide['Conversions_percent'].astype(str) + '%'
     g_inapp_wide['Clicks_percent'] =  g_inapp_wide['Clicks_percent'].astype(str) + '%'
 
@@ -361,7 +371,13 @@ def w_general_email(campaign_email, value):
            .agg({'Targets':'sum', 'Impressions':'sum', 'Clicks':'sum', 'Conversions':'sum',\
                 'Conversions_percent':'mean', 'Clicks_percent':'mean', 'Impressions_percent':'mean'}).round(2).reset_index()
 
-    
+    g_email_wide['Conversions_percent'] = round(((g_email_wide['Conversions'] / g_email_wide['Impressions']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+    g_email_wide['Clicks_percent'] = round(((g_email_wide['Clicks'] / g_email_wide['Impressions']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+    g_email_wide['Impressions_percent'] = round(((g_email_wide['Impressions'] / g_email_wide['Targets']) * 100), 2)\
+                                        .replace([np.inf, -np.inf], np.nan,).fillna(0)
+
     g_email_wide['Conversions_percent'] =  g_email_wide['Conversions_percent'].astype(str) + '%'
     g_email_wide['Clicks_percent'] =  g_email_wide['Clicks_percent'].astype(str) + '%'
     g_email_wide['Impressions_percent'] =  g_email_wide['Impressions_percent'].astype(str) + '%'
