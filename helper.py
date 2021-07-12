@@ -23,23 +23,23 @@ def transform_to_rupiah(value):
 
 
     if len(str_value) >= 15:
-        unit = 'm'
+        unit = 'M'
         show_result = temp_result.split('.')[0] + temp_result.split('.')[1]
     elif len(str_value) >= 12:
-        unit = 'm'
+        unit = 'M'
         show_result = temp_result.split('.')[0]
     elif len(str_value) >= 8:
-        unit = 'jt'
+        unit = 'JT'
         show_result = temp_result.split('.')[0]
     elif len(str_value) >= 5:
-        unit = 'rb'
+        unit = 'RB'
         show_result = temp_result.split('.')[0]
     else:
         unit = ''
         show_result = temp_result.split('.')[0]
 
 
-    return "Rp " + show_result + unit
+    return "Rp " + show_result + ' ' + unit
 
 # # assume value is a decimal
 # def transform_to_rupiah(value):
