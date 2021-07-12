@@ -135,42 +135,42 @@ sales_tab = dac.TabItem(id='content_sales',
               #     ], style={'height':'120vh'}), md=4),
 
             ]),
-            dbc.Row([
-              dbc.Col(
-                dbc.Card(
-                  [
-                      dbc.CardHeader("Sales training data 01jan20 - 17mar21"),
-                      dbc.CardBody(
-                          [
-                              # html.H5("Card title", className="card-title"),
-                              html.P(
-                                    dcc.Graph(
-                                      figure=fig_sales_train,
-                                      config=dict(displayModeBar=False),
+            # dbc.Row([
+            #   dbc.Col(
+            #     dbc.Card(
+            #       [
+            #           dbc.CardHeader("Sales training data 01jan20 - 17mar21"),
+            #           dbc.CardBody(
+            #               [
+            #                   # html.H5("Card title", className="card-title"),
+            #                   html.P(
+            #                         dcc.Graph(
+            #                           figure=fig_sales_train,
+            #                           config=dict(displayModeBar=False),
                        
-                                      ),className="card-text",
-                              ),
-                          ]),
-                  ]), md=12),
-            ]),
-            dbc.Row([
-              dbc.Col(
-                dbc.Card(
-                  [
-                      dbc.CardHeader("Sales prediction 18mar21 - 28mar21"),
-                      dbc.CardBody(
-                          [
-                              # html.H5("Card title", className="card-title"),
-                              html.P(
-                                    dcc.Graph(
-                                      figure=fig_sales_test,
-                                      config=dict(displayModeBar=False),
+            #                           ),className="card-text",
+            #                   ),
+            #               ]),
+            #       ]), md=12),
+            # ]),
+            # dbc.Row([
+            #   dbc.Col(
+            #     dbc.Card(
+            #       [
+            #           dbc.CardHeader("Sales prediction 18mar21 - 28mar21"),
+            #           dbc.CardBody(
+            #               [
+            #                   # html.H5("Card title", className="card-title"),
+            #                   html.P(
+            #                         dcc.Graph(
+            #                           figure=fig_sales_test,
+            #                           config=dict(displayModeBar=False),
                        
-                                      ),className="card-text",
-                              ),
-                          ]),
-                  ]), md=12),
-            ]),
+            #                           ),className="card-text",
+            #                   ),
+            #               ]),
+            #       ]), md=12),
+            # ]),
         ])
     ]
 )

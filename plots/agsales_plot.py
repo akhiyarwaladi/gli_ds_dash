@@ -66,7 +66,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	    hovertemplate='%{x}<br>%{y}')
 
 	fig.update_xaxes(
-	    tickformat="%b%y",
+	    tickformat="%d%b%y",
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
 	fig.update_yaxes(
