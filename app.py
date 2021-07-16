@@ -223,10 +223,10 @@ body = dac.Body(
         events_email,
         view_product_tab,
         user_path_tab,
-        dac.TabItem(html.P('Gallery 1 (You can add Dash Bootstrap Components!)'), 
-                    id='content_gallery_1'),
-        dac.TabItem(html.P('Gallery 2 (You can add Dash Bootstrap Components!)'), 
-                    id='content_gallery_2'),
+        # dac.TabItem(html.P('Gallery 1 (You can add Dash Bootstrap Components!)'), 
+        #             id='content_gallery_1'),
+        # dac.TabItem(html.P('Gallery 2 (You can add Dash Bootstrap Components!)'), 
+        #             id='content_gallery_2'),
     ])
 )
 
