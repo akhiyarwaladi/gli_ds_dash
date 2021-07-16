@@ -22,7 +22,7 @@ end_picker = dt.today().date() - relativedelta(days=2)
 sales_tab = dac.TabItem(id='content_sales', 
                               
     children=[
-        html.H4('Alfagift Sales'),
+        
 
         html.Div([
            
@@ -34,7 +34,7 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.CardHeader(
                           [
                             dbc.Row([
-                              dbc.Col(html.Div("overall, actual and prediction"), md=4),
+                              dbc.Col(html.Div(html.H3(['Alfagift', html.B('Sales')])), md=4),
                               dbc.Col(
                                       dcc.DatePickerRange(
                                           id='all_sales_daterange',
@@ -120,7 +120,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         
                         ]),
-                    ], style={'height':'130vh'}), md=12),
+                    ], style={'height':'120vh'}), md=12),
               # dbc.Col(
               #   dbc.Card(
               #     [
