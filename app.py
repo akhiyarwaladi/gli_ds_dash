@@ -191,9 +191,9 @@ sidebar = dac.Sidebar(
             dac.SidebarHeader(children="user behavior", 
                 style={'font-size':'16px','font-family':'monospace'}),
             dac.SidebarMenuItem(label='Moengage', icon='cubes', children=sub_event),
-            # dac.SidebarHeader(children="member DNA", 
-            #     style={'font-size':'16px'}),
-            # dac.SidebarMenuItem(label='Soon ...', icon='cubes', children=subitems1),
+            dac.SidebarHeader(children="empty space", 
+                style={'font-size':'16px'}),
+            dac.SidebarMenuItem(label='Soon ...', icon='cubes', children=subitems1),
 		]
 	),
     style={'font-size':'20px'},
@@ -223,10 +223,10 @@ body = dac.Body(
         events_email,
         view_product_tab,
         user_path_tab,
-        # dac.TabItem(html.P('Gallery 1 (You can add Dash Bootstrap Components!)'), 
-        #             id='content_gallery_1'),
-        # dac.TabItem(html.P('Gallery 2 (You can add Dash Bootstrap Components!)'), 
-        #             id='content_gallery_2'),
+        dac.TabItem(html.P('Gallery 1 (You can add Dash Bootstrap Components!)'), 
+                    id='content_gallery_1'),
+        dac.TabItem(html.P('Gallery 2 (You can add Dash Bootstrap Components!)'), 
+                    id='content_gallery_2'),
     ])
 )
 
