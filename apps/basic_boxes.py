@@ -19,7 +19,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                         dbc.Card([
                             dbc.CardHeader(
                                 dbc.Row([
-                                    dbc.Col(html.H5("Existing vs New Member Sales"), width=4,
+                                    dbc.Col(html.H5("Existing vs New Member Sales"), width=4
                                         ,style={'font-size':'36px','font-family':'Verdana'}),
                                     dbc.Col(
                                             dcc.DatePickerRange(
@@ -53,7 +53,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                         dbc.Card([
                             dbc.CardHeader(
                                 dbc.Row([
-                                    dbc.Col(html.H5(["Increase & Decrease", html.Br(), "Sales Member"]), width=4,
+                                    dbc.Col(html.H5(["Increase & Decrease", html.Br(), "Sales Member"]), width=4
                                         ,style={'font-size':'36px','font-family':'Verdana'}),
                                     dbc.Col(
                                             dcc.DatePickerRange(
