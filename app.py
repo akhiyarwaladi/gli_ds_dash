@@ -184,7 +184,7 @@ sidebar = dac.Sidebar(
 			#dac.SidebarMenuItem(id='tab_cards', label='Basic cards', icon='box'),
             #dac.SidebarMenuItem(id='tab_social_cards', label='Social cards', icon='id-card'),
             #dac.SidebarMenuItem(id='tab_tab_cards', label='Tab cards', icon='image'),
-			dac.SidebarHeader(children="Alfagift Insight"),
+			dac.SidebarHeader(children="Alfagift Insight", style={'font-size':'13px'}),
             dac.SidebarMenuItem(label='Monitoring', icon='cubes', children=sub_monitor),
             dac.SidebarMenuItem(label='Research', icon='cubes', children=sub_research),
             dac.SidebarHeader(children="User Behavior"),
