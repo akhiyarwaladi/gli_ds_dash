@@ -13,12 +13,13 @@ import time
 
 
 def plot_sales_all(sales_plot, value, date_start, date_end):
-	gap_anot = 30
-	# sales_plot = sales_plot[sales_plot['index'] >= datetime(2021,1,1)]
+	# give anotation text every x gap
+	gap_anot = 45
+
 	sales_plot = sales_plot[(sales_plot['index'] >= date_start) &
 	                            (sales_plot['index'] <= date_end) ]
 
-
+	# change grouping if selected monthly
 	if value == 'Monthly':
 	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')])\
 	                .agg({'TRO_NET':'sum','TRO_NET_PRED':'sum'}).reset_index()
@@ -65,7 +66,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	fig.update_traces(
 	    texttemplate='%{text:.2s}', 
 	    textposition='top center', 
-	    textfont_size=11,
+	    textfont_size=9,
 	    hovertemplate='%{x}<br>%{y}')
 
 	fig.update_xaxes(
