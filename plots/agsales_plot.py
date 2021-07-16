@@ -60,7 +60,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 
 	fig.update_traces(
 
-	    hovertemplate='%{x}<br>%{y:.2f}')
+	    hovertemplate='%{x}<br>%{y:.2s}')
 
 	fig.update_xaxes(
 	    tickformat="%d%b%y",
@@ -73,14 +73,17 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 
 	legend_dict = \
 	    legend=dict(
-	            x=0,
-	            y=1,
+	    		orientation="h",
+				yanchor="bottom",
+				y=0.95,
+				xanchor="left",
+				x=0,
 	            traceorder="normal",
 	            title='',
-	            title_font_family="Times New Roman",
+	            title_font_family="Courier",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
 	            bgcolor="LightGrey",
