@@ -59,10 +59,8 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	                    arrowhead=1)
 
 	fig.update_traces(
-	    texttemplate='%{text:.2s}', 
-	    textposition='top center', 
-	    textfont_size=9,
-	    hovertemplate='%{x}<br>%{y:.2s}')
+
+	    hovertemplate='%{x}<br>%{y:.2f}')
 
 	fig.update_xaxes(
 	    tickformat="%d%b%y",
