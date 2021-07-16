@@ -195,7 +195,7 @@ sidebar = dac.Sidebar(
 	),
     title='Data Science Dashboard',
 	skin="light",
-    color="#74b9ff",
+    color="secondary",
 	brand_color="primary",
     url="",
     src="",
