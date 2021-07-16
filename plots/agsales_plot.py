@@ -94,7 +94,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 				xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
                        'showgrid': True, 'automargin': True, 'title':''},
                 yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
-                       'showgrid': True,  'automargin': True, 'title':'sales (Rp)',}
+                       'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 					  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,\
 	                  template='presentation')
