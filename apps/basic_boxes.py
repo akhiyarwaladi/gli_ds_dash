@@ -19,7 +19,8 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                         dbc.Card([
                             dbc.CardHeader(
                                 dbc.Row([
-                                    dbc.Col(html.H5("Existing vs New Member Sales"), width=4),
+                                    dbc.Col(html.H5("Existing vs New Member Sales"), width=4,
+                                        ,style={'font-size':'36px','font-family':'Verdana'}),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='exist_new_picker',
@@ -33,7 +34,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                                             )
                                     , width=6),   
                                 ], justify="between",)
-                            ,style={'font-size':'36px','font-family':'Verdana'}),
+                            ),
 
                             dbc.CardBody([
                               # html.H5("Card title", className="card-title"),
@@ -47,12 +48,13 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                             ]),
 
 
-                        ], style={'font': {'size': 35, 'family': 'sans-serif'}})),
+                        ], )),
                     dbc.Col(
                         dbc.Card([
                             dbc.CardHeader(
                                 dbc.Row([
-                                    dbc.Col(html.H5(["Increase & Decrease", html.Br(), "Sales Member"]), width=4),
+                                    dbc.Col(html.H5(["Increase & Decrease", html.Br(), "Sales Member"]), width=4,
+                                        ,style={'font-size':'36px','font-family':'Verdana'}),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='increase_decrease_date',
@@ -66,7 +68,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                                             )
                                     , width=6),   
                                 ], justify="between",)
-                            ,style={'font-size':'36px','font-family':'Verdana'}),
+                            ),
                             dbc.CardBody([
                                 # html.H5("Card title", className="card-title"),
                                 html.P(
