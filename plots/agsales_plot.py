@@ -83,13 +83,19 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	            title_font_family="Courier",
 	            font=dict(
 	                family="Courier",
-	                size=14,
+	                size=16,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,template='presentation')
+	fig.update_layout( 
+				xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+                       'showgrid': True, 'automargin': True, 'title':''},
+                yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+                       'showgrid': True,  'automargin': True, 'title':'sales (Rp)',}
+					  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,\
+	                  template='presentation')
 	return fig
