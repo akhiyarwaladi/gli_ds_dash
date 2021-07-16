@@ -109,7 +109,7 @@ usp = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/user_search_pr
 
 
 def plot_uvp():
-	fig = px.line(uvp, x='view_product - uid', y=uvp.columns[1:7], template='ggplot2')
+	fig = px.line(uvp, x='view_product - uid', y=uvp.columns[1:7], template='presentation')
 	fig.update_traces(
 	#     texttemplate='%{text}', 
 	#     textposition='top center', 
@@ -134,10 +134,10 @@ def plot_uvp():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -149,7 +149,7 @@ def plot_uvp():
 	return fig, round(uvp.mean(axis=1).mean(),2)
 
 def plot_usp():
-	fig = px.line(usp, x='search_products - uid', y=usp.columns[1:7], template='ggplot2')
+	fig = px.line(usp, x='search_products - uid', y=usp.columns[1:7], template='presentation')
 	fig.update_traces(
 	#     texttemplate='%{text}', 
 	#     textposition='top center', 
@@ -174,10 +174,10 @@ def plot_usp():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -307,7 +307,7 @@ def plot_general_push():
 
 def g_general_push():
 
-	fig = px.line(g_push, x='Campaign Sent Time', y='value', template='ggplot2', \
+	fig = px.line(g_push, x='Campaign Sent Time', y='value', template='presentation', \
 	              text='value_format', color='variable')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -335,10 +335,10 @@ def g_general_push():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -348,7 +348,7 @@ def g_general_push():
 	return fig
 
 def g_general_email():
-	fig = px.line(g_email, x='Date', y='value', template='ggplot2', \
+	fig = px.line(g_email, x='Date', y='value', template='presentation', \
 	              text='value_format', color='variable')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -376,10 +376,10 @@ def g_general_email():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -405,14 +405,14 @@ def click_general_push():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout(font={'size': 16}, width=1000,template='ggplot2',
+	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
 	                plot_bgcolor = '#FFFFFF', legend = legend_dict,
 	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                       'showgrid': True, 'automargin': True, 'title':''},
@@ -438,15 +438,15 @@ def conversion_general_push():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
 
-	fig.update_layout(font={'size': 16}, width=1000,template='ggplot2',
+	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
 	            plot_bgcolor = '#FFFFFF', legend = legend_dict,
 	            xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
@@ -472,7 +472,7 @@ def g_general_inapp():
 	g_inapp['value_format'] = g_inapp['value'].astype('float')\
 								.apply(transform_to_format)
 
-	fig = px.line(g_inapp, x='Created At', y='value', template='ggplot2', \
+	fig = px.line(g_inapp, x='Created At', y='value', template='presentation', \
 	              text='value_format', color='variable')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -500,10 +500,10 @@ def g_general_inapp():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -529,15 +529,15 @@ def click_general_inapp():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
 
-	fig.update_layout(font={'size': 16}, width=1000,template='ggplot2',
+	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
 	                plot_bgcolor = '#FFFFFF', legend=legend_dict,
 	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                       'showgrid': True, 'automargin': True, 'title':''},
@@ -565,15 +565,15 @@ def conversion_general_inapp():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
 
-	fig.update_layout(font={'size': 16}, width=1000,template='ggplot2',
+	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
 	                plot_bgcolor = '#FFFFFF', legend=legend_dict,
 	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                       'showgrid': True, 'automargin': True, 'title':''},
@@ -652,7 +652,7 @@ def multi_plot(df, addAll = True):
                 color="black"
             ),
             )
-        ], template='ggplot2', legend=legend)
+        ], template='presentation', legend=legend)
     
     return fig
 
@@ -671,7 +671,7 @@ def plot_sales_all(sales_plot, value):
 							.reset_index()
 		sales_plot['index'] = sales_plot['index'].dt.strftime('%Y-%m')
 		
-	fig = px.line(sales_plot, x='index', y='tbtop_amount_final', template='ggplot2', \
+	fig = px.line(sales_plot, x='index', y='tbtop_amount_final', template='presentation', \
 	              color='type')
 	fig.update_traces(
 	#     texttemplate='%{text}', 
@@ -698,10 +698,10 @@ def plot_sales_all(sales_plot, value):
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -758,7 +758,7 @@ def plot_table_sales(sales_plot_table, value):
 
 def plot_store_type_sales():
 	
-	fig = px.line(store_type_sales, x='tbto_create_date', y='sales_amount', template='ggplot2', \
+	fig = px.line(store_type_sales, x='tbto_create_date', y='sales_amount', template='presentation', \
 	              text='sales_amount_rp', color='store_type')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -786,10 +786,10 @@ def plot_store_type_sales():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -800,7 +800,7 @@ def plot_store_type_sales():
 
 
 def plot_application_type_sales():
-	fig = px.line(application_type_sales, x='tbto_create_date', y='sales_amount', template='ggplot2', \
+	fig = px.line(application_type_sales, x='tbto_create_date', y='sales_amount', template='presentation', \
 	              text='sales_amount_rp', color='store_type')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -824,10 +824,10 @@ def plot_application_type_sales():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -837,7 +837,7 @@ def plot_application_type_sales():
 	return fig
 
 def plot_order_status():
-	fig = px.line(order_status, x='tbto_create_date', y='final_stat_count', template='ggplot2', \
+	fig = px.line(order_status, x='tbto_create_date', y='final_stat_count', template='presentation', \
 	              text='final_stat_count_str', color='final_stat')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -865,10 +865,10 @@ def plot_order_status():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -880,7 +880,7 @@ def plot_order_status():
 def plot_sapa_notsapa():
 	
 	sapa_notsapa['sapa_enable'] = sapa_notsapa['sapa_enable'].replace({'not_sapa':'non_sapa'})
-	fig = px.line(sapa_notsapa, x='tbto_create_date', y='net_amount', template='ggplot2', \
+	fig = px.line(sapa_notsapa, x='tbto_create_date', y='net_amount', template='presentation', \
 	              text='tbto_amount_final_rp', color='sapa_enable')
 	fig.update_traces(texttemplate='%{text}', 
 		textposition='top center', 
@@ -904,10 +904,10 @@ def plot_sapa_notsapa():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -922,7 +922,7 @@ def plot_new_regular(new_regular, start_date, end_date):
 	new_regular = new_regular[(new_regular['tbto_create_date'] >= start_date) &
 								(new_regular['tbto_create_date'] <= end_date) ]
 	new_regular['member_stat'] = new_regular['member_stat'].replace({'regular':'existing'})
-	fig = px.line(new_regular, x='tbto_create_date', y='tbto_amount_final', template='ggplot2', \
+	fig = px.line(new_regular, x='tbto_create_date', y='tbto_amount_final', template='presentation', \
 	              text='net_amount', color='member_stat')
 	fig.update_traces(texttemplate='%{text}', 
 		textposition='top center', 
@@ -946,10 +946,10 @@ def plot_new_regular(new_regular, start_date, end_date):
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -960,7 +960,7 @@ def plot_new_regular(new_regular, start_date, end_date):
 
 def plot_plus_minus():
 
-	fig = px.line(plus_minus, x='date', y='count_member', template='ggplot2', \
+	fig = px.line(plus_minus, x='date', y='count_member', template='presentation', \
 	                color='diff_sign', text='count_member_format')
 
 	fig.update_traces(texttemplate='%{text}', 
@@ -988,10 +988,10 @@ def plot_plus_minus():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -1002,7 +1002,7 @@ def plot_plus_minus():
 
 def plot_oos_status():
 
-	fig = px.line(oos_status, x='month', y='value', template='ggplot2', \
+	fig = px.line(oos_status, x='month', y='value', template='presentation', \
 	              text='value', color='variable')
 	fig.update_traces(texttemplate='%{text:.2d}', 
 		textposition='top center', 
@@ -1026,10 +1026,10 @@ def plot_oos_status():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -1041,7 +1041,7 @@ def plot_oos_status():
 def plot_oos_count():
 
 
-	fig = px.line(oos_count, x='month', y='value', template='ggplot2', \
+	fig = px.line(oos_count, x='month', y='value', template='presentation', \
 	              text='value_str', color='variable')
 	fig.update_traces(texttemplate='%{text}', 
 		textposition='top center', 
@@ -1065,10 +1065,10 @@ def plot_oos_count():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -1077,7 +1077,7 @@ def plot_oos_count():
 	return fig
 
 def plot_oos_consecutive_order():
-	fig = px.line(oos_consecutive_order, x='month', y='value', template='ggplot2', \
+	fig = px.line(oos_consecutive_order, x='month', y='value', template='presentation', \
 	              text='value', color='variable')
 	fig.update_traces(texttemplate='%{text:.2f}', 
 		textposition='top center', 
@@ -1101,10 +1101,10 @@ def plot_oos_consecutive_order():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -1115,7 +1115,7 @@ def plot_oos_consecutive_order():
 
 def plot_oos_time_spend():
 	
-	fig = px.line(oos_time_spend, x='month', y='value', template='ggplot2', \
+	fig = px.line(oos_time_spend, x='month', y='value', template='presentation', \
 	              text='value', color='variable')
 	fig.update_traces(texttemplate='%{text}', 
 		textposition='top center', 
@@ -1139,10 +1139,10 @@ def plot_oos_time_spend():
 	            title_font_family="Times New Roman",
 	            font=dict(
 	                family="Courier",
-	                size=12,
+	                size=14,
 	                color="black"
 	            ),
-	            bgcolor="LightGrey",
+	            bgcolor="#dfe4ea",
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
@@ -1207,7 +1207,7 @@ def plot_voucher_refund_status():
 	    tracegroupgap=0
 	)
 	fig.update_layout(
-	    template="ggplot2",
+	    template="presentation",
 	    xaxis=dict(
 	        title_text="Week",title='',
 	        dtick="M1",
