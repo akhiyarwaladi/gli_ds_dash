@@ -185,10 +185,10 @@ sidebar = dac.Sidebar(
             #dac.SidebarMenuItem(id='tab_social_cards', label='Social cards', icon='id-card'),
             #dac.SidebarMenuItem(id='tab_tab_cards', label='Tab cards', icon='image'),
 			dac.SidebarHeader(children="Alfagift Insight"),
-            dac.SidebarMenuItem(label='Monitoring general', icon='cubes', children=sub_monitor),
-            dac.SidebarMenuItem(label='Research Prototype', icon='cubes', children=sub_research),
+            dac.SidebarMenuItem(label='Monitoring', icon='cubes', children=sub_monitor),
+            dac.SidebarMenuItem(label='Research', icon='cubes', children=sub_research),
             dac.SidebarHeader(children="User Behavior"),
-            dac.SidebarMenuItem(label='Moengage Exploratory', icon='cubes', children=sub_event),
+            dac.SidebarMenuItem(label='Moengage', icon='cubes', children=sub_event),
             dac.SidebarHeader(children="Member DNA"),
             dac.SidebarMenuItem(label='Soon ...', icon='cubes', children=subitems1),
 		]
