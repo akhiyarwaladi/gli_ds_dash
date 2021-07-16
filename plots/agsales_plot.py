@@ -53,6 +53,11 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	        if not np.isnan(r['TRO_NET_PRED']):
 	            fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
 	                    text=transform_to_rupiah(r['TRO_NET_PRED']),
+	                   	font=dict(
+			                family="Roboto",
+			                size=10,
+			                color="black"
+			            ),
 	                    showarrow=True,
 	                    ax=-10,
 	                    ay=-45,

@@ -120,7 +120,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         
                         ]),
-                    ], style={'height':'123vh'}), md=12),
+                    ], style={'height':'124vh'}), md=12),
               # dbc.Col(
               #   dbc.Card(
               #     [
