@@ -54,8 +54,8 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	            fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
 	                    text=transform_to_rupiah(r['TRO_NET_PRED']),
 	                    showarrow=True,
-	                    ax=10,
-	                    ay=-25,
+	                    ax=-10,
+	                    ay=-45,
 	                    arrowhead=1)
 
 	fig.update_traces(
