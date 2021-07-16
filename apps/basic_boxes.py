@@ -32,7 +32,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                                                 end_date=end_picker
                                             )
                                     , width=4),   
-                                ], justify="between",),
+                                ], justify="between",)
                             ,style={'font-size':'36px','font-family':'Verdana'}),
 
                             dbc.CardBody([
@@ -65,7 +65,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                                                 end_date=end_picker
                                             )
                                     , width=4),   
-                                ], justify="between",),
+                                ], justify="between",)
                             ,style={'font-size':'36px','font-family':'Verdana'}),
                             dbc.CardBody([
                                 # html.H5("Card title", className="card-title"),
