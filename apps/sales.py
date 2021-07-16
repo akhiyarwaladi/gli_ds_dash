@@ -89,7 +89,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date=start_picker,
                                                 end_date=end_picker
                                             )
-                                    , width=4),
+                                    , width=5),
                                     dbc.Col(html.H3(html.Div(id='actual_sales_child')), width=4),
    
                                 ], justify="start",),
@@ -111,7 +111,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date=start_picker,
                                                 end_date=end_picker
                                             )
-                                    , width=4), 
+                                    , width=5), 
                                     dbc.Col(html.H3(html.Div(id='prediction_sales_child')), width=4),
   
                                 ], justify="start",),
