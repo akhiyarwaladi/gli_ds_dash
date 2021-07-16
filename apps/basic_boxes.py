@@ -31,7 +31,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                                                 start_date=start_picker,
                                                 end_date=end_picker
                                             )
-                                    , width=4),   
+                                    , width=6),   
                                 ], justify="between",)
                             ,style={'font-size':'36px','font-family':'Verdana'}),
 
@@ -64,7 +64,7 @@ basic_boxes_tab = dac.TabItem(id='content_basic_boxes',
                                                 start_date=start_picker,
                                                 end_date=end_picker
                                             )
-                                    , width=4),   
+                                    , width=6),   
                                 ], justify="between",)
                             ,style={'font-size':'36px','font-family':'Verdana'}),
                             dbc.CardBody([
