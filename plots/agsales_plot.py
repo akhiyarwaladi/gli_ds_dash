@@ -55,7 +55,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	                    text=transform_to_rupiah(r['TRO_NET_PRED']),
 	                   	font=dict(
 			                family="Roboto",
-			                size=10,
+			                size=13,
 			                color="black"
 			            ),
 	                    showarrow=True,
