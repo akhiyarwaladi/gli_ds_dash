@@ -146,27 +146,27 @@ subitems1 = [dac.SidebarMenuSubItem(id='tab_gallery_1',
 sub_event = [
             dac.SidebarMenuSubItem(id='tab_events', 
                             label='Push Notification', 
-                            icon='arrow-circle-right'), 
+                            icon='bell'), 
             dac.SidebarMenuSubItem(id='tab_events_inapp', 
                             label='Mobile in-app (pop-up)', 
-                            icon='arrow-circle-right'),
+                            icon='mobile-alt'),
             dac.SidebarMenuSubItem(id='tab_events_email', 
                             label='Email Campaign', 
-                            icon='arrow-circle-right'),
+                            icon='envelope'),
             dac.SidebarMenuSubItem(id='tab_view_product', 
                             label='Event on Product', 
-                            icon='arrow-circle-right'),
+                            icon='shopping-bag'),
             dac.SidebarMenuSubItem(id='tab_user_path', 
                             label='Uninstall / Update', 
-                            icon='arrow-circle-right')
+                            icon='wrench')
             ]
 
 
 sub_monitor = [
             dac.SidebarMenuSubItem(id='tab_general_monitor', label='General Monitor', icon='desktop'),
             dac.SidebarMenuSubItem(id='tab_basic_boxes', label='Member Growth', icon='users'),
-            dac.SidebarMenuSubItem(id='tab_price_compare', label='Price Competitor', icon='swords'),
-            dac.SidebarMenuSubItem(id='tab_oos_boxes', label='Out of stock', icon='empty-set')
+            dac.SidebarMenuSubItem(id='tab_price_compare', label='Price Competitor', icon='balance-scale-right'),
+            dac.SidebarMenuSubItem(id='tab_oos_boxes', label='Out of stock', icon='layer-group')
 ]
 
 sub_research = [
