@@ -14,7 +14,7 @@ import time
 
 def plot_sales_all(sales_plot, value, date_start, date_end):
 	# give anotation text every x gap
-	gap_anot = 45
+	gap_anot = 30
 
 	sales_plot = sales_plot[(sales_plot['index'] >= date_start) &
 	                            (sales_plot['index'] <= date_end) ]
@@ -27,11 +27,6 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	    gap_anot = 1
 
 
-
-	
-
-	# fig = px.line(sales_plot, x='index', y='TRO_NET', template='presentation', \
-	#               color='type')
 
 	fig = go.Figure()
 	fig.add_trace(go.Scatter(
@@ -55,13 +50,13 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	                    ax=10,
 	                    ay=25,
 	                    arrowhead=1)
-	        if not np.isnan(r['TRO_NET_PRED']):
-	            fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
-	                    text=transform_to_rupiah(r['TRO_NET_PRED']),
-	                    showarrow=True,
-	                    ax=10,
-	                    ay=25,
-	                    arrowhead=1)
+	        # if not np.isnan(r['TRO_NET_PRED']):
+	        #     fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
+	        #             text=transform_to_rupiah(r['TRO_NET_PRED']),
+	        #             showarrow=True,
+	        #             ax=10,
+	        #             ay=25,
+	        #             arrowhead=1)
 
 	fig.update_traces(
 	    texttemplate='%{text:.2s}', 
