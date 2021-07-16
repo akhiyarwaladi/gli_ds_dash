@@ -127,8 +127,7 @@ right_ui = dac.NavbarDropdown(
                               
 navbar = dac.Navbar(color="white", 
                     text="select menu on left", 
-                    children=right_ui,
-                    style={'font-size':'12px','font-family':'roboto'})
+                    children=right_ui)
 
 # Sidebar
 subitems1 = [dac.SidebarMenuSubItem(id='tab_gallery_1', 
