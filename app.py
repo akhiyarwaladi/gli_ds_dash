@@ -193,12 +193,12 @@ sidebar = dac.Sidebar(
             dac.SidebarMenuItem(label='Soon ...', icon='cubes', children=subitems1),
 		]
 	),
-    title='Data Science Dashboard',
+    title='Data Science <br> Dashboard',
 	skin="light",
-    color="primary",
+    color="#74b9ff",
 	brand_color="primary",
     url="",
-    src="",
+    src="/home/server/gli-data-science/akhiyar/out_plot/pie-chart.png",
     elevation=3,
     opacity=0.8
 )
