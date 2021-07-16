@@ -18,7 +18,7 @@ general_monitor_tab = dac.TabItem(id='content_general_monitor',
               dbc.Col(
                 dbc.Card(
                   [
-                      dbc.CardHeader(html.H5("SAPA vs non-SAPA Store Sales")),
+                      dbc.CardHeader(html.H5(['SAPA', html.B(html.I('vs')), 'non-SAPA Store Sales'])),
                       dbc.CardBody(
                           [
                               # html.H5("Card title", className="card-title"),
@@ -36,7 +36,7 @@ general_monitor_tab = dac.TabItem(id='content_general_monitor',
               dbc.Col(
                 dbc.Card(
                   [
-                      dbc.CardHeader(html.H5("Alfagift vs WebOrder(Whatsapp) Sales")),
+                      dbc.CardHeader(html.H5(['Alfagift' html.B(html.I('vs')). 'WebOrder(Whatsapp) Sales'])),
                       dbc.CardBody(
                           [
                               # html.H5("Card title", className="card-title"),
