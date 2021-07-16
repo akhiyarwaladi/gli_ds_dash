@@ -91,5 +91,5 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	            borderwidth=1
 	        )
 	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,template='ggplot2')
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,template='presentation')
 	return fig
