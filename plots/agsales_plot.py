@@ -43,20 +43,20 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 
 	for i, r in sales_plot.iterrows():
 	    if i%gap_anot == 0:
-	        if not np.isnan(r['TRO_NET']):
-	            fig.add_annotation(x=r['index'], y=r['TRO_NET'],
-	                    text=transform_to_rupiah(r['TRO_NET']),
-	                    showarrow=True,
-	                    ax=10,
-	                    ay=25,
-	                    arrowhead=1)
-	        # if not np.isnan(r['TRO_NET_PRED']):
-	        #     fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
-	        #             text=transform_to_rupiah(r['TRO_NET_PRED']),
+	        # if not np.isnan(r['TRO_NET']):
+	        #     fig.add_annotation(x=r['index'], y=r['TRO_NET'],
+	        #             text=transform_to_rupiah(r['TRO_NET']),
 	        #             showarrow=True,
 	        #             ax=10,
 	        #             ay=25,
 	        #             arrowhead=1)
+	        if not np.isnan(r['TRO_NET_PRED']):
+	            fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
+	                    text=transform_to_rupiah(r['TRO_NET_PRED']),
+	                    showarrow=True,
+	                    ax=10,
+	                    ay=-25,
+	                    arrowhead=1)
 
 	fig.update_traces(
 	    texttemplate='%{text:.2s}', 
