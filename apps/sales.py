@@ -13,9 +13,11 @@ sales_plot = get_agsales()
 ## for daterange picker
 from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
-end_picker = dt.today().date().replace(day=1)
-# start_picker = end_picker - relativedelta(months=7)
+
+## define date picker start date and end date
 start_picker = dt(2021,1,1)
+end_picker = dt.today().date() - relativedelta(days=2)
+
 
 sales_tab = dac.TabItem(id='content_sales', 
                               
