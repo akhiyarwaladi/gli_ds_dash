@@ -193,7 +193,7 @@ sidebar = dac.Sidebar(
             dac.SidebarMenuItem(label='Soon ...', icon='cubes', children=subitems1),
 		]
 	),
-    style={'font_size':'15'},
+    style={'font_size':'20'},
     title='Data Science Dashboard',
 	skin="light",
     color="secondary",
