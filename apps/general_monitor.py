@@ -19,7 +19,7 @@ general_monitor_tab = dac.TabItem(id='content_general_monitor',
                 dbc.Card(
                   [
                       dbc.CardHeader(html.H5(['SAPA', html.B(html.I('  vs  ')), 'non-SAPA Store Sales'])
-                        ,style={'font-size':'20px','font-family':'georgia'}),
+                        ,style={'font-size':'30px','font-family':'Verdana'}),
                       dbc.CardBody(
                           [
                               # html.H5("Card title", className="card-title"),
