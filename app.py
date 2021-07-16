@@ -100,7 +100,7 @@ FONT_AWESOME = "https://use.fontawesome.com/releases/v5.10.2/css/all.css"
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, FONT_AWESOME])
 # app = dash.Dash(__name__)
-app.title = "Data Science <br> Dashboard"
+app.title = "Data Science Dashboard"
 server = app.server 
 
 # =============================================================================
@@ -193,12 +193,12 @@ sidebar = dac.Sidebar(
             dac.SidebarMenuItem(label='Soon ...', icon='cubes', children=subitems1),
 		]
 	),
-    title='Data Science <br> Dashboard',
+    title='Data Science Dashboard',
 	skin="light",
     color="#74b9ff",
 	brand_color="primary",
     url="",
-    src="/home/server/gli-data-science/akhiyar/out_plot/pie-chart.png",
+    src="",
     elevation=3,
     opacity=0.8
 )
