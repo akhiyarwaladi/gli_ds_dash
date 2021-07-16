@@ -77,7 +77,7 @@ sales_tab = dac.TabItem(id='content_sales',
                           dbc.Card(
                             dbc.CardBody(
                                 dbc.Row([
-                                    dbc.Col(html.H5("Actual sales cumulative"), width=3),
+                                    dbc.Col(html.H5("Actual sales <br> cumulative"), width=3),
                                     dbc.Col(
                                             dcc.DatePickerRange(
                                                 id='actual_sales_daterange',
