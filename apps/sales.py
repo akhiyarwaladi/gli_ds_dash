@@ -34,7 +34,7 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.CardHeader(
                           [
                             dbc.Row([
-                              dbc.Col(html.Div(html.H3(['Alfagift', html.B('Sales')])), md=4),
+                              dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales')])), md=4),
                               dbc.Col(
                                       dcc.DatePickerRange(
                                           id='all_sales_daterange',
@@ -120,7 +120,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         
                         ]),
-                    ], style={'height':'120vh'}), md=12),
+                    ], style={'height':'125vh'}), md=12),
               # dbc.Col(
               #   dbc.Card(
               #     [
