@@ -342,21 +342,25 @@ def activate(input_id,
             Input('tab_view_product', 'n_clicks'),
             Input('tab_user_path', 'n_clicks'),
             Input('tab_gallery_1', 'n_clicks'),
-            Input('tab_gallery_2', 'n_clicks')
+            Input('tab_gallery_2', 'n_clicks'),
+            Input('url', 'pathname')
             
         ]
 )
 
 def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
                 n_sales, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
-                n_gallery_2):
+                n_gallery_2, pathname):
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
     # Get id of input which triggered callback  
     if not ctx.triggered:
         # raise PreventUpdate
-        input_id = 'tab_general_monitor'
+        if pathname == "/sales":
+            input_id = 'tab_sales'
+        else:
+            input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0]   
 
@@ -415,7 +419,7 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
         if pathname == "/sales":
             input_id = 'tab_sales'
         else:
-            input_id = 'tab_sales'
+            input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
 
