@@ -11,7 +11,7 @@ from dash.exceptions import PreventUpdate
 from apps.social_cards import social_cards_tab
 from apps.tab_cards import tab_cards_tab
 from apps.tab_cards import text_1, text_2, text_3
-from apps.basic_boxes import basic_boxes_tab
+from apps.member_growth import basic_boxes_tab
 from apps.general_monitor import general_monitor_tab
 from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
@@ -163,10 +163,14 @@ sub_event = [
 
 
 sub_monitor = [
-            dac.SidebarMenuSubItem(id='tab_general_monitor', label='General Monitor', icon='desktop'),
-            dac.SidebarMenuSubItem(id='tab_basic_boxes', label='Member Growth', icon='users'),
-            dac.SidebarMenuSubItem(id='tab_price_compare', label='Price Competitor', icon='balance-scale-right'),
-            dac.SidebarMenuSubItem(id='tab_oos_boxes', label='Out of stock', icon='layer-group')
+            dac.SidebarMenuSubItem(id='tab_general_monitor', label='General Monitor'
+                , icon='desktop', style={'font-size':'17px'}),
+            dac.SidebarMenuSubItem(id='tab_basic_boxes', label='Member Growth'
+                , icon='users', style={'font-size':'17px'}),
+            dac.SidebarMenuSubItem(id='tab_price_compare', label='Price Competitor'
+                , icon='balance-scale-right', style={'font-size':'17px'}),
+            dac.SidebarMenuSubItem(id='tab_oos_boxes', label='Out of stock'
+                , icon='layer-group', style={'font-size':'17px'})
 ]
 
 sub_research = [
