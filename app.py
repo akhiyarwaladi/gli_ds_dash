@@ -45,21 +45,8 @@ from helper import transform_to_rupiah_format,transform_format,transform_to_rupi
 parent_path = '/home/server/gli-data-science/akhiyar'
 new_regular = pd.read_csv(os.path.join(parent_path, 'out_plot/new_regular.csv'), sep='\t')
 
-## ploting figure
-# sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales_plot.csv', \
-#                     sep='\t')
-# lower_bond = datetime.today() - timedelta(days=90)
-# lower_bond = lower_bond.strftime('%Y-%m-%d')
-
-# sales_plot = sales_plot[sales_plot['index'] > lower_bond]
-# sales_plot['index'] = pd.to_datetime(sales_plot['index'])
-
-
-
 ## ploting table
 sales_plot_table = sales_plot.copy().fillna(0)
-# sales_plot_table = sales_plot_table.set_index(["index", "type"])['tbtop_amount_final'].unstack(level=1).fillna(0)\
-#         .reset_index().sort_values(by='index', ascending=False).reset_index(drop=True)
 
 ############################
 sales_plot_table_daily = sales_plot_table.copy()
@@ -361,7 +348,7 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
         if pathname == '/':
             input_id = 'tab_general_monitor'
             n_general_monitor = True
-        elif pathname == "/sales":
+        elif pathname == "/sales_monitor":
             input_id = 'tab_sales'
             n_sales = True
         else:
@@ -426,7 +413,7 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
         if pathname == '/':
             input_id = 'tab_general_monitor'
             n_general_monitor = True
-        elif pathname == "/sales":
+        elif pathname == "/sales_monitor":
             input_id = 'tab_sales'
             n_sales = True
         else:
