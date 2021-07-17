@@ -367,8 +367,10 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
     if pathname == "/sales":
         print('if path sales')
         input_id = 'tab_sales'
+        n_sales = True
 
     print(input_id)
+    print(ctx.triggered)
 
 
     return activate(input_id, 
@@ -432,8 +434,10 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     if pathname == "/sales":
         print('if path sales')
         input_id = 'tab_sales'
+        n_sales
 
     print(input_id)
+    print(ctx.triggered)
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
