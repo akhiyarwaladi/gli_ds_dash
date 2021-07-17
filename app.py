@@ -211,8 +211,8 @@ sidebar = dac.Sidebar(
 	brand_color="secondary",
     url="",
     src="",
-    elevation=20,
-    opacity=0.5
+    elevation=30,
+    opacity=0.7
 )
 
 # Body
