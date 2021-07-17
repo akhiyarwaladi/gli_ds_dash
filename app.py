@@ -354,16 +354,21 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
-    # Get id of input which triggered callback  
     print(pathname)
+    # Get id of input which triggered callback
     if not ctx.triggered:
         # raise PreventUpdate
+        print('not_triggered')
         if pathname == "/sales":
+            print('if path sales')
             input_id = 'tab_sales'
         else:
+            print('not_sales path')
             input_id = 'tab_general_monitor'
     else:
-        input_id = ctx.triggered[0]['prop_id'].split('.')[0]   
+        input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
+
+    print(input_id)
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
@@ -417,13 +422,17 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     # Get id of input which triggered callback
     if not ctx.triggered:
         # raise PreventUpdate
-        
+        print('not_triggered')
         if pathname == "/sales":
+            print('if path sales')
             input_id = 'tab_sales'
         else:
+            print('not_sales path')
             input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
+
+    print(input_id)
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
