@@ -359,16 +359,17 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
     if not ctx.triggered:
         # raise PreventUpdate
         print('not_triggered')
-        if pathname == "/sales":
-            print('if path sales')
-            input_id = 'tab_sales'
-        else:
-            print('not_sales path')
-            input_id = 'tab_general_monitor'
+
+        input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
 
+    if pathname == "/sales":
+        print('if path sales')
+        input_id = 'tab_sales'
+
     print(input_id)
+
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
@@ -423,14 +424,14 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     if not ctx.triggered:
         # raise PreventUpdate
         print('not_triggered')
-        if pathname == "/sales":
-            print('if path sales')
-            input_id = 'tab_sales'
-        else:
-            print('not_sales path')
-            input_id = 'tab_general_monitor'
+
+        input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
+
+    if pathname == "/sales":
+        print('if path sales')
+        input_id = 'tab_sales'
 
     print(input_id)
 
