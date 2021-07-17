@@ -134,52 +134,52 @@ subitems1 = [dac.SidebarMenuSubItem(id='tab_gallery_1',
                             label='Gallery 1', 
                             icon='arrow-circle-right', 
                             badge_label='Soon',
-                            badge_color='success', style={'font-size':'17px'}), 
+                            badge_color='success', style={'font-size':'19px'}), 
 			dac.SidebarMenuSubItem(id='tab_gallery_2', 
                             label='Gallery 2', 
                             icon='arrow-circle-right', 
                             badge_label='Soon', 
-                            badge_color='success', style={'font-size':'17px'})
+                            badge_color='success', style={'font-size':'19px'})
             ]
 
 # Sidebar
 sub_event = [
             dac.SidebarMenuSubItem(id='tab_events', 
                             label='Push Notification', 
-                            icon='bell', style={'font-size':'17px'}), 
+                            icon='bell', style={'font-size':'19px'}), 
             dac.SidebarMenuSubItem(id='tab_events_inapp', 
                             label='Mobile in-app (pop-up)', 
-                            icon='mobile-alt', style={'font-size':'17px'}),
+                            icon='mobile-alt', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_events_email', 
                             label='Email Campaign', 
-                            icon='envelope', style={'font-size':'17px'}),
+                            icon='envelope', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_view_product', 
                             label='Event on Product', 
-                            icon='shopping-bag', style={'font-size':'17px'}),
+                            icon='shopping-bag', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_user_path', 
                             label='Uninstall / Update', 
-                            icon='wrench', style={'font-size':'17px'})
+                            icon='wrench', style={'font-size':'19px'})
             ]
 
 
 sub_monitor = [
             dac.SidebarMenuSubItem(id='tab_general_monitor', label='General Monitor'
-                , icon='desktop', style={'font-size':'17px'}),
+                , icon='desktop', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_basic_boxes', label='Member Growth'
-                , icon='users', style={'font-size':'17px'}),
+                , icon='users', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_price_compare', label='Price Competitor'
-                , icon='balance-scale-right', style={'font-size':'17px'}),
+                , icon='balance-scale-right', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_oos_boxes', label='Out of stock'
-                , icon='layer-group', style={'font-size':'17px'})
+                , icon='layer-group', style={'font-size':'19px'})
 ]
 
 sub_research = [
             dac.SidebarMenuSubItem(id='tab_value_boxes', label='Voucher Usage'
-                , icon='sticky-note', style={'font-size':'17px'}),
+                , icon='sticky-note', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx'
-                , icon='shopping-cart', style={'font-size':'17px'}),
+                , icon='shopping-cart', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_sales', label='Sales Prediction'
-                , icon='chart-area', style={'font-size':'17px'})
+                , icon='chart-area', style={'font-size':'19px'})
 ]
 
 # icon refer to 
@@ -204,7 +204,7 @@ sidebar = dac.Sidebar(
             dac.SidebarMenuItem(label='...', icon='cubes', children=subitems1),
 		]
 	),
-    style={'font-size':'20px'},
+    style={'font-size':'21px'},
     title='Data Science Dashboard',
 	skin="light",
     color="secondary",
