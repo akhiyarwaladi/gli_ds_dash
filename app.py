@@ -267,7 +267,7 @@ footer = dac.Footer(
 # =============================================================================
 # App Layout
 # =============================================================================
-app.layout = dac.Page([navbar, sidebar, body, controlbar, footer])
+app.layout = dac.Page([dcc.Location(id='url', refresh=False), navbar, sidebar, body, controlbar, footer])
 
 # =============================================================================
 # Callbacks
