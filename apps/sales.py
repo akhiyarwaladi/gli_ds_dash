@@ -113,7 +113,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             )
                                     , width=5), 
                                     dbc.Col(html.H3(html.Div(id='prediction_sales_child')), width=4),
-                                    dbc.Col(html.H3("hehehe"), width=4),
+                                    # dbc.Col(html.H3("hehehe"), width=4),
   
                                 ], justify="start",),
                             )
