@@ -358,7 +358,7 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
     # Get id of input which triggered callback
     if ctx.triggered[0]['prop_id'].split('.')[0] == 'url':
         
-        if pathname == '/'
+        if pathname == '/':
             input_id = 'tab_general_monitor'
             n_general_monitor = True
         elif pathname == "/sales":
@@ -423,7 +423,7 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     # Get id of input which triggered callback
     if ctx.triggered[0]['prop_id'].split('.')[0] == 'url':
         
-        if pathname == '/'
+        if pathname == '/':
             input_id = 'tab_general_monitor'
             n_general_monitor = True
         elif pathname == "/sales":
