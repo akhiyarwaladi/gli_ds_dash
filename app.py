@@ -397,7 +397,8 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
             Input('tab_view_product', 'n_clicks'),
             Input('tab_user_path', 'n_clicks'),
             Input('tab_gallery_1', 'n_clicks'),
-            Input('tab_gallery_2', 'n_clicks')
+            Input('tab_gallery_2', 'n_clicks'),
+            Input('url', 'pathname')
         ]
 )
 
@@ -410,7 +411,11 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     # Get id of input which triggered callback
     if not ctx.triggered:
         # raise PreventUpdate
-        input_id = 'tab_general_monitor'
+        
+        if pathname == "/sales_prediction"::
+            input_id = 'tab_sales'
+        else:
+            input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
 
