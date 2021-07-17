@@ -355,6 +355,7 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
     # Get id of input which triggered callback  
+    print(pathname)
     if not ctx.triggered:
         # raise PreventUpdate
         if pathname == "/sales":
@@ -412,6 +413,7 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
+    print(pathname)
     # Get id of input which triggered callback
     if not ctx.triggered:
         # raise PreventUpdate
