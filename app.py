@@ -415,7 +415,7 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
         if pathname == "/sales":
             input_id = 'tab_sales'
         else:
-            input_id = 'tab_general_monitor'
+            input_id = 'tab_sales'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
 
