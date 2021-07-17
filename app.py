@@ -554,7 +554,7 @@ def update_graphs(rows, derived_virtual_selected_rows):
 def update_actual(date_start, date_end):
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '({})'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
+    return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
 
 @app.callback(
     Output('prediction_sales_child', "children"),
@@ -563,21 +563,11 @@ def update_actual(date_start, date_end):
         Input('prediction_sales_daterange', 'end_date'),
     ]
 )
-def update_actual(date_start, date_end):
+def update_prediction(date_start, date_end):
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '({})'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+    return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
-# @app.callback(
-#     Output('all_sales_fig', "figure"),
-#     [
-#         Input('all_sales_daterange', 'start_date'),
-#         Input('all_sales_daterange', 'end_date'),
-#     ]
-# )
-# def update_all_salex(date_start, date_end):
-#     fig = 
-#     return fig
 
 
 @app.callback(
