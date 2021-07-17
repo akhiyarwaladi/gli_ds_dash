@@ -134,31 +134,31 @@ subitems1 = [dac.SidebarMenuSubItem(id='tab_gallery_1',
                             label='Gallery 1', 
                             icon='arrow-circle-right', 
                             badge_label='Soon',
-                            badge_color='success'), 
+                            badge_color='success', style={'font-size':'17px'}), 
 			dac.SidebarMenuSubItem(id='tab_gallery_2', 
                             label='Gallery 2', 
                             icon='arrow-circle-right', 
                             badge_label='Soon', 
-                            badge_color='success')
+                            badge_color='success', style={'font-size':'17px'})
             ]
 
 # Sidebar
 sub_event = [
             dac.SidebarMenuSubItem(id='tab_events', 
                             label='Push Notification', 
-                            icon='bell'), 
+                            icon='bell', style={'font-size':'17px'}), 
             dac.SidebarMenuSubItem(id='tab_events_inapp', 
                             label='Mobile in-app (pop-up)', 
-                            icon='mobile-alt'),
+                            icon='mobile-alt', style={'font-size':'17px'}),
             dac.SidebarMenuSubItem(id='tab_events_email', 
                             label='Email Campaign', 
-                            icon='envelope'),
+                            icon='envelope', style={'font-size':'17px'}),
             dac.SidebarMenuSubItem(id='tab_view_product', 
                             label='Event on Product', 
-                            icon='shopping-bag'),
+                            icon='shopping-bag', style={'font-size':'17px'}),
             dac.SidebarMenuSubItem(id='tab_user_path', 
                             label='Uninstall / Update', 
-                            icon='wrench')
+                            icon='wrench', style={'font-size':'17px'})
             ]
 
 
@@ -174,9 +174,12 @@ sub_monitor = [
 ]
 
 sub_research = [
-            dac.SidebarMenuSubItem(id='tab_value_boxes', label='Voucher Usage', icon='sticky-note'),
-            dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx', icon='shopping-cart'),
-            dac.SidebarMenuSubItem(id='tab_sales', label='Sales Prediction', icon='chart-area')
+            dac.SidebarMenuSubItem(id='tab_value_boxes', label='Voucher Usage'
+                , icon='sticky-note', style={'font-size':'17px'}),
+            dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx'
+                , icon='shopping-cart', style={'font-size':'17px'}),
+            dac.SidebarMenuSubItem(id='tab_sales', label='Sales Prediction'
+                , icon='chart-area', style={'font-size':'17px'})
 ]
 
 # icon refer to 
