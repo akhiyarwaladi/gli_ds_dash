@@ -412,7 +412,7 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     if not ctx.triggered:
         # raise PreventUpdate
         
-        if pathname == "/sales_prediction":
+        if pathname == "/sales":
             input_id = 'tab_sales'
         else:
             input_id = 'tab_general_monitor'
