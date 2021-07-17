@@ -354,23 +354,22 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
-    print(pathname)
-    # Get id of input which triggered callback
-    if not ctx.triggered:
-        # raise PreventUpdate
-        print('not_triggered')
 
-        input_id = 'tab_general_monitor'
+    # Get id of input which triggered callback
+    if ctx.triggered[0]['prop_id'].split('.')[0] == 'url':
+        
+        if pathname == '/'
+            input_id = 'tab_general_monitor'
+            n_general_monitor = True
+        elif pathname == "/sales":
+            input_id = 'tab_sales'
+            n_sales = True
+        else:
+            input_id = 'tab_general_monitor'
+            n_general_monitor = True
+
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
-
-    if pathname == "/sales":
-        print('if path sales')
-        input_id = 'tab_sales'
-        n_sales = True
-
-    print(input_id)
-    print(ctx.triggered)
 
 
     return activate(input_id, 
@@ -421,23 +420,22 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
-    print(pathname)
     # Get id of input which triggered callback
-    if not ctx.triggered:
-        # raise PreventUpdate
-        print('not_triggered')
+    if ctx.triggered[0]['prop_id'].split('.')[0] == 'url':
+        
+        if pathname == '/'
+            input_id = 'tab_general_monitor'
+            n_general_monitor = True
+        elif pathname == "/sales":
+            input_id = 'tab_sales'
+            n_sales = True
+        else:
+            input_id = 'tab_general_monitor'
+            n_general_monitor = True
 
-        input_id = 'tab_general_monitor'
     else:
         input_id = ctx.triggered[0]['prop_id'].split('.')[0] 
 
-    if pathname == "/sales":
-        print('if path sales')
-        input_id = 'tab_sales'
-        n_sales
-
-    print(input_id)
-    print(ctx.triggered)
 
     return activate(input_id, 
                     n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
