@@ -23,6 +23,12 @@ def plot_member_count(am, value):
 	    tickformat="%b%y",
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
+	if value == 'Daily':
+		fig.update_xaxes(
+		#     dtick="M1",
+		    tickformat="%d%b%y",
+		    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
+		)
 
 	fig.update_yaxes(
 
@@ -72,6 +78,13 @@ def plot_sapa_count(am, value):
 	    tickformat="%b%y",
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
+	if value == 'Daily':
+		fig.update_xaxes(
+		#     dtick="M1",
+		    tickformat="%d%b%y",
+		    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
+		)
+		
 	fig.update_yaxes(
 
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='#sapa store'
