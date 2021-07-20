@@ -1,7 +1,7 @@
 import plotly.express as px
 import plotly.graph_objs as go
 
-def plot_member(member_count, value):
+def plot_member_count(member_count, value):
 	#value = 'Monthly'
 	if value == 'Monthly':
 	    am = am.groupby([pd.Grouper(key='index',freq='M')]).agg({'count':'first','count_format':'first'}).reset_index()
