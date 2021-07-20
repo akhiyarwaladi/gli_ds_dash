@@ -129,11 +129,12 @@ def transform_to_format(value):
         show_result = temp_result.split('.')[0] + "." + temp_result.split('.')[1] 
     elif len(str_value) >= 9:
         unit = 'jt'
-        show_result = temp_result.split('.')[0]
+        show_result = temp_result.split('.')[0] + "," + temp_result.split('.')[1][0]
     elif len(str_value) >= 6:
         unit = 'rb'
-        show_result = temp_result.split('.')[0]
+        show_result = temp_result.split('.')[0] + "," + temp_result.split('.')[1][0]
     else:
         unit = ''
         show_result = temp_result.split('.')[0]
+        
     return show_result + unit
