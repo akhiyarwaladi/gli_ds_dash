@@ -12,7 +12,7 @@ from apps.social_cards import social_cards_tab
 from apps.tab_cards import tab_cards_tab
 from apps.tab_cards import text_1, text_2, text_3
 from apps.member_growth import basic_boxes_tab
-from apps.general_monitor import general_monitor_tab, member_count
+from apps.general_monitor import general_monitor_tab, member_count, sapa_count
 from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
 from apps.value_behave import value_behave_tab
@@ -30,7 +30,7 @@ from plots.campaign_report import w_general_push, w_general_email, w_general_ina
 from plots.product_plot import plot_product
 from plots.agsales_plot import plot_sales_all
 from plots.event_product_plot import plot_vp, plot_sp
-from plots.general_plot import plot_member_count
+from plots.general_plot import plot_member_count, plot_sapa_count
 
 
 from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
@@ -603,6 +603,17 @@ def update_plot_sales(value, date_start, date_end):
 )
 def update_plot_member_count(value):
     fig = plot_member_count(member_count, value)
+
+    return fig
+
+@app.callback(
+    Output('sapa_count_fig', 'figure'),
+    [
+        Input('sapa_count_dropdown', 'value'),
+    ]
+)
+def update_plot_sapa_count(value):
+    fig = plot_sapa_count(sapa_count, value)
 
     return fig
 

@@ -65,7 +65,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 
 	fig.update_traces(
 
-	    hovertemplate='%{x}<br>%{y:.2s}')
+	    hovertemplate='%{x}<br>%{y}')
 
 	fig.update_xaxes(
 	    tickformat="%d%b%y",
