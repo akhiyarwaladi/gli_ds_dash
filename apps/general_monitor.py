@@ -95,16 +95,17 @@ general_monitor_tab = dac.TabItem(id='content_general_monitor',
                           dbc.Row([
                             dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Member')])), md=4),
                             dbc.Col(
-                                    dcc.DatePickerRange(
-                                        id='member_count_daterange',
-                                        min_date_allowed=dt(2020, 1, 1),
-                                        max_date_allowed=dt(2022, 12, 1),
-                                        start_date_placeholder_text="Start Date",
-                                        end_date_placeholder_text="End Date",
-                                        display_format='DD-MM-Y',
-                                        start_date=start_picker,
-                                        end_date=dt(2021,12,31)
-                                    )
+                                    # dcc.DatePickerRange(
+                                    #     id='member_count_daterange',
+                                    #     min_date_allowed=dt(2020, 1, 1),
+                                    #     max_date_allowed=dt(2022, 12, 1),
+                                    #     start_date_placeholder_text="Start Date",
+                                    #     end_date_placeholder_text="End Date",
+                                    #     display_format='DD-MM-Y',
+                                    #     start_date=start_picker,
+                                    #     end_date=dt(2021,12,31)
+                                    # )
+                                    ""
                             , md=4),
                             dbc.Col(
                               dcc.Dropdown(
@@ -113,7 +114,7 @@ general_monitor_tab = dac.TabItem(id='content_general_monitor',
                                       {'label': 'Monthly', 'value': 'Monthly'},
                                       {'label': 'Daily', 'value': 'Daily'}
                                   ],
-                                  value='Daily'
+                                  value='Monthly'
                               )
                             , md=4),
                           ])
