@@ -43,7 +43,8 @@ from helper import transform_to_rupiah_format,transform_format,transform_to_rupi
 ## importing data in here to enable callback
 
 parent_path = '/home/server/gli-data-science/akhiyar'
-new_regular = pd.read_csv(os.path.join(parent_path, 'out_plot/new_regular_alfagift_oshop.csv'), sep='\t')
+new_regular = pd.read_csv(os.path.join(parent_path, \
+                'out_plot/new_regular_alfagift_oshop.csv'), sep='\t')
 
 
 
