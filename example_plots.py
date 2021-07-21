@@ -204,7 +204,7 @@ def plot_store_type_sales():
 
 
 def plot_application_type_sales():
-	fig = px.line(application_type_sales, x='tbto_create_date', y='sales_amount', template='presentation', \
+	fig = px.line(application_type_sales, x='TRO_DATE_ORDER', y='sales_amount', template='presentation', \
 	              text='sales_amount_rp', color='store_type')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
@@ -283,43 +283,6 @@ def plot_order_status():
 	return fig
 
 
-def plot_sapa_notsapa():
-	
-	sapa_notsapa['sapa_enable'] = sapa_notsapa['sapa_enable'].replace({'not_sapa':'non_sapa'})
-	fig = px.line(sapa_notsapa, x='tbto_create_date', y='net_amount', template='presentation', \
-	              text='tbto_amount_final_rp', color='sapa_enable')
-	fig.update_traces(texttemplate='%{text}', 
-		textposition='top center', 
-		textfont_size=11,
-		hovertemplate='%{x}<br>%{y}')
-	fig.update_xaxes(
-	    dtick="M1",
-	    tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
-	)
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-	return fig
 
 def plot_new_regular(new_regular, start_date, end_date):
 
