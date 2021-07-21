@@ -4,7 +4,7 @@ import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 
 from plots.campaign_report import g_general_push, w_general_push
-general_push = plot_general_push()
+# general_push = plot_general_push()
 
 from data_loader import get_cpn
 
@@ -112,29 +112,29 @@ row_top = [
 li_row = li_row + row_top
 
 
-for idx, row in general_push.iterrows():
-    campaign_name = row['Campaign Name'].strip()
+# for idx, row in general_push.iterrows():
+#     campaign_name = row['Campaign Name'].strip()
     
-    row_x = dbc.Row(
-        [
+#     row_x = dbc.Row(
+#         [
 
-            dbc.Col(dbc.Card(fill_card_content('Impressions', row)\
-              , color="dark", outline=True)),
-            dbc.Col(dbc.Card(fill_card_content('Clicks', row)\
-              , color="dark", outline=True)),
-            dbc.Col(dbc.Card(fill_card_content('Conversions', row)\
-              , color="dark", outline=True)),
+#             dbc.Col(dbc.Card(fill_card_content('Impressions', row)\
+#               , color="dark", outline=True)),
+#             dbc.Col(dbc.Card(fill_card_content('Clicks', row)\
+#               , color="dark", outline=True)),
+#             dbc.Col(dbc.Card(fill_card_content('Conversions', row)\
+#               , color="dark", outline=True)),
 
-        ],
-        className="mb-4",
-    )
-    row_y = dbc.Row(
-        [
-            dbc.Col(dbc.Card(fill_card(campaign_name, row_x, row), color="dark", outline=True)),
-        ],
-        className="mb-12",
-    )
-    # li_row.append(row_y)
+#         ],
+#         className="mb-4",
+#     )
+#     row_y = dbc.Row(
+#         [
+#             dbc.Col(dbc.Card(fill_card(campaign_name, row_x, row), color="dark", outline=True)),
+#         ],
+#         className="mb-12",
+#     )
+#     li_row.append(row_y)
 
 
 

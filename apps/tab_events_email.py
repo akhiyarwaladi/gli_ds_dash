@@ -9,7 +9,7 @@ from data_loader import get_cpe
 from datetime import datetime, timedelta
 now_str = (datetime.now().date() - timedelta(days=2)).strftime('%Y-%m')
 
-general_inapp = plot_general_inapp()
+# general_inapp = plot_general_inapp()
 f_email = get_cpe()
 campaign_email = f_email[0]
 option_email = f_email[1]
@@ -107,29 +107,29 @@ row_top = [
 # li_row.append(row_top)
 li_row = li_row + row_top
 
-for idx, row in general_inapp.iterrows():
-    campaign_name = row['Campaign Name'].strip()
+# for idx, row in general_inapp.iterrows():
+#     campaign_name = row['Campaign Name'].strip()
     
-    row_x = dbc.Row(
-        [
+#     row_x = dbc.Row(
+#         [
 
-            dbc.Col(dbc.Card(fill_card_content('impressions', row)\
-              , color="dark", outline=True)),
-            dbc.Col(dbc.Card(fill_card_content('clicks', row)\
-              , color="dark", outline=True)),
-            dbc.Col(dbc.Card(fill_card_content('conversions (unique)', row)\
-              , color="dark", outline=True)),
+#             dbc.Col(dbc.Card(fill_card_content('impressions', row)\
+#               , color="dark", outline=True)),
+#             dbc.Col(dbc.Card(fill_card_content('clicks', row)\
+#               , color="dark", outline=True)),
+#             dbc.Col(dbc.Card(fill_card_content('conversions (unique)', row)\
+#               , color="dark", outline=True)),
 
-        ],
-        className="mb-4",
-    )
-    row_y = dbc.Row(
-        [
-            dbc.Col(dbc.Card(fill_card(campaign_name, row_x, row), color="dark", outline=True)),
-        ],
-        className="mb-12",
-    )
-    # li_row.append(row_y)
+#         ],
+#         className="mb-4",
+#     )
+#     row_y = dbc.Row(
+#         [
+#             dbc.Col(dbc.Card(fill_card(campaign_name, row_x, row), color="dark", outline=True)),
+#         ],
+#         className="mb-12",
+#     )
+#     li_row.append(row_y)
 
 
 
