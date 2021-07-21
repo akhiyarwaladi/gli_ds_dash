@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 
 def get_agsales():
-    sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales_plot_oshop.csv', \
+    sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales_plot_oshop_test.csv', \
                         sep='\t')
 
 
