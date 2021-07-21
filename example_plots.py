@@ -37,7 +37,7 @@ df_m_3101 = pd.read_csv(os.path.join(parent_path, 'out_plot/df_m_3101.csv'), sep
 ###
 
 ## general monitoring
-store_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/store_type_sales.csv'), sep='\t')
+store_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/store_type_sales_alfagift_oshop.csv'), sep='\t')
 store_type_sales['tbto_create_date'] = pd.to_datetime(store_type_sales['tbto_create_date']).dt.strftime('%Y-%m')
 
 application_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/application_type_sales.csv'), sep='\t')
@@ -758,7 +758,7 @@ def plot_table_sales(sales_plot_table, value):
 
 def plot_store_type_sales():
 	
-	fig = px.line(store_type_sales, x='tbto_create_date', y='sales_amount', template='presentation', \
+	fig = px.line(store_type_sales, x='TRO_DATE_ORDER', y='sales_amount', template='presentation', \
 	              text='sales_amount_rp', color='store_type')
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
