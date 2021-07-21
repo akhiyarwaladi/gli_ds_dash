@@ -24,8 +24,7 @@ from apps.tab_events_email import events_email, campaign_email
 from apps.event_product import view_product_tab, product_group, vp, sp
 from apps.user_path_box import user_path_tab
 
-from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular, 
-    plot_table_sales)
+from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular)
 from plots.campaign_report import w_general_push, w_general_email, w_general_inapp
 from plots.product_plot import plot_product
 from plots.agsales_plot import plot_sales_all
