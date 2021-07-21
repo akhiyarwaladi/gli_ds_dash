@@ -193,7 +193,8 @@ def plot_store_type_sales():
 	            borderwidth=1
 	        )
 	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 
 	return fig
 
