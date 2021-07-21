@@ -3,7 +3,6 @@ import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 
-from example_plots import (plot_general_push, conversion_general_push, click_general_push)
 from plots.campaign_report import g_general_push, w_general_push
 general_push = plot_general_push()
 
