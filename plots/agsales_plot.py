@@ -33,12 +33,14 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET'],
 	    name='Actual',
+	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah)
 
 	))
 	fig.add_trace(go.Scatter(
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET_PRED'],
 	    name='Prediction',
+	    text=sales_plot['TRO_NET_PRED'].astype(float).apply(transform_to_rupiah)
 	))
 
 	for i, r in sales_plot.iterrows():
@@ -65,7 +67,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 
 	fig.update_traces(
 
-	    hovertemplate='%{x}<br>%{y}')
+	    hovertemplate='%{x}<br>%{text}')
 
 	fig.update_xaxes(
 	    tickformat="%d%b%y",
@@ -102,5 +104,5 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
                        'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 					  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,\
-	                  template='presentation')
+	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 	return fig
