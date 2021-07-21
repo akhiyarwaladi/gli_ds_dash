@@ -1,21 +1,25 @@
 import numpy as np 
 import pandas as pd
-import os
+
 import textwrap
-
-import plotly.express as px
-import plotly.graph_objs as go
-import dash_table
-import dash_html_components as html
-from datetime import date, timedelta, datetime
-
-from helper import transform_to_rupiah_format,transform_to_format,transform_format
-
-
 def split_label(list_label):
     list_label = list(list_label)
     list_label = ["<br>".join(textwrap.wrap(t, width=12)) for t in list_label ]
     return list_label
+
+
+import plotly.express as px
+import plotly.graph_objs as go
+
+import dash_table
+import dash_html_components as html
+
+from datetime import date, timedelta, datetime
+from helper import transform_to_rupiah_format,transform_to_format,transform_format
+
+import os
+
+
 
 
 parent_path = '/home/server/gli-data-science/akhiyar'
@@ -72,30 +76,11 @@ oos_count['value_str'] = oos_count['value'].astype('float').apply(transform_form
 oos_consecutive_order['month'] = pd.to_datetime(oos_consecutive_order['month']).dt.strftime('%b%y')
 oos_time_spend['month'] = pd.to_datetime(oos_time_spend['month']).dt.strftime('%b%y')
 
-###
-res_g = pd.read_csv(os.path.join(parent_path, 'out_plot/res_g.csv'), sep='\t')
-all_df_pred = pd.read_csv(os.path.join(parent_path, 'out_plot/all_df_pred.csv'), sep='\t')
-
-res_unstack = res_g.set_index(["TRO_DATE", "DESCP_DEPT"])['TRO_NET'].unstack(level=1).fillna(0)
-pred_unstack = all_df_pred.set_index(["TRO_DATE", "DESCP_DEPT"])['TRO_NET'].unstack(level=1).fillna(0)
-
 
 
 ###
 
 
-###
-general_push = pd.read_csv(os.path.join(parent_path, \
-	'data_req/event/general_push.csv'), sep='\t')
-
-g_push = pd.read_csv(os.path.join(parent_path, \
-	'out_plot/g_push.csv'), sep='\t')
-g_email = pd.read_csv(os.path.join(parent_path, \
-	'out_plot/g_push.csv'), sep='\t')
-
-general_inapp = pd.read_csv(os.path.join(parent_path, \
-	'data_req/event/MOBILE_INAPP_alfagift_2021-04-21_04_37_38.555413.csv')).fillna(0)
-###
 
 
 
@@ -301,287 +286,6 @@ def plot_search_product():
 	)
 
 
-def plot_general_push():
-
-	return general_push
-
-def g_general_push():
-
-	fig = px.line(g_push, x='Campaign Sent Time', y='value', template='presentation', \
-	              text='value_format', color='variable')
-	fig.update_traces(texttemplate='%{text}', 
-	    textposition='top center', 
-	    textfont_size=11,
-	    hovertemplate='%{x}<br>%{text}')
-	for ix, trace in enumerate(fig.data):
-	    if ix == 3:
-	        trace.update(textposition='bottom center')
-	fig.update_xaxes(
-	    dtick="M1",
-	    tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='#'
-	)
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-
-	return fig
-
-def g_general_email():
-	fig = px.line(g_email, x='Date', y='value', template='presentation', \
-	              text='value_format', color='variable')
-	fig.update_traces(texttemplate='%{text}', 
-	    textposition='top center', 
-	    textfont_size=11,
-	    hovertemplate='%{x}<br>%{text}')
-	for ix, trace in enumerate(fig.data):
-	    if ix == 3:
-	        trace.update(textposition='bottom center')
-	fig.update_xaxes(
-	    dtick="M1",
-	    tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='#'
-	)
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-
-	return fig
-
-
-def click_general_push():
-	top_click = general_push.sort_values(by=['Clicks'], ascending=False).head(7)\
-	            [['Campaign Name', 'Clicks', 'Primary Conversion Goal']].reset_index(drop=True)
-	top_click['Campaign Name'] = pd.Series(split_label(top_click['Campaign Name'].str[10:]))
-
-	fig = px.bar(top_click, x="Campaign Name", y="Clicks", color = 'Primary Conversion Goal')
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
-	                plot_bgcolor = '#FFFFFF', legend = legend_dict,
-	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-	                       'showgrid': True, 'automargin': True, 'title':''},
-	                yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
-	                       'showgrid': True,  'automargin': True, 'title':'Clicks'},
-	                bargap=0.3, title="", title_x=0.5)
-
-	return fig
-
-def conversion_general_push():
-	top_click = general_push.sort_values(by=['Conversions'], ascending=False).head(7)\
-	            [['Campaign Name', 'Conversions', 'Primary Conversion Goal']].reset_index(drop=True)
-	top_click['Campaign Name'] = pd.Series(split_label(top_click['Campaign Name'].str[10:]))
-
-	fig = px.bar(top_click, x="Campaign Name", y="Conversions", color='Primary Conversion Goal')
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-
-	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
-	            plot_bgcolor = '#FFFFFF', legend = legend_dict,
-	            xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-	                   'showgrid': True, 'automargin': True, 'title':''},
-	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
-	                   'showgrid': True,  'automargin': True, 'title':'Conversions'},
-	            bargap=0.3, title="", title_x=0.5)
-
-	return fig
-
-
-
-def plot_general_inapp():
-
-	return general_inapp
-
-def g_general_inapp():
-	general_inapp['Created At'] = pd.to_datetime(general_inapp['Created At'])
-	g_inapp = general_inapp.groupby([pd.Grouper(key='Created At',freq='M')])\
-	                    .agg({'impressions':'sum', 'clicks':'sum', 'conversions (unique)':'sum'})\
-	                    .reset_index()
-	g_inapp['Created At'] = g_inapp['Created At'].dt.strftime('%Y-%m')
-	g_inapp = pd.melt(g_inapp, ['Created At'])
-	g_inapp['value_format'] = g_inapp['value'].astype('float')\
-								.apply(transform_to_format)
-
-	fig = px.line(g_inapp, x='Created At', y='value', template='presentation', \
-	              text='value_format', color='variable')
-	fig.update_traces(texttemplate='%{text}', 
-	    textposition='top center', 
-	    textfont_size=11,
-	    hovertemplate='%{x}<br>%{text}')
-	for ix, trace in enumerate(fig.data):
-	    if ix == 1:
-	        trace.update(textposition='bottom center')
-	fig.update_xaxes(
-	    dtick="M1",
-	    tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='#'
-	)
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-	return fig
-
-
-def click_general_inapp():
-	top_click = general_inapp.sort_values(by=['clicks'], ascending=False).head(7)\
-	            [['Campaign Name', 'clicks', 'Conversion Goal']].reset_index(drop=True)
-	top_click['Campaign Name'] = pd.Series(split_label(top_click['Campaign Name']\
-	                                .str[7:]))
-
-	fig = px.bar(top_click, x="Campaign Name", y="clicks", color = 'Conversion Goal')
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-
-	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
-	                plot_bgcolor = '#FFFFFF', legend=legend_dict,
-	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-	                       'showgrid': True, 'automargin': True, 'title':''},
-	                yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
-	                       'showgrid': True,  'automargin': True, 'title':'Clicks'},
-	                bargap=0.3, title="", title_x=0.5)
-
-	return fig
-
-def conversion_general_inapp():
-
-	top_click = general_inapp.sort_values(by=['conversions (unique)'], ascending=False).head(7)\
-	            [['Campaign Name', 'conversions (unique)', 'Conversion Goal']].reset_index(drop=True)
-	top_click['Campaign Name'] = pd.Series(split_label(top_click['Campaign Name']\
-	                                .str[7:]))
-
-	fig = px.bar(top_click, x="Campaign Name", y="conversions (unique)", color = 'Conversion Goal')
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-
-	fig.update_layout(font={'size': 16}, width=1000,template='presentation',
-	                plot_bgcolor = '#FFFFFF', legend=legend_dict,
-	                xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-	                       'showgrid': True, 'automargin': True, 'title':''},
-	                yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
-	                       'showgrid': True,  'automargin': True, 'title':'Clicks'},
-	                bargap=0.3, title="", title_x=0.5)
-
-	return fig
 
 
 def multi_plot(df, addAll = True):
@@ -657,104 +361,6 @@ def multi_plot(df, addAll = True):
     return fig
 
 
-def plot_sales_train():
-	return multi_plot(res_unstack)
-
-def plot_sales_test():
-	return multi_plot(pred_unstack)
-
-def plot_sales_all(sales_plot, value):
-
-	if value == 'Monthly':
-		sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M'), 'type'])\
-							.agg({'tbtop_amount_final':'sum'})\
-							.reset_index()
-		sales_plot['index'] = sales_plot['index'].dt.strftime('%Y-%m')
-		
-	fig = px.line(sales_plot, x='index', y='tbtop_amount_final', template='presentation', \
-	              color='type')
-	fig.update_traces(
-	#     texttemplate='%{text}', 
-	#     textposition='top center', 
-	#     textfont_size=11,
-	    hovertemplate='%{x}<br>%{y}')
-
-	fig.update_xaxes(
-	#     dtick="M1",
-	#     tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
-	)
-
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=1,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-	return fig
-
-
-def plot_table_sales(sales_plot_table, value):
-
-	# if value == 'Monthly':
-	# 	sales_plot_table['index'] = pd.to_datetime(sales_plot_table['index'])
-	# 	sales_plot_table = sales_plot_table.groupby([pd.Grouper(key='index',freq='M')])\
-	# 						.agg({'actual':'sum', 'prediction':'sum'})\
-	# 						.reset_index()
-		
-	# 	## formatting view
-	# 	sales_plot_table['index'] = sales_plot_table['index'].dt.strftime('%d%b%y')
-
-	# 	sales_plot_table['prediction'] = sales_plot_table['prediction'].astype('float').apply(transform_to_rupiah_format)
-	# 	sales_plot_table['actual'] = sales_plot_table['actual'].astype('float').apply(transform_to_rupiah_format)
-	# 	sales_plot_table = sales_plot_table.rename(columns={'index':'date', 'type':''})
-	# 	##
-	# else:
-	# 	## formatting view
-	# 	sales_plot_table['index'] = sales_plot_table['index'].dt.strftime('%d%b%y')
-
-	# 	sales_plot_table['prediction'] = sales_plot_table['prediction'].astype('float').apply(transform_to_rupiah_format)
-	# 	sales_plot_table['actual'] = sales_plot_table['actual'].astype('float').apply(transform_to_rupiah_format)
-	# 	sales_plot_table = sales_plot_table.rename(columns={'index':'date', 'type':''})
-	# 	##
-
-
-	df_init = pd.DataFrame()
-	df_init['name'] = list(sales_plot_table)
-	df_init['id'] = list(sales_plot_table)
-	df_init['type'] = 'text'
-	columns = df_init.to_dict(orient='records')
-	return dash_table.DataTable(
-
-
-		columns=columns,
-		data=sales_plot_table.to_dict('records'),
-		filter_action='native',
-		page_size=20,
-		fixed_rows={'headers': True},
-		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
-		style_data={
-		    'width': '120px', 'minWidth': '120px', 'maxWidth': '150px',
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		}
-	)
 
 def plot_store_type_sales():
 	
