@@ -2,10 +2,8 @@ import dash_html_components as html
 import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
-from example_plots import (plot_new_regular, 
-plot_sapa_notsapa, plot_plus_minus)
-from datetime import datetime as dt
 
+from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
 end_picker = dt.today().date().replace(day=1)
 start_picker = end_picker - relativedelta(months=7)
