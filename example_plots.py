@@ -209,7 +209,7 @@ def plot_application_type_sales():
 	fig.update_traces(texttemplate='%{text}', 
 	    textposition='top center', 
 	    textfont_size=11,
-	    hovertemplate='%{x}<br>%{y}')
+	    hovertemplate='%{x}<br>%{text}')
 	fig.update_xaxes(
 	    dtick="M1",
 	    tickformat="%b%y",
