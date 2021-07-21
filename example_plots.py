@@ -81,213 +81,6 @@ oos_time_spend['month'] = pd.to_datetime(oos_time_spend['month']).dt.strftime('%
 ###
 
 
-
-
-
-view_product1 = pd.read_csv(os.path.join(parent_path,'out_plot/view_1.csv'),sep='\t')
-view_product2 = pd.read_csv(os.path.join(parent_path,'out_plot/view_2.csv'),sep='\t')
-search_product = pd.read_csv(os.path.join(parent_path, 'out_plot/search_event.csv'), sep='\t')
-
-
-uvp = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/user_view_product.csv')
-usp = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/user_search_product.csv')
-
-
-def plot_uvp():
-	fig = px.line(uvp, x='view_product - uid', y=uvp.columns[1:7], template='presentation')
-	fig.update_traces(
-	#     texttemplate='%{text}', 
-	#     textposition='top center', 
-	#     textfont_size=11,
-	    hovertemplate='%{x}<br>%{y}')
-
-	fig.update_xaxes(
-	#     dtick="M1",
-	#     tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='total_event'
-	)
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=-0.4,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-	# Show plot 
-	#fig.show()
-
-	return fig, round(uvp.mean(axis=1).mean(),2)
-
-def plot_usp():
-	fig = px.line(usp, x='search_products - uid', y=usp.columns[1:7], template='presentation')
-	fig.update_traces(
-	#     texttemplate='%{text}', 
-	#     textposition='top center', 
-	#     textfont_size=11,
-	    hovertemplate='%{x}<br>%{y}')
-
-	fig.update_xaxes(
-	#     dtick="M1",
-	#     tickformat="%b%y",
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-	)
-	fig.update_yaxes(
-
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='total_event'
-	)
-	legend_dict = \
-	    legend=dict(
-	            x=0,
-	            y=-0.4,
-	            traceorder="normal",
-	            title='',
-	            title_font_family="Times New Roman",
-	            font=dict(
-	                family="Courier",
-	                size=14,
-	                color="black"
-	            ),
-	            bgcolor="#dfe4ea",
-	            bordercolor="Black",
-	            borderwidth=1
-	        )
-	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
-	# Show plot 
-	#fig.show()
-	return fig, round(usp.mean(axis=1).mean(), 2)
-
-
-def plot_view_product1():
-	df_init = pd.DataFrame()
-	df_init['name'] = list(view_product1)
-	df_init['id'] = list(view_product1)
-	df_init['type'] = 'text'
-	columns = df_init.to_dict(orient='records')
-	return dash_table.DataTable(
-
-
-		columns=columns,
-		data=view_product1.to_dict('records'),
-		tooltip_data=[
-		    {
-		        column: {'value': str(value), 'type': 'markdown'}
-		        for column, value in row.items()
-		    } for row in view_product1.to_dict('records')
-		],
-
-		# Overflow into ellipsis
-		style_cell={
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		    'maxWidth': 0,
-		},
-		tooltip_delay=0,
-		tooltip_duration=None,
-		filter_action='native',
-		page_size=20,
-		fixed_rows={'headers': True},
-		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
-		style_data={
-		    'width': '120px', 'minWidth': '120px', 'maxWidth': '150px',
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		}
-	)
-
-def plot_view_product2():
-	df_init = pd.DataFrame()
-	df_init['name'] = list(view_product2)
-	df_init['id'] = list(view_product2)
-	df_init['type'] = 'text'
-	columns = df_init.to_dict(orient='records')
-
-	return dash_table.DataTable(
-
-
-		columns=columns,
-		data=view_product2.to_dict('records'),
-		tooltip_data=[
-		    {
-		        column: {'value': str(value), 'type': 'markdown'}
-		        for column, value in row.items()
-		    } for row in view_product2.to_dict('records')
-		],
-
-		# Overflow into ellipsis
-		style_cell={
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		    'maxWidth': 0,
-		},
-		tooltip_delay=0,
-		tooltip_duration=None,
-		filter_action='native',
-		page_size=20,
-		fixed_rows={'headers': True},
-		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
-		style_data={
-		    'width': '120px', 'minWidth': '120px', 'maxWidth': '150px',
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		}
-	)
-
-def plot_search_product():
-	df_init = pd.DataFrame()
-	df_init['name'] = list(search_product)
-	df_init['id'] = list(search_product)
-	df_init['type'] = 'text'
-	columns = df_init.to_dict(orient='records')
-	return dash_table.DataTable(
-
-
-		columns=columns,
-		data=search_product.to_dict('records'),
-		tooltip_data=[
-		    {
-		        column: {'value': str(value), 'type': 'markdown'}
-		        for column, value in row.items()
-		    } for row in search_product.to_dict('records')
-		],
-
-		# Overflow into ellipsis
-		style_cell={
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		    'maxWidth': 0,
-		},
-		tooltip_delay=0,
-		tooltip_duration=None,
-		filter_action='native',
-		page_size=20,
-		fixed_rows={'headers': True},
-		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
-		style_data={
-		    'width': '120px', 'minWidth': '120px', 'maxWidth': '150px',
-		    'overflow': 'hidden',
-		    'textOverflow': 'ellipsis',
-		}
-	)
-
-
-
-
 def multi_plot(df, addAll = True):
     fig = go.Figure()
 
@@ -438,7 +231,8 @@ def plot_application_type_sales():
 	            borderwidth=1
 	        )
 	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 
 	return fig
 
@@ -479,7 +273,8 @@ def plot_order_status():
 	            borderwidth=1
 	        )
 	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 	return fig
 
 
@@ -560,7 +355,8 @@ def plot_new_regular(new_regular, start_date, end_date):
 	            borderwidth=1
 	        )
 	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 	
 	return fig
 
@@ -602,7 +398,8 @@ def plot_plus_minus():
 	            borderwidth=1
 	        )
 	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict)
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 
 	return fig
 

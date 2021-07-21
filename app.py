@@ -45,36 +45,6 @@ from helper import transform_to_rupiah_format,transform_format,transform_to_rupi
 parent_path = '/home/server/gli-data-science/akhiyar'
 new_regular = pd.read_csv(os.path.join(parent_path, 'out_plot/new_regular_alfagift_oshop.csv'), sep='\t')
 
-## ploting table
-sales_plot_table = sales_plot.copy().fillna(0)
-
-############################
-sales_plot_table_daily = sales_plot_table.copy()
-sales_plot_table_daily['index'] = pd.to_datetime(sales_plot_table_daily['index'])
-
-
-## formatting view
-sales_plot_table_daily['index'] = sales_plot_table_daily['index'].dt.strftime('%d%b%y')
-
-sales_plot_table_daily['TRO_NET_PRED'] = sales_plot_table_daily['TRO_NET_PRED'].astype('float').apply(transform_to_rupiah_format)
-sales_plot_table_daily['TRO_NET'] = sales_plot_table_daily['TRO_NET'].astype('float').apply(transform_to_rupiah_format)
-sales_plot_table_daily = sales_plot_table_daily.rename(columns={'index':'date'})
-############################
-
-
-############################
-sales_plot_table['index'] = pd.to_datetime(sales_plot_table['index'])
-sales_plot_table = sales_plot_table.groupby([pd.Grouper(key='index',freq='M')])\
-                    .agg({'TRO_NET':'sum', 'TRO_NET_PRED':'sum'})\
-                    .reset_index()
-
-## formatting view
-sales_plot_table['index'] = sales_plot_table['index'].dt.strftime('%d%b%y')
-
-sales_plot_table['TRO_NET_PRED'] = sales_plot_table['TRO_NET_PRED'].astype('float').apply(transform_to_rupiah_format)
-sales_plot_table['TRO_NET'] = sales_plot_table['TRO_NET'].astype('float').apply(transform_to_rupiah_format)
-sales_plot_table = sales_plot_table.rename(columns={'index':'date'})
-############################
 
 
 # =============================================================================
