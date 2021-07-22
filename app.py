@@ -431,6 +431,18 @@ def make_plot_callback(date_start, date_end):
     return fig
 
 
+@app.callback(
+    Output('exist_new_trx_fig', 'figure'),
+    [
+        Input('exist_new_trx_picker', 'start_date'),
+        Input('exist_new_trx_picker', 'end_date'),
+    ]
+)
+def make_plot_callback(date_start, date_end):
+    
+    fig = plot_new_regular_trx(new_regular, date_start, date_end)
+    return fig
+
 
 # @app.callback(
 #     [

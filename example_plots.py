@@ -328,6 +328,53 @@ def plot_new_regular(new_regular, start_date, end_date):
 	
 	return fig
 
+def plot_new_regular_trx(new_regular, start_date, end_date):
+
+
+	new_regular['TRO_DATE_ORDER'] = pd.to_datetime(new_regular['TRO_DATE_ORDER'])
+	new_regular = new_regular[(new_regular['TRO_DATE_ORDER'] >= start_date) &
+								(new_regular['TRO_DATE_ORDER'] <= end_date) ]
+	new_regular['member_stat'] = new_regular['member_stat'].replace({'regular':'existing'})
+	new_regular['member_trx_format'] = new_regular['member_trx'].apply(transform_format)
+	fig = px.line(new_regular, x='TRO_DATE_ORDER', y='member_trx', template='presentation', \
+	              text='member_trx_format', color='member_stat')
+	fig.update_traces(texttemplate='%{text}', 
+		textposition='top center', 
+		textfont_size=11,
+		hovertemplate='%{x}<br>%{text}')
+	fig.update_xaxes(
+	    dtick="M1",
+	    tickformat="%b%y",
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
+	)
+	fig.update_yaxes(
+
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
+	)
+	legend_dict = \
+	    legend=dict(
+	            x=0,
+	            y=1,
+	            traceorder="normal",
+	            title='',
+	            title_font_family="Times New Roman",
+	            font=dict(
+	                family="Courier",
+	                size=14,
+	                color="black"
+	            ),
+	            bgcolor="#dfe4ea",
+	            bordercolor="Black",
+	            borderwidth=1
+	        )
+	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
+	
+	return fig
+
+
+
 def plot_plus_minus():
 
 	fig = px.line(plus_minus, x='date', y='count_member', template='presentation', \
