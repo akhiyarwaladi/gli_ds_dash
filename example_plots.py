@@ -350,7 +350,7 @@ def plot_new_regular_trx(new_regular, start_date, end_date):
 	)
 	fig.update_yaxes(
 
-	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='#member'
 	)
 	legend_dict = \
 	    legend=dict(
