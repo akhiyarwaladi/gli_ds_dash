@@ -296,7 +296,7 @@ def plot_new_regular(new_regular, start_date, end_date):
 	fig.update_traces(texttemplate='%{text}', 
 		textposition='top center', 
 		textfont_size=11,
-		hovertemplate='%{x}<br>%{y}')
+		hovertemplate='%{x}<br>%{text}')
 	fig.update_xaxes(
 	    dtick="M1",
 	    tickformat="%b%y",
