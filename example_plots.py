@@ -335,7 +335,8 @@ def plot_new_regular_trx(new_regular, start_date, end_date):
 	new_regular = new_regular[(new_regular['TRO_DATE_ORDER'] >= start_date) &
 								(new_regular['TRO_DATE_ORDER'] <= end_date) ]
 	new_regular['member_stat'] = new_regular['member_stat'].replace({'regular':'existing'})
-	new_regular['member_trx_format'] = new_regular['member_trx'].apply(transform_format)
+	new_regular['member_trx_format'] = new_regular['member_trx'].astype(float)\
+									.apply(transform_format)
 	fig = px.line(new_regular, x='TRO_DATE_ORDER', y='member_trx', template='presentation', \
 	              text='member_trx_format', color='member_stat')
 	fig.update_traces(texttemplate='%{text}', 
