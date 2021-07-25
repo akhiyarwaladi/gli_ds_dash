@@ -32,7 +32,7 @@ def plot_uninstall_review():
 		    'minWidth': '10px', 'maxWidth': '350px',
 
 		},
-		fill_width=False,
+		# fill_width=False,
 	    style_cell_conditional=
 	    [
 	        {
@@ -62,7 +62,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': e},
 	            'textAlign': 'left',
-	            'width': '20px',
+	            'width': '30px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'5px'
@@ -82,13 +82,13 @@ def plot_uninstall_review():
 	        'textOverflow': 'inherit'
 	    },
 
-		tooltip_data=[
-		    {
-		        column: {'value': str(value), 'type': 'markdown'}
-		        for column, value in row.items()
-		    } for row in uninstall_review_table.to_dict('records')
-		],
-		tooltip_duration=None
+		# tooltip_data=[
+		#     {
+		#         column: {'value': str(value), 'type': 'markdown'}
+		#         for column, value in row.items()
+		#     } for row in uninstall_review_table.to_dict('records')
+		# ],
+		# tooltip_duration=None
 	)
 
 def plot_app_update(app_update):
