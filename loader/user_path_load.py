@@ -29,3 +29,9 @@ def get_uninstall_review():
 				, sep='\t')
 	df_det_ua = df_det_ua.sample(n=len(df_det_ua), random_state=123)
 	return df_det_ua, len(df_det_ua)
+
+def get_review_trend():
+	review_trend = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/review_trend.csv'\
+				, sep='\t')
+	review_trend['tbtdr_created_date'] = pd.to_datetime(review_trend['tbtdr_created_date'])
+	return review_trend

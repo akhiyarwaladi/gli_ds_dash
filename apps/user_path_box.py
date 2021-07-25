@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 import base64
 from loader.user_path_load import get_app_update, get_device_uninstall, get_notification_received, get_df_3gram
 from plots.user_path_plot import (plot_app_update, plot_device_uninstall, 
-  plot_notification_received, plot_review_gram, plot_uninstall_review)
+  plot_notification_received, plot_review_gram, plot_uninstall_review, plot_review_trend)
 from IPython.core.display import HTML
 HTML("""
 <style>
@@ -30,6 +30,27 @@ user_path_tab = dac.TabItem(id='content_user_path',
                 dbc.Card(
                   [
                       dbc.CardHeader(
+                        html.H5(['Member', html.B(' Review ')])
+                        ,style={'font-size':'36px','font-family':'Verdana'}),
+                      dbc.CardBody(
+                          [
+
+                              html.P(
+                                    dcc.Graph(
+                                      figure=plot_review_trend(),
+                                      config=dict(displayModeBar=False),
+                       
+                                      ),className="card-text",
+                              ),                              
+                          ]),
+                  ]) ,md=12),
+
+              ]),
+            dbc.Row([
+              dbc.Col(
+                dbc.Card(
+                  [
+                      dbc.CardHeader(
                         html.H5(['User', html.B(' Uninstall '), 'Order', html.B(' Review '), html.Br(),
                           "showing rows", html.Div(id='datatable_uninstall_review_container')])
                         ,style={'font-size':'36px','font-family':'Verdana'}),
@@ -43,6 +64,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                               
                           ]),
                   ]) ,md=12),
+
               ]),
 
        ])

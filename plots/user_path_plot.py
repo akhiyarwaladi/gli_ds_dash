@@ -3,10 +3,49 @@ import numpy as np
 import plotly.express as px
 import dash_table
 
-from loader.user_path_load import get_uninstall_review
+from loader.user_path_load import get_uninstall_review, get_review_trend
 uninstall_review = get_uninstall_review()
 uninstall_review_table = uninstall_review[0]
 
+review_trend = get_review_trend()
+
+def plot_review_trend():
+	fig = px.line(review_trend, x='tbtdr_created_date', y='value', template='presentation', \
+	              text='value', color='variable')
+	fig.update_traces(texttemplate='%{text}', 
+	    textposition='top center', 
+	    textfont_size=11,
+	    hovertemplate='%{x}<br>%{text}')
+	fig.update_xaxes(
+	    dtick="M1",
+	    tickformat="%b%y",
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
+	)
+	fig.update_yaxes(
+
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='#member'
+	)
+	legend_dict = \
+	    legend=dict(
+	            x=0,
+	            y=1,
+	            traceorder="normal",
+	            title='',
+	            title_font_family="Times New Roman",
+	            font=dict(
+	                family="Courier",
+	                size=14,
+	                color="black"
+	            ),
+	            bgcolor="#dfe4ea",
+	            bordercolor="Black",
+	            borderwidth=1
+	        )
+	fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', margin=\
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict\
+	                  , hoverlabel=dict(font=dict(family='sans-serif', size=17)))
+
+	return fig
 
 def plot_uninstall_review():
 	df_init = pd.DataFrame()

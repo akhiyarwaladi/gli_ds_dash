@@ -116,7 +116,7 @@ sub_event = [
                             label='Event on Product', 
                             icon='shopping-bag', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_user_path', 
-                            label='Uninstall / Update', 
+                            label='User Review', 
                             icon='wrench', style={'font-size':'19px'})
             ]
 
