@@ -29,9 +29,11 @@ def plot_uninstall_review():
 		fixed_rows={'headers': True},
 		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
 		style_data={
-		    'minWidth': '50px', 'maxWidth': '230px',
-		    'overflow': 'hidden',
+		    'minWidth': '10px', 'maxWidth': '270px',
+		    'overflow': 'auto',
+		    'height': 'auto'
 		    'textOverflow': 'ellipsis',
+
 		},
 		css=[{
 		    'selector': '.dash-spreadsheet td div',
@@ -39,7 +41,7 @@ def plot_uninstall_review():
 		        line-height: 15px;
 		        max-height: 30px; min-height: 30px; height: 30px;
 		        display: block;
-		        overflow-y: visible;
+
 		    '''
 		}],
 	    style_cell_conditional=
@@ -47,7 +49,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': c},
 	            'textAlign': 'right',
-	            'width': '230px',
+	            'width': '270px',
 	            'fontSize':16, 
 	            'font-family':'sans-serif',
 	            'padding':'10px'
@@ -58,7 +60,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'right',
-	            'width': '40px',
+	            'width': '30px',
 	            'fontSize':13, 
 	            'font-family':'monospace',
 	            'padding':'10px'
