@@ -29,7 +29,9 @@ user_path_tab = dac.TabItem(id='content_user_path',
               dbc.Col(
                 dbc.Card(
                   [
-                      dbc.CardHeader(html.H5(['User', html.B(' Uninstall '), 'Order', html.B(' Review ')])
+                      dbc.CardHeader(
+                        html.H5(['User', html.B(' Uninstall '), 'Order', html.B(' Review '), html.Br(),
+                          ["showing rows", html.H5(html.Div(id='datatable_uninstall_review_container'))]])
                         ,style={'font-size':'36px','font-family':'Verdana'}),
                       dbc.CardBody(
                           [
