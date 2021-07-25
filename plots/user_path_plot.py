@@ -31,8 +31,7 @@ def plot_uninstall_review():
 		style_data={
 		    'minWidth': '10px', 'maxWidth': '270px',
 		    'overflow': 'auto',
-		    'height': 'auto'
-		    'textOverflow': 'ellipsis',
+		    'height': 'auto',
 
 		},
 		css=[{
