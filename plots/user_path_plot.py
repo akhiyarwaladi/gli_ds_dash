@@ -30,19 +30,10 @@ def plot_uninstall_review():
 		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
 		style_data={
 		    'minWidth': '10px', 'maxWidth': '270px',
-		    'overflow': 'auto',
 		    'height': 'auto',
 
 		},
-		css=[{
-		    'selector': '.dash-spreadsheet td div',
-		    'rule': '''
-		        line-height: 15px;
-		        max-height: 30px; min-height: 30px; height: 30px;
-		        display: block;
 
-		    '''
-		}],
 	    style_cell_conditional=
 	    [
 	        {
@@ -59,10 +50,10 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'right',
-	            'width': '30px',
+	            'width': '20px',
 	            'fontSize':13, 
 	            'font-family':'monospace',
-	            'padding':'10px'
+	            'padding':'5px'
 	        } for d in ['ponta_user']
 
 	    ]+ 
@@ -73,7 +64,7 @@ def plot_uninstall_review():
 	            'width': '10px',
 	            'fontSize':14, 
 	            'font-family':'monospace',
-	            'padding':'10px'
+	            'padding':'5px'
 	        } for e in ['rating']
 
 	    ],
