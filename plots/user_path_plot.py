@@ -29,8 +29,7 @@ def plot_uninstall_review():
 		fixed_rows={'headers': True},
 		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
 		style_data={
-		    'minWidth': '10px', 'maxWidth': '270px',
-		    'height': 'auto',
+		    'minWidth': '10px', 'maxWidth': '300px',
 
 		},
 
@@ -39,17 +38,19 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': c},
 	            'textAlign': 'right',
-	            'width': '270px',
+	            'width': '300px',
+	            'height':'auto',
 	            'fontSize':16, 
 	            'font-family':'sans-serif',
-	            'padding':'10px'
+	            'padding':'10px',
+	            'whiteSpace':'normal'
 	        } for c in ['review']
 
 	    ] + 
 	    [
 	        {
 	            'if': {'column_id': d},
-	            'textAlign': 'right',
+	            'textAlign': 'left',
 	            'width': '20px',
 	            'fontSize':13, 
 	            'font-family':'monospace',
@@ -60,8 +61,8 @@ def plot_uninstall_review():
 	    [
 	        {
 	            'if': {'column_id': e},
-	            'textAlign': 'right',
-	            'width': '10px',
+	            'textAlign': 'left',
+	            'width': '15px',
 	            'fontSize':14, 
 	            'font-family':'monospace',
 	            'padding':'5px'
@@ -77,7 +78,7 @@ def plot_uninstall_review():
 	    ],
 	    style_header={
 	        'backgroundColor': 'rgb(230, 230, 230)',
-	        'fontWeight': 'bold', 'fontSize':17, 'font-family':'sans-serif',
+	        'fontWeight': 'bold', 'fontSize':19, 'font-family':'sans-serif',
 	        'textOverflow': 'inherit'
 	    },
 
