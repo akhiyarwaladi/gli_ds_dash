@@ -62,7 +62,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'left',
-	            'width': '40px',
+	            'width': 'auto',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	        } for d in ['ponta_user']
