@@ -29,7 +29,7 @@ def plot_uninstall_review():
 		fixed_rows={'headers': True},
 		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
 		style_data={
-		    'minWidth': '10px', 'maxWidth': '350px',
+		    'minWidth': '10px', 'maxWidth': '400px',
 
 		},
 		# fill_width=False,
@@ -38,7 +38,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': c},
 	            'textAlign': 'right',
-	            'width': '350px',
+	            'width': '400px',
 	            'height':'auto',
 	            'fontSize':16, 
 	            'font-family':'sans-serif',
