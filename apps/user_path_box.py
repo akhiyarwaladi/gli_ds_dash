@@ -17,10 +17,10 @@ image_filename = '/home/server/gli-data-science/akhiyar/out_plot/path_end_uninst
 encoded_image = base64.b64encode(open(image_filename, 'rb').read()).decode('ascii')
 
 
-df_app_update = get_app_update()
-df_device_uninstall = get_device_uninstall()
-df_notification_received = get_notification_received()
-df_3gram = get_df_3gram()
+# df_app_update = get_app_update()
+# df_device_uninstall = get_device_uninstall()
+# df_notification_received = get_notification_received()
+# df_3gram = get_df_3gram()
 
 user_path_tab = dac.TabItem(id='content_user_path', 
                               
