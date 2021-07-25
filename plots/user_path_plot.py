@@ -13,8 +13,8 @@ def plot_uninstall_review():
 	df_init['name'] = list(uninstall_review_table)
 	df_init['id'] = list(uninstall_review_table)
 
-	li_type = ['numeric', 'numeric', 'text']
-	li_format = [np.nan, np.nan, np.nan]
+	li_type = ['text', 'numeric', 'numeric', 'text']
+	li_format = [np.nan, np.nan, np.nan, np.nan]
 	df_init['type'] = li_type
 	df_init['format'] = li_format
 
@@ -49,23 +49,34 @@ def plot_uninstall_review():
 	    ] + 
 	    [
 	        {
+	            'if': {'column_id': f},
+	            'textAlign': 'left',
+	            'width': '50px',
+	            'fontSize':14, 
+	            'font-family':'cursive',
+	            'padding':'1px'
+	        } for f in ['created_date']
+
+	    ] + 
+	    [
+	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'left',
 	            'width': '50px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
-	            'padding':'5px'
+	            'padding':'1px'
 	        } for d in ['ponta_user']
 
-	    ]+ 
+	    ] + 
 	    [
 	        {
 	            'if': {'column_id': e},
 	            'textAlign': 'left',
-	            'width': '35px',
+	            'width': '37px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
-	            'padding':'5px'
+	            'padding':'1px'
 	        } for e in ['rating']
 
 	    ],
