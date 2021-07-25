@@ -32,7 +32,7 @@ def plot_uninstall_review():
 		    'minWidth': '10px', 'maxWidth': '350px',
 
 		},
-
+		fill_width=False
 	    style_cell_conditional=
 	    [
 	        {
@@ -52,9 +52,9 @@ def plot_uninstall_review():
 	            'if': {'column_id': d},
 	            'textAlign': 'left',
 	            'width': '20px',
-	            'fontSize':13, 
-	            'font-family':'monospace',
-	            'padding':'5px'
+	            'fontSize':14, 
+	            'font-family':'cursive',
+	            'padding':'1px'
 	        } for d in ['ponta_user']
 
 	    ]+ 
@@ -64,25 +64,11 @@ def plot_uninstall_review():
 	            'textAlign': 'left',
 	            'width': '20px',
 	            'fontSize':14, 
-	            'font-family':'monospace',
-	            'padding':'5px'
+	            'font-family':'cursive',
+	            'padding':'1px'
 	        } for e in ['rating']
 
-	    ]+
-		[
-	        {
-				'if': {'column_id': 'rating'},
-				'width': '20px'
-            },
-	        {
-				'if': {'column_id': 'ponta_user'},
-				'width': '20px'
-            },
-	        {
-				'if': {'column_id': 'review'},
-				'width': '350px'
-            },
-		],
+	    ],
 	    style_data_conditional=[
 	        {
 	            'if': {'row_index': 'odd'},
