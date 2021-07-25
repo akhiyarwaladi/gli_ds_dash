@@ -68,21 +68,7 @@ def plot_uninstall_review():
 	            'padding':'5px'
 	        } for e in ['rating']
 
-	    ]+
-		[
-	        {
-				'if': {'column_id': 'rating'},
-				'width': '20px'
-            },
-	        {
-				'if': {'column_id': 'ponta_user'},
-				'width': '20px'
-            },
-	        {
-				'if': {'column_id': 'review'},
-				'width': '350px'
-            },
-		],
+	    ],
 	    style_data_conditional=[
 	        {
 	            'if': {'row_index': 'odd'},
