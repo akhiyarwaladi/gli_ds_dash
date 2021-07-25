@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import dash_table
 
 from loader.user_path_load import get_uninstall_review
 uninstall_review = get_uninstall_review()
