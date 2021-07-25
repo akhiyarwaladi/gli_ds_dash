@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import plotly.express as px
 
 from loader.user_path_load import get_uninstall_review
