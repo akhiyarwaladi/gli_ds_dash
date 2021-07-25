@@ -13,7 +13,7 @@ def plot_uninstall_review():
 	df_init['name'] = list(uninstall_review_table)
 	df_init['id'] = list(uninstall_review_table)
 
-	li_type = ['text', 'text', 'text', 'text']
+	li_type = ['text', 'text', 'numeric', 'text']
 	li_format = [np.nan, np.nan, np.nan, np.nan]
 	df_init['type'] = li_type
 	df_init['format'] = li_format
@@ -62,7 +62,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'left',
-	            'width': '50px',
+	            'width': '40px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'1px'
