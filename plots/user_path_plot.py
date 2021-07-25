@@ -55,14 +55,14 @@ def plot_uninstall_review():
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'1px'
-	        } for f in ['created_date']
+	        } for f in ['date']
 
 	    ] + 
 	    [
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'left',
-	            'width': '15%',
+	            'width': '14%',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'1px'
@@ -73,7 +73,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': e},
 	            'textAlign': 'left',
-	            'width': '5%',
+	            'width': '6%',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'1px'
