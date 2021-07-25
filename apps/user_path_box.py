@@ -35,11 +35,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
 
                               # html.H5("Card title", className="card-title"),
                               html.P(
-                                    dcc.Graph(
-                                      figure=plot_uninstall_review(),
-                                      config=dict(displayModeBar=False),
-                       
-                                      ),className="card-text",
+                                    plot_uninstall_review(),className="card-text",
                               ),
                               
                           ]),
