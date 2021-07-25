@@ -51,7 +51,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'left',
-	            'width': '20px',
+	            'width': '50px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'5px'
@@ -62,7 +62,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': e},
 	            'textAlign': 'left',
-	            'width': '30px',
+	            'width': '35px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
 	            'padding':'5px'
