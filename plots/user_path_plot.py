@@ -65,7 +65,6 @@ def plot_uninstall_review():
 	            'width': '40px',
 	            'fontSize':14, 
 	            'font-family':'cursive',
-	            'padding':'1px'
 	        } for d in ['ponta_user']
 
 	    ] + 
