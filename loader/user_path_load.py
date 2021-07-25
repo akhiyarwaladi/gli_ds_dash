@@ -23,3 +23,9 @@ def get_df_3gram():
 	df_3gram['index'] = df_3gram['index'].astype(str)
 
 	return df_3gram
+
+def get_uninstall_review():
+	df_det_ua = pd.read_csv('/home/server/gli-data-science/akhiyar/app_review/out_file/uninstall_review.csv'\
+				, sep='\t')
+
+	return df_det_ua

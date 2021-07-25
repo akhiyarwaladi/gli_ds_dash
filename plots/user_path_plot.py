@@ -1,6 +1,88 @@
 import pandas as pd
 import plotly.express as px
 
+from loader.user_path_load import get_uninstall_review
+uninstall_review = get_uninstall_review()
+uninstall_review_table = uninstall_review[0]
+
+
+def plot_uninstall_review():
+	df_init = pd.DataFrame()
+	df_init['name'] = list(uninstall_review_table)
+	df_init['id'] = list(uninstall_review_table)
+
+	li_type = ['numeric', 'numeric', 'text']
+	li_format = [np.nan, np.nan, np.nan]
+	df_init['type'] = li_type
+	df_init['format'] = li_format
+
+	columns = df_init.to_dict(orient='records')
+	return dash_table.DataTable(
+
+		id='datatable-interactivity',
+		columns=columns,
+		data=uninstall_review_table.to_dict('records'),
+		filter_action='native',
+		page_size=20,
+		fixed_rows={'headers': True},
+		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
+		style_data={
+		    'minWidth': '50px', 'maxWidth': '230px',
+		    'overflow': 'hidden',
+		    'textOverflow': 'ellipsis',
+		},
+		css=[{
+		    'selector': '.dash-spreadsheet td div',
+		    'rule': '''
+		        line-height: 15px;
+		        max-height: 30px; min-height: 30px; height: 30px;
+		        display: block;
+		        overflow-y: hidden;
+		    '''
+		}],
+	    style_cell_conditional=
+	    [
+	        {
+	            'if': {'column_id': c},
+	            'textAlign': 'left',
+	            'width': '230px'
+	            'fontSize':16, 'font-family':'sans-serif',
+	            'padding':'10px'
+	        } for c in ['tbtdr_review']
+
+	    ] + 
+	    [
+	        {
+	            'if': {'column_id': d},
+	            'textAlign': 'right',
+	            'width': '100px'
+	            'fontSize':13, 'font-family':'monospace',
+	            'padding':'10px'
+	        } for f in ['ponta_user','rating']
+
+	    ],
+	    style_data_conditional=[
+	        {
+	            'if': {'row_index': 'odd'},
+	            'backgroundColor': 'rgb(248, 248, 248)'
+	        },
+	        
+	    ],
+	    style_header={
+	        'backgroundColor': 'rgb(230, 230, 230)',
+	        'fontWeight': 'bold', 'fontSize':17, 'font-family':'sans-serif',
+	        'textOverflow': 'inherit'
+	    },
+
+		tooltip_data=[
+		    {
+		        column: {'value': str(value), 'type': 'markdown'}
+		        for column, value in row.items()
+		    } for row in uninstall_review_table.to_dict('records')
+		],
+		tooltip_duration=None
+	)
+
 def plot_app_update(app_update):
 	fig = px.line(app_update, x='Event Time', y='App Update', template='ggplot2',\
 	    text='App Update')
@@ -105,6 +187,9 @@ def plot_device_uninstall(device_uninstall):
 	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,title=title)
 
 	return fig
+
+
+
 
 
 

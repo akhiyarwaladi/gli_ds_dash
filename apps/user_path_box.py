@@ -4,7 +4,8 @@ import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 import base64
 from loader.user_path_load import get_app_update, get_device_uninstall, get_notification_received, get_df_3gram
-from plots.user_path_plot import plot_app_update, plot_device_uninstall, plot_notification_received, plot_review_gram
+from plots.user_path_plot import (plot_app_update, plot_device_uninstall, 
+  plot_notification_received, plot_review_gram, plot_uninstall_review)
 from IPython.core.display import HTML
 HTML("""
 <style>
@@ -32,9 +33,13 @@ user_path_tab = dac.TabItem(id='content_user_path',
                       dbc.CardBody(
                           [
 
+                              # html.H5("Card title", className="card-title"),
                               html.P(
-                                    html.Img(src='data:image/png;base64,{}'.format(encoded_image),\
-                                      style={'width':'95%'})
+                                    dcc.Graph(
+                                      figure=plot_uninstall_review(),
+                                      config=dict(displayModeBar=False),
+                       
+                                      ),className="card-text",
                               ),
                               
                           ]),
