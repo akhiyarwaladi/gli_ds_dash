@@ -27,5 +27,5 @@ def get_df_3gram():
 def get_uninstall_review():
 	df_det_ua = pd.read_csv('/home/server/gli-data-science/akhiyar/app_review/out_file/uninstall_review.csv'\
 				, sep='\t')
-
-	return df_det_ua[0:50], len(df_det_ua)
+	df_det_ua = df_det_ua.sample(n=len(df_det_ua))
+	return df_det_ua, len(df_det_ua)
