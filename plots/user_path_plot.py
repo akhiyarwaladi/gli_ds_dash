@@ -32,7 +32,7 @@ def plot_uninstall_review():
 		    'minWidth': '10px', 'maxWidth': '350px',
 
 		},
-
+		fill_width=False,
 	    style_cell_conditional=
 	    [
 	        {
