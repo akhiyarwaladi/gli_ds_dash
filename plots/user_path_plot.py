@@ -39,14 +39,14 @@ def plot_uninstall_review():
 		        line-height: 15px;
 		        max-height: 30px; min-height: 30px; height: 30px;
 		        display: block;
-		        overflow-y: hidden;
+		        overflow-y: visible;
 		    '''
 		}],
 	    style_cell_conditional=
 	    [
 	        {
 	            'if': {'column_id': c},
-	            'textAlign': 'left',
+	            'textAlign': 'right',
 	            'width': '230px',
 	            'fontSize':16, 
 	            'font-family':'sans-serif',
@@ -58,7 +58,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'right',
-	            'width': '80px',
+	            'width': '40px',
 	            'fontSize':13, 
 	            'font-family':'monospace',
 	            'padding':'10px'
@@ -69,7 +69,7 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': e},
 	            'textAlign': 'right',
-	            'width': '40px',
+	            'width': '10px',
 	            'fontSize':14, 
 	            'font-family':'monospace',
 	            'padding':'10px'
