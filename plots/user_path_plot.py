@@ -45,8 +45,9 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': c},
 	            'textAlign': 'left',
-	            'width': '230px'
-	            'fontSize':16, 'font-family':'sans-serif',
+	            'width': '230px',
+	            'fontSize':16, 
+	            'font-family':'sans-serif',
 	            'padding':'10px'
 	        } for c in ['tbtdr_review']
 
@@ -55,8 +56,9 @@ def plot_uninstall_review():
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'right',
-	            'width': '100px'
-	            'fontSize':13, 'font-family':'monospace',
+	            'width': '100px',
+	            'fontSize':13, 
+	            'font-family':'monospace',
 	            'padding':'10px'
 	        } for f in ['ponta_user','rating']
 
