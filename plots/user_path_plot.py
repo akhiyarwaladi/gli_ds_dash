@@ -21,7 +21,7 @@ def plot_uninstall_review():
 	columns = df_init.to_dict(orient='records')
 	return dash_table.DataTable(
 
-		id='datatable-interactivity',
+		id='datatable_uninstall_review',
 		columns=columns,
 		data=uninstall_review_table.to_dict('records'),
 		filter_action='native',
