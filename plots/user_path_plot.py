@@ -72,7 +72,7 @@ def plot_uninstall_review():
 	    [
 	        {
 	            'if': {'column_id': e},
-	            'textAlign': 'left',
+	            'textAlign': 'center',
 	            'width': '6%',
 	            'fontSize':14, 
 	            'font-family':'cursive',
