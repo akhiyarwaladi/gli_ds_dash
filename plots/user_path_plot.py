@@ -62,7 +62,7 @@ def plot_uninstall_review():
 	            'fontSize':13, 
 	            'font-family':'monospace',
 	            'padding':'10px'
-	        } for f in ['ponta_user','rating']
+	        } for d in ['ponta_user','rating']
 
 	    ],
 	    style_data_conditional=[
