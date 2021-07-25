@@ -51,18 +51,29 @@ def plot_uninstall_review():
 	            'fontSize':16, 
 	            'font-family':'sans-serif',
 	            'padding':'10px'
-	        } for c in ['tbtdr_review']
+	        } for c in ['review']
 
 	    ] + 
 	    [
 	        {
 	            'if': {'column_id': d},
 	            'textAlign': 'right',
-	            'width': '100px',
+	            'width': '80px',
 	            'fontSize':13, 
 	            'font-family':'monospace',
 	            'padding':'10px'
-	        } for d in ['ponta_user','rating']
+	        } for d in ['ponta_user']
+
+	    ]+ 
+	    [
+	        {
+	            'if': {'column_id': e},
+	            'textAlign': 'right',
+	            'width': '40px',
+	            'fontSize':14, 
+	            'font-family':'monospace',
+	            'padding':'10px'
+	        } for e in ['rating']
 
 	    ],
 	    style_data_conditional=[
