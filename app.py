@@ -545,7 +545,7 @@ def update_graphs(rows, derived_virtual_selected_rows):
 def update_graphs(rows, derived_virtual_selected_rows):
     return '({})'.format(len(rows))
 
-datatable_uninstall_review
+
 @app.callback(
     Output('actual_sales_child', "children"),
     [
