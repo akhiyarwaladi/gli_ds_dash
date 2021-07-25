@@ -30,7 +30,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                 dbc.Card(
                   [
                       dbc.CardHeader(
-                        html.H5(['Member', html.B(' Review ')])
+                        html.H5(['Member Order', html.B(' Review ')])
                         ,style={'font-size':'36px','font-family':'Verdana'}),
                       dbc.CardBody(
                           [
@@ -51,7 +51,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                 dbc.Card(
                   [
                       dbc.CardHeader(
-                        html.H5(['User', html.B(' Uninstall '), 'Order', html.B(' Review '), html.Br(),
+                        html.H5(['Member', html.B(' Uninstall '), 'Order', html.B(' Review '), html.Br(),
                           "showing rows", html.Div(id='datatable_uninstall_review_container')])
                         ,style={'font-size':'36px','font-family':'Verdana'}),
                       dbc.CardBody(
