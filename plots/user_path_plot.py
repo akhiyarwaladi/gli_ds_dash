@@ -155,7 +155,7 @@ def plot_low_review(low_review_table, value):
 	columns = df_init.to_dict(orient='records')
 	return dash_table.DataTable(
 
-		id='datatable_uninstall_review',
+		id='datatable_low_review',
 		columns=columns,
 		data=low_review_table.to_dict('records'),
 		filter_action='native',

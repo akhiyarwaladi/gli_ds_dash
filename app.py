@@ -560,6 +560,14 @@ def update_graphs(rows, derived_virtual_selected_rows):
 
 
 @app.callback(
+    Output('datatable_low_review_container', "children"),
+    Input('datatable_low_review', "derived_virtual_data"),
+    Input('datatable_low_review', "derived_virtual_selected_rows"))
+def update_graphs(rows, derived_virtual_selected_rows):
+    return '({})'.format(len(rows))
+
+
+@app.callback(
     Output('actual_sales_child', "children"),
     [
         Input('actual_sales_daterange', 'start_date'),
