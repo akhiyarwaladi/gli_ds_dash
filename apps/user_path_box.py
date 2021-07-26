@@ -85,7 +85,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                             dcc.Dropdown(
                                 id='low_review_dropdown',
                                 options=low_review_dropdown_li,
-                                value=low_review_dropdown_li[0]
+                                value='1'
                             ), md=8),
                         ])
                       ],style={'font-family':'Verdana'}
