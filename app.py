@@ -535,7 +535,7 @@ def update_plot_product(value):
 @app.callback(
     Output('low_review_table', 'children'),
     [
-        Input('low_review_dropdown_li', 'value')
+        Input('low_review_dropdown', 'value')
     ]
 )
 def update_plot_low_review(value):

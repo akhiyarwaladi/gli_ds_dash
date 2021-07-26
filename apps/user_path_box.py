@@ -79,7 +79,7 @@ user_path_tab = dac.TabItem(id='content_user_path',
                     dbc.CardHeader(
                       [
                         dbc.Row([
-                          dbc.Col(html.H5("All Member Review <3"), md=4),
+                          dbc.Col(html.H5("All Member Review <3 Star"), md=4),
                           dbc.Col(
                             dcc.Dropdown(
                                 id='low_review_dropdown',
