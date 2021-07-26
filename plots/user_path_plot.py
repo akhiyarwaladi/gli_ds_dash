@@ -141,6 +141,102 @@ def plot_uninstall_review():
 		# tooltip_duration=None
 	)
 
+def plot_low_review(low_review_table, value):
+	low_review_table = low_review_table[low_review_table['class'] == value]
+	df_init = pd.DataFrame()
+	df_init['name'] = list(low_review_table)
+	df_init['id'] = list(low_review_table)
+
+	li_type = ['text', 'numeric', 'text', 'text']
+	li_format = [np.nan, np.nan, np.nan, np.nan]
+	df_init['type'] = li_type
+	df_init['format'] = li_format
+
+	columns = df_init.to_dict(orient='records')
+	return dash_table.DataTable(
+
+		id='datatable_uninstall_review',
+		columns=columns,
+		data=low_review_table.to_dict('records'),
+		filter_action='native',
+		page_size=20,
+		fixed_rows={'headers': True},
+		style_table={'overflowY': 'scroll', 'overflowX': 'scroll'},
+		style_data={
+		    'minWidth': '10px', 'maxWidth': '400px',
+
+		},
+		# fill_width=False,
+	    style_cell_conditional=
+	    [
+	        {
+	            'if': {'column_id': c},
+	            'textAlign': 'right',
+	            'width': '76%',
+	            'height':'auto',
+	            'fontSize':17, 
+	            'font-family':'sans-serif',
+	            'padding':'10px',
+	            'whiteSpace':'normal'
+	        } for c in ['review']
+
+	    ] + 
+	    [
+	        {
+	            'if': {'column_id': f},
+	            'textAlign': 'left',
+	            'width': '10%',
+	            'fontSize':14, 
+	            'font-family':'cursive',
+	            'padding':'1px'
+	        } for f in ['date']
+
+	    ] + 
+	    [
+	        {
+	            'if': {'column_id': d},
+	            'textAlign': 'left',
+	            'width': '7%',
+	            'fontSize':14, 
+	            'font-family':'cursive',
+	            'padding':'1px'
+	        } for d in ['class']
+
+	    ] + 
+	    [
+	        {
+	            'if': {'column_id': e},
+	            'textAlign': 'center',
+	            'width': '7%',
+	            'fontSize':14, 
+	            'font-family':'cursive',
+	            'padding':'1px'
+	        } for e in ['rating']
+
+	    ],
+	    style_data_conditional=[
+	        {
+	            'if': {'row_index': 'odd'},
+	            'backgroundColor': 'rgb(248, 248, 248)'
+	        },
+	        
+	    ],
+	    style_header={
+	        'backgroundColor': 'rgb(230, 230, 230)',
+	        'fontWeight': 'bold', 'fontSize':19, 'font-family':'sans-serif',
+	        'textOverflow': 'inherit'
+	    },
+
+		# tooltip_data=[
+		#     {
+		#         column: {'value': str(value), 'type': 'markdown'}
+		#         for column, value in row.items()
+		#     } for row in uninstall_review_table.to_dict('records')
+		# ],
+		# tooltip_duration=None
+	)
+
+
 def plot_app_update(app_update):
 	fig = px.line(app_update, x='Event Time', y='App Update', template='ggplot2',\
 	    text='App Update')

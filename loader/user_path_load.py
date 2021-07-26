@@ -35,3 +35,13 @@ def get_review_trend():
 				, sep='\t')
 	review_trend['tbtdr_created_date'] = pd.to_datetime(review_trend['tbtdr_created_date'])
 	return review_trend
+
+
+def get_low_review():
+
+	low_review = pd.read_csv('/home/server/gli-data-science/akhiyar/app_review/out_file/low_review.csv'\
+				, sep='\t')
+
+	label = [{'label': x, 'value': x} for x in low_review['class'].unique()]
+
+	return low_review, label

@@ -22,6 +22,12 @@ encoded_image = base64.b64encode(open(image_filename, 'rb').read()).decode('asci
 # df_notification_received = get_notification_received()
 # df_3gram = get_df_3gram()
 
+from loader.user_path_load import get_low_review
+f_low_review = get_low_review()
+low_review_table = f_low_review[0]
+low_review_dropdown_li = f_low_review[1]
+
+
 user_path_tab = dac.TabItem(id='content_user_path', 
                               
     children=html.Div([
@@ -66,6 +72,38 @@ user_path_tab = dac.TabItem(id='content_user_path',
                   ]) ,md=12),
 
               ]),
+            dbc.Row([
+              dbc.Col(
+                dbc.Card(
+                  [
+                    dbc.CardHeader(
+                      [
+                        dbc.Row([
+                          dbc.Col(html.H5("All Member Review <3"), md=4),
+                          dbc.Col(
+                            dcc.Dropdown(
+                                id='low_review_dropdown',
+                                options=low_review_dropdown_li,
+                                value='0'
+                            ), md=8),
+                        ])
+                      ]
+                    ),
+                    dbc.CardBody(
+                        [
+                              # html.P(
+                              #       plot_low_review(),className="card-text",
+                              # ),
+                              html.Div(
+                                      
+                                  id='low_review_table',
+
+                              ),
+                        ]),                    
+
+              ]), md=12),
+            ]),
+
 
        ])
 )

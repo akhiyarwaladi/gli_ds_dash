@@ -22,7 +22,7 @@ from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
 from apps.event_product import view_product_tab, product_group, vp, sp
-from apps.user_path_box import user_path_tab
+from apps.user_path_box import user_path_tab, low_review_table
 
 from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular,
                             plot_new_regular_trx)
@@ -31,6 +31,7 @@ from plots.product_plot import plot_product
 from plots.agsales_plot import plot_sales_all
 from plots.event_product_plot import plot_vp, plot_sp
 from plots.general_plot import plot_member_count, plot_sapa_count
+from plots.user_path_plot import plot_low_review
 
 
 from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
@@ -528,6 +529,18 @@ def update_plot_cpi(value):
 def update_plot_product(value):
     value_2 = 'TRO_NET'
     fig = plot_product(product_group, value, value_2)
+
+    return fig
+
+@app.callback(
+    Output('low_review_table', 'children'),
+    [
+        Input('low_review_dropdown_li', 'value')
+    ]
+)
+def update_plot_low_review(value):
+
+    fig = plot_low_review(low_review_table, value)
 
     return fig
 
