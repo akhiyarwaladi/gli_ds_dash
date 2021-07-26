@@ -85,10 +85,10 @@ user_path_tab = dac.TabItem(id='content_user_path',
                             dcc.Dropdown(
                                 id='low_review_dropdown',
                                 options=low_review_dropdown_li,
-                                value='0'
+                                value=low_review_dropdown_li[0]
                             ), md=8),
                         ])
-                      ],style={'font-size':'36px','font-family':'Verdana'}
+                      ],style={'font-family':'Verdana'}
                     ),
                     dbc.CardBody(
                         [
