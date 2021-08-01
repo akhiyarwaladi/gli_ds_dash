@@ -117,7 +117,7 @@ sub_event = [
                             label='Event on Product', 
                             icon='shopping-bag', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_user_path', 
-                            label='User Review', 
+                            label='Member Review', 
                             icon='wrench', style={'font-size':'19px'})
             ]
 
@@ -324,6 +324,9 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
         elif pathname == "/sales_monitor":
             input_id = 'tab_sales'
             n_sales = True
+        elif pathname == "/member_review":
+            input_id = 'tab_user_path'
+            n_user_path = True
         else:
             input_id = 'tab_general_monitor'
             n_general_monitor = True
@@ -389,6 +392,9 @@ def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes,
         elif pathname == "/sales_monitor":
             input_id = 'tab_sales'
             n_sales = True
+        elif pathname == "/member_review":
+            input_id = 'tab_user_path'
+            n_user_path = True
         else:
             input_id = 'tab_general_monitor'
             n_general_monitor = True
