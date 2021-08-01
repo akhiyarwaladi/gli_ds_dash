@@ -82,13 +82,13 @@ user_path_tab = dac.TabItem(id='content_user_path',
                           dbc.Col(
                             html.H5(['All Member', html.B(' Review '), html.B('<3 '), 'Star', html.Br(),
                             "showing rows", html.Div(id='datatable_low_review_container')]), md=4),
-                          dbc.Col(html.H5(""), md=4),
+                          dbc.Col(html.H5(""), md=2),
                           dbc.Col(
                             dcc.Dropdown(
                                 id='low_review_dropdown',
                                 options=low_review_dropdown_li,
                                 value=1
-                            ), md=4),
+                            ), md=6),
                         ])
                       ],style={'font-family':'Verdana'}
                     ),

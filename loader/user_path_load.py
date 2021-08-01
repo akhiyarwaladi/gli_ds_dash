@@ -39,9 +39,18 @@ def get_review_trend():
 
 def get_low_review():
 
-	low_review = pd.read_csv('/home/server/gli-data-science/akhiyar/app_review/out_file/low_review.csv'\
-				, sep='\t')
+	# low_review = pd.read_csv('/home/server/gli-data-science/akhiyar/app_review/out_file/low_review.csv'\
+	# 			, sep='\t')
 
-	label = [{'label': x, 'value': x} for x in low_review['class'].unique()]
+	# label = [{'label': x, 'value': x} for x in low_review['class'].unique()]
+
+	low_review = pd.read_excel('/home/server/gli-data-science/akhiyar/app_review/out_file/low_review.xlsx'\
+	            , sheet_name=0, skiprows=1)
+	low_review = low_review[['tbtdr_created_date', 'tbtdr_rating', 'tbtdr_review', 'class']]\
+	            .rename(columns={'tbtdr_created_date':'date','tbtdr_rating':'rating','tbtdr_review':'review'})
+
+	low_label = pd.read_excel('/home/server/gli-data-science/akhiyar/app_review/out_file/low_review.xlsx'\
+	            , sheet_name=1,  names=['value','label'])
+	label = low_label.to_dict(orient='records')
 
 	return low_review, label
