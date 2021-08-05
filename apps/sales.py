@@ -135,7 +135,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         dbc.Label("Email", html_for="example-email-grid"),
                                         dbc.Input(
                                             type="email",
-                                            id="example-email-grid",
+                                            id="start_date",
                                             placeholder="Enter email",
                                         ),
                                     ]
@@ -148,7 +148,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         dbc.Label("Password", html_for="example-password-grid"),
                                         dbc.Input(
                                             type="password",
-                                            id="example-password-grid",
+                                            id="end_date",
                                             placeholder="Enter password",
                                         ),
                                     ]
@@ -161,7 +161,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         dbc.Label("Email", html_for="example-email-grid"),
                                         dbc.Input(
                                             type="email",
-                                            id="example-email-grid",
+                                            id="count_whitelist",
                                             placeholder="Enter email",
                                         ),
                                     ]
@@ -174,7 +174,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         dbc.Label("Password", html_for="example-password-grid"),
                                         dbc.Input(
                                             type="password",
-                                            id="example-password-grid",
+                                            id="price_whitelist",
                                             placeholder="Enter password",
                                         ),
                                     ]
