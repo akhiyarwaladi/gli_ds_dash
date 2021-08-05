@@ -598,6 +598,21 @@ def update_prediction(date_start, date_end):
     return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
 
+@app.callback(
+    Output('prediction_promo_sales', "children"),
+    [
+        Input('promo_start_date', 'start_date'),
+        Input('promo_end_date', 'end_date'),
+        Input('count_whitelist', 'count_whitelist')
+    ]
+)
+def update_prediction(date_start, date_end, count_whitelist):
+    sales_prediction = count_whitelist
+
+
+    return '{}'.format(count_whitelist)
+
+
 
 @app.callback(
     Output('sales_fig', 'figure'),

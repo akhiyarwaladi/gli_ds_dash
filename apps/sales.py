@@ -203,6 +203,10 @@ sales_tab = dac.TabItem(id='content_sales',
                                     width=6,
                                 ),
                                 
+                            ]),
+                            dbc.Row([
+                                dbc.Col([html.H5('Promo sales prediction: '),html.H3(html.Div(id='prediction_promo_sales'))], width=6),
+
                             ])
                           ]),
                   ]), md=12),
