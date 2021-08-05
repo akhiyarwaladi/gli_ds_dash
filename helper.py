@@ -1,6 +1,16 @@
 import numpy as np
 import math
 
+import locale
+
+def rupiah_format(angka, with_prefix=False, desimal=0):
+    locale.setlocale(locale.LC_NUMERIC, 'id_ID.utf8')
+    rupiah = locale.format_string("%.*f", (desimal, angka), True)
+    if with_prefix:
+        return "Rp. {}".format(rupiah)
+    return rupiah
+
+
 # assume value is a decimal
 def transform_to_rupiah_format(value):
 

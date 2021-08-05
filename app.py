@@ -1,6 +1,7 @@
 import dash
 from dash.dependencies import Input, Output
 
+
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_admin_components as dac
@@ -39,7 +40,7 @@ from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
 import pandas as pd
 import os
 from datetime import date, timedelta, datetime
-from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah
+from helper import transform_to_rupiah_format,transform_format,rupiah_format
 
 
 ## importing data in here to enable callback
@@ -603,14 +604,14 @@ def update_prediction(date_start, date_end):
     [
         Input('promo_start_date', 'start_date'),
         Input('promo_end_date', 'end_date'),
-        Input('count_whitelist', 'count_whitelist')
+        Input('count_whitelist', 'value')
     ]
 )
 def update_prediction(date_start, date_end, count_whitelist):
     sales_prediction = count_whitelist
 
 
-    return '{}'.format(count_whitelist)
+    return '{}'.format(count_whitelist, rupiah_format(angka, with_prefix=True, desimal=0))
 
 
 
