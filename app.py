@@ -608,10 +608,10 @@ def update_prediction(date_start, date_end):
     ]
 )
 def update_prediction(date_start, date_end, count_whitelist):
-    sales_prediction = count_whitelist
+    sales_prediction = int(count_whitelist)
 
 
-    return '{}'.format(count_whitelist, rupiah_format(angka, with_prefix=True, desimal=0))
+    return '{} {}'.format(sales_prediction, rupiah_format(sales_prediction, with_prefix=True, desimal=0))
 
 
 
