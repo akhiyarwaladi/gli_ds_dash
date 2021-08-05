@@ -200,7 +200,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                 dbc.Col(
                                     dbc.FormGroup(
                                         [
-                                            dbc.Label("Total discount amount", html_for="example-email-grid"),
+                                            dbc.Label("Total discount amount / budget", html_for="example-email-grid"),
                                             dbc.Input(
                                                 type="number",
                                                 id="sum_discount_amount",
@@ -215,7 +215,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         [
                                             dbc.Label("Promo name", html_for="example-email-grid"),
                                             dbc.Select(
-                                                id="select",
+                                                id="promo_name",
                                                 options=[
                                                     {"label": "JSM (jumat-sabtu-minggu", "value": "jsm"},
                                                     {"label": "Gantung (gajian untung)", "value": "gantung"},
@@ -234,7 +234,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         html.H5('Promo sales prediction: '),
                                         html.H3(html.Div(id='prediction_promo_sales'))
                                     ]
-                                    , width=10
+                                    , width=12
                                 ),
                             ]),
                           ]),

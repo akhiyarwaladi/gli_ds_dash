@@ -604,14 +604,17 @@ def update_prediction(date_start, date_end):
     [
         Input('promo_start_date', 'date'),
         Input('promo_end_date', 'date'),
-        Input('count_whitelist', 'value')
+        Input('count_whitelist', 'value'),
+        Input('price_whitelist', 'value'),
+        Input('sum_discount_amount', 'value'),
+        Input('promo_name', 'value'),
     ]
 )
-def update_prediction(date_start, date_end, count_whitelist):
+def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
     sales_prediction = int(count_whitelist)
 
 
-    return '{} {}'.format(sales_prediction, rupiah_format(sales_prediction, with_prefix=True, desimal=0))
+    return '{}'.format(rupiah_format(sales_prediction, with_prefix=True, desimal=0))
 
 
 
