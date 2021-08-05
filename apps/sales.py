@@ -119,40 +119,46 @@ sales_tab = dac.TabItem(id='content_sales',
                         
                         ]),
                     ], style={'height':'124vh'}), md=12),
-              # dbc.Col(
-              #   dbc.Card(
-              #     [
-              #         # dbc.CardHeader("Detail jan21-feb21"),
-              #         dbc.CardBody(
-              #             [
-              #                 # html.H5("Card title", className="card-title"),
-              #                 html.Div(
-                                      
-              #                     id='sales_table',
-
-              #                 ),
-              #             ]),
-              #     ], style={'height':'120vh'}), md=4),
 
             ]),
-            # dbc.Row([
-            #   dbc.Col(
-            #     dbc.Card(
-            #       [
-            #           dbc.CardHeader("Sales training data 01jan20 - 17mar21"),
-            #           dbc.CardBody(
-            #               [
-            #                   # html.H5("Card title", className="card-title"),
-            #                   html.P(
-            #                         dcc.Graph(
-            #                           figure=fig_sales_train,
-            #                           config=dict(displayModeBar=False),
-                       
-            #                           ),className="card-text",
-            #                   ),
-            #               ]),
-            #       ]), md=12),
-            # ]),
+            dbc.Row([
+              dbc.Col(
+                dbc.Card(
+                  [
+                      dbc.CardHeader("Sales training data 01jan20 - 17mar21"),
+                      dbc.CardBody(
+                          [
+
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Email", html_for="example-email-grid"),
+                                        dbc.Input(
+                                            type="email",
+                                            id="example-email-grid",
+                                            placeholder="Enter email",
+                                        ),
+                                    ]
+                                ),
+                                width=6,
+                            ),
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Password", html_for="example-password-grid"),
+                                        dbc.Input(
+                                            type="password",
+                                            id="example-password-grid",
+                                            placeholder="Enter password",
+                                        ),
+                                    ]
+                                ),
+                                width=6,
+                            ),
+
+                          ]),
+                  ]), md=12),
+            ]),
             # dbc.Row([
             #   dbc.Col(
             #     dbc.Card(
