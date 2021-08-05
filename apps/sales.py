@@ -128,37 +128,38 @@ sales_tab = dac.TabItem(id='content_sales',
                       dbc.CardHeader("Alfagift promotion sales"),
                       dbc.CardBody(
                           [
-
-                            dbc.Col(
-                                dbc.FormGroup(
-                                    [
-                                        dbc.Label("Email", html_for="example-email-grid"),
-                                        dbc.Input(
-                                            type="email",
-                                            id="start_date",
-                                            placeholder="Enter email",
-                                        ),
-                                    ]
+                            dbc.Row([
+                                dbc.Col(
+                                    dbc.FormGroup(
+                                        [
+                                            dbc.Label("Promo start date", html_for="promo-start-grid"),
+                                            dbc.Input(
+                                                type="email",
+                                                id="start_date",
+                                                placeholder="Enter email",
+                                            ),
+                                        ]
+                                    ),
+                                    width=6,
                                 ),
-                                md=6,
-                            ),
-                            dbc.Col(
-                                dbc.FormGroup(
-                                    [
-                                        dbc.Label("Password", html_for="example-password-grid"),
-                                        dbc.Input(
-                                            type="password",
-                                            id="end_date",
-                                            placeholder="Enter password",
-                                        ),
-                                    ]
+                                dbc.Col(
+                                    dbc.FormGroup(
+                                        [
+                                            dbc.Label("Promo end date", html_for="promo-end-grid"),
+                                            dbc.Input(
+                                                type="password",
+                                                id="end_date",
+                                                placeholder="Enter password",
+                                            ),
+                                        ]
+                                    ),
+                                    width=6,
                                 ),
-                                md=6,
-                            ),
+                            ])
                             dbc.Col(
                                 dbc.FormGroup(
                                     [
-                                        dbc.Label("Email", html_for="example-email-grid"),
+                                        dbc.Label("Whitelist product count", html_for="example-email-grid"),
                                         dbc.Input(
                                             type="email",
                                             id="count_whitelist",
@@ -171,7 +172,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.Col(
                                 dbc.FormGroup(
                                     [
-                                        dbc.Label("Password", html_for="example-password-grid"),
+                                        dbc.Label("Whitelist product price", html_for="example-password-grid"),
                                         dbc.Input(
                                             type="password",
                                             id="price_whitelist",
