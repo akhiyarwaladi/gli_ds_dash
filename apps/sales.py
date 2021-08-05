@@ -133,10 +133,12 @@ sales_tab = dac.TabItem(id='content_sales',
                                     dbc.FormGroup(
                                         [
                                             dbc.Label("Promo start date", html_for="promo-start-grid"),
-                                            dbc.Input(
-                                                type="email",
-                                                id="start_date",
-                                                placeholder="Enter email",
+                                            dcc.DatePickerSingle(
+                                                id='promo_start_date',
+                                                min_date_allowed=dt(1995, 8, 5),
+                                                max_date_allowed=dt(2017, 9, 19),
+                                                initial_visible_month=dt(2017, 8, 5),
+                                                date=dt(2017, 8, 25)
                                             ),
                                         ]
                                     ),
@@ -146,44 +148,62 @@ sales_tab = dac.TabItem(id='content_sales',
                                     dbc.FormGroup(
                                         [
                                             dbc.Label("Promo end date", html_for="promo-end-grid"),
-                                            dbc.Input(
-                                                type="password",
-                                                id="end_date",
-                                                placeholder="Enter password",
+                                            dcc.DatePickerSingle(
+                                                id='promo_end_date',
+                                                min_date_allowed=dt(1995, 8, 5),
+                                                max_date_allowed=dt(2017, 9, 19),
+                                                initial_visible_month=dt(2017, 8, 5),
+                                                date=dt(2017, 8, 25)
                                             ),
                                         ]
                                     ),
                                     width=6,
                                 ),
                             ]),
-                            dbc.Col(
-                                dbc.FormGroup(
-                                    [
-                                        dbc.Label("Whitelist product count", html_for="example-email-grid"),
-                                        dbc.Input(
-                                            type="email",
-                                            id="count_whitelist",
-                                            placeholder="Enter email",
-                                        ),
-                                    ]
+                            dbc.Row([
+                                dbc.Col(
+                                    dbc.FormGroup(
+                                        [
+                                            dbc.Label("Whitelist product count", html_for="example-email-grid"),
+                                            dbc.Input(
+                                                type="number",
+                                                id="count_whitelist",
+                                                placeholder="Enter email",
+                                            ),
+                                        ]
+                                    ),
+                                    width=6,
                                 ),
-                                md=6,
-                            ),
-                            dbc.Col(
-                                dbc.FormGroup(
-                                    [
-                                        dbc.Label("Whitelist product price", html_for="example-password-grid"),
-                                        dbc.Input(
-                                            type="password",
-                                            id="price_whitelist",
-                                            placeholder="Enter password",
-                                        ),
-                                    ]
+                                dbc.Col(
+                                    dbc.FormGroup(
+                                        [
+                                            dbc.Label("Whitelist product price", html_for="example-password-grid"),
+                                            dbc.Input(
+                                                type="number",
+                                                id="price_whitelist",
+                                                placeholder="Enter sum of product price",
+                                            ),
+                                        ]
+                                    ),
+                                    width=6,
                                 ),
-                                md=6,
-                            ),
-
-
+                            ])
+                            dbc.Row([
+                                dbc.Col(
+                                    dbc.FormGroup(
+                                        [
+                                            dbc.Label("Total discount amount", html_for="example-email-grid"),
+                                            dbc.Input(
+                                                type="number",
+                                                id="sum_discount_amount",
+                                                placeholder="Enter sum discount or budget afford",
+                                            ),
+                                        ]
+                                    ),
+                                    width=6,
+                                ),
+                                
+                            ])
                           ]),
                   ]), md=12),
             ]),
