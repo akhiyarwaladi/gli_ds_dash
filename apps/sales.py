@@ -149,7 +149,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             ),
                                         ]
                                     ),
-                                    width=6,
+                                    width=5,
                                 ),
                                 dbc.Col(
                                     dbc.FormGroup(
@@ -164,7 +164,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             ),
                                         ]
                                     ),
-                                    width=6,
+                                    width=5,
                                 ),
                             ], style={"margin-bottom": "15px"}),
                             dbc.Row([
@@ -180,7 +180,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             ),
                                         ]
                                     ),
-                                    width=6,
+                                    width=5,
                                 ),
                                 dbc.Col(
                                     dbc.FormGroup(
@@ -193,7 +193,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             ),
                                         ]
                                     ),
-                                    width=6,
+                                    width=5,
                                 ),
                             ], style={"margin-bottom": "15px"}),
                             dbc.Row([
@@ -208,7 +208,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             ),
                                         ]
                                     ),
-                                    width=6,
+                                    width=5,
                                 ),
                                 dbc.Col(
                                     dbc.FormGroup(
@@ -225,7 +225,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             ),                                        
                                         ]
                                     ),
-                                    width=6,
+                                    width=5,
                                 ),
                                 
                             ], style={"margin-bottom": "15px"}),
