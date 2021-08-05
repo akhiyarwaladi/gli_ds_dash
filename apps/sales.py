@@ -139,14 +139,14 @@ sales_tab = dac.TabItem(id='content_sales',
                                 dbc.Col(
                                     dbc.FormGroup(
                                         [
-                                            dbc.Label("Promo start date", html_for="promo-start-grid"),
+                                            dbc.Label("Promo start date", html_for="promo-start-grid", width=5),
                                             dcc.DatePickerSingle(
                                                 id='promo_start_date',
                                                 min_date_allowed=dt(1995, 8, 5),
                                                 max_date_allowed=dt(2017, 9, 19),
                                                 initial_visible_month=dt(2017, 8, 5),
                                                 date=dt(2017, 8, 25)
-                                            ),
+                                            , width=5),
                                         ]
                                     ),
                                     width=5,
@@ -154,14 +154,14 @@ sales_tab = dac.TabItem(id='content_sales',
                                 dbc.Col(
                                     dbc.FormGroup(
                                         [
-                                            dbc.Label("Promo end date", html_for="promo-end-grid"),
+                                            dbc.Label("Promo end date", html_for="promo-end-grid", width=5),
                                             dcc.DatePickerSingle(
                                                 id='promo_end_date',
                                                 min_date_allowed=dt(1995, 8, 5),
                                                 max_date_allowed=dt(2017, 9, 19),
                                                 initial_visible_month=dt(2017, 8, 5),
                                                 date=dt(2017, 8, 25)
-                                            ),
+                                            , width=5),
                                         ]
                                     ),
                                     width=5,
@@ -237,7 +237,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ]
                                     , width=12
                                 ),
-                            ], style={"margin-bottom": "15px"}),
+                            ], style={"margin-bottom": "0px"}),
                           ]),
                   ]), md=12),
             ]),
