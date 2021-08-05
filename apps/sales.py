@@ -125,7 +125,7 @@ sales_tab = dac.TabItem(id='content_sales',
               dbc.Col(
                 dbc.Card(
                   [
-                      dbc.CardHeader("Sales training data 01jan20 - 17mar21"),
+                      dbc.CardHeader("Alfagift promotion sales"),
                       dbc.CardBody(
                           [
 
@@ -140,7 +140,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         ),
                                     ]
                                 ),
-                                width=6,
+                                md=6,
                             ),
                             dbc.Col(
                                 dbc.FormGroup(
@@ -153,8 +153,35 @@ sales_tab = dac.TabItem(id='content_sales',
                                         ),
                                     ]
                                 ),
-                                width=6,
+                                md=6,
                             ),
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Email", html_for="example-email-grid"),
+                                        dbc.Input(
+                                            type="email",
+                                            id="example-email-grid",
+                                            placeholder="Enter email",
+                                        ),
+                                    ]
+                                ),
+                                md=6,
+                            ),
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Password", html_for="example-password-grid"),
+                                        dbc.Input(
+                                            type="password",
+                                            id="example-password-grid",
+                                            placeholder="Enter password",
+                                        ),
+                                    ]
+                                ),
+                                md=6,
+                            ),
+
 
                           ]),
                   ]), md=12),
