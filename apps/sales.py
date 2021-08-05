@@ -175,7 +175,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dbc.Input(
                                                 type="number",
                                                 id="count_whitelist",
-                                                placeholder="Enter email",
+                                                placeholder="Enter count product in this promo",
                                                 value=1
                                             ),
                                         ]
@@ -189,7 +189,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dbc.Input(
                                                 type="number",
                                                 id="price_whitelist",
-                                                placeholder="Enter sum of product price",
+                                                placeholder="Enter sum of product price in this promo",
                                             ),
                                         ]
                                     ),
@@ -204,7 +204,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dbc.Input(
                                                 type="number",
                                                 id="sum_discount_amount",
-                                                placeholder="Enter sum discount or budget afford",
+                                                placeholder="Enter sum discount given or budget",
                                             ),
                                         ]
                                     ),
@@ -221,6 +221,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     {"label": "Gantung (gajian untung)", "value": "gantung"},
                                                     {"label": "Disabled option", "value": "3", "disabled": True},
                                                 ],
+                                                value="gantung"
                                             ),                                        
                                         ]
                                     ),
