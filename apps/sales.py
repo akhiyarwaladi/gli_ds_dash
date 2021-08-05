@@ -229,9 +229,14 @@ sales_tab = dac.TabItem(id='content_sales',
                                 
                             ]),
                             dbc.Row([
-                                dbc.Col([html.H5('Promo sales prediction: '),html.H3(html.Div(id='prediction_promo_sales'))], width=6),
-
-                            ])
+                                dbc.Col(
+                                    [
+                                        html.H5('Promo sales prediction: '),
+                                        html.H3(html.Div(id='prediction_promo_sales'))
+                                    ]
+                                    , width=10
+                                ),
+                            ]),
                           ]),
                   ]), md=12),
             ]),
