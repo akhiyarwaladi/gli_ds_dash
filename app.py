@@ -602,8 +602,8 @@ def update_prediction(date_start, date_end):
 @app.callback(
     Output('prediction_promo_sales', "children"),
     [
-        Input('promo_start_date', 'start_date'),
-        Input('promo_end_date', 'end_date'),
+        Input('promo_start_date', 'date'),
+        Input('promo_end_date', 'date'),
         Input('count_whitelist', 'value')
     ]
 )
