@@ -125,7 +125,14 @@ sales_tab = dac.TabItem(id='content_sales',
               dbc.Col(
                 dbc.Card(
                   [
-                      dbc.CardHeader("Alfagift promotion sales"),
+                      dbc.CardHeader(
+                        dbc.Row([
+                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')])), md=4)
+
+                            ])
+
+
+                        ),
                       dbc.CardBody(
                           [
                             dbc.Row([
@@ -198,6 +205,22 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 id="sum_discount_amount",
                                                 placeholder="Enter sum discount or budget afford",
                                             ),
+                                        ]
+                                    ),
+                                    width=6,
+                                ),
+                                dbc.Col(
+                                    dbc.FormGroup(
+                                        [
+                                            dbc.Label("Promo name", html_for="example-email-grid"),
+                                            dbc.Select(
+                                                id="select",
+                                                options=[
+                                                    {"label": "JSM (jumat-sabtu-minggu", "value": "jsm"},
+                                                    {"label": "Gantung (gajian untung)", "value": "gantung"},
+                                                    {"label": "Disabled option", "value": "3", "disabled": True},
+                                                ],
+                                            ),                                        
                                         ]
                                     ),
                                     width=6,
