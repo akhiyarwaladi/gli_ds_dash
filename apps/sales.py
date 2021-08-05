@@ -146,7 +146,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 max_date_allowed=dt(2017, 9, 19),
                                                 initial_visible_month=dt(2017, 8, 5),
                                                 date=dt(2017, 8, 25)
-                                            , width=5),
+                                            ),
                                         ]
                                     ),
                                     width=5,
@@ -161,7 +161,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 max_date_allowed=dt(2017, 9, 19),
                                                 initial_visible_month=dt(2017, 8, 5),
                                                 date=dt(2017, 8, 25)
-                                            , width=5),
+                                            ),
                                         ]
                                     ),
                                     width=5,
