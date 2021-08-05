@@ -155,7 +155,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ),
                                     width=6,
                                 ),
-                            ])
+                            ]),
                             dbc.Col(
                                 dbc.FormGroup(
                                     [
