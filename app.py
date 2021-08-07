@@ -38,6 +38,7 @@ from plots.user_path_plot import plot_low_review
 from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
 
 import pandas as pd
+import requests
 import os
 from datetime import date, timedelta, datetime
 from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah,rupiah_format
