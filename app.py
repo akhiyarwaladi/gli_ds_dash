@@ -626,36 +626,35 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     date_start = datetime.fromisoformat(date_start)
     date_end = datetime.fromisoformat(date_end)
 
-    if (count_whitelist or price_whitelist or sum_discount_amount or promo_name) is None:
-        return 'fill all form'
+    if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:
+        
+        start_year = date_start.year
+        start_month = date_start.month
+        whitelist_product_count = count_whitelist
+        whitelist_product_price = price_whitelist
+        discount_amount = sum_discount_amount
 
+        min_purchase_qty = 1
+        promo_duration = (date_end - date_start + timedelta(days=1)).days
 
-    start_year = date_start.year
-    start_month = date_start.month
-    whitelist_product_count = count_whitelist
-    whitelist_product_price = price_whitelist
-    discount_amount = sum_discount_amount
+        sum_weekend = pd.date_range(date_start,date_end).weekday.isin([5,6]).sum()
+        sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
+        sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
 
-    min_purchase_qty = 1
-    promo_duration = (date_end - date_start + timedelta(days=1)).days
+        sales_prediction = rupiah_format(clf.predict(pd.DataFrame([
+            start_month,
+            whitelist_product_count,
+            whitelist_product_price,
+            discount_amount,
+            min_purchase_qty,
+            promo_duration,
+            sum_weekend,
+            sum_weekday,
+            sum_libur
+        ]).T)[0], True)
 
-    sum_weekend = pd.date_range(date_start,date_end).weekday.isin([5,6]).sum()
-    sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
-    sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
-
-    # sales_prediction = rupiah_format(clf.predict(pd.DataFrame([
-    #     start_month,
-    #     whitelist_product_count,
-    #     whitelist_product_price,
-    #     discount_amount,
-    #     min_purchase_qty,
-    #     promo_duration,
-    #     sum_weekend,
-    #     sum_weekday,
-    #     sum_libur
-    # ]).T)[0], True)
-   
-    sales_prediction = promo_duration
+    else:
+        sales_prediction = 'fill all form'
 
     return '{}'.format(sales_prediction)
 

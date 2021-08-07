@@ -178,7 +178,6 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 type="number",
                                                 id="count_whitelist",
                                                 placeholder="Enter count product in this promo",
-                                                value=1
                                             ),
                                         ]
                                     ),
