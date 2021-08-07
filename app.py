@@ -40,7 +40,7 @@ from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
 import pandas as pd
 import os
 from datetime import date, timedelta, datetime
-from helper import transform_to_rupiah_format,transform_format,rupiah_format
+from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah,rupiah_format
 
 
 ## importing data in here to enable callback
@@ -612,7 +612,9 @@ def update_prediction(date_start, date_end):
     ]
 )
 def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
-
+    date_start = datetime.fromisoformat(date_start)
+    date_end = datetime.fromisoformat(date_end)
+    
     if (count_whitelist or price_whitelist or sum_discount_amount or promo_name) is None:
         return 'fill all form'
 
