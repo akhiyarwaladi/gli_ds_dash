@@ -612,6 +612,11 @@ def update_prediction(date_start, date_end):
     ]
 )
 def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
+
+    if (count_whitelist or price_whitelist or sum_discount_amount or promo_name) is None:
+        return 'fill all form'
+
+
     start_year = date_start.year
     start_month = date_start.month
     whitelist_product_count = count_whitelist
@@ -625,19 +630,19 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
     sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
 
-    sales_prediction = rupiah_format(clf.predict(pd.DataFrame([
-        start_month,
-        whitelist_product_count,
-        whitelist_product_price,
-        discount_amount,
-        min_purchase_qty,
-        promo_duration,
-        sum_weekend,
-        sum_weekday,
-        sum_libur
-    ]).T)[0], True)
+    # sales_prediction = rupiah_format(clf.predict(pd.DataFrame([
+    #     start_month,
+    #     whitelist_product_count,
+    #     whitelist_product_price,
+    #     discount_amount,
+    #     min_purchase_qty,
+    #     promo_duration,
+    #     sum_weekend,
+    #     sum_weekday,
+    #     sum_libur
+    # ]).T)[0], True)
    
-
+    sales_prediction = promo_duration
 
     return '{}'.format(sales_prediction)
 
