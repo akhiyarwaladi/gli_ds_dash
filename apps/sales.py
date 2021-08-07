@@ -143,8 +143,9 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dcc.DatePickerSingle(
                                                 id='promo_start_date',
                                                 min_date_allowed=dt(1995, 8, 5),
-                                                max_date_allowed=dt(2017, 9, 19),
-                                                initial_visible_month=dt(2017, 8, 5),
+                                                max_date_allowed=dt(2022, 9, 19),
+                                                initial_visible_month=dt(2021, 8, 21),
+                                                display_format='DD-MM-Y',
                                                 date=dt(2017, 8, 25)
                                             ),
                                         ]
@@ -158,8 +159,9 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dcc.DatePickerSingle(
                                                 id='promo_end_date',
                                                 min_date_allowed=dt(1995, 8, 5),
-                                                max_date_allowed=dt(2017, 9, 19),
-                                                initial_visible_month=dt(2017, 8, 5),
+                                                max_date_allowed=dt(2022, 9, 19),
+                                                initial_visible_month=dt(2021, 8, 31),
+                                                display_format='DD-MM-Y',
                                                 date=dt(2017, 8, 25)
                                             ),
                                         ]

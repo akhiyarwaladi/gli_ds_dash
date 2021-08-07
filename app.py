@@ -625,7 +625,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
     sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
 
-    sales_prediction = helper.rupiah_format(clf.predict(pd.DataFrame([
+    sales_prediction = rupiah_format(clf.predict(pd.DataFrame([
         start_month,
         whitelist_product_count,
         whitelist_product_price,
