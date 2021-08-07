@@ -49,7 +49,8 @@ parent_path = '/home/server/gli-data-science/akhiyar'
 new_regular = pd.read_csv(os.path.join(parent_path, \
                 'out_plot/new_regular_alfagift_oshop.csv'), sep='\t')
 
-
+from joblib import dump, load
+clf = load('/home/server/gli-data-science/akhiyar/sales_prediction/model/lr.joblib') 
 
 # =============================================================================
 # Dash App and Flask Server
@@ -611,10 +612,34 @@ def update_prediction(date_start, date_end):
     ]
 )
 def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
-    sales_prediction = int(count_whitelist)
+    start_year = date_start.year
+    start_month = date_start.month
+    whitelist_product_count = count_whitelist
+    whitelist_product_price = price_whitelist
+    discount_amount = sum_discount_amount
+
+    min_purchase_qty = 1
+    promo_duration = (date_end - date_start + timedelta(days=1)).days
+
+    sum_weekend = pd.date_range(date_start,date_end).weekday.isin([5,6]).sum()
+    sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
+    sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
+
+    sales_prediction = helper.rupiah_format(clf.predict(pd.DataFrame([
+        start_month,
+        whitelist_product_count,
+        whitelist_product_price,
+        discount_amount,
+        min_purchase_qty,
+        promo_duration,
+        sum_weekend,
+        sum_weekday,
+        sum_libur
+    ]).T)[0], True)
+   
 
 
-    return '{}'.format(rupiah_format(sales_prediction, with_prefix=True, desimal=0))
+    return '{}'.format(sales_prediction)
 
 
 
