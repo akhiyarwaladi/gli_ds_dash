@@ -52,6 +52,16 @@ new_regular = pd.read_csv(os.path.join(parent_path, \
 from joblib import dump, load
 clf = load('/home/server/gli-data-science/akhiyar/sales_prediction/model/lr.joblib') 
 
+# api-endpoint
+URL = "https://api-harilibur.vercel.app/api?year=2021"
+  
+
+# sending get request and saving the response as response object
+r = requests.get(url = URL)
+r_json = r.json()
+df_libur = pd.DataFrame(r_json)
+df_libur['holiday_date'] = pd.to_datetime(df_libur['holiday_date'])
+
 # =============================================================================
 # Dash App and Flask Server
 # =============================================================================
@@ -614,7 +624,7 @@ def update_prediction(date_start, date_end):
 def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
     date_start = datetime.fromisoformat(date_start)
     date_end = datetime.fromisoformat(date_end)
-    
+
     if (count_whitelist or price_whitelist or sum_discount_amount or promo_name) is None:
         return 'fill all form'
 
