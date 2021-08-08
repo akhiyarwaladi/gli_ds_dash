@@ -167,7 +167,7 @@ def plot_sales_promo(sales_plot):
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-	                  {'l':70, 'r':30, 't':70, 'b':70},legend=legend_dict,\
+	                  {'l':70, 'r':30, 't':0, 'b':70},legend=legend_dict,\
 	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 
 	return fig
