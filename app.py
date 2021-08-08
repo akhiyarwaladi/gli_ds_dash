@@ -635,9 +635,9 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
         start_year = date_start.year
         start_month = date_start.month
         start_week = (date_start.day-1) // 7 + 1
-        whitelist_product_count = count_whitelist
-        whitelist_product_price = price_whitelist
-        discount_amount = sum_discount_amount
+        whitelist_product_count = int(count_whitelist)
+        whitelist_product_price = int(price_whitelist)
+        discount_amount = int(sum_discount_amount)
 
         min_purchase_qty = 1
         promo_duration = (date_end - date_start + timedelta(days=1)).days
