@@ -145,7 +145,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 id='promo_start_date',
                                                 min_date_allowed=dt(1995, 8, 5),
                                                 max_date_allowed=dt(2022, 9, 19),
-                                                initial_visible_month=dt(2021, 8, 21),
+                                                initial_visible_month=dt(2021, 8, 24),
                                                 display_format='DD-MM-Y',
                                                 date=dt(2021, 8, 21)
                                             ),
@@ -179,6 +179,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 type="number",
                                                 id="count_whitelist",
                                                 placeholder="Enter count product in this promo",
+                                                value=100
                                             ),
                                         ]
                                     ),
@@ -192,6 +193,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 type="number",
                                                 id="price_whitelist",
                                                 placeholder="Enter sum of product price in this promo",
+                                                value=1000000
                                             ),
                                         ]
                                     ),
@@ -207,6 +209,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 type="number",
                                                 id="sum_discount_amount",
                                                 placeholder="Enter sum discount given or budget",
+                                                value=100000
                                             ),
                                         ]
                                     ),
@@ -234,7 +237,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.Row([
                                 dbc.Col(
                                     [
-                                        html.H5('Promo sales prediction: '),
+                                        html.H5('Next sales prediction: '),
                                         html.H3(html.Div(id='prediction_promo_sales'))
                                     ]
                                     , width=12
