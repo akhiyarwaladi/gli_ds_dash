@@ -255,7 +255,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     , width=12
                                 )
 
-                            ],style={"margin-bottom": "0px"}),
+                            ],style={"margin-bottom": "0px", "margin-bottom": "10px"}),
                           ]),
                   ]), md=12),
             ]),
