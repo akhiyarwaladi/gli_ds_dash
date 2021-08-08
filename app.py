@@ -51,7 +51,8 @@ new_regular = pd.read_csv(os.path.join(parent_path, \
                 'out_plot/new_regular_alfagift_oshop.csv'), sep='\t')
 
 from joblib import dump, load
-clf = load('/home/server/gli-data-science/akhiyar/sales_prediction/model/lr.joblib') 
+clf = load('/home/server/gli-data-science/akhiyar/sales_prediction/model_stag/LinearRegression_PayDayGantung.joblib') 
+normalize = load('/home/server/gli-data-science/akhiyar/sales_prediction/model_stag/normalize_gantung.joblib') 
 
 # api-endpoint
 URL = "https://api-harilibur.vercel.app/api?year=2021"
@@ -633,6 +634,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
         
         start_year = date_start.year
         start_month = date_start.month
+        start_week = (date_start.day-1) // 7 + 1
         whitelist_product_count = count_whitelist
         whitelist_product_price = price_whitelist
         discount_amount = sum_discount_amount
@@ -644,8 +646,10 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
         sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
         sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
 
-        sales_prediction = rupiah_format(clf.predict(pd.DataFrame([
+
+        df_test = pd.DataFrame([
             start_month,
+            start_week,
             whitelist_product_count,
             whitelist_product_price,
             discount_amount,
@@ -654,13 +658,35 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
             sum_weekend,
             sum_weekday,
             sum_libur
-        ]).T)[0], True)
+            
+
+        ]).T
+        
+        df_test = normalize.transform(df_test)
+        res_pred = clf.predict(df_test)[0]
+
+
+        sales_prediction = helper.rupiah_format(res_pred, True)
+            
+        ######
+        df_pred = pd.DataFrame([
+            'PAYDAY GANTUNG',
+            start_year,
+            start_month,
+            np.nan,
+            float(int(res_pred)),
+            date(int(start_year),int(start_month),1).strftime('%Y-%m')
+        ]).T
+        df_pred.columns = list(sales_plot_promo)
+        sales_plot_promo_pred = pd.concat([sales_plot_promo,df_pred])
+
+        ######
 
     else:
         sales_prediction = 'fill all form'
 
 
-    fig = plot_sales_promo(sales_plot_promo)
+    fig = plot_sales_promo(sales_plot_promo_pred)
     return '{}'.format(sales_prediction), fig
 
 
