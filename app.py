@@ -667,7 +667,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
         res_pred = clf.predict(df_test)[0]
 
 
-        sales_prediction = helper.rupiah_format(res_pred, True)
+        sales_prediction = rupiah_format(res_pred, True)
             
         ######
         df_pred = pd.DataFrame([
