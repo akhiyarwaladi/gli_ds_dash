@@ -239,19 +239,21 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ]
                                     , width=12
                                 ),
-                            ], style={"margin-bottom": "0px"}),
+                            ], style={"margin-bottom": "10px"}),
 
                             dbc.Row([
+                                dbc.Col(
+                                    html.P(
+                                        dcc.Graph(
+                                            # figure=fig_sales_all,
+                                            # config=dict(displayModeBar=False),
+                                            id='sales_promo_fig',
+                                            config=dict(displayModeBar=False),
 
-                                html.P(
-                                    dcc.Graph(
-                                        # figure=fig_sales_all,
-                                        # config=dict(displayModeBar=False),
-                                        id='sales_promo_fig',
-                                        config=dict(displayModeBar=False),
-
+                                        )
                                     )
-                                ),
+                                    , width=12
+                                )
 
                             ],style={"margin-bottom": "0px"}),
                           ]),
