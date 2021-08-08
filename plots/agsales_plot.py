@@ -106,3 +106,66 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,\
 	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
 	return fig
+
+
+def plot_sales_promo(sales_plot):
+
+	fig = go.Figure()
+	fig.add_trace(go.Scatter(
+	    x=sales_plot['index'],
+	    y=sales_plot['TRO_NET'],
+	    name='Actual',
+	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
+	    mode="lines+markers+text",
+	    textposition="top center"
+	))
+	fig.add_trace(go.Scatter(
+	    x=sales_plot['index'],
+	    y=sales_plot['TRO_NET_PRED'],
+	    name='Prediction',
+	    text=sales_plot['TRO_NET_PRED'].astype(float).apply(transform_to_rupiah),
+	    mode="lines+markers+text",
+	    textposition="top center"
+	))
+
+
+	fig.update_traces(
+
+	    hovertemplate='%{x}<br>%{text}')
+
+	fig.update_xaxes(
+	    tickformat="%b%y",
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
+	)
+	fig.update_yaxes(
+
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
+	)
+
+	legend_dict = \
+	    legend=dict(
+	            orientation="h",
+	            yanchor="bottom",
+	            y=0.95,
+	            xanchor="left",
+	            x=0,
+	            traceorder="normal",
+	            title='',
+	            title_font_family="Courier",
+	            font=dict(
+	                family="Courier",
+	                size=16,
+	                color="black"
+	            ),
+	            bgcolor="#dfe4ea",
+	            bordercolor="Black",
+	            borderwidth=1
+	        )
+	fig.update_layout( 
+	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+	                   'showgrid': True, 'automargin': True, 'title':''},
+	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
+	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
+	                  {'l':70, 'r':30, 't':30, 'b':70},legend=legend_dict,\
+	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))

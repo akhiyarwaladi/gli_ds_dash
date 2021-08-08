@@ -17,7 +17,7 @@ from apps.general_monitor import general_monitor_tab, member_count, sapa_count
 from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
 from apps.value_behave import value_behave_tab
-from apps.sales import sales_tab, sales_plot
+from apps.sales import sales_tab, sales_plot, sales_plot_promo
 from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
@@ -29,7 +29,7 @@ from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regula
                             plot_new_regular_trx)
 from plots.campaign_report import w_general_push, w_general_email, w_general_inapp
 from plots.product_plot import plot_product
-from plots.agsales_plot import plot_sales_all
+from plots.agsales_plot import plot_sales_all, plot_sales_promo
 from plots.event_product_plot import plot_vp, plot_sp
 from plots.general_plot import plot_member_count, plot_sapa_count
 from plots.user_path_plot import plot_low_review
@@ -612,7 +612,10 @@ def update_prediction(date_start, date_end):
 
 
 @app.callback(
-    Output('prediction_promo_sales', "children"),
+    [
+        Output('prediction_promo_sales', "children"),
+        Output('sales_promo_fig', 'figure')
+    ],
     [
         Input('promo_start_date', 'date'),
         Input('promo_end_date', 'date'),
@@ -656,7 +659,9 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     else:
         sales_prediction = 'fill all form'
 
-    return '{}'.format(sales_prediction)
+
+    fig = plot_sales_promo(sales_plot_promo)
+    return '{}'.format(sales_prediction), fig
 
 
 

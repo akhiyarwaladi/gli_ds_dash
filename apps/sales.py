@@ -6,6 +6,7 @@ import dash_bootstrap_components as dbc
 ## for load csv file
 from loader.agsales_load import get_agsales
 sales_plot = get_agsales()
+sales_plot_promo = get_agsales_promo()
 
 ## for daterange picker
 from datetime import datetime as dt
@@ -239,6 +240,20 @@ sales_tab = dac.TabItem(id='content_sales',
                                     , width=12
                                 ),
                             ], style={"margin-bottom": "0px"}),
+
+                            dbc.Row([
+
+                                html.P(
+                                    dcc.Graph(
+                                        # figure=fig_sales_all,
+                                        # config=dict(displayModeBar=False),
+                                        id='sales_promo_fig',
+                                        config=dict(displayModeBar=False),
+
+                                    )
+                                ),
+
+                            ],style={"margin-bottom": "0px"}),
                           ]),
                   ]), md=12),
             ]),
