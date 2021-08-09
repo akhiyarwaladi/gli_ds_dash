@@ -212,6 +212,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 value=97000,
                                                 plaintext=True
                                             ),
+                                            html.P(id="sum_discount_amount_output"),
                                         ]
                                     ),
                                     width=5,
