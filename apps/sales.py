@@ -195,6 +195,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 placeholder="Enter sum of product price in this promo",
                                                 value=1200000
                                             ),
+                                            html.P(id="price_whitelist_output"),
                                         ]
                                     ),
                                     width=5,
