@@ -508,38 +508,38 @@ def update_plot_sp(value):
 
     return fig
 
-@app.callback(
-    Output('cpn_fig', 'figure'),
-    [
-        Input('cpn_dropdown', 'value')
-    ]
-)
-def update_plot_cpn(value):
-    fig = w_general_push(campaign_push, value)
+# @app.callback(
+#     Output('cpn_fig', 'figure'),
+#     [
+#         Input('cpn_dropdown', 'value')
+#     ]
+# )
+# def update_plot_cpn(value):
+#     fig = w_general_push(campaign_push, value)
 
-    return fig
+#     return fig
 
-@app.callback(
-    Output('cpe_fig', 'figure'),
-    [
-        Input('cpe_dropdown', 'value')
-    ]
-)
-def update_plot_cpe(value):
-    fig = w_general_email(campaign_email, value)
+# @app.callback(
+#     Output('cpe_fig', 'figure'),
+#     [
+#         Input('cpe_dropdown', 'value')
+#     ]
+# )
+# def update_plot_cpe(value):
+#     fig = w_general_email(campaign_email, value)
 
-    return fig
+#     return fig
     
-@app.callback(
-    Output('cpi_fig', 'figure'),
-    [
-        Input('cpi_dropdown', 'value')
-    ]
-)
-def update_plot_cpi(value):
-    fig = w_general_inapp(campaign_inapp, value)
+# @app.callback(
+#     Output('cpi_fig', 'figure'),
+#     [
+#         Input('cpi_dropdown', 'value')
+#     ]
+# )
+# def update_plot_cpi(value):
+#     fig = w_general_inapp(campaign_inapp, value)
 
-    return fig
+#     return fig
 
 @app.callback(
     Output('product_fig', 'figure'),
@@ -570,13 +570,17 @@ def update_plot_low_review(value):
     Input('datatable-interactivity', "derived_virtual_data"),
     Input('datatable-interactivity', "derived_virtual_selected_rows"))
 def update_graphs(rows, derived_virtual_selected_rows):
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
     return '({})'.format(len(rows))
 
 @app.callback(
     Output('datatable_uninstall_review_container', "children"),
     Input('datatable_uninstall_review', "derived_virtual_data"),
     Input('datatable_uninstall_review', "derived_virtual_selected_rows"))
-def update_graphs(rows, derived_virtual_selected_rows):
+def update_uninstall_review(rows, derived_virtual_selected_rows):
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
     return '({})'.format(len(rows))
 
 
@@ -584,7 +588,9 @@ def update_graphs(rows, derived_virtual_selected_rows):
     Output('datatable_low_review_container', "children"),
     Input('datatable_low_review', "derived_virtual_data"),
     Input('datatable_low_review', "derived_virtual_selected_rows"))
-def update_graphs(rows, derived_virtual_selected_rows):
+def update_low_review(rows, derived_virtual_selected_rows):
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
     return '({})'.format(len(rows))
 
 
