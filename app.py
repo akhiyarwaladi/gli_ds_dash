@@ -77,6 +77,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, FONT_AWESO
 # app = dash.Dash(__name__)
 app.title = "Data Science Dashboard"
 server = app.server 
+app.config.suppress_callback_exceptions = True
 
 # =============================================================================
 # Dash Admin Components
