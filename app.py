@@ -615,7 +615,7 @@ def update_prediction(date_start, date_end):
 
 @app.callback(
     [
-        Output('sum_discount_amount_output', 'children')
+        Output('sum_discount_amount_output', 'children'),
         Output('prediction_promo_sales', 'children'),
         Output('sales_promo_fig', 'figure')
     ],
