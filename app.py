@@ -692,7 +692,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
 
     fig = plot_sales_promo(sales_plot_promo_pred)
-    return sum_discount_amount_output, sales_prediction, fig
+    return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
 
 
 
