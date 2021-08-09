@@ -689,7 +689,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
 
 
     fig = plot_sales_promo(sales_plot_promo_pred)
-    return '{}'.format(sales_prediction), fig
+    return sum_discount_amount, sales_prediction, fig
 
 
 
