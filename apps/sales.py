@@ -147,7 +147,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 max_date_allowed=dt(2022, 9, 19),
                                                 initial_visible_month=dt(2021, 8, 24),
                                                 display_format='DD-MM-Y',
-                                                date=dt(2021, 8, 21)
+                                                date=dt(2021, 8, 24)
                                             ),
                                         ]
                                     ),
@@ -222,9 +222,9 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dbc.Select(
                                                 id="promo_name",
                                                 options=[
-                                                    {"label": "JSM (jumat-sabtu-minggu", "value": "jsm"},
+                                                    {"label": "JSM (jumat-sabtu-minggu", "value": "jsm", "disabled": True},
                                                     {"label": "Gantung (gajian untung)", "value": "gantung"},
-                                                    {"label": "Disabled option", "value": "3", "disabled": True},
+                                                    {"label": "INSTORE", "value": "instore", "disabled": True},
                                                 ],
                                                 value="gantung"
                                             ),                                        
@@ -258,7 +258,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     , width=12
                                 )
 
-                            ],style={"margin-bottom": "0px", "margin-bottom": "10px"}),
+                            ],style={"margin-bottom": "0px", "margin-top": "10px"}),
                           ]),
                   ]), md=12),
             ]),
