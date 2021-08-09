@@ -179,7 +179,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 type="number",
                                                 id="count_whitelist",
                                                 placeholder="Enter count product in this promo",
-                                                value=100
+                                                value=40
                                             ),
                                         ]
                                     ),
@@ -193,7 +193,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 type="number",
                                                 id="price_whitelist",
                                                 placeholder="Enter sum of product price in this promo",
-                                                value=1000000
+                                                value=1200000
                                             ),
                                         ]
                                     ),
@@ -204,12 +204,13 @@ sales_tab = dac.TabItem(id='content_sales',
                                 dbc.Col(
                                     dbc.FormGroup(
                                         [
-                                            dbc.Label("Total discount amount / budget", html_for="example-email-grid"),
+                                            dbc.Label("Total discount amount / product", html_for="example-email-grid"),
                                             dbc.Input(
                                                 type="number",
                                                 id="sum_discount_amount",
-                                                placeholder="Enter sum discount given or budget",
-                                                value=100000
+                                                placeholder="Enter sum discount given",
+                                                value=97000,
+                                                plaintext=True
                                             ),
                                         ]
                                     ),
