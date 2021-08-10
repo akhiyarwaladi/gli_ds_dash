@@ -55,14 +55,7 @@ from joblib import dump, load
 clf = load('/home/server/gli-data-science/akhiyar/sales_prediction/model_stag/LinearRegression_PayDayGantung.joblib') 
 normalize = load('/home/server/gli-data-science/akhiyar/sales_prediction/model_stag/normalize_gantung.joblib') 
 
-# api-endpoint
-URL = "https://api-harilibur.vercel.app/api?year=2021"
-  
-
-# sending get request and saving the response as response object
-r = requests.get(url = URL)
-r_json = r.json()
-df_libur = pd.DataFrame(r_json)
+df_libur = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/harilibur.csv')
 df_libur['holiday_date'] = pd.to_datetime(df_libur['holiday_date'])
 
 # =============================================================================
