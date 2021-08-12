@@ -502,38 +502,38 @@ def update_plot_sp(value):
 
     return fig
 
-# @app.callback(
-#     Output('cpn_fig', 'figure'),
-#     [
-#         Input('cpn_dropdown', 'value')
-#     ]
-# )
-# def update_plot_cpn(value):
-#     fig = w_general_push(campaign_push, value)
+@app.callback(
+    Output('cpn_fig', 'figure'),
+    [
+        Input('cpn_dropdown', 'value')
+    ]
+)
+def update_plot_cpn(value):
+    fig = w_general_push(campaign_push, value)
 
-#     return fig
+    return fig
 
-# @app.callback(
-#     Output('cpe_fig', 'figure'),
-#     [
-#         Input('cpe_dropdown', 'value')
-#     ]
-# )
-# def update_plot_cpe(value):
-#     fig = w_general_email(campaign_email, value)
+@app.callback(
+    Output('cpe_fig', 'figure'),
+    [
+        Input('cpe_dropdown', 'value')
+    ]
+)
+def update_plot_cpe(value):
+    fig = w_general_email(campaign_email, value)
 
-#     return fig
+    return fig
     
-# @app.callback(
-#     Output('cpi_fig', 'figure'),
-#     [
-#         Input('cpi_dropdown', 'value')
-#     ]
-# )
-# def update_plot_cpi(value):
-#     fig = w_general_inapp(campaign_inapp, value)
+@app.callback(
+    Output('cpi_fig', 'figure'),
+    [
+        Input('cpi_dropdown', 'value')
+    ]
+)
+def update_plot_cpi(value):
+    fig = w_general_inapp(campaign_inapp, value)
 
-#     return fig
+    return fig
 
 @app.callback(
     Output('product_fig', 'figure'),
