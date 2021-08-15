@@ -18,3 +18,8 @@ def get_agsales():
 def get_agsales_promo():
     sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/payday_gantung.csv')
     return sales_plot
+
+
+def get_agsales_jsm():
+    sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_jsm.csv')
+    return sales_plot

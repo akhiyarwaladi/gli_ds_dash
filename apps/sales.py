@@ -7,6 +7,7 @@ import dash_bootstrap_components as dbc
 from loader.agsales_load import get_agsales, get_agsales_promo
 sales_plot = get_agsales()
 sales_plot_promo = get_agsales_promo()
+sales_plot_jsm = get_agsales_jsm()
 
 ## for daterange picker
 from datetime import datetime as dt
@@ -225,8 +226,8 @@ sales_tab = dac.TabItem(id='content_sales',
                                             dbc.Select(
                                                 id="promo_name",
                                                 options=[
-                                                    {"label": "JSM (jumat-sabtu-minggu", "value": "jsm", "disabled": True},
-                                                    {"label": "Gantung (gajian untung)", "value": "gantung"},
+                                                    {"label": "JSM (jumat-sabtu-minggu", "value": "jsm", "disabled": False},
+                                                    {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
                                                     {"label": "INSTORE", "value": "instore", "disabled": True},
                                                 ],
                                                 value="gantung"

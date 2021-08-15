@@ -17,7 +17,7 @@ from apps.general_monitor import general_monitor_tab, member_count, sapa_count
 from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
 from apps.value_behave import value_behave_tab
-from apps.sales import sales_tab, sales_plot, sales_plot_promo
+from apps.sales import sales_tab, sales_plot, sales_plot_promo, sales_plot_jsm
 from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
@@ -29,7 +29,7 @@ from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regula
                             plot_new_regular_trx)
 from plots.campaign_report import w_general_push, w_general_email, w_general_inapp
 from plots.product_plot import plot_product
-from plots.agsales_plot import plot_sales_all, plot_sales_promo
+from plots.agsales_plot import plot_sales_all, plot_sales_promo, plot_sales_jsm
 from plots.event_product_plot import plot_vp, plot_sp, plot_general_event
 from plots.general_plot import plot_member_count, plot_sapa_count
 from plots.user_path_plot import plot_low_review
@@ -647,6 +647,10 @@ def update_prediction(date_start, date_end):
 def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
     date_start = datetime.fromisoformat(date_start)
     date_end = datetime.fromisoformat(date_end)
+
+    if value == jsm:
+        fig = plot_sales_jsm(sales_plot_jsm)
+        return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
 
     if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:
         
