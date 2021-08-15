@@ -5,6 +5,7 @@ import textwrap
 
 import plotly.express as px
 import plotly.graph_objs as go
+from helper import rupiah_format
 
 
 def plot_vp(vp, value):
