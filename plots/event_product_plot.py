@@ -124,7 +124,7 @@ def plot_general_event(sales_plot, start_date, end_date):
 	    x=sales_plot['Event Time'],
 	    y=sales_plot['App Update'],
 	    name='App Update',
-	    text=sales_plot['App Update'].apply(rupiah_format),
+	    text=sales_plot['Event Time'].dt.strftime("%A") + '<br>' + sales_plot['App Update'].apply(rupiah_format),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
@@ -132,7 +132,7 @@ def plot_general_event(sales_plot, start_date, end_date):
 	    x=sales_plot['Event Time'],
 	    y=sales_plot['INSTALL'],
 	    name='INSTALL',
-	    text=sales_plot['INSTALL'].apply(rupiah_format),
+	    text=sales_plot['Event Time'].dt.strftime("%A") + '<br>' + sales_plot['INSTALL'].apply(rupiah_format),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
@@ -140,7 +140,7 @@ def plot_general_event(sales_plot, start_date, end_date):
 	    x=sales_plot['Event Time'],
 	    y=sales_plot['Device Uninstall'],
 	    name='Device Uninstall',
-	    text=sales_plot['Device Uninstall'].apply(rupiah_format),
+	    text=sales_plot['Event Time'].dt.strftime("%A") + '<br>' + sales_plot['Device Uninstall'].apply(rupiah_format),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
