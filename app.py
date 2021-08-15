@@ -651,9 +651,12 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     date_start = datetime.fromisoformat(date_start)
     date_end = datetime.fromisoformat(date_end)
 
+    price_whitelist_output = "entered: {}".format(rupiah_format(price_whitelist))
+    sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
+
     if promo_name == 'jsm':
         fig = plot_sales_jsm(sales_plot_jsm)
-        return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
+        return price_whitelist_output, sum_discount_amount_output, '-', fig
 
     if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:
         
@@ -710,8 +713,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     else:
         sales_prediction = 'fill all form'
 
-    price_whitelist_output = "entered: {}".format(rupiah_format(price_whitelist))
-    sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
+
 
     fig = plot_sales_promo(sales_plot_promo_pred)
     return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
