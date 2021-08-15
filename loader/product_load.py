@@ -8,3 +8,10 @@ def get_product():
 	label = [{'label': x, 'value': x} for x in plu_group['TRO_DATE_ORDER']\
 	     .dropna().dt.strftime('%Y-%m').unique()]
 	return plu_group, label
+
+
+def get_general_event():
+	sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/install_uninstall_update.csv')
+	sales_plot['Event Time'] = pd.to_datetime(sales_plot['Event Time'])
+
+	return sales_plot

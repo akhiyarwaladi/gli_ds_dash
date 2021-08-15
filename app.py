@@ -22,7 +22,7 @@ from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
-from apps.event_product import view_product_tab, product_group, vp, sp
+from apps.event_product import view_product_tab, product_group, vp, sp, general_event
 from apps.user_path_box import user_path_tab, low_review_table
 
 from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regular,
@@ -458,6 +458,21 @@ def make_plot_callback(date_start, date_end):
 def make_plot_callback(date_start, date_end):
     
     fig = plot_new_regular_trx(new_regular, date_start, date_end)
+    return fig
+
+
+@app.callback(
+    Output('general_event_fig', 'figure'),
+    [
+        Input('general_event_picker', 'start_date'),
+        Input('general_event_picker', 'end_date'),
+
+
+    ]
+
+)
+def make_plot_callback(date_start, date_end):
+    fig = plot_general_event(general_event, date_start, date_end)
     return fig
 
 
