@@ -4,7 +4,11 @@ import os
 parent_path = '/home/server/gli-data-science/akhiyar'
 
 def get_vp():
-	vp = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/general_moengage/view_product.csv')
+    sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/dashboard_job/out_file/view_product.csv', header = 1)
+    split_header = [i.split(' - ')[-1] for i in list(sales_plot)]
+    sales_plot.columns = split_header
+    vp = sales_plot.copy()
+
 	vp['All'] = vp.sum(axis=1)
 
 	return vp, \

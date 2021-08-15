@@ -11,7 +11,7 @@ from helper import rupiah_format
 def plot_vp(vp, value):
 	# vp['view_product - product_name'] = pd.to_datetime(vp['view_product - product_name']).dt.strftime('%Y-%m')
 	
-	fig = px.line(vp, x='view_product - product_name', y=vp[str(value)], template='presentation',\
+	fig = px.line(vp, x='Value', y=vp[str(value)], template='presentation',\
 		text=vp[str(value)])
 	fig.update_traces(
 	    texttemplate='%{text:.2s}', 
