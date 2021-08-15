@@ -9,9 +9,9 @@ def get_vp():
     sales_plot.columns = split_header
     vp = sales_plot.copy()
 
-	vp['All'] = vp.sum(axis=1)
+    vp['All'] = vp.sum(axis=1)
 
-	return vp, \
+    return vp, \
     round(vp.mean(axis=1).mean(), 2), \
     [{'label': x, 'value': x} for x in vp.columns[1:]]
 	
