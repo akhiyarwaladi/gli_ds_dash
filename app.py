@@ -123,7 +123,7 @@ sub_event = [
                             label='Email Campaign', 
                             icon='envelope', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_view_product', 
-                            label='Event on Product', 
+                            label='General Event', 
                             icon='shopping-bag', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_user_path', 
                             label='Member Review', 
