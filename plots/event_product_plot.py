@@ -140,7 +140,7 @@ def plot_general_event(sales_plot, start_date, end_date):
 	    x=sales_plot['Event Time'],
 	    y=sales_plot['Device Uninstall'],
 	    name='Device Uninstall',
-	    text=sales_plot['Device Uninstall'].astype(float).apply(transform_to_rupiah),
+	    text=sales_plot['Device Uninstall'].apply(rupiah_format),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
