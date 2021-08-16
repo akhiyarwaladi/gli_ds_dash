@@ -62,7 +62,8 @@ view_product_tab = dac.TabItem(id='content_view_product',
                                       start_date=start_picker,
                                       end_date=end_picker
                                   )
-                          , width=6),                        ])
+                          , width=6),                        
+                        ])
                       ]
                     ),
                     dbc.CardBody(

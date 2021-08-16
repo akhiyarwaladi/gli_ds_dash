@@ -129,14 +129,41 @@ sales_tab = dac.TabItem(id='content_sales',
                   [
                       dbc.CardHeader(
                         dbc.Row([
-                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')])), md=4)
-
+                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')])), width=4)
+                                dbc.Col(
+                                  dcc.DatePickerRange(
+                                      id='sales_promo_picker',
+                                      min_date_allowed=dt(2020, 1, 1),
+                                      max_date_allowed=dt(2021, 12, 1),
+                                      start_date_placeholder_text="Start Date",
+                                      end_date_placeholder_text="End Date",
+                                      display_format='DD-MM-Y',
+                                      start_date=start_picker,
+                                      end_date=end_picker
+                                  )
+                                , width=6),
                             ])
 
 
                         ),
                       dbc.CardBody(
                           [
+                            dbc.Row([
+                                dbc.Col(
+                                    html.P(
+                                        dcc.Graph(
+                                            # figure=fig_sales_all,
+                                            # config=dict(displayModeBar=False),
+                                            id='sales_promo_fig',
+                                            config=dict(displayModeBar=False),
+
+                                        )
+                                    )
+                                    , width=12
+                                )
+
+                            ],style={"margin-bottom": "0px", "margin-top": "10px"}),
+
                             dbc.Row([
                                 dbc.Col(
                                     dbc.FormGroup(
@@ -248,21 +275,6 @@ sales_tab = dac.TabItem(id='content_sales',
                                 ),
                             ], style={"margin-bottom": "10px"}),
 
-                            dbc.Row([
-                                dbc.Col(
-                                    html.P(
-                                        dcc.Graph(
-                                            # figure=fig_sales_all,
-                                            # config=dict(displayModeBar=False),
-                                            id='sales_promo_fig',
-                                            config=dict(displayModeBar=False),
-
-                                        )
-                                    )
-                                    , width=12
-                                )
-
-                            ],style={"margin-bottom": "0px", "margin-top": "10px"}),
                           ]),
                   ]), md=12),
             ]),
