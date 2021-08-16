@@ -129,7 +129,7 @@ sales_tab = dac.TabItem(id='content_sales',
                   [
                       dbc.CardHeader(
                         dbc.Row([
-                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')])), width=4)
+                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')])), width=4),
                                 dbc.Col(
                                   dcc.DatePickerRange(
                                       id='sales_promo_picker',
