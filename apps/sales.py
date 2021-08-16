@@ -257,7 +257,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
                                                     {"label": "INSTORE", "value": "instore", "disabled": True},
                                                 ],
-                                                value="gantung"
+                                                value="jsm"
                                             ),                                        
                                         ]
                                     ),

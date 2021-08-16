@@ -641,13 +641,16 @@ def update_prediction(date_start, date_end):
     [
         Input('promo_start_date', 'date'),
         Input('promo_end_date', 'date'),
+        Input('sales_promo_picker', 'start_date'),
+        Input('sales_promo_picker', 'end_date'),
         Input('count_whitelist', 'value'),
         Input('price_whitelist', 'value'),
         Input('sum_discount_amount', 'value'),
         Input('promo_name', 'value'),
     ]
 )
-def update_prediction(date_start, date_end, count_whitelist, price_whitelist, sum_discount_amount, promo_name):
+def update_prediction(date_start, date_end, range_start, range_end, count_whitelist, 
+    price_whitelist, sum_discount_amount, promo_name):
     date_start = datetime.fromisoformat(date_start)
     date_end = datetime.fromisoformat(date_end)
 
@@ -655,7 +658,7 @@ def update_prediction(date_start, date_end, count_whitelist, price_whitelist, su
     sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
 
     if promo_name == 'jsm':
-        fig = plot_sales_jsm(sales_plot_jsm)
+        fig = plot_sales_jsm(sales_plot_jsm, range_start, range_end)
         return price_whitelist_output, sum_discount_amount_output, '-', fig
 
     if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:

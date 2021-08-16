@@ -173,7 +173,11 @@ def plot_sales_promo(sales_plot):
 	return fig
 
 
-def plot_sales_jsm(sales_plot):
+def plot_sales_jsm(sales_plot, start_date, end_date):
+
+
+	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
+				(sales_plot['index'] <= end_date)]
 
 	fig = go.Figure()
 	fig.add_trace(go.Scatter(
