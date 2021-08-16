@@ -22,4 +22,5 @@ def get_agsales_promo():
 
 def get_agsales_jsm():
     sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_jsm.csv')
+    sales_plot['index'] = pd.to_datetime(sales_plot['index'])
     return sales_plot
