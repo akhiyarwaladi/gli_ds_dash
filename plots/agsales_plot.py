@@ -230,10 +230,10 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout( 
-	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-	                   'showgrid': True, 'automargin': True, 'title':promo_name},
-	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	fig.update_layout( title=promo_name,
+	      	xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+	                   'showgrid': True, 'automargin': True, 'title':''},
+	       yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':70, 'b':70},legend=legend_dict,\
