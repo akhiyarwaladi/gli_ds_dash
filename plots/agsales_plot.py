@@ -173,7 +173,7 @@ def plot_sales_promo(sales_plot):
 	return fig
 
 
-def plot_sales_jsm(sales_plot, start_date, end_date):
+def plot_sales_jsm(sales_plot, start_date, end_date, promo_name):
 
 
 	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
@@ -232,7 +232,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date):
 	        )
 	fig.update_layout( 
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-	                   'showgrid': True, 'automargin': True, 'title':''},
+	                   'showgrid': True, 'automargin': True, 'title':promo_name},
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
