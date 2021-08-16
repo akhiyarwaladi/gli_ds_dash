@@ -180,7 +180,7 @@ def plot_sales_jsm(sales_plot):
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET'],
 	    name='Actual',
-	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
+	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
@@ -188,7 +188,7 @@ def plot_sales_jsm(sales_plot):
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET_PRED'],
 	    name='Prediction',
-	    text=sales_plot['TRO_NET_PRED'].astype(int).astype(float).apply(transform_to_rupiah),
+	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET_PRED'].astype(int).astype(float).apply(transform_to_rupiah),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
