@@ -124,191 +124,195 @@ sales_tab = dac.TabItem(id='content_sales',
 
             ]),
             dbc.Row([
-              dbc.Col(
-                dbc.Card(
-                  [
-                      dbc.CardHeader([
+                dbc.Col(
+                dbc.Card([
+                    dbc.CardHeader([
                         dbc.Row([
-                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')]))
-                                    , md=4),
-                                dbc.Col(
-                                  dcc.DatePickerRange(
-                                      id='sales_promo_picker',
-                                      min_date_allowed=dt(2020, 1, 1),
-                                      max_date_allowed=dt(2021, 12, 1),
-                                      start_date_placeholder_text="Start Date",
-                                      end_date_placeholder_text="End Date",
-                                      display_format='DD-MM-Y',
-                                      start_date=start_picker,
-                                      end_date=end_picker
-                                  )
+                            dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')]))
                                 , md=4),
-                                dbc.Col(
-                                    dcc.Dropdown(
-                                        id='sales_promo_dropdown',
-                                        options=[
-                                            {'label': 'Monthly', 'value': 'Monthly'},
-                                            {'label': 'Daily', 'value': 'Daily'}
-                                        ],
-                                        value='Daily'
-                                    )
-                                , md=4),
-
-                            ]),
-                        dbc.Row([
-                                dbc.Col(''
-                                    , md=4),
-                                dbc.Col(''
-                                    , md=4),
-                                dbc.Col(                                            
-                                    dbc.Select(
-                                        id="promo_name",
-                                        options=[
-                                            {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
-                                            {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
-                                            {"label": "INSTORE", "value": "INSTORE", "disabled": False},
-                                        ],
-                                        value="JSM (jumat-sabtu-minggu)"
-                                    )                                   
-
-                                    , md=4),
-                                
-                            ])
-
+                            dbc.Col(
+                              dcc.DatePickerRange(
+                                  id='sales_promo_picker',
+                                  min_date_allowed=dt(2020, 1, 1),
+                                  max_date_allowed=dt(2021, 12, 1),
+                                  start_date_placeholder_text="Start Date",
+                                  end_date_placeholder_text="End Date",
+                                  display_format='DD-MM-Y',
+                                  start_date=start_picker,
+                                  end_date=end_picker
+                              )
+                            , md=4),
+                            dbc.Col(
+                                dcc.Dropdown(
+                                    id='sales_promo_dropdown',
+                                    options=[
+                                        {'label': 'Monthly', 'value': 'Monthly'},
+                                        {'label': 'Daily', 'value': 'Daily'}
+                                    ],
+                                    value='Daily'
+                                )
+                            , md=4),
 
                         ]),
-                      dbc.CardBody(
-                          [
-                            dbc.Row([
-                                dbc.Col(
-                                    html.P(
-                                        dcc.Graph(
-                                            # figure=fig_sales_all,
-                                            # config=dict(displayModeBar=False),
-                                            id='sales_promo_fig',
-                                            config=dict(displayModeBar=False),
+                        dbc.Row([
+                            dbc.Col(''
+                                , md=4),
+                            dbc.Col(''
+                                , md=4),
+                            dbc.Col(                                            
+                                dbc.Select(
+                                    id="promo_name",
+                                    options=[
+                                        {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+                                        {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
+                                        {"label": "INSTORE", "value": "INSTORE", "disabled": False},
+                                    ],
+                                    value="JSM (jumat-sabtu-minggu)"
+                                )                                   
 
-                                        )
+                            , md=4),
+                            
+                        ])
+
+
+                    ]),
+                    dbc.CardBody([
+                        dbc.Row([
+                            dbc.Col(
+                                html.P(
+                                    dcc.Graph(
+                                        # figure=fig_sales_all,
+                                        # config=dict(displayModeBar=False),
+                                        id='sales_promo_fig',
+                                        config=dict(displayModeBar=False),
+
                                     )
-                                    , width=12
                                 )
+                                , width=12
+                            )
 
-                            ],style={"margin-bottom": "0px", "margin-top": "10px"}),
-
-                            dbc.Row([
-                                dbc.Col(
-                                    dbc.FormGroup(
-                                        [
-                                            dbc.Label("Promo start date", html_for="promo-start-grid", width=5),
-                                            dcc.DatePickerSingle(
-                                                id='promo_start_date',
-                                                min_date_allowed=dt(1995, 8, 5),
-                                                max_date_allowed=dt(2022, 9, 19),
-                                                initial_visible_month=dt(2021, 8, 24),
-                                                display_format='DD-MM-Y',
-                                                date=dt(2021, 8, 24)
-                                            ),
-                                        ]
-                                    ),
-                                    width=5,
-                                ),
-                                dbc.Col(
-                                    dbc.FormGroup(
-                                        [
-                                            dbc.Label("Promo end date", html_for="promo-end-grid", width=5),
-                                            dcc.DatePickerSingle(
-                                                id='promo_end_date',
-                                                min_date_allowed=dt(1995, 8, 5),
-                                                max_date_allowed=dt(2022, 9, 19),
-                                                initial_visible_month=dt(2021, 8, 31),
-                                                display_format='DD-MM-Y',
-                                                date=dt(2021, 8, 31)
-                                            ),
-                                        ]
-                                    ),
-                                    width=5,
-                                ),
-                            ], style={"margin-bottom": "15px"}),
-                            dbc.Row([
-                                dbc.Col(
-                                    dbc.FormGroup(
-                                        [
-                                            dbc.Label("Whitelist product count", html_for="example-email-grid"),
-                                            dbc.Input(
-                                                type="number",
-                                                id="count_whitelist",
-                                                placeholder="Enter count product in this promo",
-                                                value=40
-                                            ),
-                                        ]
-                                    ),
-                                    width=5,
-                                ),
-                                dbc.Col(
-                                    dbc.FormGroup(
-                                        [
-                                            dbc.Label("Whitelist product price", html_for="example-password-grid"),
-                                            dbc.Input(
-                                                type="number",
-                                                id="price_whitelist",
-                                                placeholder="Enter sum of product price in this promo",
-                                                value=1200000
-                                            ),
-                                            html.P(id="price_whitelist_output"),
-                                        ]
-                                    ),
-                                    width=5,
-                                ),
-                            ], style={"margin-bottom": "15px"}),
-                            dbc.Row([
-                                dbc.Col(
-                                    dbc.FormGroup(
-                                        [
-                                            dbc.Label("Total discount amount / product", html_for="example-email-grid"),
-                                            dbc.Input(
-                                                type="number",
-                                                id="sum_discount_amount",
-                                                placeholder="Enter sum discount given",
-                                                value=97000,
-                                                plaintext=True
-                                            ),
-                                            html.P(id="sum_discount_amount_output"),
-                                        ]
-                                    ),
-                                    width=5,
-                                ),
-                                dbc.Col(
-                                    dbc.FormGroup(
-                                        [
-                                            dbc.Label("Promo name", html_for="example-email-grid"),
-                                            # dbc.Select(
-                                            #     id="promo_name",
-                                            #     options=[
-                                            #         {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
-                                            #         {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
-                                            #         {"label": "INSTORE", "value": "INSTORE", "disabled": False},
-                                            #     ],
-                                            #     value="JSM (jumat-sabtu-minggu)"
-                                            # ),                                        
-                                        ]
-                                    ),
-                                    width=5,
-                                ),
-                                
-                            ], style={"margin-bottom": "15px"}),
-                            dbc.Row([
-                                dbc.Col(
+                        ],style={"margin-bottom": "0px", "margin-top": "10px"}),
+                    ]),
+                  dbc.CardFooter([
+                        dbc.Row([
+                            dbc.Col(
+                                dbc.FormGroup(
                                     [
-                                        html.H5('Next sales prediction: '),
-                                        html.H3(html.Div(id='prediction_promo_sales'))
+                                        dbc.Label("Promo start date", html_for="promo-start-grid", width=5),
+                                        dcc.DatePickerSingle(
+                                            id='promo_start_date',
+                                            min_date_allowed=dt(1995, 8, 5),
+                                            max_date_allowed=dt(2022, 9, 19),
+                                            initial_visible_month=dt(2021, 8, 24),
+                                            display_format='DD-MM-Y',
+                                            date=dt(2021, 8, 24)
+                                        ),
                                     ]
-                                    , width=12
                                 ),
-                            ], style={"margin-bottom": "10px"}),
-
-                          ]),
+                                width=5,
+                            ),
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Promo end date", html_for="promo-end-grid", width=5),
+                                        dcc.DatePickerSingle(
+                                            id='promo_end_date',
+                                            min_date_allowed=dt(1995, 8, 5),
+                                            max_date_allowed=dt(2022, 9, 19),
+                                            initial_visible_month=dt(2021, 8, 31),
+                                            display_format='DD-MM-Y',
+                                            date=dt(2021, 8, 31)
+                                        ),
+                                    ]
+                                ),
+                                width=5,
+                            ),
+                        ], style={"margin-bottom": "15px"}),
+                        dbc.Row([
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Whitelist product count", html_for="example-email-grid"),
+                                        dbc.Input(
+                                            type="number",
+                                            id="count_whitelist",
+                                            placeholder="Enter count product in this promo",
+                                            value=40
+                                        ),
+                                    ]
+                                ),
+                                width=5,
+                            ),
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Whitelist product price", html_for="example-password-grid"),
+                                        dbc.Input(
+                                            type="number",
+                                            id="price_whitelist",
+                                            placeholder="Enter sum of product price in this promo",
+                                            value=1200000
+                                        ),
+                                        html.P(id="price_whitelist_output"),
+                                    ]
+                                ),
+                                width=5,
+                            ),
+                        ], style={"margin-bottom": "15px"}),
+                        dbc.Row([
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Total discount amount / product", html_for="example-email-grid"),
+                                        dbc.Input(
+                                            type="number",
+                                            id="sum_discount_amount",
+                                            placeholder="Enter sum discount given",
+                                            value=97000,
+                                            plaintext=True
+                                        ),
+                                        html.P(id="sum_discount_amount_output"),
+                                    ]
+                                ),
+                                width=5,
+                            ),
+                            dbc.Col(
+                                dbc.FormGroup(
+                                    [
+                                        dbc.Label("Promo name", html_for="example-email-grid"),
+                                        # dbc.Select(
+                                        #     id="promo_name",
+                                        #     options=[
+                                        #         {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+                                        #         {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
+                                        #         {"label": "INSTORE", "value": "INSTORE", "disabled": False},
+                                        #     ],
+                                        #     value="JSM (jumat-sabtu-minggu)"
+                                        # ),                                        
+                                    ]
+                                ),
+                                width=5,
+                            ),
+                            
+                        ], style={"margin-bottom": "15px"}),
+                        dbc.Row([
+                            dbc.Col(
+                                [
+                                    html.H5('Next sales prediction: '),
+                                    html.H3(html.Div(id='prediction_promo_sales'))
+                                ]
+                                , width=12
+                            ),
+                        ], style={"margin-bottom": "10px"}),
+                    ]),
+                
                   ]), md=12),
             ]),
+
+
+
+
+
             # dbc.Row([
             #   dbc.Col(
             #     dbc.Card(
