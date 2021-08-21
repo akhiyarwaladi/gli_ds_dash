@@ -658,7 +658,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
     price_whitelist_output = "entered: {}".format(rupiah_format(price_whitelist))
     sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
 
-    if promo_name == 'jsm':
+    if promo_name != 'gantung':
         fig = plot_sales_jsm(sales_plot_jsm, range_start, range_end, promo_name, agg_value)
         return price_whitelist_output, sum_discount_amount_output, '-', fig
 
