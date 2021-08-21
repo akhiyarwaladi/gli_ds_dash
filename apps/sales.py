@@ -160,7 +160,17 @@ sales_tab = dac.TabItem(id='content_sales',
                                     , md=4),
                                 dbc.Col(''
                                     , md=4),
-                                dbc.Col(''
+                                dbc.Col(                                            
+                                    dbc.Select(
+                                        id="promo_name",
+                                            options=[
+                                                {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+                                                {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
+                                                {"label": "INSTORE", "value": "INSTORE", "disabled": False},
+                                            ],
+                                            value="JSM (jumat-sabtu-minggu)"
+                                        ),                                        
+
                                     , md=4),
                                 
                             ])
@@ -271,15 +281,15 @@ sales_tab = dac.TabItem(id='content_sales',
                                     dbc.FormGroup(
                                         [
                                             dbc.Label("Promo name", html_for="example-email-grid"),
-                                            dbc.Select(
-                                                id="promo_name",
-                                                options=[
-                                                    {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
-                                                    {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
-                                                    {"label": "INSTORE", "value": "INSTORE", "disabled": False},
-                                                ],
-                                                value="JSM (jumat-sabtu-minggu)"
-                                            ),                                        
+                                            # dbc.Select(
+                                            #     id="promo_name",
+                                            #     options=[
+                                            #         {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+                                            #         {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
+                                            #         {"label": "INSTORE", "value": "INSTORE", "disabled": False},
+                                            #     ],
+                                            #     value="JSM (jumat-sabtu-minggu)"
+                                            # ),                                        
                                         ]
                                     ),
                                     width=5,
