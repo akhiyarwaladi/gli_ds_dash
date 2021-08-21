@@ -179,6 +179,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
 				(sales_plot['index'] <= end_date)]
 
+
 	if value == 'Monthly':
 	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')])\
 	                .agg({'TRO_NET':'sum','TRO_NET_PRED':'sum','yhat_upper':'sum', 'yhat_lower':'sum'}).reset_index()
@@ -189,7 +190,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET'],
 	    name='Actual',
-	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(int).astype(float).apply(transform_to_rupiah),
+	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(int,  errors = 'ignore').astype(float, errors = 'ignore').apply(transform_to_rupiah),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
@@ -198,7 +199,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	        x=sales_plot['index'],
 	        y=sales_plot['TRO_NET_PRED'],
 	        name='Prediction',
-	        text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET_PRED'].astype(int).astype(float).apply(transform_to_rupiah),
+	        text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET_PRED'].astype(int, errors = 'ignore').astype(float,  errors = 'ignore').apply(transform_to_rupiah),
 	        mode="lines+markers",
 	        textposition="top center"
 	    ),
@@ -267,7 +268,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout( title=promo_name,
+	fig.update_layout( title='heheh',
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
