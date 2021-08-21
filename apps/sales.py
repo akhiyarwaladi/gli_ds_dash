@@ -127,7 +127,7 @@ sales_tab = dac.TabItem(id='content_sales',
               dbc.Col(
                 dbc.Card(
                   [
-                      dbc.CardHeader(
+                      dbc.CardHeader([
                         dbc.Row([
                                 dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales Promo')]))
                                     , md=4),
@@ -166,7 +166,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             ])
 
 
-                        ),
+                        ]),
                       dbc.CardBody(
                           [
                             dbc.Row([
