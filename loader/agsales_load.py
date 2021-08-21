@@ -21,6 +21,18 @@ def get_agsales_promo():
 
 
 def get_agsales_jsm():
+
+
+    sales_dict = {}
+
+    
     sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_jsm.csv')
     sales_plot['index'] = pd.to_datetime(sales_plot['index'])
-    return sales_plot
+    sales_dict['JSM (jumat-sabtu-minggu)'] = sales_plot
+
+
+    sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_instore.csv')
+    sales_plot['index'] = pd.to_datetime(sales_plot['index'])
+    sales_dict['INSTORE'] = sales_plot
+
+    return sales_dict

@@ -268,7 +268,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout( title='heheh',
+	fig.update_layout( title=promo_name,
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
