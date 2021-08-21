@@ -173,7 +173,7 @@ def plot_sales_promo(sales_plot):
 	return fig
 
 
-def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, agg_value):
+def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 
 
 	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
