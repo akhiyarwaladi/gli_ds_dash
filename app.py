@@ -650,7 +650,7 @@ def update_prediction(date_start, date_end):
         Input('promo_name', 'value'),
     ]
 )
-def update_prediction(date_start, date_end, range_start, range_end, count_whitelist, 
+def update_prediction(date_start, date_end, range_start, range_end, agg_value, count_whitelist, 
     price_whitelist, sum_discount_amount, promo_name):
     date_start = datetime.fromisoformat(date_start)
     date_end = datetime.fromisoformat(date_end)
