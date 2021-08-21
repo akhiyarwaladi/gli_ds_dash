@@ -275,5 +275,5 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':70, 'b':70},legend=legend_dict,\
 	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
-	fig.show()
+
 	return fig
