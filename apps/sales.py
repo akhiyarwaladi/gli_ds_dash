@@ -154,7 +154,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     )
                                 , md=4),
 
-                            ])
+                            ]),
                         dbc.Row([
                                 dbc.Col(''
                                     , md=4),
