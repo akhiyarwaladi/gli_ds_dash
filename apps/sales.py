@@ -142,7 +142,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                       start_date=start_picker,
                                       end_date=end_picker
                                   )
-                                , md=6),
+                                , md=4),
                                 dbc.Col(
                                     dcc.Dropdown(
                                         id='sales_promo_dropdown',
