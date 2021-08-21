@@ -163,13 +163,13 @@ sales_tab = dac.TabItem(id='content_sales',
                                 dbc.Col(                                            
                                     dbc.Select(
                                         id="promo_name",
-                                            options=[
-                                                {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
-                                                {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
-                                                {"label": "INSTORE", "value": "INSTORE", "disabled": False},
-                                            ],
-                                            value="JSM (jumat-sabtu-minggu)"
-                                        ),                                        
+                                        options=[
+                                            {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+                                            {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
+                                            {"label": "INSTORE", "value": "INSTORE", "disabled": False},
+                                        ],
+                                        value="JSM (jumat-sabtu-minggu)"
+                                    )                                   
 
                                     , md=4),
                                 
