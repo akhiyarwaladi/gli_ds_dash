@@ -173,29 +173,66 @@ def plot_sales_promo(sales_plot):
 	return fig
 
 
-def plot_sales_jsm(sales_plot, start_date, end_date, promo_name):
+def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, agg_value):
 
 
 	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
 				(sales_plot['index'] <= end_date)]
+
+	if value == 'Monthly':
+	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')])\
+	                .agg({'TRO_NET':'sum','TRO_NET_PRED':'sum','yhat_upper':'sum', 'yhat_lower':'sum'}).reset_index()
+
 
 	fig = go.Figure()
 	fig.add_trace(go.Scatter(
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET'],
 	    name='Actual',
-	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
+	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(int).astype(float).apply(transform_to_rupiah),
 	    mode="lines+markers",
 	    textposition="top center"
 	))
-	fig.add_trace(go.Scatter(
-	    x=sales_plot['index'],
-	    y=sales_plot['TRO_NET_PRED'],
-	    name='Prediction',
-	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET_PRED'].astype(int).astype(float).apply(transform_to_rupiah),
-	    mode="lines+markers",
-	    textposition="top center"
-	))
+	fig.add_trace(
+	    go.Scatter(
+	        x=sales_plot['index'],
+	        y=sales_plot['TRO_NET_PRED'],
+	        name='Prediction',
+	        text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET_PRED'].astype(int).astype(float).apply(transform_to_rupiah),
+	        mode="lines+markers",
+	        textposition="top center"
+	    ),
+
+
+
+	)
+	fig.add_trace(
+	    go.Scatter(
+	        name='Upper Bound',
+	        x=sales_plot['index'],
+	        y=sales_plot['yhat_upper'],
+	        mode='lines',
+	        marker=dict(color="#444"),
+	        line=dict(width=0),
+	        text = sales_plot['yhat_upper'].astype(int).astype(float).apply(transform_to_rupiah),
+	        showlegend=False
+	    ),
+	)
+	fig.add_trace(
+	    go.Scatter(
+	        name='Lower Bound',
+	        x=sales_plot['index'],
+	        y=sales_plot['yhat_lower'],
+	        marker=dict(color="#444"),
+	        line=dict(width=0),
+	        mode='lines',
+	        fillcolor='rgba(255, 190, 118, 0.4)',
+	        fill='tonexty',
+	        text = sales_plot['yhat_lower'].astype(int).astype(float).apply(transform_to_rupiah),
+	        showlegend=False
+	    )
+
+	)
 
 
 	fig.update_traces(
@@ -230,12 +267,13 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout( title=promo_name,
-	      	xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+	fig.update_layout( title='jsm',
+	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
-	       yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':70, 'b':70},legend=legend_dict,\
 	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
+	fig.show()
 	return fig
