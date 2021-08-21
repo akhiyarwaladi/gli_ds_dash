@@ -153,6 +153,16 @@ sales_tab = dac.TabItem(id='content_sales',
                                         value='Daily'
                                     )
                                 , md=4),
+
+                            ])
+                        dbc.Row([
+                                dbc.Col(''
+                                    , md=4),
+                                dbc.Col(''
+                                    , md=4),
+                                dbc.Col(''
+                                    , md=4),
+                                
                             ])
 
 
