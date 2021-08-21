@@ -266,7 +266,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 options=[
                                                     {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
                                                     {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
-                                                    {"label": "INSTORE", "value": "INSTORE", "disabled": True},
+                                                    {"label": "INSTORE", "value": "INSTORE", "disabled": False},
                                                 ],
                                                 value="JSM (jumat-sabtu-minggu)"
                                             ),                                        
