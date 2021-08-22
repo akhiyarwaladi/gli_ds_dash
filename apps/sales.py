@@ -165,12 +165,12 @@ sales_tab = dac.TabItem(id='content_sales',
                                 dbc.Select(
                                     id="promo_name",
                                     options=[
-                                        {"label": "INSTORE", "value": "INSTORE", "disabled": False},
+                                        {"label": "INSTORE (harga coret)", "value": "INSTORE", "disabled": False},
                                         {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
                                         {"label": "Gantung (gajian untung)", "value": "Gantung (gajian untung)", "disabled": False},
                                         {"label": "custom", "value": "gantung", "disabled": False},
                                     ],
-                                    value="JSM (jumat-sabtu-minggu)"
+                                    value="INSTORE"
                                 )                                   
 
                             , md=4),
@@ -212,7 +212,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         ),
                                     ]
                                 ),
-                                width=5,
+                                width=4,
                             ),
                             dbc.Col(
                                 dbc.FormGroup(
@@ -228,7 +228,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         ),
                                     ]
                                 ),
-                                width=5,
+                                width=4,
                             ),
                         ], style={"margin-bottom": "15px"}),
                         dbc.Row([
@@ -244,7 +244,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         ),
                                     ]
                                 ),
-                                width=5,
+                                width=4,
                             ),
                             dbc.Col(
                                 dbc.FormGroup(
@@ -259,7 +259,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         html.P(id="price_whitelist_output"),
                                     ]
                                 ),
-                                width=5,
+                                width=4,
                             ),
                         ], style={"margin-bottom": "15px"}),
                         dbc.Row([
@@ -277,7 +277,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         html.P(id="sum_discount_amount_output"),
                                     ]
                                 ),
-                                width=5,
+                                width=4,
                             ),
                             dbc.Col(
                                 dbc.FormGroup(
@@ -294,7 +294,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         # ),                                        
                                     ]
                                 ),
-                                width=5,
+                                width=4,
                             ),
                             
                         ], style={"margin-bottom": "15px"}),
