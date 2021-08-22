@@ -15,7 +15,7 @@ from dateutil.relativedelta import relativedelta
 
 ## define date picker start date and end date
 start_picker = dt(2021,1,1)
-end_picker = dt.today().date() - relativedelta(days=2)
+end_picker = dt.today().date() + relativedelta(days=160)
 
 
 sales_tab = dac.TabItem(id='content_sales', 
@@ -134,7 +134,7 @@ sales_tab = dac.TabItem(id='content_sales',
                               dcc.DatePickerRange(
                                   id='sales_promo_picker',
                                   min_date_allowed=dt(2020, 1, 1),
-                                  max_date_allowed=dt(2021, 12, 1),
+                                  max_date_allowed=dt(2022, 12, 1),
                                   start_date_placeholder_text="Start Date",
                                   end_date_placeholder_text="End Date",
                                   display_format='DD-MM-Y',
@@ -193,7 +193,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         ],style={"margin-bottom": "0px", "margin-top": "10px"}),
                     ]),
-                  dbc.CardFooter([
+                    dbc.CardFooter([
                         dbc.Row([
                             dbc.Col(
                                 dbc.FormGroup(
@@ -306,7 +306,7 @@ sales_tab = dac.TabItem(id='content_sales',
                         ], style={"margin-bottom": "10px"}),
                     ]),
                 
-                  ]), md=12),
+                ]), md=12),
             ]),
 
 
