@@ -15,8 +15,7 @@ from dateutil.relativedelta import relativedelta
 
 ## define date picker start date and end date
 start_picker = dt(2021,1,1)
-end_picker = dt.today().date() + relativedelta(days=160)
-
+end_picker = dt(2022,1,1)
 
 sales_tab = dac.TabItem(id='content_sales', 
                               
