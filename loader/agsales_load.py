@@ -33,7 +33,7 @@ def get_agsales_jsm():
 
     sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_instore.csv')
     sales_plot['index'] = pd.to_datetime(sales_plot['index'])
-    sales_dict['INSTORE'] = sales_plot
+    sales_dict['INSTORE (harga coret)'] = sales_plot
 
 
     sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_gantung.csv')
