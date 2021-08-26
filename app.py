@@ -20,7 +20,7 @@ from apps.general_monitor import general_monitor_tab, member_count, sapa_count
 from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
 from apps.value_behave import value_behave_tab
-from apps.sales import sales_tab, sales_plot, sales_plot_promo, sales_plot_jsm
+from apps.sales import (sales_tab, sales_plot_general, sales_plot_promo, sales_plot_jsm)
 from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
@@ -725,16 +725,19 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 )
 def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start, actual_date_end,
                         prediction_date_start, prediction_date_end, target_member, target_sapa_store):
-    fig = plot_sales_all(sales_plot, group, date_start, date_end)
+    
+    if model_algo == 'nbeats':
+        sales_plot = sales_plot_general[model_algo]
+        fig = plot_sales_all(sales_plot, group, date_start, date_end)
 
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
-                                (sales_plot['index'] <= actual_date_end) ]
-    out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
+        sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
+                                    (sales_plot['index'] <= actual_date_end) ]
+        out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
 
 
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
-                                (sales_plot['index'] <= prediction_date_end) ]
-    out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+        sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
+                                    (sales_plot['index'] <= prediction_date_end) ]
+        out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
     target_member_enter = "entered: {}".format(rupiah_format(target_member))
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))

@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 
 ## for load csv file
 from loader.agsales_load import get_agsales, get_agsales_promo, get_agsales_jsm
-sales_plot = get_agsales()
+sales_plot_general = get_agsales()
 sales_plot_promo = get_agsales_promo()
 sales_plot_jsm = get_agsales_jsm()
 
