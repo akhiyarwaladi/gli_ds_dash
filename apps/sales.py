@@ -145,7 +145,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 html.P(id="target_member_enter"),
                                             ]
                                         ),
-                                        width=3,
+                                        width=2,
                                     ),
                                     dbc.Col(
                                         dbc.FormGroup(
@@ -161,7 +161,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 html.P(id="target_sapa_store_enter"),
                                             ]
                                         ),
-                                        width=3,                                    ),
+                                        width=2,                                    ),
 
                                 ], justify="start",),
 
@@ -171,7 +171,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         
                         ]),
-                    ], style={'height':'135vh'}), md=12),
+                    ], style={'height':'136vh'}), md=12),
 
             ]),
             dbc.Row([
