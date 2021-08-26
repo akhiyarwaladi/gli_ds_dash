@@ -143,7 +143,8 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     id="target_member",
                                                     placeholder="",
                                                     value=target_member_value,
-                                                    plaintext=True
+                                                    plaintext=True,
+                                                    debounce = True
                                                 ),
                                                 html.P(id="target_member_enter"),
                                             ]
@@ -159,7 +160,8 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     id="target_sapa_store",
                                                     placeholder="",
                                                     value=target_sapa_store_value,
-                                                    plaintext=True
+                                                    plaintext=True,
+                                                    debounce = True
                                                 ),
                                                 html.P(id="target_sapa_store_enter"),
                                             ]
