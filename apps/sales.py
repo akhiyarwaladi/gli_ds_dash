@@ -2,6 +2,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
+import pickle
 
 ## for load csv file
 from loader.agsales_load import get_agsales, get_agsales_promo, get_agsales_jsm
