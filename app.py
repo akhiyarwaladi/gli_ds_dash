@@ -32,7 +32,10 @@ from example_plots import (plot_plus_minus, plot_oos_time_spend, plot_new_regula
                             plot_new_regular_trx)
 from plots.campaign_report import w_general_push, w_general_email, w_general_inapp
 from plots.product_plot import plot_product
+
 from plots.agsales_plot import plot_sales_all, plot_sales_promo, plot_sales_jsm
+from plots.agsales_preprocess import adjust_feature_target
+
 from plots.event_product_plot import plot_vp, plot_sp, plot_general_event
 from plots.general_plot import plot_member_count, plot_sapa_count
 from plots.user_path_plot import plot_low_review
