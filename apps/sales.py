@@ -146,7 +146,12 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     plaintext=True,
                                                     debounce = True
                                                 ),
-                                                html.P(id="target_member_enter"),
+                                                dcc.Loading(
+                                                    id="loading-1",
+                                                    type="default",
+                                                    html.P(id="target_member_enter"),
+                                                ),
+                                                
                                             ]
                                         ),
                                         width=2,
@@ -163,19 +168,24 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     plaintext=True,
                                                     debounce = True
                                                 ),
-                                                html.P(id="target_sapa_store_enter"),
+                                                dcc.Loading(
+                                                    id="loading-1",
+                                                    type="default",
+                                                    html.P(id="target_sapa_store_enter"),
+                                                ),
+                                                
                                             ]
                                         ),
                                         width=2,                                    
                                     ),
-                                    dbc.Col(
-                                        dcc.Loading(
-                                            id="loading-1",
-                                            type="default",
+                                    # dbc.Col(
+                                    #     dcc.Loading(
+                                    #         id="loading-1",
+                                    #         type="default",
                                             
-                                        ),
-                                        width=2, 
-                                    ),
+                                    #     ),
+                                    #     width=2, 
+                                    # ),
 
                                 ], justify="start",),
 
