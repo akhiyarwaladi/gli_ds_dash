@@ -88,7 +88,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             ]),
                         dbc.CardFooter([
                           dbc.Card(
-                            dbc.CardBody(
+                            dbc.CardBody([
                                 dbc.Row([
                                     dbc.Col(html.H5([html.B('actual'), ' sales', html.Br(), 'cumulative']), width=3),
                                     dbc.Col(
@@ -106,11 +106,6 @@ sales_tab = dac.TabItem(id='content_sales',
                                     dbc.Col(html.H3(html.Div(id='actual_sales_child')), width=4),
    
                                 ], justify="start",),
-
-                            )
-                          ),
-                          dbc.Card(
-                            dbc.CardBody(
                                 dbc.Row([
                                     dbc.Col(html.H5([html.B('prediction'), ' sales', html.Br(), 'cumulative']), width=3),
                                     dbc.Col(
@@ -129,8 +124,13 @@ sales_tab = dac.TabItem(id='content_sales',
                                     # dbc.Col(html.H3("hehehe"), width=4),
   
                                 ], justify="start",),
+                            ]
                             )
                           ),
+                          # dbc.Card(
+                          #   dbc.CardBody(
+                          #   )
+                          # ),
 
                         
                         ]),
