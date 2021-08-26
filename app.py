@@ -718,16 +718,17 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
         Input('prediction_sales_daterange', 'end_date'),
     ]
 )
-def update_plot_sales(value, date_start, date_end):
+def update_plot_sales(value, date_start, date_end, actual_date_start, actual_date_end,
+                        prediction_date_start, prediction_date_end):
     fig = plot_sales_all(sales_plot, value, date_start, date_end)
 
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
-                                (sales_plot['index'] <= date_end) ]
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
+                                (sales_plot['index'] <= actual_date_end) ]
     out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
 
 
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
-                                (sales_plot['index'] <= date_end) ]
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
+                                (sales_plot['index'] <= prediction_date_end) ]
     out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
 
