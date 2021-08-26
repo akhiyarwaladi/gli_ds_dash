@@ -63,10 +63,10 @@ sales_tab = dac.TabItem(id='content_sales',
                                         id="model_algo_dropdown",
                                         options=[
                                             {"label": "Facebook Prophet", "value": "fbprophet", "disabled": False},
-                                            {"label": "NBEATS", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+                                            {"label": "N-BEATS", "value": "nbeats", "disabled": False},
 
                                         ],
-                                        value="fbprophet"
+                                        value="nbeats"
                                     )                                   
 
                                 , md=3),
