@@ -79,15 +79,20 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.CardBody(
                             [
                                 # html.H5("Card title", className="card-title"),
-                                html.P(
-                                      dcc.Graph(
-                                        # figure=fig_sales_all,
-                                        # config=dict(displayModeBar=False),
-                                        id='sales_fig',
-                                        config=dict(displayModeBar=False),
+                                dcc.Loading(
+                                    id="loading-sales-fig",
+                                    type="default",
+                                    children=html.P(
+                                        dcc.Graph(
+                                         
+                                            id='sales_fig',
+                                            config=dict(displayModeBar=False),
 
-                                        ),className="card-text",
+                                        ),
+                                        className="card-text",
+                                    ),
                                 ),
+
                             ]),
                         dbc.CardFooter([
                           dbc.Card(
