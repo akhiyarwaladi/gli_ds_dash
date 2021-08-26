@@ -2,11 +2,13 @@ import dash_html_components as html
 import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
-import pickle
+
 
 ## for load csv file
 from loader.agsales_load import get_agsales, get_agsales_promo, get_agsales_jsm
 sales_plot_general = get_agsales()
+target_member_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['member']
+target_sapa_store_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['sapa']
 sales_plot_promo = get_agsales_promo()
 sales_plot_jsm = get_agsales_jsm()
 
@@ -140,7 +142,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     type="number",
                                                     id="target_member",
                                                     placeholder="",
-                                                    value=1,
+                                                    value=target_member_value,
                                                     plaintext=True
                                                 ),
                                                 html.P(id="target_member_enter"),
@@ -156,7 +158,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     type="number",
                                                     id="target_sapa_store",
                                                     placeholder="",
-                                                    value=1,
+                                                    value=target_sapa_store_value,
                                                     plaintext=True
                                                 ),
                                                 html.P(id="target_sapa_store_enter"),
