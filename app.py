@@ -707,6 +707,8 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
         Output('sales_fig', 'figure'),
         Output('actual_sales_child', "children"),
         Output('prediction_sales_child', "children"),
+        Output('target_member_enter', 'children'),
+        Output('target_sapa_store_enter', 'children'),
     ],
     [
         Input('group_dropdown', 'value'),
@@ -734,8 +736,10 @@ def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start
                                 (sales_plot['index'] <= prediction_date_end) ]
     out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
+    target_member_enter = "entered: {}".format(rupiah_format(target_member))
+    target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
 
-    return fig, out_actual, out_prediction
+    return fig, out_actual, out_prediction, target_member_enter, target_sapa_store_enter
 
 
 # @app.callback(
