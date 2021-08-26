@@ -16,6 +16,7 @@ def transform_to_rupiah_format(value):
 
     if math.isnan(value):
         return np.nan
+    value = float(int(value))
     str_value = str(value)
 
     unit = ''
@@ -62,7 +63,7 @@ def transform_to_rupiah_format(value):
 def transform_to_rupiah(value):
     if math.isnan(value):
         return np.nan
-    
+    value = float(int(value))
     str_value = str(value)
     unit = ''
     show_result = ''
@@ -106,7 +107,7 @@ def transform_format(value):
     
     if math.isnan(value):
         return np.nan
-    
+    value = float(int(value))
     str_value = str(value)
     separate_decimal = str_value.split(".")
     after_decimal = separate_decimal[0]
@@ -130,7 +131,7 @@ def transform_to_format(value):
     
     if math.isnan(value):
         return np.nan
-    
+    value = float(int(value))
     str_value = str(value)
     unit = ''
 
