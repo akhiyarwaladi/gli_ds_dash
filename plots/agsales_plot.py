@@ -33,14 +33,16 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET'],
 	    name='Actual',
-	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah)
+	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
+	    mode="lines+markers",
 
 	))
 	fig.add_trace(go.Scatter(
 	    x=sales_plot['index'],
 	    y=sales_plot['TRO_NET_PRED'],
 	    name='Prediction',
-	    text=sales_plot['TRO_NET_PRED'].astype(float).apply(transform_to_rupiah)
+	    text=sales_plot['TRO_NET_PRED'].astype(float).apply(transform_to_rupiah),
+	    mode="lines+markers",
 	))
 
 	for i, r in sales_plot.iterrows():
