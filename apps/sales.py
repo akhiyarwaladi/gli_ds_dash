@@ -47,7 +47,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                           start_date=start_picker,
                                           end_date=dt(2021,12,31)
                                       )
-                                , md=3),
+                                , md=4),
                                 dbc.Col(
                                 dcc.Dropdown(
                                     id='demo-dropdown',
@@ -57,7 +57,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ],
                                     value='Daily'
                                 )
-                                , md=3),
+                                , md=2),
                                 dbc.Col(                                            
                                     dbc.Select(
                                         id="model_algo_dropdown",
