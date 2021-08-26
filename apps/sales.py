@@ -35,8 +35,8 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.CardHeader(
                           [
                             dbc.Row([
-                              dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales')])), md=4),
-                              dbc.Col(
+                                dbc.Col(html.Div(html.H4(['Alfagift ', html.B('Sales')])), md=3),
+                                dbc.Col(
                                       dcc.DatePickerRange(
                                           id='all_sales_daterange',
                                           min_date_allowed=dt(2020, 1, 1),
@@ -47,8 +47,8 @@ sales_tab = dac.TabItem(id='content_sales',
                                           start_date=start_picker,
                                           end_date=dt(2021,12,31)
                                       )
-                              , md=4),
-                              dbc.Col(
+                                , md=3),
+                                dbc.Col(
                                 dcc.Dropdown(
                                     id='demo-dropdown',
                                     options=[
@@ -57,7 +57,19 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ],
                                     value='Daily'
                                 )
-                              , md=4),
+                                , md=3),
+                                dbc.Col(                                            
+                                    dbc.Select(
+                                        id="model_algo_dropdown",
+                                        options=[
+                                            {"label": "Facebook Prophet", "value": "fbprophet", "disabled": False},
+                                            {"label": "NBEATS", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
+
+                                        ],
+                                        value="fbprophet"
+                                    )                                   
+
+                                , md=3),
                             ])
                           ]
                         ),
