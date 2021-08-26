@@ -761,7 +761,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start
 
     sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
                                 (sales_plot['index'] <= prediction_date_end) ]
-    out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+    out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].astype(int).astype(float).sum()))
 
     target_member_enter = "entered: {}".format(rupiah_format(target_member))
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
