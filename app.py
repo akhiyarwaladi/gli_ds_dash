@@ -707,7 +707,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 
 @app.callback(
     [
-        Output("loading-output-1", "children"),
+        
         Output('sales_fig', 'figure'),
         Output('actual_sales_child', "children"),
         Output('prediction_sales_child', "children"),

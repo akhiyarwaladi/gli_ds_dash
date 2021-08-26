@@ -172,7 +172,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         dcc.Loading(
                                             id="loading-1",
                                             type="default",
-                                            children=html.Div(id="loading-output-1")
+                                            
                                         ),
                                         width=2, 
                                     ),
