@@ -200,7 +200,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         
                         ]),
-                    ], style={'height':'144vh'}), md=12),
+                    ], style={'height':'145vh'}), md=12),
 
             ]),
             dbc.Row([
