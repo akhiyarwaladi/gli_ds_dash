@@ -128,10 +128,46 @@ sales_tab = dac.TabItem(id='content_sales',
                             ]
                             )
                           ),
-                          # dbc.Card(
-                          #   dbc.CardBody(
-                          #   )
-                          # ),
+                          dbc.Card(
+                            dbc.CardBody(
+                                dbc.Row([
+                                    dbc.Col(
+                                        dbc.FormGroup(
+                                            [
+                                                dbc.Label("Target member", html_for="example-email-grid"),
+                                                dbc.Input(
+                                                    type="number",
+                                                    id="target_member",
+                                                    placeholder="",
+                                                    value=1,
+                                                    plaintext=True
+                                                ),
+                                                html.P(id="target_member_enter"),
+                                            ]
+                                        ),
+                                        width=4,
+                                    ),
+                                    dbc.Col(
+                                        dbc.FormGroup(
+                                            [
+                                                dbc.Label("Target sapa store", html_for="example-email-grid"),
+                                                dbc.Input(
+                                                    type="number",
+                                                    id="target_sapa_store",
+                                                    placeholder="",
+                                                    value=1,
+                                                    plaintext=True
+                                                ),
+                                                html.P(id="target_sapa_store_enter"),
+                                            ]
+                                        ),
+                                        width=4,                                    ),
+
+                                ], justify="start",),
+
+
+                            )
+                          ),
 
                         
                         ]),
