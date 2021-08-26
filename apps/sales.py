@@ -50,7 +50,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                 , md=4),
                                 dbc.Col(
                                 dcc.Dropdown(
-                                    id='demo-dropdown',
+                                    id='group_dropdown',
                                     options=[
                                         {'label': 'Monthly', 'value': 'Monthly'},
                                         {'label': 'Daily', 'value': 'Daily'}
@@ -171,7 +171,7 @@ sales_tab = dac.TabItem(id='content_sales',
 
                         
                         ]),
-                    ], style={'height':'140vh'}), md=12),
+                    ], style={'height':'145vh'}), md=12),
 
             ]),
             dbc.Row([

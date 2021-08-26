@@ -606,29 +606,7 @@ def update_low_review(rows, derived_virtual_selected_rows):
     return '({})'.format(len(rows))
 
 
-@app.callback(
-    Output('actual_sales_child', "children"),
-    [
-        Input('actual_sales_daterange', 'start_date'),
-        Input('actual_sales_daterange', 'end_date'),
-    ]
-)
-def update_actual(date_start, date_end):
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
-                                (sales_plot['index'] <= date_end) ]
-    return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
 
-@app.callback(
-    Output('prediction_sales_child', "children"),
-    [
-        Input('prediction_sales_daterange', 'start_date'),
-        Input('prediction_sales_daterange', 'end_date'),
-    ]
-)
-def update_prediction(date_start, date_end):
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
-                                (sales_plot['index'] <= date_end) ]
-    return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
 
 @app.callback(
@@ -725,17 +703,61 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 
 
 @app.callback(
-    Output('sales_fig', 'figure'),
     [
-        Input('demo-dropdown', 'value'),
+        Output('sales_fig', 'figure'),
+        Output('actual_sales_child', "children"),
+        Output('prediction_sales_child', "children"),
+    ],
+    [
+        Input('group_dropdown', 'value'),
         Input('all_sales_daterange', 'start_date'),
         Input('all_sales_daterange', 'end_date'),
+        Input('actual_sales_daterange', 'start_date'),
+        Input('actual_sales_daterange', 'end_date'),
+        Input('prediction_sales_daterange', 'start_date'),
+        Input('prediction_sales_daterange', 'end_date'),
     ]
 )
 def update_plot_sales(value, date_start, date_end):
     fig = plot_sales_all(sales_plot, value, date_start, date_end)
 
-    return fig
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
+                                (sales_plot['index'] <= date_end) ]
+    out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
+
+
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
+                                (sales_plot['index'] <= date_end) ]
+    out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+
+
+    return fig, out_actual, out_prediction
+
+
+# @app.callback(
+#     Output('actual_sales_child', "children"),
+#     [
+#         Input('actual_sales_daterange', 'start_date'),
+#         Input('actual_sales_daterange', 'end_date'),
+#     ]
+# )
+# def update_actual(date_start, date_end):
+#     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
+#                                 (sales_plot['index'] <= date_end) ]
+#     return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
+
+# @app.callback(
+#     Output('prediction_sales_child', "children"),
+#     [
+#         Input('prediction_sales_daterange', 'start_date'),
+#         Input('prediction_sales_daterange', 'end_date'),
+#     ]
+# )
+# def update_prediction(date_start, date_end):
+#     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
+#                                 (sales_plot['index'] <= date_end) ]
+#     return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+
 
 
 @app.callback(
