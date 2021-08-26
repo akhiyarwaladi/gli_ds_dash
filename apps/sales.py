@@ -166,7 +166,16 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 html.P(id="target_sapa_store_enter"),
                                             ]
                                         ),
-                                        width=2,                                    ),
+                                        width=2,                                    
+                                    ),
+                                    dbc.Col(
+                                        dcc.Loading(
+                                            id="loading-1",
+                                            type="default",
+                                            children=html.Div(id="loading-output-1")
+                                        ),
+                                        width=2, 
+                                    ),
 
                                 ], justify="start",),
 
