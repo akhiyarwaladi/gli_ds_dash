@@ -149,7 +149,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 dcc.Loading(
                                                     id="loading-1",
                                                     type="default",
-                                                    html.P(id="target_member_enter"),
+                                                    children=html.P(id="target_member_enter"),
                                                 ),
                                                 
                                             ]
@@ -171,7 +171,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 dcc.Loading(
                                                     id="loading-1",
                                                     type="default",
-                                                    html.P(id="target_sapa_store_enter"),
+                                                    children=html.P(id="target_sapa_store_enter"),
                                                 ),
                                                 
                                             ]
