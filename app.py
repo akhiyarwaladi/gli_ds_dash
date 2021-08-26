@@ -730,14 +730,33 @@ def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start
         sales_plot = sales_plot_general[model_algo]
         fig = plot_sales_all(sales_plot, group, date_start, date_end)
 
-        sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
-                                    (sales_plot['index'] <= actual_date_end) ]
-        out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
+    if model_algo == 'fbprophet':
+
+        df_tto_test = adjust_feature_target(int(target_member), 'member', sales_plot_general['fbprophet'][2])
+        df_tto_test = adjust_feature_target(int(target_sapa_store), 'sapa', df_tto_test)
+
+        m = sales_plot_general['fbprophet'][4]
+        df = sales_plot_general['fbprophet'][3]
+        df_test = df_tto_test.rename(columns={'TRO_DATE_ORDER':'ds','TRO_NET':'y'})
+        df_test['ds'] = pd.to_datetime(df_test['ds'])
+
+        forecast_train = m.predict(df.drop(columns="y"))
+        train = pd.merge(forecast_train[['ds','yhat','yhat_upper', 'yhat_lower']], df[['ds','y']],on='ds')
+
+        forecast_future = m.predict(df_test)
+        train = pd.concat([train, forecast_future[['ds','yhat','yhat_upper', 'yhat_lower']]])
+        sales_plot = train.rename(columns={'ds':'index','yhat':'TRO_NET_PRED','y':'TRO_NET'})
+        sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
 
 
-        sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
-                                    (sales_plot['index'] <= prediction_date_end) ]
-        out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
+                                (sales_plot['index'] <= actual_date_end) ]
+    out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
+
+
+    sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
+                                (sales_plot['index'] <= prediction_date_end) ]
+    out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
     target_member_enter = "entered: {}".format(rupiah_format(target_member))
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
