@@ -710,17 +710,20 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
     ],
     [
         Input('group_dropdown', 'value'),
+        Input('model_algo_dropdown', 'value'),
         Input('all_sales_daterange', 'start_date'),
         Input('all_sales_daterange', 'end_date'),
         Input('actual_sales_daterange', 'start_date'),
         Input('actual_sales_daterange', 'end_date'),
         Input('prediction_sales_daterange', 'start_date'),
         Input('prediction_sales_daterange', 'end_date'),
+        Input('target_member', 'value'),
+        Input('target_sapa_store', 'value'),
     ]
 )
-def update_plot_sales(value, date_start, date_end, actual_date_start, actual_date_end,
-                        prediction_date_start, prediction_date_end):
-    fig = plot_sales_all(sales_plot, value, date_start, date_end)
+def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start, actual_date_end,
+                        prediction_date_start, prediction_date_end, target_member, target_sapa_store):
+    fig = plot_sales_all(sales_plot, group, date_start, date_end)
 
     sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
                                 (sales_plot['index'] <= actual_date_end) ]
