@@ -147,7 +147,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     debounce = True
                                                 ),
                                                 dcc.Loading(
-                                                    id="loading-1",
+                                                    id="loading-member",
                                                     type="default",
                                                     children=html.P(id="target_member_enter"),
                                                 ),
@@ -169,7 +169,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                     debounce = True
                                                 ),
                                                 dcc.Loading(
-                                                    id="loading-1",
+                                                    id="loading-sapa",
                                                     type="default",
                                                     children=html.P(id="target_sapa_store_enter"),
                                                 ),
