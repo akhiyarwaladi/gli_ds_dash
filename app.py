@@ -751,6 +751,8 @@ def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start
         sales_plot = train.rename(columns={'ds':'index','yhat':'TRO_NET_PRED','y':'TRO_NET'})
         sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
 
+        fig = plot_sales_all(sales_plot, group, date_start, date_end)
+
 
     sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
                                 (sales_plot['index'] <= actual_date_end) ]
