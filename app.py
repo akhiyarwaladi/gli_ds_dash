@@ -777,31 +777,40 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
 
 
 @app.callback(
-    Output('actual_sales_child', "children"),
+    [
+        Output('actual_sales_child', "children"),
+        Output('prediction_sales_child', "children"),
+    ]
     [
         Input('actual_sales_daterange', 'start_date'),
         Input('actual_sales_daterange', 'end_date'),
-        Input('sales_fig_store', 'data')
-    ]
-)
-def update_actual(date_start, date_end, sales_plot_store):
-    sales_plot = pd.read_json(sales_plot_store, orient='split')
-    sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
-                                (sales_plot['index'] <= date_end) ]
-    return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
-
-@app.callback(
-    Output('prediction_sales_child', "children"),
-    [
         Input('prediction_sales_daterange', 'start_date'),
         Input('prediction_sales_daterange', 'end_date'),
         Input('sales_fig_store', 'data')
     ]
 )
-def update_prediction(date_start, date_end, sales_plot):
+def update_actual(date_start, date_end, p_date_start, p_date_end, sales_plot_store):
+    sales_plot = pd.read_json(sales_plot_store, orient='split')
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
-    return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
+
+    p_sales_plot_sel = sales_plot[(sales_plot['index'] >= p_date_start) &
+                                (sales_plot['index'] <= p_date_end) ]
+    return ('[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum())),
+        '[ {} ]'.format(transform_to_rupiah(p_sales_plot_sel['TRO_NET_PRED'].sum())))
+
+# @app.callback(
+#     Output('prediction_sales_child', "children"),
+#     [
+#         Input('prediction_sales_daterange', 'start_date'),
+#         Input('prediction_sales_daterange', 'end_date'),
+#         Input('sales_fig_store', 'data')
+#     ]
+# )
+# def update_prediction(date_start, date_end, sales_plot):
+#     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
+#                                 (sales_plot['index'] <= date_end) ]
+#     return 
 
 
 
