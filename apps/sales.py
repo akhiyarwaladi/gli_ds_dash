@@ -93,6 +93,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ),
                                 ),
                                 dcc.Store(id='sales_fig_store'),
+                                dcc.Store(id='sales_group_store'),
 
                             ]),
                         dbc.CardFooter([

@@ -690,7 +690,8 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 @app.callback(
     [
         Output('sales_fig_store', 'data'),
-        Output('sales_fig', 'figure'),
+        Output('sales_group_store', 'value'),
+        # Output('sales_fig', 'figure'),
         # Output('actual_sales_child', "children"),
         # Output('prediction_sales_child', "children"),
         Output('target_member_enter', 'children'),
@@ -699,8 +700,8 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
     [
         Input('group_dropdown', 'value'),
         Input('model_algo_dropdown', 'value'),
-        Input('all_sales_daterange', 'start_date'),
-        Input('all_sales_daterange', 'end_date'),
+        # Input('all_sales_daterange', 'start_date'),
+        # Input('all_sales_daterange', 'end_date'),
         # Input('actual_sales_daterange', 'start_date'),
         # Input('actual_sales_daterange', 'end_date'),
         # Input('prediction_sales_daterange', 'start_date'),
@@ -715,7 +716,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
     
     if model_algo == 'nbeats':
         sales_plot = sales_plot_general[model_algo]
-        fig = plot_sales_all(sales_plot, group, date_start, date_end)
+        # fig = plot_sales_all(sales_plot, group, date_start, date_end)
 
     if model_algo == 'fbprophet':
 
@@ -735,7 +736,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
         sales_plot = train.rename(columns={'ds':'index','yhat':'TRO_NET_PRED','y':'TRO_NET'})
         sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
 
-        fig = plot_sales_all(sales_plot, group, date_start, date_end)
+        # fig = plot_sales_all(sales_plot, group, date_start, date_end)
 
 
     # sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
@@ -754,8 +755,25 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
     sales_plot_store = sales_plot.to_json(date_format='iso', orient='split')
     # return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
     #     target_sapa_store_enter)
-    return (sales_plot_store, fig, target_member_enter, 
+    return (sales_plot_store, group, target_member_enter, 
         target_sapa_store_enter)
+
+@app.callback(
+    [
+        Output('sales_fig', 'figure')
+    ],
+    [
+        Input('all_sales_daterange', 'start_date'),
+        Input('all_sales_daterange', 'end_date'),
+        Input('sales_fig_store', 'data')
+        Input('sales_group_store','value')
+    ]
+)
+def update_fig(sales_plot_store, sales_group_store):
+    sales_plot = pd.read_json(sales_plot_store, orient='split')
+    group = sales_group_store
+    fig = plot_sales_all(sales_plot, group, date_start, date_end)
+    return fig
 
 
 @app.callback(
