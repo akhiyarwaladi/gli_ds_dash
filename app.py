@@ -780,7 +780,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
     [
         Output('actual_sales_child', "children"),
         Output('prediction_sales_child', "children"),
-    ]
+    ],
     [
         Input('actual_sales_daterange', 'start_date'),
         Input('actual_sales_daterange', 'end_date'),
