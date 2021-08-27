@@ -261,7 +261,7 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.Row([
                             dbc.Col(
                                 dcc.Loading(
-                                    id="loading-member",
+                                    id="loading-sales-promo",
                                     type="default",
                                     children=html.P(
                                         dcc.Graph(
