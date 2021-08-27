@@ -25,10 +25,10 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 
 	# change grouping if selected monthly
 	if value == 'Monthly':
-	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')]).sum().reset_index()
-	    sales_plot['index'] = pd.to_datetime(sales_plot['index'].dt.strftime('%Y-%m'))
-	    gap_anot = 1
-	    tickformat_str = "%b%y"
+		sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')]).sum().reset_index()
+		sales_plot['index'] = pd.to_datetime(sales_plot['index'].dt.strftime('%Y-%m'))
+		gap_anot = 1
+		tickformat_str = "%b%y"
 
 	fig = go.Figure()
 	fig.add_trace(
@@ -81,27 +81,27 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	        )
 
 	    )
-	    for i, r in sales_plot.iterrows():
-	        if i%gap_anot == 0:
-	            # if not np.isnan(r['TRO_NET']):
-	            #     fig.add_annotation(x=r['index'], y=r['TRO_NET'],
-	            #             text=transform_to_rupiah(r['TRO_NET']),
-	            #             showarrow=True,
-	            #             ax=10,
-	            #             ay=25,
-	            #             arrowhead=1)
-	            if not np.isnan(r['TRO_NET_PRED']):
-	                fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
-	                        text=transform_to_rupiah(float(int(r['TRO_NET_PRED']))),
-	                        font=dict(
-	                            family="Roboto",
-	                            size=13,
-	                            color="black"
-	                        ),
-	                        showarrow=True,
-	                        ax=-10,
-	                        ay=-45,
-	                        arrowhead=1)
+	for i, r in sales_plot.iterrows():
+		if i%gap_anot == 0:
+			# if not np.isnan(r['TRO_NET']):
+			#     fig.add_annotation(x=r['index'], y=r['TRO_NET'],
+			#             text=transform_to_rupiah(r['TRO_NET']),
+			#             showarrow=True,
+			#             ax=10,
+			#             ay=25,
+			#             arrowhead=1)
+			if not np.isnan(r['TRO_NET_PRED']):
+				fig.add_annotation(x=r['index'], y=r['TRO_NET_PRED'],
+				   text=transform_to_rupiah(float(int(r['TRO_NET_PRED']))),
+				   font=dict(
+				       family="Roboto",
+				       size=13,
+				       color="black"
+				   ),
+				   showarrow=True,
+				   ax=-10,
+				   ay=-45,
+				   arrowhead=1)
 
 
 	fig.update_traces(
@@ -137,6 +137,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
+	    
 	fig.update_layout( title='',
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
