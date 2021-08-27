@@ -759,9 +759,9 @@ def update_plot_sales(group, model_algo, target_member, target_sapa_store):
         target_sapa_store_enter)
 
 @app.callback(
-    [
-        Output('sales_fig', 'figure')
-    ],
+    
+    Output('sales_fig', 'figure'),
+    
     [
         Input('all_sales_daterange', 'start_date'),
         Input('all_sales_daterange', 'end_date'),
