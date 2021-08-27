@@ -771,6 +771,7 @@ def update_plot_sales(group, model_algo, target_member, target_sapa_store):
 )
 def update_fig(date_start, date_end, sales_plot_store, sales_group_store):
     sales_plot = pd.read_json(sales_plot_store, orient='split')
+    sales_plot['index'] = pd.to_datetime(sales_plot['index'])
     group = sales_group_store
     fig = plot_sales_all(sales_plot, group, date_start, date_end)
     return fig
