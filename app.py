@@ -690,7 +690,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 @app.callback(
     [
         Output('sales_fig_store', 'data'),
-        Output('sales_group_store', 'data'),
+        # Output('sales_group_store', 'data'),
         # Output('sales_fig', 'figure'),
         # Output('actual_sales_child', "children"),
         # Output('prediction_sales_child', "children"),
@@ -698,7 +698,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
         Output('target_sapa_store_enter', 'children'),
     ],
     [
-        Input('group_dropdown', 'value'),
+        # Input('group_dropdown', 'value'),
         Input('model_algo_dropdown', 'value'),
         # Input('all_sales_daterange', 'start_date'),
         # Input('all_sales_daterange', 'end_date'),
@@ -712,7 +712,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 )
 # def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start, actual_date_end,
 #                         prediction_date_start, prediction_date_end, target_member, target_sapa_store):
-def update_plot_sales(group, model_algo, target_member, target_sapa_store):
+def update_plot_sales(model_algo, target_member, target_sapa_store):
     
     if model_algo == 'nbeats':
         sales_plot = sales_plot_general[model_algo]
@@ -755,7 +755,7 @@ def update_plot_sales(group, model_algo, target_member, target_sapa_store):
     sales_plot_store = sales_plot.to_json(date_format='iso', orient='split')
     # return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
     #     target_sapa_store_enter)
-    return (sales_plot_store, group, target_member_enter, 
+    return (sales_plot_store, target_member_enter, 
         target_sapa_store_enter)
 
 @app.callback(
@@ -765,14 +765,14 @@ def update_plot_sales(group, model_algo, target_member, target_sapa_store):
     [
         Input('all_sales_daterange', 'start_date'),
         Input('all_sales_daterange', 'end_date'),
+        Input('group_dropdown', 'value'),
         Input('sales_fig_store', 'data'),
-        Input('sales_group_store','data')
     ]
 )
-def update_fig(date_start, date_end, sales_plot_store, sales_group_store):
+def update_fig(date_start, date_end, group_dropdown, sales_plot_store):
     sales_plot = pd.read_json(sales_plot_store, orient='split')
     sales_plot['index'] = pd.to_datetime(sales_plot['index'])
-    group = sales_group_store
+    group = group_dropdown
     fig = plot_sales_all(sales_plot, group, date_start, date_end)
     return fig
 
