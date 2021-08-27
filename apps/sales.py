@@ -73,7 +73,23 @@ sales_tab = dac.TabItem(id='content_sales',
                                     )                                   
 
                                 , md=3),
-                            ])
+                            ]),
+                            dbc.Row([
+                                dbc.Col('', md=3),
+                                dbc.Col('', md=4),
+                                dbc.Col('', md=2),
+                                dbc.Col(
+                                    dcc.Loading(
+                                        id="loading-model",
+                                        type="default",
+                                        children=html.P(id="loading_model")
+                                            
+                                        
+                                    ),
+
+                                , md=3),
+                            ]),
+
                           ]
                         ),
                         dbc.CardBody(
@@ -93,7 +109,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     ),
                                 ),
                                 dcc.Store(id='sales_fig_store'),
-                                dcc.Store(id='sales_group_store'),
+                               
 
                             ]),
                         dbc.CardFooter([

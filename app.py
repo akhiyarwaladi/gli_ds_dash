@@ -696,6 +696,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
         # Output('prediction_sales_child', "children"),
         Output('target_member_enter', 'children'),
         Output('target_sapa_store_enter', 'children'),
+        Output('loading_model', 'children'),
     ],
     [
         # Input('group_dropdown', 'value'),
@@ -756,7 +757,7 @@ def update_plot_sales(model_algo, target_member, target_sapa_store):
     # return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
     #     target_sapa_store_enter)
     return (sales_plot_store, target_member_enter, 
-        target_sapa_store_enter)
+        target_sapa_store_enter, '')
 
 @app.callback(
     
