@@ -260,16 +260,20 @@ sales_tab = dac.TabItem(id='content_sales',
                     dbc.CardBody([
                         dbc.Row([
                             dbc.Col(
-                                html.P(
-                                    dcc.Graph(
-                                        # figure=fig_sales_all,
-                                        # config=dict(displayModeBar=False),
-                                        id='sales_promo_fig',
-                                        config=dict(displayModeBar=False),
+                                dcc.Loading(
+                                    id="loading-member",
+                                    type="default",
+                                    children=html.P(
+                                        dcc.Graph(
+                                            # figure=fig_sales_all,
+                                            # config=dict(displayModeBar=False),
+                                            id='sales_promo_fig',
+                                            config=dict(displayModeBar=False),
 
+                                        )
                                     )
                                 )
-                                , width=12
+                            , width=12
                             )
 
                         ],style={"margin-bottom": "0px", "margin-top": "10px"}),
