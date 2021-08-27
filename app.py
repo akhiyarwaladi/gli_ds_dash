@@ -712,7 +712,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 )
 # def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start, actual_date_end,
 #                         prediction_date_start, prediction_date_end, target_member, target_sapa_store):
-def update_plot_sales(group, model_algo, date_start, date_end, target_member, target_sapa_store):
+def update_plot_sales(group, model_algo, target_member, target_sapa_store):
     
     if model_algo == 'nbeats':
         sales_plot = sales_plot_general[model_algo]
