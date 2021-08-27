@@ -770,7 +770,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
 
     # return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
     #     target_sapa_store_enter)
-    return (fig_store, fig, target_member_enter, 
+    return (sales_plot, fig, target_member_enter, 
         target_sapa_store_enter)
 
 
