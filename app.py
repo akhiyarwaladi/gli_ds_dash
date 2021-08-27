@@ -767,7 +767,8 @@ def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start
     target_member_enter = "entered: {}".format(rupiah_format(target_member))
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
 
-    return fig, out_actual, out_prediction, target_member_enter, target_sapa_store_enter
+    return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
+        target_sapa_store_enter)
 
 
 @app.callback(
