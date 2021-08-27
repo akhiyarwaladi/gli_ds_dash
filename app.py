@@ -690,7 +690,7 @@ def update_prediction(date_start, date_end, range_start, range_end, agg_value, c
 @app.callback(
     [
         Output('sales_fig_store', 'data'),
-        Output('sales_group_store', 'value'),
+        Output('sales_group_store', 'data'),
         # Output('sales_fig', 'figure'),
         # Output('actual_sales_child', "children"),
         # Output('prediction_sales_child', "children"),
@@ -766,7 +766,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
         Input('all_sales_daterange', 'start_date'),
         Input('all_sales_daterange', 'end_date'),
         Input('sales_fig_store', 'data'),
-        Input('sales_group_store','value')
+        Input('sales_group_store','data')
     ]
 )
 def update_fig(date_start, date_end, sales_plot_store, sales_group_store):
