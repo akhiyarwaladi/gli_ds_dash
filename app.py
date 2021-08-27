@@ -1,6 +1,6 @@
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-
+import json
 import dash
 from dash.dependencies import Input, Output
 
@@ -768,9 +768,11 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
     target_member_enter = "entered: {}".format(rupiah_format(target_member))
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
 
+
+    sales_plot_store = sales_plot.to_json(date_format='iso', orient='split')
     # return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
     #     target_sapa_store_enter)
-    return (sales_plot, fig, target_member_enter, 
+    return (sales_plot_store, fig, target_member_enter, 
         target_sapa_store_enter)
 
 
@@ -782,7 +784,8 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
         Input('sales_fig_store', 'data')
     ]
 )
-def update_actual(date_start, date_end, sales_plot):
+def update_actual(date_start, date_end, sales_plot_store):
+    sales_plot = pd.read_json(sales_plot_store, orient='split')
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
     return '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
