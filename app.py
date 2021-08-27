@@ -482,24 +482,6 @@ def make_plot_callback(date_start, date_end):
     return fig
 
 
-# @app.callback(
-#     [
-#         Output('sales_fig', 'figure'),
-#         Output('sales_table', 'children')
-#     ],
-#     [
-#         Input('demo-dropdown', 'value')
-#     ]
-# )
-# def update_plot_sales(value):
-#     fig = plot_sales_all(sales_plot, value)
-#     if value == 'Monthly':
-
-#         table = plot_table_sales(sales_plot_table, value)
-#     else:
-#         table = plot_table_sales(sales_plot_table_daily, value)
-#     return fig, table
-
 @app.callback(
     Output('vp_fig', 'figure'),
     [
@@ -798,20 +780,6 @@ def update_actual(date_start, date_end, p_date_start, p_date_end, sales_plot_sto
                                 (sales_plot['index'] <= p_date_end) ]
     return ('[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum())),
         '[ {} ]'.format(transform_to_rupiah(p_sales_plot_sel['TRO_NET_PRED'].sum())))
-
-# @app.callback(
-#     Output('prediction_sales_child', "children"),
-#     [
-#         Input('prediction_sales_daterange', 'start_date'),
-#         Input('prediction_sales_daterange', 'end_date'),
-#         Input('sales_fig_store', 'data')
-#     ]
-# )
-# def update_prediction(date_start, date_end, sales_plot):
-#     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
-#                                 (sales_plot['index'] <= date_end) ]
-#     return 
-
 
 
 @app.callback(
