@@ -765,7 +765,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
     [
         Input('all_sales_daterange', 'start_date'),
         Input('all_sales_daterange', 'end_date'),
-        Input('sales_fig_store', 'data')
+        Input('sales_fig_store', 'data'),
         Input('sales_group_store','value')
     ]
 )
