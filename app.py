@@ -769,7 +769,7 @@ def update_plot_sales(group, model_algo, date_start, date_end, target_member, ta
         Input('sales_group_store','value')
     ]
 )
-def update_fig(sales_plot_store, sales_group_store):
+def update_fig(date_start, date_end, sales_plot_store, sales_group_store):
     sales_plot = pd.read_json(sales_plot_store, orient='split')
     group = sales_group_store
     fig = plot_sales_all(sales_plot, group, date_start, date_end)
