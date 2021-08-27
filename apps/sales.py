@@ -85,7 +85,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         children=html.P(id="loading_model")
                                             
                                         
-                                    ),
+                                    )
 
                                 , md=3),
                             ]),
