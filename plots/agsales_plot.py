@@ -203,7 +203,7 @@ def plot_sales_promo(sales_plot):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout( 
+	fig.update_layout(hovermode="x",
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
@@ -310,7 +310,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
-	fig.update_layout( title=promo_name,
+	fig.update_layout( title=promo_name, hovermode="x",
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
