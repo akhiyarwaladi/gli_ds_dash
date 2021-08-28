@@ -138,7 +138,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	            borderwidth=1
 	        )
 	    
-	fig.update_layout( title='',
+	fig.update_layout( title='', hovermode="x",
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
 	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
