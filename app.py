@@ -733,7 +733,7 @@ def update_plot_sales(model_algo, target_member, target_sapa_store):
         train = pd.merge(forecast_train[['ds','yhat','yhat_upper', 'yhat_lower']], df[['ds','y']],on='ds')
 
         forecast_future = m.predict(df_test)
-        train = pd.concat([train, forecast_future[['ds','yhat','yhat_upper', 'yhat_lower']]]).drop_duplicates(subset=['ds'], keep='last')
+        train = pd.concat([train, forecast_future[['ds','yhat','yhat_upper', 'yhat_lower']]]).drop_duplicates(subset=['ds'], keep='first')
         sales_plot = train.rename(columns={'ds':'index','yhat':'TRO_NET_PRED','y':'TRO_NET'})
         sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
 
