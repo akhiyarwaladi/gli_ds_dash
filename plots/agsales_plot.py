@@ -141,7 +141,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	fig.update_layout( title='', hovermode="x",
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
-	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	      yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':70, 'b':70},legend=legend_dict,\
@@ -204,9 +204,9 @@ def plot_sales_promo(sales_plot):
 	            borderwidth=1
 	        )
 	fig.update_layout(hovermode="x",
-	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+	      	xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
-	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	       yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':0, 'b':70},legend=legend_dict,\
@@ -313,7 +313,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	fig.update_layout( title=promo_name, hovermode="x",
 	      xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
-	            yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	      yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
 	                  {'l':70, 'r':30, 't':70, 'b':70},legend=legend_dict,\
