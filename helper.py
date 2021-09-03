@@ -84,16 +84,16 @@ def transform_to_rupiah(value):
 
     temp_result = temp_reverse_value[::-1]
 
-    if len(str_value) > 15:
+    if len(str_value) >= 15:
         unit = 'M'
         show_result = temp_result.split('.')[0] + temp_result.split('.')[1] + "," + temp_result.split('.')[1][0]
-    elif len(str_value) > 12:
+    elif len(str_value) >= 12:
         unit = 'M'
         show_result = temp_result.split('.')[0] + "," + temp_result.split('.')[1][0]
-    elif len(str_value) > 8:
+    elif len(str_value) >= 8:
         unit = 'JT'
         show_result = temp_result.split('.')[0]
-    elif len(str_value) > 5:
+    elif len(str_value) >= 5:
         unit = 'RB'
         show_result = temp_result.split('.')[0]
     else:

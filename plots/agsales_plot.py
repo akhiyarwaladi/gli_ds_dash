@@ -3,7 +3,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 from datetime import datetime, timedelta
 
-pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option('display.float_format', lambda x: '%.1f' % x)
 import matplotlib.pyplot as plt
 
 from helper import transform_to_rupiah_format, transform_to_rupiah
