@@ -34,7 +34,8 @@ from plots.campaign_report import w_general_push, w_general_email, w_general_ina
 from plots.product_plot import plot_product
 
 from plots.agsales_plot import plot_sales_all, plot_sales_promo
-from plots.agsales_preprocess import adjust_feature_target
+from plots.agsales_preprocess import (adjust_feature_target,
+                                    adjust_promo_feature_target)
 
 from plots.event_product_plot import plot_vp, plot_sp, plot_general_event
 from plots.general_plot import plot_member_count, plot_sapa_count
