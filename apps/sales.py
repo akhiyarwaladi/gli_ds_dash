@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 
-import promo_selector
+from config_var import promo_selector
 
 ## for load csv file
 from loader.agsales_load import get_agsales, get_agsales_promo
