@@ -749,7 +749,7 @@ def update_plot_sales(promo_name, target_member, target_sapa_store):
         Input('sales_promo_fig_store', 'data'),
     ]
 )
-def update_fig(date_start, date_end, group_dropdown, sales_plot_store):
+def update_fig(date_start, date_end, promo_name, group_dropdown, sales_plot_store):
     sales_plot = pd.read_json(sales_plot_store, orient='split')
     sales_plot['index'] = pd.to_datetime(sales_plot['index'])
     group = group_dropdown
