@@ -300,7 +300,7 @@ sales_tab = dac.TabItem(id='content_sales',
                     ]),
                     dbc.CardBody([
                         dbc.Row([
-                            dbc.Col(
+                            dbc.Col([
                                 dcc.Loading(
                                     id="loading-sales-promo",
                                     type="default",
@@ -313,7 +313,9 @@ sales_tab = dac.TabItem(id='content_sales',
 
                                         )
                                     )
-                                )
+                                ),
+                                dcc.Store(id='sales_promo_fig_store'),
+                            ]
                             , width=12
                             )
 
