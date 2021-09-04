@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 
 
 ## for load csv file
-from loader.agsales_load import get_agsales, get_agsales_promo, get_agsales_jsm
+from loader.agsales_load import get_agsales, get_agsales_promo
 sales_plot_general = get_agsales()
 target_member_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['member']
 target_sapa_store_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['sapa']
