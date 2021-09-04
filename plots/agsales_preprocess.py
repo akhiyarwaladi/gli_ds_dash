@@ -53,3 +53,5 @@ def adjust_promo_feature_target(target_value, target_feat, df_forecast):
 	        list(np.linspace(feat_bound_val, target, (feat_bound_to_target+2)))[1:-1]
 
 	df_forecast[feat_adjust] = df_forecast[feat_adjust].astype(int)
+
+	return df_forecast

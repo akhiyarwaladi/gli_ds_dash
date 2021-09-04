@@ -67,7 +67,7 @@ def get_agsales_promo():
 
     with open('/home/server/gli-data-science/akhiyar/sales_prediction/model/sales_{}_model.json'.format(promo_str_con), 'r') as fin:
         m = model_from_json(json.load(fin))  # Load model
-    sales_dict['INSTORE (harga coret)'] = [df,df_forecast, m]
+    sales_dict['INSTORE (harga coret)'] = [df, df_forecast, m]
 
 
     sales_plot = pd.read_csv('/home/server/gli-data-science/akhiyar/out_plot/sales/all_gantung.csv')
