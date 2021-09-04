@@ -10,7 +10,7 @@ sales_plot_general = get_agsales()
 target_member_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['member']
 target_sapa_store_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['sapa']
 sales_plot_promo = get_agsales_promo()
-sales_plot_jsm = get_agsales_jsm()
+# sales_plot_jsm = get_agsales_jsm()
 
 ## for daterange picker
 from datetime import datetime as dt
@@ -270,8 +270,16 @@ sales_tab = dac.TabItem(id='content_sales',
                         dbc.Row([
                             dbc.Col(''
                                 , md=4),
-                            dbc.Col(''
-                                , md=4),
+                            dbc.Col(
+                                dcc.Loading(
+                                    id="loading-promo-model",
+                                    type="default",
+                                    children=html.P(id="loading_promo_model")
+                                        
+                                    
+                                )
+
+                            , md=4),
                             dbc.Col(                                            
                                 dbc.Select(
                                     id="promo_name",

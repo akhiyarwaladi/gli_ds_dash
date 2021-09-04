@@ -20,7 +20,7 @@ from apps.general_monitor import general_monitor_tab, member_count, sapa_count
 from apps.price_compare import tab_price_compare
 from apps.value_boxes import value_boxes_tab
 from apps.value_behave import value_behave_tab
-from apps.sales import (sales_tab, sales_plot_general, sales_plot_promo, sales_plot_jsm)
+from apps.sales import (sales_tab, sales_plot_general, sales_plot_promo)
 from apps.oos_boxes import oos_boxes_tab
 from apps.tab_events_notif import events_tab, campaign_push
 from apps.tab_events_inapp import events_inapp, campaign_inapp
@@ -594,130 +594,203 @@ def update_low_review(rows, derived_virtual_selected_rows):
 
 
 
+# @app.callback(
+#     [
+#         Output('price_whitelist_output', 'children'),
+#         Output('sum_discount_amount_output', 'children'),
+#         Output('prediction_promo_sales', 'children'),
+#         Output('sales_promo_fig', 'figure')
+#     ],
+#     [
+#         Input('promo_start_date', 'date'),
+#         Input('promo_end_date', 'date'),
+#         Input('sales_promo_picker', 'start_date'),
+#         Input('sales_promo_picker', 'end_date'),
+#         Input('sales_promo_dropdown', 'value'),
+#         Input('count_whitelist', 'value'),
+#         Input('price_whitelist', 'value'),
+#         Input('sum_discount_amount', 'value'),
+#         Input('promo_name', 'value'),
+#     ]
+# )
+# def update_prediction(date_start, date_end, range_start, range_end, agg_value, count_whitelist, 
+#     price_whitelist, sum_discount_amount, promo_name):
+#     date_start = datetime.fromisoformat(date_start)
+#     date_end = datetime.fromisoformat(date_end)
+
+#     price_whitelist_output = "entered: {}".format(rupiah_format(price_whitelist))
+#     sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
+
+#     if promo_name != 'gantung':
+#         fig = plot_sales_jsm(sales_plot_jsm[promo_name], range_start, range_end, promo_name, agg_value)
+#         return price_whitelist_output, sum_discount_amount_output, '-', fig
+
+#     if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:
+        
+#         start_year = date_start.year
+#         start_month = date_start.month
+#         start_week = (date_start.day-1) // 7 + 1
+#         whitelist_product_count = int(count_whitelist)
+#         whitelist_product_price = int(price_whitelist)
+#         discount_amount = int(sum_discount_amount)
+
+#         min_purchase_qty = 1
+#         promo_duration = (date_end - date_start + timedelta(days=1)).days
+
+#         sum_weekend = pd.date_range(date_start,date_end).weekday.isin([5,6]).sum()
+#         sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
+#         sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
+
+
+#         df_test = pd.DataFrame([
+#             start_month,
+#             start_week,
+#             whitelist_product_count,
+#             whitelist_product_price,
+#             discount_amount,
+#             min_purchase_qty,
+#             promo_duration,
+#             sum_weekend,
+#             sum_weekday,
+#             sum_libur
+            
+
+#         ]).T
+        
+#         df_test = normalize.transform(df_test)
+#         res_pred = clf.predict(df_test)[0]
+
+
+#         sales_prediction = rupiah_format(res_pred, True)
+            
+#         ######
+#         df_pred = pd.DataFrame([
+#             'PAYDAY GANTUNG',
+#             start_year,
+#             start_month,
+#             np.nan,
+#             float(int(res_pred)),
+#             date(int(start_year),int(start_month),1).strftime('%Y-%m')
+#         ]).T
+#         df_pred.columns = list(sales_plot_promo)
+#         sales_plot_promo_pred = pd.concat([sales_plot_promo,df_pred])
+
+#         ######
+
+#     else:
+#         sales_prediction = 'fill all form'
+
+
+
+#     fig = plot_sales_promo(sales_plot_promo_pred)
+#     return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
+
+
+
+
 @app.callback(
     [
-        Output('price_whitelist_output', 'children'),
-        Output('sum_discount_amount_output', 'children'),
-        Output('prediction_promo_sales', 'children'),
-        Output('sales_promo_fig', 'figure')
+        Output('sales_promo_fig_store', 'data'),
+        Output('target_member_promo_enter', 'children'),
+        Output('target_sapa_store_promo_enter', 'children'),
+        Output('loading_promo_model', 'children'),
     ],
     [
-        Input('promo_start_date', 'date'),
-        Input('promo_end_date', 'date'),
-        Input('sales_promo_picker', 'start_date'),
-        Input('sales_promo_picker', 'end_date'),
-        Input('sales_promo_dropdown', 'value'),
-        Input('count_whitelist', 'value'),
-        Input('price_whitelist', 'value'),
-        Input('sum_discount_amount', 'value'),
         Input('promo_name', 'value'),
+        Input('target_member_promo', 'value'),
+        Input('target_sapa_store_promo', 'value'),
     ]
 )
-def update_prediction(date_start, date_end, range_start, range_end, agg_value, count_whitelist, 
-    price_whitelist, sum_discount_amount, promo_name):
-    date_start = datetime.fromisoformat(date_start)
-    date_end = datetime.fromisoformat(date_end)
-
-    price_whitelist_output = "entered: {}".format(rupiah_format(price_whitelist))
-    sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
-
-    if promo_name != 'gantung':
-        fig = plot_sales_jsm(sales_plot_jsm[promo_name], range_start, range_end, promo_name, agg_value)
-        return price_whitelist_output, sum_discount_amount_output, '-', fig
-
-    if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:
-        
-        start_year = date_start.year
-        start_month = date_start.month
-        start_week = (date_start.day-1) // 7 + 1
-        whitelist_product_count = int(count_whitelist)
-        whitelist_product_price = int(price_whitelist)
-        discount_amount = int(sum_discount_amount)
-
-        min_purchase_qty = 1
-        promo_duration = (date_end - date_start + timedelta(days=1)).days
-
-        sum_weekend = pd.date_range(date_start,date_end).weekday.isin([5,6]).sum()
-        sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
-        sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
-
-
-        df_test = pd.DataFrame([
-            start_month,
-            start_week,
-            whitelist_product_count,
-            whitelist_product_price,
-            discount_amount,
-            min_purchase_qty,
-            promo_duration,
-            sum_weekend,
-            sum_weekday,
-            sum_libur
-            
-
-        ]).T
-        
-        df_test = normalize.transform(df_test)
-        res_pred = clf.predict(df_test)[0]
-
-
-        sales_prediction = rupiah_format(res_pred, True)
-            
-        ######
-        df_pred = pd.DataFrame([
-            'PAYDAY GANTUNG',
-            start_year,
-            start_month,
-            np.nan,
-            float(int(res_pred)),
-            date(int(start_year),int(start_month),1).strftime('%Y-%m')
-        ]).T
-        df_pred.columns = list(sales_plot_promo)
-        sales_plot_promo_pred = pd.concat([sales_plot_promo,df_pred])
-
-        ######
-
-    else:
-        sales_prediction = 'fill all form'
+def update_plot_sales(promo_name, target_member, target_sapa_store):
+    
 
 
 
-    fig = plot_sales_promo(sales_plot_promo_pred)
-    return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
+    df_forecast = adjust_feature_target(int(target_member), 'member'
+        , sales_plot_promo[promo_name][1])
+    df_forecast = adjust_feature_target(int(target_sapa_store), 'sapa'
+        , df_forecast)
+
+    m = sales_plot_promo[promo_name][2]
+    df = sales_plot_promo[promo_name][0]
+
+    #### start predicting
+    forecast_train = m.predict(df)
+    forecast_future = m.predict(df_forecast)
+
+
+    train = pd.merge(forecast_train[['ds','yhat','yhat_upper', 'yhat_lower']]
+                    , df[['ds','y']],on='ds')
+    train = pd.concat([train
+                       , forecast_future[['ds','yhat','yhat_upper', 'yhat_lower']]])
+
+    #### end of prediction
+
+
+
+    target_member_enter = "entered: {}".format(rupiah_format(target_member))
+    target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
+
+
+    sales_plot_store = train.to_json(date_format='iso', orient='split')
+
+    return (sales_plot_store, target_member_enter, 
+        target_sapa_store_enter, '')
+
+@app.callback(
+    
+    Output('sales_promo_fig', 'figure'),
+    
+    [
+        Input('sales_promo_picker', 'start_date'),
+        Input('sales_promo_picker', 'end_date'),
+        Input('promo_name', 'value'),
+        Input('sales_promo_dropdown', 'value'),
+        Input('sales_promo_fig_store', 'data'),
+    ]
+)
+def update_fig(date_start, date_end, group_dropdown, sales_plot_store):
+    sales_plot = pd.read_json(sales_plot_store, orient='split')
+    sales_plot['index'] = pd.to_datetime(sales_plot['index'])
+    group = group_dropdown
+
+    ## return figure
+    fig = plot_sales_promo(sales_plot, date_start, date_end, promo_name, group)
+    return fig
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 @app.callback(
     [
         Output('sales_fig_store', 'data'),
-        # Output('sales_group_store', 'data'),
-        # Output('sales_fig', 'figure'),
-        # Output('actual_sales_child', "children"),
-        # Output('prediction_sales_child', "children"),
         Output('target_member_enter', 'children'),
         Output('target_sapa_store_enter', 'children'),
         Output('loading_model', 'children'),
     ],
     [
-        # Input('group_dropdown', 'value'),
         Input('model_algo_dropdown', 'value'),
-        # Input('all_sales_daterange', 'start_date'),
-        # Input('all_sales_daterange', 'end_date'),
-        # Input('actual_sales_daterange', 'start_date'),
-        # Input('actual_sales_daterange', 'end_date'),
-        # Input('prediction_sales_daterange', 'start_date'),
-        # Input('prediction_sales_daterange', 'end_date'),
         Input('target_member', 'value'),
         Input('target_sapa_store', 'value'),
     ]
 )
-# def update_plot_sales(group, model_algo, date_start, date_end, actual_date_start, actual_date_end,
-#                         prediction_date_start, prediction_date_end, target_member, target_sapa_store):
 def update_plot_sales(model_algo, target_member, target_sapa_store):
     
     if model_algo == 'nbeats':
         sales_plot = sales_plot_general[model_algo]
-        # fig = plot_sales_all(sales_plot, group, date_start, date_end)
 
     if model_algo == 'fbprophet':
 
@@ -737,25 +810,13 @@ def update_plot_sales(model_algo, target_member, target_sapa_store):
         sales_plot = train.rename(columns={'ds':'index','yhat':'TRO_NET_PRED','y':'TRO_NET'})
         sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
 
-        # fig = plot_sales_all(sales_plot, group, date_start, date_end)
-
-
-    # sales_plot_sel = sales_plot[(sales_plot['index'] >= actual_date_start) &
-    #                             (sales_plot['index'] <= actual_date_end) ]
-    # out_actual =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum()))
-
-
-    # sales_plot_sel = sales_plot[(sales_plot['index'] >= prediction_date_start) &
-    #                             (sales_plot['index'] <= prediction_date_end) ]
-    # out_prediction =  '[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET_PRED'].sum()))
 
     target_member_enter = "entered: {}".format(rupiah_format(target_member))
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
 
 
     sales_plot_store = sales_plot.to_json(date_format='iso', orient='split')
-    # return (fig_store, fig, out_actual, out_prediction, target_member_enter, 
-    #     target_sapa_store_enter)
+
     return (sales_plot_store, target_member_enter, 
         target_sapa_store_enter, '')
 
