@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_admin_components as dac
 import dash_bootstrap_components as dbc
 
+import promo_selector
 
 ## for load csv file
 from loader.agsales_load import get_agsales, get_agsales_promo
@@ -284,12 +285,7 @@ sales_tab = dac.TabItem(id='content_sales',
                             dbc.Col(                                            
                                 dbc.Select(
                                     id="promo_name",
-                                    options=[
-                                        {"label": "INSTORE (harga coret)", "value": "INSTORE (harga coret)", "disabled": False},
-                                        {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
-                                        {"label": "Gantung (gajian untung)", "value": "Gantung (gajian untung)", "disabled": False},
-                                        {"label": "custom", "value": "gantung", "disabled": False},
-                                    ],
+                                    options=promo_selector,
                                     value="INSTORE (harga coret)"
                                 )                                   
 
