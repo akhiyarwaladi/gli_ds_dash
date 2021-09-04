@@ -59,7 +59,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         {'label': 'Monthly', 'value': 'Monthly'},
                                         {'label': 'Daily', 'value': 'Daily'}
                                     ],
-                                    value='Daily'
+                                    value='Monthly'
                                 )
                                 , md=2),
                                 dbc.Col(                                            
@@ -70,7 +70,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                             {"label": "N-BEATS", "value": "nbeats", "disabled": False},
 
                                         ],
-                                        value="nbeats"
+                                        value="fbprophet"
                                     )                                   
 
                                 , md=3),
@@ -263,7 +263,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                         {'label': 'Monthly', 'value': 'Monthly'},
                                         {'label': 'Daily', 'value': 'Daily'}
                                     ],
-                                    value='Daily'
+                                    value='Monthly'
                                 )
                             , md=4),
 

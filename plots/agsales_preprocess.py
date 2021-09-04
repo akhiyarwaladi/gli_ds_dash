@@ -54,4 +54,4 @@ def adjust_promo_feature_target(target_value, target_feat, df_forecast):
 
 	df_forecast[feat_adjust] = df_forecast[feat_adjust].astype(int)
 
-	return df_forecast
+	return df_forecast	
