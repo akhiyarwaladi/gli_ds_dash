@@ -725,6 +725,9 @@ def update_plot_sales(promo_name, target_member, target_sapa_store):
     train = pd.concat([train
                        , forecast_future[['ds','yhat','yhat_upper', 'yhat_lower']]])
 
+
+    sales_plot = train.rename(columns={'ds':'index','yhat':'TRO_NET_PRED','y':'TRO_NET'})
+    sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
     #### end of prediction
 
 
@@ -733,7 +736,7 @@ def update_plot_sales(promo_name, target_member, target_sapa_store):
     target_sapa_store_enter = "entered: {}".format(rupiah_format(target_sapa_store))
 
 
-    sales_plot_store = train.to_json(date_format='iso', orient='split')
+    sales_plot_store = sales_plot.to_json(date_format='iso', orient='split')
 
     return (sales_plot_store, target_member_enter, 
         target_sapa_store_enter, '')
