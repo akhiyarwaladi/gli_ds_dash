@@ -221,11 +221,13 @@ def plot_sales_promo(sales_plot, start_date, end_date, promo_name, value):
 	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
 				(sales_plot['index'] <= end_date)]
 
-
+	tickformat_str = "%d%b%y"
 	if value == 'Monthly':
 	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')])\
 	                .agg({'TRO_NET':'sum','TRO_NET_PRED':'sum','yhat_upper':'sum', 'yhat_lower':'sum'}).reset_index()
+	    sales_plot['index'] = pd.to_datetime(sales_plot['index'].dt.strftime('%Y-%m'))
 
+	    tickformat_str = "%b%y"
 
 	fig = go.Figure()
 	fig.add_trace(go.Scatter(
@@ -283,7 +285,7 @@ def plot_sales_promo(sales_plot, start_date, end_date, promo_name, value):
 	    hovertemplate='%{x}<br>%{text}')
 
 	fig.update_xaxes(
-	    tickformat="%d%b%y",
+	    tickformat=tickformat_str,
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
 	fig.update_yaxes(
