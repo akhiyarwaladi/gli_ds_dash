@@ -706,9 +706,9 @@ def update_plot_sales(promo_name, target_member, target_sapa_store):
 
 
 
-    df_forecast = adjust_feature_target(int(target_member), 'member'
+    df_forecast = adjust_promo_feature_target(int(target_member), 'member'
         , sales_plot_promo[promo_name][1])
-    df_forecast = adjust_feature_target(int(target_sapa_store), 'sapa'
+    df_forecast = adjust_promo_feature_target(int(target_sapa_store), 'sapa'
         , df_forecast)
 
     m = sales_plot_promo[promo_name][2]
