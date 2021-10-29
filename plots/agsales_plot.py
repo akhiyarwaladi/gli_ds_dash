@@ -3,7 +3,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 from datetime import datetime, timedelta
 
-pd.set_option('display.float_format', lambda x: '%.1f' % x)
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
 import matplotlib.pyplot as plt
 
 from helper import transform_to_rupiah_format, transform_to_rupiah
@@ -49,8 +49,6 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	        mode="lines+markers",
 	        textposition="top center"
 	    ),
-
-
 
 	)
 	if 'yhat_upper' in list(sales_plot):
@@ -150,84 +148,82 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	return fig
 
 
-# def plot_sales_promo(sales_plot):
+def plot_sales_promo(sales_plot):
 
-# 	fig = go.Figure()
-# 	fig.add_trace(go.Scatter(
-# 	    x=sales_plot['index'],
-# 	    y=sales_plot['TRO_NET'],
-# 	    name='Actual',
-# 	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
-# 	    mode="lines+markers+text",
-# 	    textposition="top center"
-# 	))
-# 	fig.add_trace(go.Scatter(
-# 	    x=sales_plot['index'],
-# 	    y=sales_plot['TRO_NET_PRED'],
-# 	    name='Prediction',
-# 	    text=sales_plot['TRO_NET_PRED'].astype(float).apply(transform_to_rupiah),
-# 	    mode="lines+markers+text",
-# 	    textposition="top center"
-# 	))
-
-
-# 	fig.update_traces(
-
-# 	    hovertemplate='%{x}<br>%{text}')
-
-# 	fig.update_xaxes(
-# 	    tickformat="%b%y",
-# 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
-# 	)
-# 	fig.update_yaxes(
-
-# 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
-# 	)
-
-# 	legend_dict = \
-# 	    legend=dict(
-# 	            orientation="h",
-# 	            yanchor="bottom",
-# 	            y=0.95,
-# 	            xanchor="left",
-# 	            x=0,
-# 	            traceorder="normal",
-# 	            title='',
-# 	            title_font_family="Courier",
-# 	            font=dict(
-# 	                family="Courier",
-# 	                size=16,
-# 	                color="black"
-# 	            ),
-# 	            bgcolor="#dfe4ea",
-# 	            bordercolor="Black",
-# 	            borderwidth=1
-# 	        )
-# 	fig.update_layout(hovermode="x",
-# 	      	xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
-# 	                   'showgrid': True, 'automargin': True, 'title':''},
-# 	       yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
-# 	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
-# 	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
-# 	                  {'l':70, 'r':30, 't':0, 'b':70},legend=legend_dict,\
-# 	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
-
-# 	return fig
+	fig = go.Figure()
+	fig.add_trace(go.Scatter(
+	    x=sales_plot['index'],
+	    y=sales_plot['TRO_NET'],
+	    name='Actual',
+	    text=sales_plot['TRO_NET'].astype(float).apply(transform_to_rupiah),
+	    mode="lines+markers+text",
+	    textposition="top center"
+	))
+	fig.add_trace(go.Scatter(
+	    x=sales_plot['index'],
+	    y=sales_plot['TRO_NET_PRED'],
+	    name='Prediction',
+	    text=sales_plot['TRO_NET_PRED'].astype(float).apply(transform_to_rupiah),
+	    mode="lines+markers+text",
+	    textposition="top center"
+	))
 
 
-def plot_sales_promo(sales_plot, start_date, end_date, promo_name, value):
+	fig.update_traces(
+
+	    hovertemplate='%{x}<br>%{text}')
+
+	fig.update_xaxes(
+	    tickformat="%b%y",
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
+	)
+	fig.update_yaxes(
+
+	    showgrid=True, gridwidth=1, gridcolor='LightPink', title='sales_amount'
+	)
+
+	legend_dict = \
+	    legend=dict(
+	            orientation="h",
+	            yanchor="bottom",
+	            y=0.95,
+	            xanchor="left",
+	            x=0,
+	            traceorder="normal",
+	            title='',
+	            title_font_family="Courier",
+	            font=dict(
+	                family="Courier",
+	                size=16,
+	                color="black"
+	            ),
+	            bgcolor="#dfe4ea",
+	            bordercolor="Black",
+	            borderwidth=1
+	        )
+	fig.update_layout(hovermode="x",
+	      	xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
+	                   'showgrid': True, 'automargin': True, 'title':''},
+	       yaxis={'showline': False, 'visible': True, 'showticklabels': True,\
+	                   'showgrid': True,  'automargin': True, 'title':'sales (Rp)'},
+	                  uniformtext_minsize=8, uniformtext_mode='hide', margin=\
+	                  {'l':70, 'r':30, 't':0, 'b':70},legend=legend_dict,\
+	                  template='presentation', hoverlabel=dict(font=dict(family='sans-serif', size=17)))
+
+	return fig
+
+
+def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 
 
 	sales_plot = sales_plot[(sales_plot['index'] >= start_date) &
 				(sales_plot['index'] <= end_date)]
 
-	tickformat_str = "%d%b%y"
+
 	if value == 'Monthly':
 	    sales_plot = sales_plot.groupby([pd.Grouper(key='index',freq='M')])\
 	                .agg({'TRO_NET':'sum','TRO_NET_PRED':'sum','yhat_upper':'sum', 'yhat_lower':'sum'}).reset_index()
-	    sales_plot['index'] = pd.to_datetime(sales_plot['index'].dt.strftime('%Y-%m'))
 
-	    tickformat_str = "%b%y"
 
 	fig = go.Figure()
 	fig.add_trace(go.Scatter(
@@ -285,7 +281,7 @@ def plot_sales_promo(sales_plot, start_date, end_date, promo_name, value):
 	    hovertemplate='%{x}<br>%{text}')
 
 	fig.update_xaxes(
-	    tickformat=tickformat_str,
+	    tickformat="%d%b%y",
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
 	fig.update_yaxes(
