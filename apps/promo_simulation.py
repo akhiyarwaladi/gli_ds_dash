@@ -94,7 +94,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         width=4,
                                     ),
 
-                                ]),
+                                ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
                                     dbc.Col(
                                         dbc.FormGroup(
