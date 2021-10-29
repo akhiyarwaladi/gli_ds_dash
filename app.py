@@ -373,7 +373,7 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
             Output('tab_value_boxes', 'active'),
             Output('tab_value_behave', 'active'),
             Output('tab_sales', 'active'),
-            Output('tab_promo_simulation', 'active')
+            Output('tab_promo_simulation', 'active'),
             Output('tab_events','active'),
             Output('tab_events_inapp', 'active'),
             Output('tab_events_email', 'active'),
