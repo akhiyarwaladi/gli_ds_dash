@@ -104,7 +104,8 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     type="number",
                                                     id="count_whitelist",
                                                     placeholder="Enter count product in this promo",
-                                                    value=40
+                                                    value=40,
+                                                    disabled=True
                                                 ),
                                             ]
                                         ),
@@ -118,7 +119,8 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     type="number",
                                                     id="price_whitelist",
                                                     placeholder="Enter sum of product price in this promo",
-                                                    value=1200000
+                                                    value=1200000,
+                                                    disabled=True
                                                 ),
                                                 html.P(id="price_whitelist_output"),
                                             ]
