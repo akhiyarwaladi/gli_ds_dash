@@ -928,6 +928,24 @@ def update_plot_sapa_count(value):
     return fig
 
 
+
+@app.callback(
+    [
+        Output(component_id='count_whitelist', component_property='disabled'),
+        Output(component_id='price_whitelist', component_property='disabled'),
+    ],
+    [
+        Input(component_id='dropdown_promo_type', component_property='value')
+    ]
+)
+def show_hide_element(dropdown_promo_type_val):
+    if dropdown_promo_type_val == '201':
+        return True, True
+    if dropdown_promo_type_val == '103':
+        return False, False
+
+
+
 # =============================================================================
 # Run app    
 # =============================================================================

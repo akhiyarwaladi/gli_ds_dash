@@ -77,7 +77,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
 
                                         dbc.Select(
-                                            id="dropdown-promo-type",
+                                            id="dropdown_promo_type",
                                             options=[
                                                 {"label": "201 (potongan langsung)", "value": "201", "disabled": False},
                                                 {"label": "103 (gratis item)", "value": "103", "disabled": False},
@@ -105,7 +105,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     id="count_whitelist",
                                                     placeholder="Enter count product in this promo",
                                                     value=40,
-                                                    disabled=True
+                                                    disabled=False
                                                 ),
                                             ]
                                         ),
@@ -120,7 +120,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     id="price_whitelist",
                                                     placeholder="Enter sum of product price in this promo",
                                                     value=1200000,
-                                                    disabled=True
+                                                    disabled=False
                                                 ),
                                                 html.P(id="price_whitelist_output"),
                                             ]
