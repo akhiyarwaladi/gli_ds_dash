@@ -75,6 +75,28 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
                                     dbc.Col(
+
+                                        dbc.Select(
+                                            id="dropdown-promo-type",
+                                            options=[
+                                                {"label": "201 (potongan langsung)", "value": "201", "disabled": False},
+                                                {"label": "103 (gratis item)", "value": "103", "disabled": False},
+
+                                            ],
+                                            value="201"
+                                        ),
+                                        
+                                        width=4,
+                                    ),
+
+                                    dbc.Col(
+
+                                        width=4,
+                                    ),
+
+                                ])
+                                dbc.Row([
+                                    dbc.Col(
                                         dbc.FormGroup(
                                             [
                                                 dbc.Label("Whitelist product count", html_for="example-email-grid"),
