@@ -158,6 +158,8 @@ sub_research = [
             dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx'
                 , icon='shopping-cart', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_sales', label='Sales Prediction'
+                , icon='chart-area', style={'font-size':'19px'}),
+            dac.SidebarMenuSubItem(id='tab_promo_simulation', label='Promo Simulation'
                 , icon='chart-area', style={'font-size':'19px'})
 ]
 
