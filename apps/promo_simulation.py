@@ -150,6 +150,14 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     ),
                                 ], style={"margin-bottom": "10px"}),
 
+                                dbc.Row([
+                                    dbc.Button(
+                                        "", id="button-submit", className="me-2", n_clicks=0
+                                    ),
+
+
+                                ])
+
                                
 
 
