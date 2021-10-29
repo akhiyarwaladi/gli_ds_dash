@@ -321,7 +321,7 @@ def activate(input_id,
             Input('tab_value_boxes', 'n_clicks'),
             Input('tab_value_behave', 'n_clicks'),
             Input('tab_sales', 'n_clicks'),
-            Input('tab_promo_simulation', 'c_clicks'),
+            Input('tab_promo_simulation', 'n_clicks'),
             Input('tab_events', 'n_clicks'),
             Input('tab_events_inapp', 'n_clicks'),
             Input('tab_events_email', 'n_clicks'),
@@ -334,9 +334,22 @@ def activate(input_id,
         ]
 )
 
-def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
-                n_sales, n_promo_simulation, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
-                n_gallery_2, pathname):
+def display_tab(n_general_monitor, 
+    n_basic_boxes, 
+    n_price_compare, 
+    n_oos_boxes, 
+    n_value_boxes, 
+    n_value_behave, 
+    n_sales, 
+    n_promo_simulation, 
+    n_events, 
+    n_events_inapp, 
+    n_events_email, 
+    n_view_product, 
+    n_user_path, 
+    n_gallery_1, 
+    n_gallery_2, 
+    pathname):
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
@@ -405,9 +418,22 @@ def display_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, 
         ]
 )
 
-def activate_tab(n_general_monitor, n_basic_boxes, n_price_compare, n_oos_boxes, n_value_boxes, n_value_behave, 
-                n_sales, n_promo_simulation, n_events, n_events_inapp, n_events_email, n_view_product, n_user_path, n_gallery_1, 
-                n_gallery_2, pathname):
+def activate_tab(n_general_monitor, 
+    n_basic_boxes, 
+    n_price_compare, 
+    n_oos_boxes, 
+    n_value_boxes, 
+    n_value_behave, 
+    n_sales, 
+    n_promo_simulation, 
+    n_events, 
+    n_events_inapp, 
+    n_events_email, 
+    n_view_product, 
+    n_user_path, 
+    n_gallery_1, 
+    n_gallery_2, 
+    pathname):
     
     ctx = dash.callback_context # Callback context to recognize which input has been triggered
 
