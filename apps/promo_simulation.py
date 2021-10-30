@@ -11,11 +11,15 @@ from config_var import promo_selector
 from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
 
-## define date picker start date and end date
-start_picker = dt(2021,1,1)
-end_picker = dt.today().date() - relativedelta(days=2)
 
-end_picker_promo = dt(2022,1,1)
+
+from loader.promo_simulation_load import get_plu_list
+f_plu_list = get_plu_list()
+plu_list_dropdown = f_plu_list[0]
+
+
+
+
 
 
 promo_simulation_tab = dac.TabItem(id='content_promo_simulation', 
@@ -74,6 +78,16 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     ),
                                 ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
+
+                                    dbc.Col(
+                                        dcc.Dropdown(
+                                            id='dropdown_plu',
+                                            options=plu_list_dropdown,
+                                            value=1
+                                        ),
+                                        width=4,
+                                    ),
+
                                     dbc.Col(
 
                                         dbc.Select(
@@ -92,10 +106,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         width=4,
                                     ),
 
-                                    dbc.Col(
 
-                                        width=4,
-                                    ),
 
                                 ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
