@@ -963,9 +963,6 @@ def show_hide_element(dropdown_promo_type_val):
 
     ],
 
-    [
-
-    ],
 
     [
         Input(component_id='button_promo_simulation', component_property='n_clicks')
