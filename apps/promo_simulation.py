@@ -81,6 +81,9 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             options=[
                                                 {"label": "201 (potongan langsung)", "value": "201", "disabled": False},
                                                 {"label": "103 (gratis item)", "value": "103", "disabled": False},
+                                                {"label": "801 (beli jumlah dapat star)", "value": "801", "disabled": False},
+                                                {"label": "803 (beli qty dapat star)", "value": "803", "disabled": False},
+                                                {"label": "807 (beli minimum dapat point)", "value": "807", "disabled": False},
 
                                             ],
                                             value="201"
@@ -99,13 +102,13 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Whitelist product count", html_for="example-email-grid"),
+                                                dbc.Label("minimum harga"),
                                                 dbc.Input(
                                                     type="number",
-                                                    id="count_whitelist",
-                                                    placeholder="Enter count product in this promo",
-                                                    value=40,
-                                                    disabled=False
+                                                    id="input_min_amount",
+                                                    placeholder="Enter",
+                                                    value=1,
+                                                    disabled=True
                                                 ),
                                             ]
                                         ),
@@ -114,15 +117,15 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Whitelist product price", html_for="example-password-grid"),
+                                                dbc.Label("minimum qty"),
                                                 dbc.Input(
                                                     type="number",
-                                                    id="price_whitelist",
-                                                    placeholder="Enter sum of product price in this promo",
-                                                    value=1200000,
+                                                    id="input_min_qty",
+                                                    placeholder="Enter",
+                                                    value=1,
                                                     disabled=False
                                                 ),
-                                                html.P(id="price_whitelist_output"),
+                                                
                                             ]
                                         ),
                                         width=4,
@@ -132,15 +135,14 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Total discount amount / product", html_for="example-email-grid"),
+                                                dbc.Label("Star yang didapat"),
                                                 dbc.Input(
                                                     type="number",
-                                                    id="sum_discount_amount",
-                                                    placeholder="Enter sum discount given",
-                                                    value=97000,
-                                                    plaintext=True
+                                                    id="input_extra_star",
+                                                    placeholder="Enter",
+                                                    value=1,
+                                                    disabled=True
                                                 ),
-                                                html.P(id="sum_discount_amount_output"),
                                             ]
                                         ),
                                         width=4,
@@ -148,22 +150,46 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Promo name", html_for="example-email-grid"),
-                                                # dbc.Select(
-                                                #     id="promo_name",
-                                                #     options=[
-                                                #         {"label": "JSM (jumat-sabtu-minggu)", "value": "JSM (jumat-sabtu-minggu)", "disabled": False},
-                                                #         {"label": "Gantung (gajian untung)", "value": "gantung", "disabled": False},
-                                                #         {"label": "INSTORE", "value": "INSTORE", "disabled": False},
-                                                #     ],
-                                                #     value="JSM (jumat-sabtu-minggu)"
-                                                # ),                                        
+                                                dbc.Label("Point yang didapat"),
+                                                dbc.Input(
+                                                    type="number",
+                                                    id="input_extra_point",
+                                                    placeholder="Enter",
+                                                    value=1,
+                                                    disabled=True
+                                                ),
+                                                
                                             ]
                                         ),
                                         width=4,
                                     ),
-                                    
                                 ], style={"margin-bottom": "15px"}),
+                                dbc.Row([
+                                    dbc.Col(
+                                        dbc.FormGroup(
+                                            [
+                                                dbc.Label("Discount Amount"),
+                                                dbc.Input(
+                                                    type="number",
+                                                    id="input_discount_amount",
+                                                    placeholder="Enter",
+                                                    value=1,
+                                                    disabled=False
+                                                ),
+                                            ]
+                                        ),
+                                        width=4,
+                                    ),
+
+                                ], style={"margin-bottom": "15px"}),
+                                dbc.Row([
+                                    dbc.Button(
+                                        "Show result", id="button-result", className="me-2", size="lg", n_clicks=0
+                                    ),
+
+
+                                ], style={"margin-bottom": "10px"}),
+
                                 dbc.Row([
                                     dbc.Col(
                                         [
@@ -172,27 +198,16 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         ]
                                         , width=12
                                     ),
-                                ], style={"margin-bottom": "10px"}),
-
-                                dbc.Row([
-                                    dbc.Button(
-                                        "Show result", id="button-result", className="me-2", size="lg", n_clicks=0
-                                    ),
+                                ], style={"margin-bottom": "10px"})
 
 
-                                ])
-
-                               
-
-
+                            
 
                             ]),
 
                     ]), md=12),
 
             ]),
-
-
 
 
         ])

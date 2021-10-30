@@ -931,8 +931,12 @@ def update_plot_sapa_count(value):
 
 @app.callback(
     [
-        Output(component_id='count_whitelist', component_property='disabled'),
-        Output(component_id='price_whitelist', component_property='disabled'),
+        Output(component_id='input_min_amount', component_property='disabled'),
+        Output(component_id='input_min_qty', component_property='disabled'),
+        Output(component_id='input_extra_star', component_property='disabled'),
+        Output(component_id='input_extra_point', component_property='disabled'),
+        Output(component_id='input_discount_amount', component_property='disabled'),
+
     ],
     [
         Input(component_id='dropdown_promo_type', component_property='value')
@@ -940,9 +944,16 @@ def update_plot_sapa_count(value):
 )
 def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '201':
-        return True, True
+        return True, False, True, True, False
     if dropdown_promo_type_val == '103':
-        return False, False
+        return True, False, True, True, True
+    if dropdown_promo_type_val == '801':
+        return False, True, False, True, True
+    if dropdown_promo_type_val == '803':
+        return True, False, False, True, True
+    if dropdown_promo_type_val == '807':
+        return False, False, True, False, True
+
 
 
 
