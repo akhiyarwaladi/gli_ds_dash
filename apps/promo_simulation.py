@@ -43,7 +43,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Promo start date", html_for="promo-start-grid", width=5),
+                                                dbc.Label("start date", html_for="promo-start-grid", width=5),
                                                 dcc.DatePickerSingle(
                                                     id='promo_start_date',
                                                     min_date_allowed=dt(1995, 8, 5),
@@ -59,7 +59,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Promo end date", html_for="promo-end-grid", width=5),
+                                                dbc.Label("end date", html_for="promo-end-grid", width=5),
                                                 dcc.DatePickerSingle(
                                                     id='promo_end_date',
                                                     min_date_allowed=dt(1995, 8, 5),
@@ -168,7 +168,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Discount Amount"),
+                                                dbc.Label("Jumlah potongan"),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_discount_amount",
