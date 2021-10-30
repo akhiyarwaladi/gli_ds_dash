@@ -1015,7 +1015,7 @@ def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_
 
     pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
 
-    return rupiah_format(pred_val)
+    return rupiah_format(pred_val, with_prefix=True)
 
 
 
