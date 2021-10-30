@@ -986,7 +986,7 @@ def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_
     input_extra_point = input_extra_point
     input_discount_amount = input_discount_amount
 
-    return ("amount {} qty {}".format(input_min_amount, input_min_qty),'')
+    return "amount {} qty {}".format(input_min_amount, input_min_qty)
 
 
 
