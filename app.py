@@ -977,7 +977,7 @@ def show_hide_element(dropdown_promo_type_val):
     ]
     
 )
-def show_hide_element(n_clicks, input_min_amount, input_min_qty, input_extra_star, 
+def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_extra_star, 
     input_extra_point, input_discount_amount):
     
     input_min_amount = input_min_amount
