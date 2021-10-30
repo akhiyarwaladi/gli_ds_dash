@@ -2,7 +2,7 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import json
 import dash
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 
 import dash_html_components as html
@@ -968,7 +968,7 @@ def show_hide_element(dropdown_promo_type_val):
     ],
 
     [
-        Event(component_id='button_promo_simulation', component_property='n_clicks')
+        Input(component_id='button_promo_simulation', component_property='n_clicks')
     ],
 
     [
@@ -980,7 +980,7 @@ def show_hide_element(dropdown_promo_type_val):
     ]
     
 )
-def show_hide_element(input_min_amount, input_min_qty, input_extra_star, 
+def show_hide_element(n_clicks, input_min_amount, input_min_qty, input_extra_star, 
     input_extra_point, input_discount_amount):
     
     input_min_amount = input_min_amount
