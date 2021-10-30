@@ -51,7 +51,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     initial_visible_month=dt(2021, 8, 24),
                                                     display_format='DD-MM-Y',
                                                     date=dt(2021, 8, 24),
-                                                    style={"width": "300px"}
+                                                    style={"width": "500px"}
                                                 ),
                                             ]
                                         ),
