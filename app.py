@@ -973,9 +973,9 @@ def show_hide_element(dropdown_promo_type_val):
 
     [
         State('input_min_amount', 'value'),
-        State('input_min_qty', 'value')
-        State('input_extra_star', 'value')
-        State('input_extra_point', 'value')
+        State('input_min_qty', 'value'),
+        State('input_extra_star', 'value'),
+        State('input_extra_point', 'value'),
         State('input_discount_amount', 'value')
     ]
     
