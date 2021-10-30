@@ -986,7 +986,7 @@ def show_hide_element(n_clicks, input_min_amount, input_min_qty, input_extra_sta
     input_extra_point = input_extra_point
     input_discount_amount = input_discount_amount
 
-    return "amount {} qty {}".format(input_min_amount, input_min_qty)
+    return ("amount {} qty {}".format(input_min_amount, input_min_qty))
 
 
 
