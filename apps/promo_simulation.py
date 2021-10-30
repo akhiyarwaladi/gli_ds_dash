@@ -37,7 +37,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                         dbc.CardHeader(
                           [
 
-                            html.H5("Card title", className="card-title"),
+                            html.H5("Promo Simulation", className="card-title"),
                           ]
                         ),
                         dbc.CardBody(
@@ -195,21 +195,21 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
                                     dbc.Button(
-                                        "Show result", id="button-result", className="me-2", size="lg", n_clicks=0
+                                        "hitung", id="button_promo_simulation", className="me-2", size="lg", n_clicks=0
                                     ),
 
 
-                                ], style={"margin-bottom": "10px"}),
+                                ], style={"margin-bottom": "15px"}),
 
                                 dbc.Row([
                                     dbc.Col(
                                         [
-                                            html.H5('Next sales prediction: '),
-                                            html.H3(html.Div(id='prediction_promo_sales'))
+                                            html.H5('perkiraan sales: '),
+                                            html.H3(html.Div(id='outval_promo_simulation'))
                                         ]
                                         , width=12
                                     ),
-                                ], style={"margin-bottom": "10px"})
+                                ], style={"margin-bottom": "15px"})
 
 
                             

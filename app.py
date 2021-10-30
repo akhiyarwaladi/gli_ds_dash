@@ -956,6 +956,43 @@ def show_hide_element(dropdown_promo_type_val):
 
 
 
+@app.callback(
+    [
+        Output(component_id='outval_promo_simulation', component_property='children'),
+
+
+    ],
+
+    [
+
+    ],
+
+    [
+        Event(component_id='button_promo_simulation', component_property='n_clicks')
+    ],
+
+    [
+        State('input_min_amount', 'value'),
+        State('input_min_qty', 'value')
+        State('input_extra_star', 'value')
+        State('input_extra_point', 'value')
+        State('input_discount_amount', 'value')
+    ]
+    
+)
+def show_hide_element(input_min_amount, input_min_qty, input_extra_star, 
+    input_extra_point, input_discount_amount):
+    
+    input_min_amount = input_min_amount
+    input_min_qty = input_min_qty
+    input_extra_star = input_extra_star
+    input_extra_point = input_extra_point
+    input_discount_amount = input_discount_amount
+
+    return "amount {} qty {}".format(input_min_amount, input_min_qty)
+
+
+
 
 # =============================================================================
 # Run app    
