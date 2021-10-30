@@ -957,11 +957,8 @@ def show_hide_element(dropdown_promo_type_val):
 
 
 @app.callback(
-    [
-        Output(component_id='outval_promo_simulation', component_property='children'),
-
-
-    ],
+    
+    Output(component_id='outval_promo_simulation', component_property='children'),
 
 
     [
