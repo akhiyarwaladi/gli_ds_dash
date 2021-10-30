@@ -27,7 +27,7 @@ from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
 from apps.event_product import view_product_tab, product_group, vp, sp, general_event
 from apps.user_path_box import user_path_tab, low_review_table
-from apps.promo_simulation import promo_simulation_tab
+from apps.promo_simulation import promo_simulation_tab, promo_feature
 
 
 
@@ -970,20 +970,52 @@ def show_hide_element(dropdown_promo_type_val):
         State('input_min_qty', 'value'),
         State('input_extra_star', 'value'),
         State('input_extra_point', 'value'),
-        State('input_discount_amount', 'value')
+        State('input_discount_amount', 'value'),
+        State('dropdown_promo_type', 'value'),
+        State('dropdown_plu', 'value')
     ]
     
 )
 def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_extra_star, 
-    input_extra_point, input_discount_amount):
+    input_extra_point, input_discount_amount, pred_promo_type, pred_plu):
     
-    input_min_amount = input_min_amount
-    input_min_qty = input_min_qty
-    input_extra_star = input_extra_star
-    input_extra_point = input_extra_point
-    input_discount_amount = input_discount_amount
+    # input_min_amount = input_min_amount
+    # input_min_qty = input_min_qty
+    # input_extra_star = input_extra_star
+    # input_extra_point = input_extra_point
+    # input_discount_amount = input_discount_amount
 
-    return "amount {} qty {}".format(input_min_amount, input_min_qty)
+    pred_plu = pred_plu
+    pred_promo_type = pred_promo_type
+
+    parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
+
+    clf = load('{}/model/plu_tree/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type))
+    promo_feature[pred_promo_type]
+
+
+    pred_df = pd.DataFrame()
+    pred_df['tbmproi_start_date'] = ['2021-03-01']
+    pred_df['tbmproi_end_date'] = ['2021-03-30']
+
+    pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
+    pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
+    pred_df['start_week'] = pred_df['tbmproi_start_date'] .apply(lambda d: (d.day-1) // 7 + 1)
+    pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
+                                .astype('timedelta64[D]') + 1).astype(int)
+
+
+    pred_df['tbmproi_min_purchase_amount'] = [input_min_amount]
+    pred_df['tbmproi_min_purchase_qty'] = [input_min_qty]
+    pred_df['tbmproi_star'] = [input_extra_star]
+    pred_df['tbmproi_extra_point'] = [input_extra_point]
+    pred_df['tbmproi_disc_amount'] = [input_discount_amount]
+
+
+
+    pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
+
+    return pred_val
 
 
 
