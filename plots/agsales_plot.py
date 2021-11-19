@@ -171,7 +171,8 @@ def plot_sales_promo(sales_plot):
 
 	fig.update_traces(
 
-	    hovertemplate='%{x}<br>%{text}')
+	    hovertemplate='%{x}<br>%{text}'
+	)
 
 	fig.update_xaxes(
 	    tickformat="%b%y",
@@ -201,6 +202,7 @@ def plot_sales_promo(sales_plot):
 	            bordercolor="Black",
 	            borderwidth=1
 	        )
+	    
 	fig.update_layout(hovermode="x",
 	      	xaxis={'showline': True, 'visible': True, 'showticklabels': True, \
 	                   'showgrid': True, 'automargin': True, 'title':''},
@@ -226,14 +228,16 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 
 
 	fig = go.Figure()
-	fig.add_trace(go.Scatter(
-	    x=sales_plot['index'],
-	    y=sales_plot['TRO_NET'],
-	    name='Actual',
-	    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(int,  errors = 'ignore').astype(float, errors = 'ignore').apply(transform_to_rupiah),
-	    mode="lines+markers",
-	    textposition="top center"
-	))
+	fig.add_trace(
+		go.Scatter(
+		    x=sales_plot['index'],
+		    y=sales_plot['TRO_NET'],
+		    name='Actual',
+		    text=sales_plot['index'].dt.strftime("%A") + '<br>' + sales_plot['TRO_NET'].astype(int,  errors = 'ignore').astype(float, errors = 'ignore').apply(transform_to_rupiah),
+		    mode="lines+markers",
+		    textposition="top center"
+		),
+	)
 	fig.add_trace(
 	    go.Scatter(
 	        x=sales_plot['index'],
@@ -243,8 +247,6 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	        mode="lines+markers",
 	        textposition="top center"
 	    ),
-
-
 
 	)
 	fig.add_trace(
@@ -271,7 +273,7 @@ def plot_sales_jsm(sales_plot, start_date, end_date, promo_name, value):
 	        fill='tonexty',
 	        text = sales_plot['yhat_lower'].astype(int).astype(float).apply(transform_to_rupiah),
 	        showlegend=False
-	    )
+	    ),
 
 	)
 
