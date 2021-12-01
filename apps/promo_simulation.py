@@ -79,16 +79,20 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         width=4,
                                     ),
                                 ], style={"margin-bottom": "15px"}),
-                                dbc.Row([
 
+                                dbc.Row([
                                     dbc.Col(
                                         dcc.Dropdown(
                                             id='dropdown_plu',
                                             options=plu_list_dropdown,
                                             value=1
                                         ),
-                                        width=4,
+                                        width=8,
                                     ),
+                                ], style={"margin-bottom": "15px"}),
+                                dbc.Row([
+
+
 
                                     dbc.Col(
 
