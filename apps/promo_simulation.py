@@ -101,15 +101,15 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             options=[
                                                 {"label": "201 (potongan langsung)", "value": "201", "disabled": False},
                                                 {"label": "103 (gratis item)", "value": "103", "disabled": False},
-                                                {"label": "801 (beli jumlah dapat star)", "value": "801", "disabled": False},
+                                                {"label": "801 (beli jumlah RP dapat star)", "value": "801", "disabled": False},
                                                 {"label": "803 (beli qty dapat star)", "value": "803", "disabled": False},
-                                                {"label": "807 (beli minimum dapat point)", "value": "807", "disabled": False},
+                                                {"label": "807 (beli minimum (qty/RP) dapat point)", "value": "807", "disabled": False},
 
                                             ],
                                             value="201"
                                         ),
                                         
-                                        width=4,
+                                        width=6,
                                     ),
 
 
