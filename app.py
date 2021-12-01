@@ -366,6 +366,9 @@ def display_tab(n_general_monitor,
         elif pathname == "/member_review":
             input_id = 'tab_user_path'
             n_user_path = True
+        elif pathname == "/promo_simulation":
+            input_id = 'tab_promo_simulation'
+            n_user_path = True
         else:
             input_id = 'tab_general_monitor'
             n_general_monitor = True
@@ -448,6 +451,9 @@ def activate_tab(n_general_monitor,
             n_sales = True
         elif pathname == "/member_review":
             input_id = 'tab_user_path'
+            n_user_path = True
+        elif pathname == "/promo_simulation":
+            input_id = 'tab_promo_simulation'
             n_user_path = True
         else:
             input_id = 'tab_general_monitor'
