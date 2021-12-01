@@ -368,7 +368,7 @@ def display_tab(n_general_monitor,
             n_user_path = True
         elif pathname == "/promo_simulation":
             input_id = 'tab_promo_simulation'
-            n_user_path = True
+            n_promo_simulation = True
         else:
             input_id = 'tab_general_monitor'
             n_general_monitor = True
@@ -454,7 +454,7 @@ def activate_tab(n_general_monitor,
             n_user_path = True
         elif pathname == "/promo_simulation":
             input_id = 'tab_promo_simulation'
-            n_user_path = True
+            n_promo_simulation = True
         else:
             input_id = 'tab_general_monitor'
             n_general_monitor = True
