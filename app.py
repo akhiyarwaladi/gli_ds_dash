@@ -1,7 +1,10 @@
+import os
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import json
 import dash
+import time
 from dash.dependencies import Input, Output, State
 
 
@@ -50,7 +53,9 @@ from data_loader import get_vp, get_sp, get_cpn, get_cpe, get_cpi
 import pandas as pd
 import numpy as np
 import requests
-import os
+
+
+
 from datetime import date, timedelta, datetime
 from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah,rupiah_format
 
@@ -1021,6 +1026,8 @@ def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_
 
     pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
 
+
+    time.sleep(1)
     return rupiah_format(pred_val, with_prefix=True)
 
 
