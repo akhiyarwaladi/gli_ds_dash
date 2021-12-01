@@ -215,7 +215,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             ),
                                             
                                         ]
-                                        , width=12
+                                        , width=6
                                     ),
                                 ], style={"margin-bottom": "15px"})
 

@@ -11,7 +11,7 @@ def get_promo_feature():
 	promo_feature = dict(ast.literal_eval(s))
 	return promo_feature
 
-
+	
 
 def get_plu_list():
 
