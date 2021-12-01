@@ -207,7 +207,14 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         [
                                             html.H5('perkiraan sales: '),
-                                            html.H3(html.Div(id='outval_promo_simulation'))
+                                            dcc.Loading(
+                                                id="loading_calculate_sales",
+                                                type="default",
+                                                children=html.P(
+                                                    html.H3(html.Div(id='outval_promo_simulation'))
+                                                )
+                                            ),
+                                            
                                         ]
                                         , width=12
                                     ),
