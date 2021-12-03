@@ -40,6 +40,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                           [
 
                             html.H5("Promo Simulation", className="card-title"),
+                            
                           ]
                         ),
                         dbc.CardBody(
