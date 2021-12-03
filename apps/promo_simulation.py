@@ -115,7 +115,6 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
 
 
                                 ], style={"margin-bottom": "15px"}),
-                                html.Br(),
                                 html.Hr(),
                                 html.Br(),
                                 dbc.Row([
@@ -202,9 +201,11 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     ),
 
                                 ], style={"margin-bottom": "15px"}),
+                                html.Hr(),
+                                html.Br(),
                                 dbc.Row([
                                     dbc.Button(
-                                        "hitung", id="button_promo_simulation", className="me-2", size="lg", n_clicks=0
+                                        "lihat sales", id="button_promo_simulation", className="me-2", size="lg", n_clicks=0
                                     ),
 
 
