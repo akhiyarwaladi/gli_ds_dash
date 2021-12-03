@@ -119,7 +119,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("minimum harga"),
+                                                dbc.Label("Minimum beli (RP)"),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_min_amount",
@@ -134,7 +134,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("minimum qty"),
+                                                dbc.Label("Minimum jumlah (qty)"),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_min_qty",
@@ -185,7 +185,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Jumlah potongan"),
+                                                dbc.Label("Potongan harga (Rp)"),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_discount_amount",
