@@ -1017,7 +1017,7 @@ def calculate_promo_simulation(
             'modul ini belum tersedia' 
             {'display': 'block'}, 
             {'display': 'block'},
-            ''
+            '',
             ''
         )
     clf = load(modul_path)
