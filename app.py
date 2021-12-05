@@ -1008,10 +1008,10 @@ def calculate_promo_simulation(n_clicks, promo_start_date, promo_end_date, input
     pred_df = pd.DataFrame()
 
     
-    date_object = date.fromisoformat(promo_start_date)
+    date_object = datetime.strptime(promo_start_date, "%Y-%m-%dT%H:%M:%S")
     promo_start_date_str = date_object.strftime('%Y-%m-%d')
 
-    date_object = date.fromisoformat(promo_end_date)
+    date_object = datetime.strptime(promo_end_date, "%Y-%m-%dT%H:%M:%S")
     promo_end_date_str = date_object.strftime('%Y-%m-%d')
 
     pred_df['tbmproi_start_date'] = [promo_start_date_str]
