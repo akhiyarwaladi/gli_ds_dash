@@ -1057,8 +1057,7 @@ def calculate_promo_simulation(
         rupiah_format(pred_val, with_prefix=True), 
         {'display': 'block'}, 
         {'display': 'block'},
-        li_adder_plus,
-        li_adder_min
+
     )
 
 
