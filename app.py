@@ -970,8 +970,11 @@ def show_hide_element(dropdown_promo_type_val):
 
 @app.callback(
     
-    Output(component_id='outval_promo_simulation', component_property='children'),
-
+    [
+        Output(component_id='outval_promo_simulation', component_property='children')
+        Output(component_id='increase_sales_adder', component_property='style'),
+        Output(component_id='decrease_sales_adder', component_property='style')
+    ],
 
     [
         Input(component_id='button_promo_simulation', component_property='n_clicks')
@@ -1043,7 +1046,7 @@ def calculate_promo_simulation(n_clicks, promo_start_date, promo_end_date, input
     #rupiah_format(pred_val, with_prefix=True)
 
     time.sleep(1)
-    return rupiah_format(pred_val, with_prefix=True)
+    return rupiah_format(pred_val, with_prefix=True), {'display': 'block'}, {'display': 'block'}
 
 
 
