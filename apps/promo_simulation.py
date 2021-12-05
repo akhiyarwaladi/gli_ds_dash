@@ -12,13 +12,11 @@ from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
 
 
-
 from loader.promo_simulation_load import get_plu_list, get_promo_feature
 
 
 f_plu_list = get_plu_list()
 plu_list_dropdown = f_plu_list[0]
-
 promo_feature = get_promo_feature()
 
 
@@ -235,7 +233,10 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 [
 
                                     dbc.Col(
-                                        dbc.Card(["Increase sales by adding: ", html.H5(html.Div(id='increase_sales_adder_str'))]),
+                                        dbc.Card([
+                                            "Increase sales by adding: ", 
+                                            html.H5(html.Div(id='increase_sales_adder_str'))
+                                        ]),
 
                                     width=6,)
 
@@ -244,14 +245,15 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 dbc.Row(
                                 [
                                     dbc.Col(
-                                        dbc.Card(["Decrease sales by adding: ", html.H5(html.Div(id='decrease_sales_adder_str'))]),
+                                        dbc.Card([
+                                            "Decrease sales by adding: ", 
+                                            html.H5(html.Div(id='decrease_sales_adder_str'))
+                                        ]),
 
                                     width=6,)
 
                                 ], id='decrease_sales_adder', style={'display':'none'})
 
-
-                            
 
                             ]),
 
