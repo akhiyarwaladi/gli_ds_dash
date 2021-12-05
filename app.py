@@ -966,7 +966,19 @@ def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '807':
         return False, False, True, False, True
 
+@app.callback(
+    
+    [
+        Output(component_id='increase_sales_adder', component_property='style'),
+        Output(component_id='decrease_sales_adder', component_property='style')
+    ],
 
+    [
+        Input(component_id='button_promo_simulation', component_property='n_clicks')
+    ]
+)
+def show_hide_element(visibility_state):
+    return  {'display': 'none'}, {'display': 'none'}
 
 @app.callback(
     
