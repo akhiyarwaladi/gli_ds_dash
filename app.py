@@ -57,6 +57,7 @@ import requests
 
 
 from datetime import date, timedelta, datetime
+from dateutil import parser
 from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah,rupiah_format
 
 
@@ -1008,10 +1009,10 @@ def calculate_promo_simulation(n_clicks, promo_start_date, promo_end_date, input
     pred_df = pd.DataFrame()
 
     
-    date_object = datetime.strptime(promo_start_date, "%Y-%m-%dT%H:%M:%S")
+    date_object = parser.parse(promo_start_date)
     promo_start_date_str = date_object.strftime('%Y-%m-%d')
 
-    date_object = datetime.strptime(promo_end_date, "%Y-%m-%dT%H:%M:%S")
+    date_object = parser.parse(promo_end_date)
     promo_end_date_str = date_object.strftime('%Y-%m-%d')
 
     pred_df['tbmproi_start_date'] = [promo_start_date_str]
