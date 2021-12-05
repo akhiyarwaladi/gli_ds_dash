@@ -1014,7 +1014,7 @@ def calculate_promo_simulation(
     modul_path = '{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
     if not os.path.exists(modul_path):
         return (
-            'modul ini belum tersedia' 
+            'modul ini belum tersedia',
             {'display': 'block'}, 
             {'display': 'block'},
             '',
