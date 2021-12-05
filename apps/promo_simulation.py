@@ -226,6 +226,22 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         ]
                                         , width=6
                                     ),
+                                ], style={"margin-bottom": "15px"}),
+
+                                dbc.Row([
+                                    dbc.Col(
+                                        dbc.Card("Increase sales by add", body=True),
+
+                                    width=6,)
+
+                                ], style={"margin-bottom": "15px"}),
+                                
+                                dbc.Row([
+                                    dbc.Col(
+                                        dbc.Card("Decrease sales by add", body=True),
+
+                                    width=6,)
+
                                 ], style={"margin-bottom": "15px"})
 
 
