@@ -966,26 +966,16 @@ def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '807':
         return False, False, True, False, True
 
-@app.callback(
-    
-    [
-        Output(component_id='increase_sales_adder', component_property='style'),
-        Output(component_id='decrease_sales_adder', component_property='style')
-    ],
 
-    [
-        Input(component_id='button_promo_simulation', component_property='n_clicks')
-    ]
-)
-def show_hide_element(visibility_state):
-    return  {'display': 'none'}, {'display': 'none'}
 
 @app.callback(
     
     [
         Output(component_id='outval_promo_simulation', component_property='children'),
         Output(component_id='increase_sales_adder', component_property='style'),
-        Output(component_id='decrease_sales_adder', component_property='style')
+        Output(component_id='decrease_sales_adder', component_property='style'),
+        Output(component_id='increase_sales_adder_str', component_property='children'),
+        Output(component_id='decrease_sales_adder_str', component_property='children')
     ],
 
     [
@@ -1005,21 +995,29 @@ def show_hide_element(visibility_state):
     ]
     
 )
-def calculate_promo_simulation(n_clicks, promo_start_date, promo_end_date, input_min_amount, 
-    input_min_qty, input_extra_star, 
-    input_extra_point, input_discount_amount, pred_promo_type, pred_plu):
+def calculate_promo_simulation(
+    n_clicks, 
+    promo_start_date, 
+    promo_end_date, 
+    input_min_amount, 
+    input_min_qty, 
+    input_extra_star, 
+    input_extra_point, 
+    input_discount_amount, 
+    pred_promo_type, 
+    pred_plu
+    ):
     
-    # input_min_amount = input_min_amount
-    # input_min_qty = input_min_qty
-    # input_extra_star = input_extra_star
-    # input_extra_point = input_extra_point
-    # input_discount_amount = input_discount_amount
+
 
     parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
-
     clf = load('{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type))
-    promo_feature[pred_promo_type]
+    adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
 
+    df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
+               pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
+    li_adder_plus = [i for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+    li_adder_min = [i for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
 
     pred_df = pd.DataFrame()
 
@@ -1055,10 +1053,14 @@ def calculate_promo_simulation(n_clicks, promo_start_date, promo_end_date, input
 
 
     pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
-    #rupiah_format(pred_val, with_prefix=True)
 
     time.sleep(1)
-    return rupiah_format(pred_val, with_prefix=True), {'display': 'block'}, {'display': 'block'}
+    return (rupiah_format(pred_val, with_prefix=True), 
+        {'display': 'block'}, 
+        {'display': 'block'},
+        li_adder_plus,
+        li_adder_min
+    )
 
 
 
