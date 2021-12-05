@@ -973,9 +973,7 @@ def show_hide_element(dropdown_promo_type_val):
     [
         Output(component_id='outval_promo_simulation', component_property='children'),
         Output(component_id='increase_sales_adder', component_property='style'),
-        Output(component_id='decrease_sales_adder', component_property='style'),
-        Output(component_id='increase_sales_adder_str', component_property='children'),
-        Output(component_id='decrease_sales_adder_str', component_property='children')
+        Output(component_id='decrease_sales_adder', component_property='style')
     ],
 
     [
