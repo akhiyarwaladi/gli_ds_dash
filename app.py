@@ -1055,7 +1055,8 @@ def calculate_promo_simulation(
     pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
 
     time.sleep(1)
-    return (rupiah_format(pred_val, with_prefix=True), 
+    return (
+        rupiah_format(pred_val, with_prefix=True), 
         {'display': 'block'}, 
         {'display': 'block'},
         li_adder_plus,
