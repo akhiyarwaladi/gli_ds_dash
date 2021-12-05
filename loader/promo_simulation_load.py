@@ -5,7 +5,7 @@ import ast
 
 
 def get_promo_feature():
-	with open('/home/server/gli-data-science/akhiyar/sales_prediction/feature/promo_feature.json','r') as f:
+	with open('/home/server/gli-data-science/akhiyar/sales_prediction/feature/promo_feature_stag_1.json','r') as f:
 	    s = f.read()
 
 	promo_feature = dict(ast.literal_eval(s))

@@ -977,6 +977,8 @@ def show_hide_element(dropdown_promo_type_val):
     ],
 
     [
+        State('promo_start_date','date'),
+        State('promo_end_date','date'),
         State('input_min_amount', 'value'),
         State('input_min_qty', 'value'),
         State('input_extra_star', 'value'),
@@ -987,7 +989,8 @@ def show_hide_element(dropdown_promo_type_val):
     ]
     
 )
-def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_extra_star, 
+def calculate_promo_simulation(n_clicks, promo_start_date, promo_end_date, input_min_amount, 
+    input_min_qty, input_extra_star, 
     input_extra_point, input_discount_amount, pred_promo_type, pred_plu):
     
     # input_min_amount = input_min_amount
@@ -996,18 +999,23 @@ def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_
     # input_extra_point = input_extra_point
     # input_discount_amount = input_discount_amount
 
-    pred_plu = pred_plu
-    pred_promo_type = pred_promo_type
-
     parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
 
-    clf = load('{}/model/plu_tree/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type))
+    clf = load('{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type))
     promo_feature[pred_promo_type]
 
 
     pred_df = pd.DataFrame()
-    pred_df['tbmproi_start_date'] = ['2021-03-01']
-    pred_df['tbmproi_end_date'] = ['2021-03-30']
+
+    
+    date_object = date.fromisoformat(promo_start_date)
+    promo_start_date_str = date_object.strftime('%Y-%m-%d')
+
+    date_object = date.fromisoformat(promo_end_date)
+    promo_end_date_str = date_object.strftime('%Y-%m-%d')
+
+    pred_df['tbmproi_start_date'] = [promo_start_date_str]
+    pred_df['tbmproi_end_date'] = [promo_end_date_str]
 
     pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
     pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
@@ -1021,11 +1029,17 @@ def calculate_promo_simulation(n_clicks, input_min_amount, input_min_qty, input_
     pred_df['tbmproi_star'] = [input_extra_star]
     pred_df['tbmproi_extra_point'] = [input_extra_point]
     pred_df['tbmproi_disc_amount'] = [input_discount_amount]
+    pred_df['count_branch'] = 32
+    pred_df['Non Member'] = 1
+    pred_df['SSP Member'] = 1
+    pred_df['Regular'] = 1
+    pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
+
 
 
 
     pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
-
+    #rupiah_format(pred_val, with_prefix=True)
 
     time.sleep(1)
     return rupiah_format(pred_val, with_prefix=True)
