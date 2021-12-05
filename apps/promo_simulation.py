@@ -219,7 +219,10 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             dcc.Loading(
                                                 id="loading_calculate_sales",
                                                 type="default",
-                                                children=html.H3(html.Div(id='outval_promo_simulation'))
+                                                children=[
+                                                    html.H3(html.Div(id='outval_promo_simulation')),
+                                                    dbc.Card("Increase sales by add", body=True)
+                                                ]
                                                 
                                             ),
                                             
@@ -235,7 +238,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     width=6,)
 
                                 ], style={"margin-bottom": "15px"}),
-                                
+
                                 dbc.Row([
                                     dbc.Col(
                                         dbc.Card("Decrease sales by add", body=True),
