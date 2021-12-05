@@ -973,7 +973,9 @@ def show_hide_element(dropdown_promo_type_val):
     [
         Output(component_id='outval_promo_simulation', component_property='children'),
         Output(component_id='increase_sales_adder', component_property='style'),
-        Output(component_id='decrease_sales_adder', component_property='style')
+        Output(component_id='decrease_sales_adder', component_property='style'),
+        Output(component_id='increase_sales_adder_str', component_property='children'),
+        Output(component_id='decrease_sales_adder_str', component_property='children')
     ],
 
     [
@@ -1057,7 +1059,8 @@ def calculate_promo_simulation(
         rupiah_format(pred_val, with_prefix=True), 
         {'display': 'block'}, 
         {'display': 'block'},
-
+        ', '.join(li_adder_plus),
+        ', '.join(li_adder_min)
     )
 
 

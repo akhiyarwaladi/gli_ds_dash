@@ -235,20 +235,20 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 [
 
                                     dbc.Col(
-                                        dbc.Card("Increase sales by add {}".format(html.Div(id='increase_sales_adder_str'))),
+                                        dbc.Card("Increase sales by add ", html.Div(id='increase_sales_adder_str')),
 
                                     width=6,)
 
-                                ], id='increase_sales_adder', style={"margin-bottom": "15px", 'display':'none'}),
+                                ], id='increase_sales_adder', style={'display':'none'}),
 
                                 dbc.Row(
                                 [
                                     dbc.Col(
-                                        dbc.Card("Decrease sales by add {}".format(html.Div(id='decrease_sales_adder_str'))),
+                                        dbc.Card("Decrease sales by add ", html.Div(id='decrease_sales_adder_str')),
 
                                     width=6,)
 
-                                ], id='decrease_sales_adder', style={"margin-bottom": "15px", 'display':'none'})
+                                ], id='decrease_sales_adder', style={'display':'none'})
 
 
                             
