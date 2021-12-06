@@ -91,8 +91,6 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
 
-
-
                                     dbc.Col(
 
                                         dbc.Select(
@@ -120,6 +118,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
+
                                                 dbc.Label("Minimum beli (RP)"),
                                                 dbc.Input(
                                                     type="number",
@@ -128,6 +127,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     value=1,
                                                     disabled=True
                                                 ),
+
                                             ]
                                         ),
                                         width=4,
