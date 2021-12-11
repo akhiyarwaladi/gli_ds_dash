@@ -984,6 +984,7 @@ def update_date_dropdown(plu_select):
     li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear/{}_*'.format(plu_select))
 
     for model in li_model:
+        print(model)
         model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
         li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
     return li_opt
