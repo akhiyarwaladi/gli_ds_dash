@@ -968,9 +968,12 @@ def show_hide_element(dropdown_promo_type_val):
 
 @app.callback(
     Output('dropdown_promo_type', 'options'),
-    [Input('dropdown_plu', 'value')]
+    [
+        Input('dropdown_plu', 'value')
+    ]
 )
 def update_date_dropdown(plu_select):
+    plu_select = str(plu_select)
     model_type_map = {"201":"201 (potongan langsung)",
               "103":"103 (gratis item)",
               "801":"801 (beli jumlah RP dapat star)",
