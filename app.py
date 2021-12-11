@@ -30,7 +30,7 @@ from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
 from apps.event_product import view_product_tab, product_group, vp, sp, general_event
 from apps.user_path_box import user_path_tab, low_review_table
-from apps.promo_simulation import promo_simulation_tab, promo_feature
+from apps.promo_simulation import promo_simulation_tab, promo_feature, promo_feature_map
 
 
 
@@ -1027,8 +1027,8 @@ def calculate_promo_simulation(
 
         df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
                    pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
-        li_adder_plus = [i for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
-        li_adder_min = [i for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
+        li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+        li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
 
         pred_df = pd.DataFrame()
 

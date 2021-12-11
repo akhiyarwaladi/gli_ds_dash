@@ -17,7 +17,7 @@ from loader.promo_simulation_load import get_plu_list, get_promo_feature
 
 f_plu_list = get_plu_list()
 plu_list_dropdown = f_plu_list[0]
-promo_feature = get_promo_feature()
+promo_feature, promo_feature_map = get_promo_feature()
 
 
 
@@ -234,7 +234,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
 
                                     dbc.Col(
                                         dbc.Card([
-                                            "Increase sales by adding: ", 
+                                            "Sales akan meningkat dengan menambah: ", 
                                             html.H5(html.Div(id='increase_sales_adder_str'))
                                         ]),
 
@@ -246,7 +246,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                 [
                                     dbc.Col(
                                         dbc.Card([
-                                            "Decrease sales by adding: ", 
+                                            "Sales akan menurun dengan menambah: ", 
                                             html.H5(html.Div(id='decrease_sales_adder_str'))
                                         ]),
 

@@ -9,7 +9,12 @@ def get_promo_feature():
 	    s = f.read()
 
 	promo_feature = dict(ast.literal_eval(s))
-	return promo_feature
+
+	with open('/home/server/gli-data-science/akhiyar/sales_prediction/feature/promo_feature_map.json','r') as f:
+		s = f.read()
+
+	promo_feature_map = dict(ast.literal_eval(s))
+	return promo_feature, promo_feature_map
 
 	
 
