@@ -22,6 +22,11 @@ def get_plu_list():
 
 	low_label = pd.read_csv('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_list.csv'
 		, skiprows=[0],  names=['value','label'])
-	label = low_label.to_dict(orient='records')
+	label_alfagift = low_label.to_dict(orient='records')
 
-	return label, ''
+	low_label = pd.read_csv('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_list_offline.csv'
+		, skiprows=[0],  names=['value','label'])
+	label_offline = low_label.to_dict(orient='records')
+
+
+	return label_alfagift, label_offline

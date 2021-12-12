@@ -17,6 +17,7 @@ from loader.promo_simulation_load import get_plu_list, get_promo_feature
 
 f_plu_list = get_plu_list()
 plu_list_dropdown = f_plu_list[0]
+plu_list_offline_dropdown = f_plu_list[1]
 promo_feature, promo_feature_map = get_promo_feature()
 
 

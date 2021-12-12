@@ -30,7 +30,12 @@ from apps.tab_events_inapp import events_inapp, campaign_inapp
 from apps.tab_events_email import events_email, campaign_email
 from apps.event_product import view_product_tab, product_group, vp, sp, general_event
 from apps.user_path_box import user_path_tab, low_review_table
-from apps.promo_simulation import promo_simulation_tab, promo_feature, promo_feature_map
+
+from apps.promo_simulation import (promo_simulation_tab, 
+    promo_feature, 
+    promo_feature_map,
+    plu_list_dropdown,
+    plu_list_offline_dropdown)
 
 
 
@@ -989,6 +994,24 @@ def update_date_dropdown(plu_select):
         model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
         li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
     return li_opt
+
+
+
+@app.callback(
+    Output('dropdown_plu', 'options'),
+    [
+        Input('dropdown_app', 'value')
+    ]
+)
+def update_date_dropdown(app_select):
+    plu_select = str(plu_select)
+
+    if app_select == 'alfagift':
+        li_opt = plu_list_dropdown
+    elif app_select == 'offline':
+        li_opt = plu_list_offline_dropdown
+    return li_opt
+
 
 
 @app.callback(
