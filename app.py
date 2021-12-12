@@ -975,26 +975,44 @@ def show_hide_element(dropdown_promo_type_val):
 @app.callback(
     Output('dropdown_promo_type', 'options'),
     [
+        Input('dropdown_app', 'value')
         Input('dropdown_plu', 'value')
     ]
 )
-def update_date_dropdown(plu_select):
+def update_date_dropdown(app_select, plu_select):
+    app_select = str(app_select)
     plu_select = str(plu_select)
-    model_type_map = {"201":"201 (potongan langsung)",
-              "103":"103 (gratis item)",
-              "801":"801 (beli jumlah RP dapat star)",
-              "803":"803 (beli qty dapat star)",
-              "807":"807 (beli minimum (qty/RP) dapat point)"}
 
-    li_opt = []
-    li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear/{}_*'.format(plu_select))
+    if app_select == 'alfagift':
+        model_type_map = {"201":"201 (potongan langsung)",
+                  "103":"103 (gratis item)",
+                  "801":"801 (beli jumlah RP dapat star)",
+                  "803":"803 (beli qty dapat star)",
+                  "807":"807 (beli minimum (qty/RP) dapat point)"}
 
-    for model in li_model:
-        print(model)
-        model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
-        li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
-    return li_opt
+        li_opt = []
+        li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear/{}_*'.format(plu_select))
 
+        for model in li_model:
+            print(model)
+            model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
+            li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
+        return li_opt
+    else app_select = 'offline':
+        model_type_map = {"201":"201 (potongan langsung)",
+                  "103":"103 (gratis item)",
+                  "801":"801 (beli jumlah RP dapat star)",
+                  "803":"803 (beli qty dapat star)",
+                  "807":"807 (beli minimum (qty/RP) dapat point)"}
+
+        li_opt = []
+        li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_offline/{}_*'.format(plu_select))
+
+        for model in li_model:
+            print(model)
+            model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
+            li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
+        return li_opt
 
 
 @app.callback(
