@@ -1004,7 +1004,7 @@ def update_date_dropdown(plu_select):
     ]
 )
 def update_date_dropdown(app_select):
-    plu_select = str(plu_select)
+    app_select = str(app_select)
 
     if app_select == 'alfagift':
         li_opt = plu_list_dropdown
