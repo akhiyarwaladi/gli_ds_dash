@@ -78,7 +78,20 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         width=4,
                                     ),
                                 ], style={"margin-bottom": "15px"}),
+                                dbc.Row([
+                                    dbc.Col(
+                                        dcc.Dropdown(
+                                            id='dropdown_app',
+                                            options=[
+                                                {"label": "Alfagift", "value": "alfagift", "disabled": False},
+                                                {"label": "Offline Store", "value": "offline", "disabled": False},
 
+                                            ],
+                                            value=1
+                                        ),
+                                        width=4,
+                                    ),
+                                ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
                                     dbc.Col(
                                         dcc.Dropdown(
