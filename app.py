@@ -33,6 +33,7 @@ from apps.user_path_box import user_path_tab, low_review_table
 
 from apps.promo_simulation import (promo_simulation_tab, 
     promo_feature, 
+    promo_feature_offline,
     promo_feature_map,
     plu_list_dropdown,
     plu_list_offline_dropdown)
@@ -1055,7 +1056,8 @@ def update_date_dropdown(app_select):
         State('input_extra_point', 'value'),
         State('input_discount_amount', 'value'),
         State('dropdown_promo_type', 'value'),
-        State('dropdown_plu', 'value')
+        State('dropdown_plu', 'value'),
+        State('dropdown_app', 'value')
     ]
     
 )
@@ -1069,86 +1071,154 @@ def calculate_promo_simulation(
     input_extra_point, 
     input_discount_amount, 
     pred_promo_type, 
-    pred_plu
+    pred_plu,
+    pred_app
     ):
     
+    if pred_app == 'alfagift':
 
-    try:
-        parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
-        modul_path = '{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
-        if not os.path.exists(modul_path):
+        try:
+            parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
+            modul_path = '{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+            if not os.path.exists(modul_path):
+                return (
+                    'modul ini belum tersedia',
+                    {'display': 'block'}, 
+                    {'display': 'block'},
+                    '',
+                    ''
+                )
+            clf = load(modul_path)
+
+
+            adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
+
+            df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
+                       pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
+            li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+            li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
+
+            pred_df = pd.DataFrame()
+
+            
+            date_object = parser.parse(promo_start_date)
+            promo_start_date_str = date_object.strftime('%Y-%m-%d')
+
+            date_object = parser.parse(promo_end_date)
+            promo_end_date_str = date_object.strftime('%Y-%m-%d')
+
+            pred_df['tbmproi_start_date'] = [promo_start_date_str]
+            pred_df['tbmproi_end_date'] = [promo_end_date_str]
+
+            pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
+            pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
+            pred_df['start_week'] = pred_df['tbmproi_start_date'] .apply(lambda d: (d.day-1) // 7 + 1)
+            pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
+                                        .astype('timedelta64[D]') + 1).astype(int)
+
+
+            pred_df['tbmproi_min_purchase_amount'] = [input_min_amount]
+            pred_df['tbmproi_min_purchase_qty'] = [input_min_qty]
+            pred_df['tbmproi_star'] = [input_extra_star]
+            pred_df['tbmproi_extra_point'] = [input_extra_point]
+            pred_df['tbmproi_disc_amount'] = [input_discount_amount]
+            pred_df['count_branch'] = 32
+            pred_df['Non Member'] = 1
+            pred_df['SSP Member'] = 1
+            pred_df['Regular'] = 1
+            pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
+
+
+
+
+            pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
+            if pred_val < 0:
+                pred_val = 0
+
+            time.sleep(1)
             return (
-                'modul ini belum tersedia',
+                rupiah_format(pred_val, with_prefix=True), 
+                {'display': 'block'}, 
+                {'display': 'block'},
+                ', '.join(li_adder_plus),
+                ', '.join(li_adder_min)
+            )
+            
+        except Exception as e:
+            return (
+                str(e),
                 {'display': 'block'}, 
                 {'display': 'block'},
                 '',
                 ''
+            )     
+
+    elif pred_app == 'offline':
+        try:
+            parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
+            modul_path = '{}/model/plu_linear_offline/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+
+            clf = load(modul_path)
+
+
+            adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
+
+            df_res = pd.concat([pd.DataFrame(promo_feature_offline[pred_promo_type], columns=['variabel']), 
+                       pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
+
+            li_adder_plus = [i for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+            li_adder_min = [i for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
+
+            pred_df = pd.DataFrame()
+
+
+            date_object = parser.parse(promo_start_date)
+            promo_start_date_str = date_object.strftime('%Y-%m-%d')
+
+            date_object = parser.parse(promo_end_date)
+            promo_end_date_str = date_object.strftime('%Y-%m-%d')
+
+            pred_df['tbmproi_start_date'] = [promo_start_date_str]
+            pred_df['tbmproi_end_date'] = [promo_end_date_str]
+
+            pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
+            pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
+            pred_df['start_week'] = pred_df['tbmproi_start_date'] .apply(lambda d: (d.day-1) // 7 + 1)
+            pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
+                                        .astype('timedelta64[D]') + 1).astype(int)
+
+
+
+            pred_df['MIN_QTY'] = [input_min_qty]
+            if pred_promo_type == '807':
+                pred_df['POT'] = [input_extra_point]
+            elif pred_promo_type == '201':
+                pred_df['POT'] = [input_discount_amount]
+            pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
+
+
+
+            pred_val = clf.predict(pred_df[promo_feature_offline[pred_promo_type]])[0]
+            if pred_val < 0:
+                pred_val = 0
+
+            time.sleep(1)
+            return (
+                rupiah_format(pred_val, with_prefix=True), 
+                {'display': 'block'}, 
+                {'display': 'block'},
+                ', '.join(li_adder_plus),
+                ', '.join(li_adder_min)
             )
-        clf = load(modul_path)
-
-
-        adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
-
-        df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
-                   pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
-        li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
-        li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
-
-        pred_df = pd.DataFrame()
-
-        
-        date_object = parser.parse(promo_start_date)
-        promo_start_date_str = date_object.strftime('%Y-%m-%d')
-
-        date_object = parser.parse(promo_end_date)
-        promo_end_date_str = date_object.strftime('%Y-%m-%d')
-
-        pred_df['tbmproi_start_date'] = [promo_start_date_str]
-        pred_df['tbmproi_end_date'] = [promo_end_date_str]
-
-        pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
-        pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
-        pred_df['start_week'] = pred_df['tbmproi_start_date'] .apply(lambda d: (d.day-1) // 7 + 1)
-        pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
-                                    .astype('timedelta64[D]') + 1).astype(int)
-
-
-        pred_df['tbmproi_min_purchase_amount'] = [input_min_amount]
-        pred_df['tbmproi_min_purchase_qty'] = [input_min_qty]
-        pred_df['tbmproi_star'] = [input_extra_star]
-        pred_df['tbmproi_extra_point'] = [input_extra_point]
-        pred_df['tbmproi_disc_amount'] = [input_discount_amount]
-        pred_df['count_branch'] = 32
-        pred_df['Non Member'] = 1
-        pred_df['SSP Member'] = 1
-        pred_df['Regular'] = 1
-        pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
-
-
-
-
-        pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
-        if pred_val < 0:
-            pred_val = 0
-
-        time.sleep(1)
-        return (
-            rupiah_format(pred_val, with_prefix=True), 
-            {'display': 'block'}, 
-            {'display': 'block'},
-            ', '.join(li_adder_plus),
-            ', '.join(li_adder_min)
-        )
-        
-    except Exception as e:
-        return (
-            str(e),
-            {'display': 'block'}, 
-            {'display': 'block'},
-            '',
-            ''
-        )     
-
+            
+        except Exception as e:
+            return (
+                str(e),
+                {'display': 'block'}, 
+                {'display': 'block'},
+                '',
+                ''
+            )     
 
 
 # =============================================================================
