@@ -998,7 +998,7 @@ def update_date_dropdown(app_select, plu_select):
             model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
             li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
         return li_opt
-    elif app_select = 'offline':
+    elif app_select == 'offline':
         model_type_map = {"201":"201 (potongan langsung)",
                   "103":"103 (gratis item)",
                   "801":"801 (beli jumlah RP dapat star)",
