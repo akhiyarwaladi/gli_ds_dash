@@ -975,7 +975,7 @@ def show_hide_element(dropdown_promo_type_val):
 @app.callback(
     Output('dropdown_promo_type', 'options'),
     [
-        Input('dropdown_app', 'value')
+        Input('dropdown_app', 'value'),
         Input('dropdown_plu', 'value')
     ]
 )
