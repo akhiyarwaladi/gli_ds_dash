@@ -56,7 +56,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     max_date_allowed=dt(2022, 9, 19),
                                                     initial_visible_month=dt(2021, 12, 1),
                                                     display_format='DD-MM-Y',
-                                                    date=dt(2021, 8, 24)
+                                                    date=dt(2021, 12, 1)
                                                 ),
                                             ]
                                         ),
@@ -72,7 +72,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     max_date_allowed=dt(2022, 9, 19),
                                                     initial_visible_month=dt(2021, 12, 31),
                                                     display_format='DD-MM-Y',
-                                                    date=dt(2021, 8, 31)
+                                                    date=dt(2021, 12, 31)
                                                 ),
                                             ]
                                         ),
