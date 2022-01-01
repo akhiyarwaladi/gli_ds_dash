@@ -1191,13 +1191,44 @@ def calculate_promo_simulation(
             )
             
         except Exception as e:
+            # return (
+            #     str(e),
+            #     {'display': 'block'}, 
+            #     {'display': 'block'},
+            #     '',
+            #     ''
+            # )     
+
+            engine = create_engine(engine_stmt)
+            q = '''
+            SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
+            FROM(
+                SELECT 
+                    ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
+                FROM TEMP_SALES_PROMO_ALFAGIFT
+                WHERE PLU = {}
+            )
+
+
+            '''.format(pred_plu)
+            con = engine.connect()
+            try:
+                res_avg = pd.read_sql_query(q,con)
+            except Exception as e:
+                if is_debug:
+                    print(e)
+                pass
+            con.close()
+            engine.dispose()
             return (
-                str(e),
+                rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
                 {'display': 'block'}, 
                 {'display': 'block'},
                 '',
                 ''
-            )     
+            )
+
+
 
     elif pred_app == 'offline':
         try:
