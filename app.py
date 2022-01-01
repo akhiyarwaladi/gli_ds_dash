@@ -994,12 +994,17 @@ def update_date_dropdown(app_select, plu_select):
 
         li_opt = []
         li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear/{}_*'.format(plu_select))
-
-        for model in li_model:
-            print(model)
-            model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
-            li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
+        li_model_type = [model.split('/')[-1].split('.')[0].split('_')[-1] for model in li_model]
+        for model_type in model_type_map:
+            
+        
+            if str(model_type) in li_model_type:
+                li_opt.append({"label": "{} [ADA DI PERIODE SEBELUMNYA]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
+            else:
+                li_opt.append({"label": "{}".format(model_type_map[model_type]), "value": model_type, "disabled": False})
         return li_opt
+
+        
     elif app_select == 'offline':
         model_type_map = {"201":"201 (potongan langsung)",
                   "103":"103 (gratis item)",
