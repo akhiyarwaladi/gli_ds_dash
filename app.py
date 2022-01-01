@@ -1105,13 +1105,7 @@ def calculate_promo_simulation(
             
 
 
-            adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
-
-            df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
-                       pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
-            li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
-            li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
-
+            ##### FORM
             pred_df = pd.DataFrame()
 
             
@@ -1142,6 +1136,7 @@ def calculate_promo_simulation(
             pred_df['Regular'] = 1
             pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
 
+            ### #END FORM
             if not os.path.exists(modul_path):
                 engine = create_engine(engine_stmt)
                 q = '''
@@ -1171,8 +1166,17 @@ def calculate_promo_simulation(
                     '',
                     ''
                 )
-
+            ####    
             clf = load(modul_path)
+            adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
+
+            df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
+                       pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
+            li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+            li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
+
+            ####
+
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
             if pred_val < 0:
                 pred_val = 0
