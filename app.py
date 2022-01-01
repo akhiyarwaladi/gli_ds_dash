@@ -167,10 +167,10 @@ sub_monitor = [
 ]
 
 sub_research = [
-            dac.SidebarMenuSubItem(id='tab_value_boxes', label='Voucher Usage'
-                , icon='sticky-note', style={'font-size':'19px'}),
-            dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx'
-                , icon='shopping-cart', style={'font-size':'19px'}),
+            # dac.SidebarMenuSubItem(id='tab_value_boxes', label='Voucher Usage'
+            #     , icon='sticky-note', style={'font-size':'19px'}),
+            # dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx'
+            #     , icon='shopping-cart', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_sales', label='Sales Prediction'
                 , icon='chart-area', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_promo_simulation', label='Promo Simulation'
@@ -999,7 +999,7 @@ def update_date_dropdown(app_select, plu_select):
             
         
             if str(model_type) in li_model_type:
-                li_opt.append({"label": "{} - [ ADA DI PERIODE SEBELUMNYA ]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
+                li_opt.append({"label": "{}  -  [ ADA DI PERIODE SEBELUMNYA ]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
             else:
                 li_opt.append({"label": "{}".format(model_type_map[model_type]), "value": model_type, "disabled": False})
         return li_opt
