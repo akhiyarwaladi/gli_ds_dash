@@ -1145,11 +1145,11 @@ def calculate_promo_simulation(
                     SELECT 
                         ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
                     FROM TEMP_SALES_PROMO_ALFAGIFT
-                    WHERE PLU = 735
+                    WHERE PLU = {}
                 )
 
 
-                '''.format(select_plu)
+                '''.format(pred_plu)
                 con = engine.connect()
                 try:
                     res_avg = pd.read_sql_query(q,con)
