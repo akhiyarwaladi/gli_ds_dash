@@ -31,7 +31,8 @@ from apps.tab_events_email import events_email, campaign_email
 from apps.event_product import view_product_tab, product_group, vp, sp, general_event
 from apps.user_path_box import user_path_tab, low_review_table
 
-from apps.promo_simulation import (promo_simulation_tab, 
+from apps.promo_simulation import (
+    promo_simulation_tab, 
     promo_feature, 
     promo_feature_offline,
     promo_feature_map,
