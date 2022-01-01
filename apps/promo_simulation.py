@@ -120,7 +120,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             value="201"
                                         ),
                                         
-                                        width=6,
+                                        width=8,
                                     ),
 
 

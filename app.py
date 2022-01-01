@@ -999,12 +999,12 @@ def update_date_dropdown(app_select, plu_select):
             
         
             if str(model_type) in li_model_type:
-                li_opt.append({"label": "{} [ADA DI PERIODE SEBELUMNYA]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
+                li_opt.append({"label": "{} - [ ADA DI PERIODE SEBELUMNYA ]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
             else:
                 li_opt.append({"label": "{}".format(model_type_map[model_type]), "value": model_type, "disabled": False})
         return li_opt
 
-        
+
     elif app_select == 'offline':
         model_type_map = {"201":"201 (potongan langsung)",
                   "103":"103 (gratis item)",
