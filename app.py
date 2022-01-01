@@ -1102,7 +1102,7 @@ def calculate_promo_simulation(
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
             modul_path = '{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
-            clf = load(modul_path)
+            
 
 
             adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
@@ -1172,7 +1172,7 @@ def calculate_promo_simulation(
                     ''
                 )
 
-
+            clf = load(modul_path)
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
             if pred_val < 0:
                 pred_val = 0
