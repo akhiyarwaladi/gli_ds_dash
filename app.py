@@ -69,6 +69,21 @@ from dateutil import parser
 from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah,rupiah_format
 
 
+
+from sqlalchemy import event,create_engine,types
+
+
+driver = 'cx_oracle'
+server = '10.234.152.61' 
+database = 'alfabi' 
+username = 'report' 
+password = 'justd0it'
+engine_stmt = "oracle://%s:%s@%s/%s" % ( username, password, server, database )
+
+
+
+
+
 ## importing data in here to enable callback
 
 parent_path = '/home/server/gli-data-science/akhiyar'
@@ -168,9 +183,9 @@ sub_monitor = [
 
 sub_research = [
             dac.SidebarMenuSubItem(id='tab_value_boxes', label='Voucher Usage'
-                , icon='sticky-note', style={'font-size':'19px'}),
+                , icon='sticky-note', style={'font-size':'19px'}, disabled=True),
             dac.SidebarMenuSubItem(id='tab_value_behave', label='Online-offline trx'
-                , icon='shopping-cart', style={'font-size':'19px'}),
+                , icon='shopping-cart', style={'font-size':'19px'}, disabled=True),
             dac.SidebarMenuSubItem(id='tab_sales', label='Sales Prediction'
                 , icon='chart-area', style={'font-size':'19px'}),
             dac.SidebarMenuSubItem(id='tab_promo_simulation', label='Promo Simulation'
@@ -1086,14 +1101,7 @@ def calculate_promo_simulation(
         try:
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
             modul_path = '{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
-            if not os.path.exists(modul_path):
-                return (
-                    'modul ini belum tersedia',
-                    {'display': 'block'}, 
-                    {'display': 'block'},
-                    '',
-                    ''
-                )
+
             clf = load(modul_path)
 
 
@@ -1134,7 +1142,35 @@ def calculate_promo_simulation(
             pred_df['Regular'] = 1
             pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
 
+            if not os.path.exists(modul_path):
+                engine = create_engine(engine_stmt)
+                q = '''
+                SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
+                FROM(
+                    SELECT 
+                        ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
+                    FROM TEMP_SALES_PROMO_ALFAGIFT
+                    WHERE PLU = 735
+                )
 
+
+                '''.format(select_plu)
+                con = engine.connect()
+                try:
+                    res_avg = pd.read_sql_query(q,con)
+                except Exception as e:
+                    if is_debug:
+                        print(e)
+                    pass
+                con.close()
+                engine.dispose()
+                return (
+                    rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
+                    {'display': 'block'}, 
+                    {'display': 'block'},
+                    '',
+                    ''
+                )
 
 
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
