@@ -1008,7 +1008,7 @@ def update_date_dropdown(app_select, plu_select):
                   "807":"807 (beli minimum (qty/RP) dapat point)"}
 
         li_opt = []
-        li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear/{}_*'.format(plu_select))
+        li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_test/{}_*'.format(plu_select))
         li_model_type = [model.split('/')[-1].split('.')[0].split('_')[-1] for model in li_model]
         for model_type in model_type_map:
             
