@@ -1100,7 +1100,7 @@ def calculate_promo_simulation(
 
         try:
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
-            modul_path = '{}/model/plu_linear/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+            modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
             
 
