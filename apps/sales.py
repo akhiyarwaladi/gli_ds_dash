@@ -50,7 +50,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                           end_date_placeholder_text="End Date",
                                           display_format='DD-MM-Y',
                                           start_date=start_picker,
-                                          end_date=dt(2021,12,31)
+                                          end_date=end_picker
                                       )
                                 , md=4),
                                 dbc.Col(
