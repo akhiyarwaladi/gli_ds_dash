@@ -23,7 +23,7 @@ def adjust_feature_target(target_value, target_feat, df_tto_test):
 	np.arange(1, 10, 9/4)
 	'''
 	df_tto_test.loc[df_tto_test[feat_adjust].isnull(), feat_adjust] = \
-	        list(np.linspace(feat_bound_val, target, (feat_bound_to_target+2)))[1:]
+	        list(np.linspace(feat_bound_val, target, (feat_bound_to_target+2)))[1:-1]
 
 	return df_tto_test
 
