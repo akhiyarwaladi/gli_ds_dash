@@ -41,7 +41,7 @@ df_m_3101 = pd.read_csv(os.path.join(parent_path, 'out_plot/df_m_3101.csv'), sep
 ###
 
 ## general monitoring
-store_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/store_type_sales_alfagift_oshop.csv'), sep='\t')
+store_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/store_type_sales_alfagift_oshop_test.csv'), sep='\t')
 store_type_sales['TRO_DATE_ORDER'] = pd.to_datetime(store_type_sales['TRO_DATE_ORDER'])\
 										.dt.strftime('%Y-%m')
 
