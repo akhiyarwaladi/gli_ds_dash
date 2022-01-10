@@ -1028,7 +1028,7 @@ def update_date_dropdown(app_select, plu_select):
                   "807":"807 (beli minimum (qty/RP) dapat point)"}
 
         li_opt = []
-        li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_offline/{}_*'.format(plu_select))
+        li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_offline_test/{}_*'.format(plu_select))
 
         for model in li_model:
             print(model)
@@ -1233,7 +1233,7 @@ def calculate_promo_simulation(
     elif pred_app == 'offline':
         try:
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
-            modul_path = '{}/model/plu_linear_offline/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+            modul_path = '{}/model/plu_linear_offline_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
             clf = load(modul_path)
 
