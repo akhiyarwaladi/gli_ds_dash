@@ -45,7 +45,7 @@ store_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/store_type_sa
 store_type_sales['TRO_DATE_ORDER'] = pd.to_datetime(store_type_sales['TRO_DATE_ORDER'])\
 										.dt.strftime('%Y-%m')
 
-application_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/application_type_sales_alfagift_oshop.csv'), sep='\t')
+application_type_sales = pd.read_csv(os.path.join(parent_path, 'out_plot/application_type_sales_alfagift_oshop_test.csv'), sep='\t')
 application_type_sales['TRO_DATE_ORDER'] = pd.to_datetime(application_type_sales['TRO_DATE_ORDER'])\
 											.dt.strftime('%Y-%m')
 
