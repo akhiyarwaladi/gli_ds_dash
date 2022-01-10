@@ -88,7 +88,7 @@ engine_stmt = "oracle://%s:%s@%s/%s" % ( username, password, server, database )
 
 parent_path = '/home/server/gli-data-science/akhiyar'
 new_regular = pd.read_csv(os.path.join(parent_path, \
-                'out_plot/new_regular_alfagift_oshop.csv'), sep='\t')
+                'out_plot/new_regular_alfagift_oshop_test.csv'), sep='\t')
 
 from joblib import dump, load
 clf = load('/home/server/gli-data-science/akhiyar/sales_prediction/model_stag/LinearRegression_PayDayGantung.joblib') 

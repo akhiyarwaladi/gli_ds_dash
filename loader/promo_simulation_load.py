@@ -36,3 +36,7 @@ def get_plu_list():
 
 
 	return label_alfagift, label_offline
+
+
+
+sore mba maudi, aku bisa hadir besok (selasa) di jam 15.45
