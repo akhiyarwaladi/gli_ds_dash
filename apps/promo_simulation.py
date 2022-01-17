@@ -35,13 +35,8 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                 
                   dbc.Card(
                     [
-                        dbc.CardHeader(
-                          [
-
-                            html.H5("Promo Simulation", className="card-title"),
-                            
-                          ]
-                        ),
+                        dbc.CardHeader(html.H5('Promo Simulation')
+                        ,style={'font-size':'36px','font-family':'Verdana'}),
                         dbc.CardBody(
                             [
                                 # html.H5("Card title", className="card-title"),
