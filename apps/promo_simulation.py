@@ -140,7 +140,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     type="number",
                                                     id="input_min_amount",
                                                     placeholder="Enter",
-                                                    value=1,
+                                                    value=10000,
                                                     disabled=True
                                                 ),
 
@@ -189,7 +189,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     type="number",
                                                     id="input_extra_point",
                                                     placeholder="Enter",
-                                                    value=1,
+                                                    value=2000,
                                                     disabled=True
                                                 ),
                                                 
@@ -207,7 +207,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     type="number",
                                                     id="input_discount_amount",
                                                     placeholder="Enter",
-                                                    value=1,
+                                                    value=500,
                                                     disabled=False
                                                 ),
                                             ]
