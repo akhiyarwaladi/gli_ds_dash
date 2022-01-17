@@ -1163,7 +1163,7 @@ def calculate_promo_simulation(
                     rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
                     {'display': 'block'}, 
                     {'display': 'block'},
-                    '',
+                    'duration',
                     ''
                 )
             ####    
@@ -1224,7 +1224,7 @@ def calculate_promo_simulation(
                 rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
                 {'display': 'block'}, 
                 {'display': 'block'},
-                '',
+                'duration',
                 ''
             )
 
