@@ -1014,7 +1014,7 @@ def update_date_dropdown(app_select, plu_select):
             
         
             if str(model_type) in li_model_type:
-                li_opt.append({"label": "{}  -  <b> [ PREDICTED BY MODEL ] </b>".format(model_type_map[model_type]), "value": model_type, "disabled": False})
+                li_opt.append({"label": "{}  -  [ PREDICTED BY MODEL ]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
             else:
                 li_opt.append({"label": "{}".format(model_type_map[model_type]), "value": model_type, "disabled": False})
         return li_opt
