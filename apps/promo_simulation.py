@@ -22,6 +22,9 @@ promo_feature, promo_feature_offline, promo_feature_map = get_promo_feature()
 
 
 
+s_pick = dt.today().date() + relativedelta(days=2)
+e_pick = dt.today().date() + relativedelta(days=17)
+
 
 promo_simulation_tab = dac.TabItem(id='content_promo_simulation', 
                               
@@ -49,7 +52,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     id='promo_start_date',
                                                     min_date_allowed=dt(1995, 8, 5),
                                                     max_date_allowed=dt(2022, 9, 19),
-                                                    initial_visible_month=dt(2021, 12, 1),
+                                                    initial_visible_month=s_pick,
                                                     display_format='DD-MM-Y',
                                                     date=dt(2021, 12, 1)
                                                 ),
@@ -69,7 +72,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                     id='promo_end_date',
                                                     min_date_allowed=dt(1995, 8, 5),
                                                     max_date_allowed=dt(2022, 9, 19),
-                                                    initial_visible_month=dt(2021, 12, 31),
+                                                    initial_visible_month=e_pick,
                                                     display_format='DD-MM-Y',
                                                     date=dt(2021, 12, 31)
                                                 ),
