@@ -1002,10 +1002,10 @@ def update_date_dropdown(app_select, plu_select):
 
     if app_select == 'alfagift':
         model_type_map = {"201":"201 (potongan langsung)",
-                  "103":"103 (gratis item)",
-                  "801":"801 (beli jumlah RP dapat star)",
-                  "803":"803 (beli qty dapat star)",
-                  "807":"807 (beli minimum (qty/RP) dapat point)"}
+                  "103":"103 (gratis product)",
+                  "801":"801 (beli minimum rupiah dapat star)",
+                  "803":"803 (beli minimum kuantitas dapat star)",
+                  "807":"807 (minimum (kuantitas/rupiah) dapat point)"}
 
         li_opt = []
         li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_test/{}_*'.format(plu_select))
@@ -1014,7 +1014,7 @@ def update_date_dropdown(app_select, plu_select):
             
         
             if str(model_type) in li_model_type:
-                li_opt.append({"label": "{}  -  [ ADA DI PERIODE SEBELUMNYA ]".format(model_type_map[model_type]), "value": model_type, "disabled": False})
+                li_opt.append({"label": "{}  -  <b> [ PREDICTED BY MODEL ] </b>".format(model_type_map[model_type]), "value": model_type, "disabled": False})
             else:
                 li_opt.append({"label": "{}".format(model_type_map[model_type]), "value": model_type, "disabled": False})
         return li_opt
@@ -1022,10 +1022,10 @@ def update_date_dropdown(app_select, plu_select):
 
     elif app_select == 'offline':
         model_type_map = {"201":"201 (potongan langsung)",
-                  "103":"103 (gratis item)",
-                  "801":"801 (beli jumlah RP dapat star)",
-                  "803":"803 (beli qty dapat star)",
-                  "807":"807 (beli minimum (qty/RP) dapat point)"}
+                  "103":"103 (gratis product)",
+                  "801":"801 (beli minimum rupiah dapat star)",
+                  "803":"803 (beli minimum kuantitas dapat star)",
+                  "807":"807 (minimum (kuantitas/rupiah) dapat point)"}
 
         li_opt = []
         li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_offline_test/{}_*'.format(plu_select))
