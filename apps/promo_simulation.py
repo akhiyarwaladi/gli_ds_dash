@@ -133,7 +133,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dbc.FormGroup(
                                             [
 
-                                                dbc.Label("Minimum beli rupiah (RP)", color='white-50'),
+                                                dbc.Label("Minimum beli rupiah (RP)", color='black-50'),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_min_amount",
