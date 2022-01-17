@@ -972,6 +972,10 @@ def update_plot_sapa_count(value):
         Output(component_id='input_extra_point', component_property='disabled'),
         Output(component_id='input_discount_amount', component_property='disabled'),
         Output(component_id='input_min_amount_label', component_property='color'),
+        Output(component_id='input_min_qty_label', component_property='color'),
+        Output(component_id='input_extra_star_label', component_property='color'),
+        Output(component_id='input_extra_point_label', component_property='color'),
+        Output(component_id='input_discount_amount_label', component_property='color'),
 
     ],
     [
@@ -980,15 +984,15 @@ def update_plot_sapa_count(value):
 )
 def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '201':
-        return True, False, True, True, False, 'black-50'
+        return True, False, True, True, False, 'black-50', 'black', 'black-50', 'black-50', 'black'
     if dropdown_promo_type_val == '103':
-        return True, False, True, True, True, 'black-50'
+        return True, False, True, True, True, 'black-50', 'black', 'black-50', 'black-50', 'black-50'
     if dropdown_promo_type_val == '801':
-        return False, True, False, True, True, 'black'
+        return False, True, False, True, True, 'black', 'black-50', 'black', 'black-50', 'black-50'
     if dropdown_promo_type_val == '803':
-        return True, False, False, True, True, 'black-50'
+        return True, False, False, True, True, 'black-50', 'black', 'black', 'black-50', 'black-50'
     if dropdown_promo_type_val == '807':
-        return False, False, True, False, True, 'black'
+        return False, False, True, False, True, 'black', 'black', 'black-50', 'black', 'black-50'
 
 @app.callback(
     Output('dropdown_promo_type', 'options'),

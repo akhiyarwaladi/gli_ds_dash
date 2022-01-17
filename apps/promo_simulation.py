@@ -149,7 +149,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Minimum beli kuantitas (qty)"),
+                                                dbc.Label("Minimum beli kuantitas (qty)", id='input_min_qty_label'),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_min_qty",
@@ -167,7 +167,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Jumlah Star yang didapat"),
+                                                dbc.Label("Jumlah Star yang didapat", id='input_extra_star_label'),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_extra_star",
@@ -182,7 +182,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Jumlah Point yang didapat"),
+                                                dbc.Label("Jumlah Point yang didapat", id='input_extra_point_label'),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_extra_point",
@@ -200,7 +200,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Potongan harga (Rp)"),
+                                                dbc.Label("Potongan harga (Rp)", id = 'input_discount_amount_label'),
                                                 dbc.Input(
                                                     type="number",
                                                     id="input_discount_amount",
