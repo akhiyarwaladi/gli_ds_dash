@@ -1001,11 +1001,11 @@ def update_date_dropdown(app_select, plu_select):
     plu_select = str(plu_select)
 
     if app_select == 'alfagift':
-        model_type_map = {"201":"201 (potongan langsung)",
-                  "103":"103 (gratis product)",
-                  "801":"801 (beli minimum rupiah dapat star)",
-                  "803":"803 (beli minimum kuantitas dapat star)",
-                  "807":"807 (minimum (kuantitas/rupiah) dapat point)"}
+        model_type_map = {"201":"201 potongan langsung",
+                  "103":"103 gratis product",
+                  "801":"801 beli minimum rupiah dapat star",
+                  "803":"803 beli minimum kuantitas dapat star",
+                  "807":"807 minimum (kuantitas/rupiah) dapat point"}
 
         li_opt = []
         li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_test/{}_*'.format(plu_select))
@@ -1021,11 +1021,11 @@ def update_date_dropdown(app_select, plu_select):
 
 
     elif app_select == 'offline':
-        model_type_map = {"201":"201 (potongan langsung)",
-                  "103":"103 (gratis product)",
-                  "801":"801 (beli minimum rupiah dapat star)",
-                  "803":"803 (beli minimum kuantitas dapat star)",
-                  "807":"807 (minimum (kuantitas/rupiah) dapat point)"}
+        model_type_map = {"201":"201 potongan langsung",
+                  "103":"103 gratis product",
+                  "801":"801 beli minimum rupiah dapat star",
+                  "803":"803 beli minimum kuantitas dapat star",
+                  "807":"807 minimum (kuantitas/rupiah) dapat point"}
 
         li_opt = []
         li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_offline_test/{}_*'.format(plu_select))

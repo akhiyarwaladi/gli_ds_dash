@@ -110,11 +110,11 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dbc.Select(
                                             id="dropdown_promo_type",
                                             options=[
-                                                {"label": "201 (potongan langsung)", "value": "201", "disabled": False},
-                                                {"label": "103 (gratis product)", "value": "103", "disabled": False},
-                                                {"label": "801 (beli minimum rupiah dapat star)", "value": "801", "disabled": False},
-                                                {"label": "803 (beli minimum kuantitas dapat star)", "value": "803", "disabled": False},
-                                                {"label": "807 (minimum (kuantitas/rupiah) dapat point)", "value": "807", "disabled": False},
+                                                {"label": "201 potongan langsung", "value": "201", "disabled": False},
+                                                {"label": "103 gratis product", "value": "103", "disabled": False},
+                                                {"label": "801 beli minimum rupiah dapat star", "value": "801", "disabled": False},
+                                                {"label": "803 beli minimum kuantitas dapat star", "value": "803", "disabled": False},
+                                                {"label": "807 minimum (kuantitas/rupiah) dapat point", "value": "807", "disabled": False},
 
                                             ],
                                             value="201"
