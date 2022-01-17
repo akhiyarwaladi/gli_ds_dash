@@ -980,13 +980,13 @@ def update_plot_sapa_count(value):
 )
 def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '201':
-        return True, False, True, True, False, 'black-30'
+        return True, False, True, True, False, 'black-50'
     if dropdown_promo_type_val == '103':
-        return True, False, True, True, True, 'black-30'
+        return True, False, True, True, True, 'black-50'
     if dropdown_promo_type_val == '801':
         return False, True, False, True, True, 'black'
     if dropdown_promo_type_val == '803':
-        return True, False, False, True, True, 'black-30'
+        return True, False, False, True, True, 'black-50'
     if dropdown_promo_type_val == '807':
         return False, False, True, False, True, 'black'
 
