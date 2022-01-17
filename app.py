@@ -984,15 +984,15 @@ def update_plot_sapa_count(value):
 )
 def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '201':
-        return True, False, True, True, False, '#E5E7E9', 'black', '#E5E7E9', '#E5E7E9', 'black'
+        return True, False, True, True, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black'
     if dropdown_promo_type_val == '103':
-        return True, False, True, True, True, '#E5E7E9', 'black', '#E5E7E9', '#E5E7E9', '#E5E7E9'
+        return True, False, True, True, True, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB'
     if dropdown_promo_type_val == '801':
-        return False, True, False, True, True, 'black', '#E5E7E9', 'black', '#E5E7E9', '#E5E7E9'
+        return False, True, False, True, True, 'black', '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB'
     if dropdown_promo_type_val == '803':
-        return True, False, False, True, True, '#E5E7E9', 'black', 'black', '#E5E7E9', '#E5E7E9'
+        return True, False, False, True, True, '#C8C9CB', 'black', 'black', '#C8C9CB', '#C8C9CB'
     if dropdown_promo_type_val == '807':
-        return False, False, True, False, True, 'black', 'black', '#E5E7E9', 'black', '#E5E7E9'
+        return False, False, True, False, True, 'black', 'black', '#C8C9CB', 'black', '#C8C9CB'
 
 @app.callback(
     Output('dropdown_promo_type', 'options'),
