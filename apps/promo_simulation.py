@@ -152,7 +152,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dbc.FormGroup(
                                             [
                                                 dbc.Label("Minimum beli kuantitas (qty)", id='input_min_qty_label'),
-                                                dbc.InputGroup(
+                                                dbc.InputGroup([
                                                     
                                                     dbc.InputGroupText("#"),
                                                     dbc.Input(
@@ -162,7 +162,8 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                         value=1,
                                                         disabled=False
                                                     ),
-                                                ),
+
+                                                ]),
                                                 
                                             ]
                                         ),
