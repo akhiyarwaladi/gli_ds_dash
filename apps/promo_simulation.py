@@ -136,13 +136,19 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             [
 
                                                 dbc.Label("Minimum beli rupiah (RP)", id='input_min_amount_label'),
-                                                dbc.Input(
-                                                    type="number",
-                                                    id="input_min_amount",
-                                                    placeholder="Enter",
-                                                    value=10000,
-                                                    disabled=True
-                                                ),
+
+                                                dbc.InputGroup([
+                                                    
+                                                    dbc.InputGroupText("RP"),
+                                                    dbc.Input(
+                                                        type="number",
+                                                        id="input_min_amount",
+                                                        placeholder="Enter",
+                                                        value=10000,
+                                                        disabled=True
+                                                    ),
+
+                                                ]),
 
                                             ]
                                         ),
@@ -175,13 +181,19 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dbc.FormGroup(
                                             [
                                                 dbc.Label("Jumlah Star yang didapat", id='input_extra_star_label'),
-                                                dbc.Input(
-                                                    type="number",
-                                                    id="input_extra_star",
-                                                    placeholder="Enter",
-                                                    value=1,
-                                                    disabled=True
-                                                ),
+
+                                                dbc.InputGroup([
+                                                    
+                                                    dbc.InputGroupText("*"),
+                                                    dbc.Input(
+                                                        type="number",
+                                                        id="input_extra_star",
+                                                        placeholder="Enter",
+                                                        value=1,
+                                                        disabled=True
+                                                    ),
+
+                                                ]),
                                             ]
                                         ),
                                         width=4,
@@ -190,13 +202,19 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dbc.FormGroup(
                                             [
                                                 dbc.Label("Jumlah Point yang didapat", id='input_extra_point_label'),
-                                                dbc.Input(
-                                                    type="number",
-                                                    id="input_extra_point",
-                                                    placeholder="Enter",
-                                                    value=2000,
-                                                    disabled=True
-                                                ),
+
+                                                dbc.InputGroup([
+                                                    
+                                                    dbc.InputGroupText("o"),
+                                                    dbc.Input(
+                                                        type="number",
+                                                        id="input_extra_point",
+                                                        placeholder="Enter",
+                                                        value=2000,
+                                                        disabled=True
+                                                    ),
+
+                                                ]),
                                                 
                                             ]
                                         ),
@@ -208,13 +226,19 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dbc.FormGroup(
                                             [
                                                 dbc.Label("Potongan harga (Rp)", id = 'input_discount_amount_label'),
-                                                dbc.Input(
-                                                    type="number",
-                                                    id="input_discount_amount",
-                                                    placeholder="Enter",
-                                                    value=500,
-                                                    disabled=False
-                                                ),
+
+                                                dbc.InputGroup([
+                                                    
+                                                    dbc.InputGroupText("RP"),
+                                                    dbc.Input(
+                                                        type="number",
+                                                        id="input_discount_amount",
+                                                        placeholder="Enter",
+                                                        value=500,
+                                                        disabled=False
+                                                    ),
+
+                                                ]),
                                             ]
                                         ),
                                         width=4,
