@@ -49,7 +49,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                           start_date_placeholder_text="Start Date",
                                           end_date_placeholder_text="End Date",
                                           display_format='DD-MM-Y',
-                                          start_date=start_picker,
+                                          start_date=start_picker + relativedelta(months=6),
                                           end_date=end_picker + relativedelta(months=6)
                                       )
                                 , md=4),
@@ -127,7 +127,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date_placeholder_text="Start Date",
                                                 end_date_placeholder_text="End Date",
                                                 display_format='DD-MM-Y',
-                                                start_date=start_picker,
+                                                start_date=start_picker + relativedelta(months=6),
                                                 end_date=end_picker 
                                             )
                                     , width=5),
@@ -152,7 +152,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date_placeholder_text="Start Date",
                                                 end_date_placeholder_text="End Date",
                                                 display_format='DD-MM-Y',
-                                                start_date=start_picker,
+                                                start_date=start_picker + relativedelta(months=6),
                                                 end_date=dt(2021, 12, 31) + relativedelta(months=6)
                                             )
                                     , width=5), 
