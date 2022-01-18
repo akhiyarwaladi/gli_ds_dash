@@ -100,7 +100,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         dcc.Dropdown(
                                             id='dropdown_plu',
                                             options=plu_list_dropdown,
-                                            value=1
+                                            value=10
                                         ),
                                         width=8,
                                     ),
@@ -119,7 +119,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                 {"label": "807 minimum (kuantitas/rupiah) dapat point", "value": "807", "disabled": False},
 
                                             ],
-                                            value="201"
+                                            value=""
                                         ),
                                         
                                         width=8,
