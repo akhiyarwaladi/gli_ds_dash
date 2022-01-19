@@ -25,7 +25,7 @@ from dateutil.relativedelta import relativedelta
 start_picker = dt(2021,1,1)
 end_picker = dt.today().date() - relativedelta(days=2)
 
-end_picker_promo = dt(2022,1,1)
+end_picker_promo = dt(2022,12,31)
 
 
 sales_tab = dac.TabItem(id='content_sales', 
@@ -52,8 +52,8 @@ sales_tab = dac.TabItem(id='content_sales',
                                           start_date_placeholder_text="Start Date",
                                           end_date_placeholder_text="End Date",
                                           display_format='DD-MM-Y',
-                                          start_date=start_picker + relativedelta(months=6),
-                                          end_date=end_picker + relativedelta(months=6)
+                                          start_date=start_picker,
+                                          end_date=end_picker_promo
                                       )
                                 , md=4),
                                 dbc.Col(
@@ -130,7 +130,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date_placeholder_text="Start Date",
                                                 end_date_placeholder_text="End Date",
                                                 display_format='DD-MM-Y',
-                                                start_date=start_picker + relativedelta(months=6),
+                                                start_date=start_picker + relativedelta(months=12),
                                                 end_date=end_picker 
                                             )
                                     , width=5),
@@ -155,8 +155,8 @@ sales_tab = dac.TabItem(id='content_sales',
                                                 start_date_placeholder_text="Start Date",
                                                 end_date_placeholder_text="End Date",
                                                 display_format='DD-MM-Y',
-                                                start_date=start_picker + relativedelta(months=6),
-                                                end_date=dt(2021, 12, 31) + relativedelta(months=6)
+                                                start_date=start_picker + relativedelta(months=12),
+                                                end_date=end_picker_promo
                                             )
                                     , width=5), 
 
