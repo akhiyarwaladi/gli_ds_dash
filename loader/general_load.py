@@ -10,7 +10,7 @@ def get_member_count():
 
 def get_sapa_count():
 	am = pd.read_csv('/home/server/gli-data-science/akhiyar/data_req/store_count.csv', sep='\t')
-	am['index'] = pd.to_datetime(am['index'], format='%Y%m%d')
+	am['index'] = pd.to_datetime(am['index'], format='%Y-%m-%d')
 	am['count_format'] = am['count'].astype(float).apply(transform_to_format)
 
 	return am
