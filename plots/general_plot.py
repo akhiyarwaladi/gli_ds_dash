@@ -59,7 +59,7 @@ def plot_sapa_count(am, value):
 	#value = 'Monthly'
 
 	if value == 'Monthly':
-	    am = am.groupby([pd.Grouper(key='index',freq='M')]).agg({'count':'first','count_format':'first'}).reset_index()
+	    am = am.groupby([pd.Grouper(key='index',freq='M')]).agg({'count':'last','count_format':'last'}).reset_index()
 	    am['index'] = am['index'].dt.strftime('%Y-%m')
 
 	fig = px.line(am, x='index', y='count', template='presentation', \
