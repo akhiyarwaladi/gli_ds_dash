@@ -1240,7 +1240,7 @@ def calculate_promo_simulation(
     elif pred_app == 'offline':
         try:
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
-            modul_path = '{}/model/plu_linear_offline_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+            modul_path = '{}/model/plu_linear_offline/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
             clf = load(modul_path)
 
