@@ -67,25 +67,25 @@ general_monitor_tab = dac.TabItem(id='content_general_monitor',
                           ]),
                   ]) ,md=12),
               ]),
-            dbc.Row([
-              dbc.Col(
-                dbc.Card(
-                  [
-                      dbc.CardHeader(html.H5("Alfagift Order Status")
-                        ,style={'font-size':'36px','font-family':'Verdana'}),
-                      dbc.CardBody(
-                          [
-                              # html.H5("Card title", className="card-title"),
-                              html.P(
-                                    dcc.Graph(
-                                      figure=plot_order_status(),
-                                      config=dict(displayModeBar=False),
+            # dbc.Row([
+            #   dbc.Col(
+            #     dbc.Card(
+            #       [
+            #           dbc.CardHeader(html.H5("Alfagift Order Status")
+            #             ,style={'font-size':'36px','font-family':'Verdana'}),
+            #           dbc.CardBody(
+            #               [
+            #                   # html.H5("Card title", className="card-title"),
+            #                   html.P(
+            #                         dcc.Graph(
+            #                           figure=plot_order_status(),
+            #                           config=dict(displayModeBar=False),
                        
-                                      ),className="card-text",
-                              ),
-                          ]),
-                  ]) ,md=12),
-              ]),
+            #                           ),className="card-text",
+            #                   ),
+            #               ]),
+            #       ]) ,md=12),
+            #   ]),
             dbc.Row([
               dbc.Col(
                 dbc.Card(
