@@ -996,7 +996,7 @@ def show_hide_element(dropdown_promo_type_val):
     elif dropdown_promo_type_val == '807':
         return False, False, True, False, True, False, 'black', 'black', '#C8C9CB', 'black', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == 'general_voucher':
-
+        return False, True, True, True, False, False, 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black', 'black'
     else:
         return True, True, True, True, True, True, '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB'
 
