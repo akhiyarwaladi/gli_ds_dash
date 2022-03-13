@@ -1048,7 +1048,7 @@ def update_date_dropdown(app_select, plu_select):
         return li_opt
 
     elif app_select == 'targeted_voucher':
-        return [{"label":"general", "value":"general_voucher", "disabled": False}]
+        return [{"label":"General", "value":"general_voucher", "disabled": False}]
 
 
 @app.callback(
@@ -1065,7 +1065,7 @@ def update_date_dropdown(app_select):
     elif app_select == 'offline':
         li_opt = plu_list_offline_dropdown
     elif app_select == 'targeted_voucher':
-        li_opt = ['all']
+        li_opt = [{'value': '-', 'label': '-'}]
     return li_opt
 
 
