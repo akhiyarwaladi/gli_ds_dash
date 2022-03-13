@@ -1048,7 +1048,7 @@ def update_date_dropdown(app_select, plu_select):
         return li_opt
 
     elif app_select == 'targeted_voucher':
-        return [{"label":"general", "value":"general_voucher"}]
+        return [{"label":"general", "value":"general_voucher", "disabled": False}]
 
 
 @app.callback(
