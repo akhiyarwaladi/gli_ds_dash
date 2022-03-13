@@ -1065,7 +1065,7 @@ def update_date_dropdown(app_select):
     elif app_select == 'offline':
         li_opt = plu_list_offline_dropdown
     elif app_select == 'targeted_voucher':
-        li_opt = [{'value': '-', 'label': '-'}]
+        li_opt = [{'value': 'alfagift', 'label': 'Alfagift'}]
     return li_opt
 
 
