@@ -88,7 +88,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             options=[
                                                 {"label": "Alfagift", "value": "alfagift", "disabled": False},
                                                 {"label": "Offline Store", "value": "offline", "disabled": False},
-                                                {"label": "Targeted Voucher", "value": "offline", "targeted_voucher": False},
+                                                {"label": "Targeted Voucher", "value": "targeted_voucher", "disabled": False},
 
                                             ],
                                             value=1
