@@ -971,30 +971,34 @@ def update_plot_sapa_count(value):
         Output(component_id='input_extra_star', component_property='disabled'),
         Output(component_id='input_extra_point', component_property='disabled'),
         Output(component_id='input_discount_amount', component_property='disabled'),
+        Output(component_id='input_num_target', component_property='disabled'),
         Output(component_id='input_min_amount_label', component_property='color'),
         Output(component_id='input_min_qty_label', component_property='color'),
         Output(component_id='input_extra_star_label', component_property='color'),
         Output(component_id='input_extra_point_label', component_property='color'),
         Output(component_id='input_discount_amount_label', component_property='color'),
-
+        Output(component_id='input_num_target_label', component_property='color')
     ],
+
     [
         Input(component_id='dropdown_promo_type', component_property='value')
     ]
 )
 def show_hide_element(dropdown_promo_type_val):
     if dropdown_promo_type_val == '201':
-        return True, False, True, True, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black'
+        return True, False, True, True, False, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black', 'black'
     elif dropdown_promo_type_val == '103':
-        return True, False, True, True, True, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB'
+        return True, False, True, True, True, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == '801':
-        return False, True, False, True, True, 'black', '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB'
+        return False, True, False, True, True, False, 'black', '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == '803':
-        return True, False, False, True, True, '#C8C9CB', 'black', 'black', '#C8C9CB', '#C8C9CB'
+        return True, False, False, True, True, False, '#C8C9CB', 'black', 'black', '#C8C9CB', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == '807':
-        return False, False, True, False, True, 'black', 'black', '#C8C9CB', 'black', '#C8C9CB'
+        return False, False, True, False, True, False, 'black', 'black', '#C8C9CB', 'black', '#C8C9CB', 'black'
+    elif dropdown_promo_type_val == 'general_voucher':
+
     else:
-        return True, True, True, True, True, '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB'
+        return True, True, True, True, True, True, '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB'
 
 @app.callback(
     Output('dropdown_promo_type', 'options'),
@@ -1042,6 +1046,9 @@ def update_date_dropdown(app_select, plu_select):
             model_type = model.split('/')[-1].split('.')[0].split('_')[-1]
             li_opt.append({"label": model_type_map[model_type], "value": model_type, "disabled": False})
         return li_opt
+
+    elif app_select == 'targeted_voucher':
+        return [{"label":"general", "value":"general_voucher"}]
 
 
 @app.callback(
