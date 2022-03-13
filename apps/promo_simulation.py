@@ -88,6 +88,7 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                             options=[
                                                 {"label": "Alfagift", "value": "alfagift", "disabled": False},
                                                 {"label": "Offline Store", "value": "offline", "disabled": False},
+                                                {"label": "Targeted Voucher", "value": "offline", "targeted_voucher": False},
 
                                             ],
                                             value=1
@@ -235,6 +236,27 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                                         id="input_discount_amount",
                                                         placeholder="Enter",
                                                         value=500,
+                                                        disabled=False
+                                                    ),
+
+                                                ]),
+                                            ]
+                                        ),
+                                        width=4,
+                                    ),
+                                    dbc.Col(
+                                        dbc.FormGroup(
+                                            [
+                                                dbc.Label("Jumlah Member Target", id = 'input_num_target_label'),
+
+                                                dbc.InputGroup([
+                                                    
+                                                    dbc.InputGroupText("#"),
+                                                    dbc.Input(
+                                                        type="number",
+                                                        id="input_num_target",
+                                                        placeholder="Enter",
+                                                        value=100,
                                                         disabled=False
                                                     ),
 
