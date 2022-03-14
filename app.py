@@ -1082,6 +1082,7 @@ def update_date_dropdown(app_select, plu_select):
         return li_opt
 
 
+
     elif app_select == 'offline':
         model_type_map = {"201":"201 potongan langsung",
                   "103":"103 gratis product",
@@ -1172,7 +1173,29 @@ def calculate_promo_simulation(
             modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
             
+            engine = create_engine(engine_stmt)
+            q = '''
+                SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
+                FROM TEMP_SALES_PROMO_ALFAGIFT tspa 
+                WHERE tspa.PLU = {}
+                AND tspa.TYPE = {}
 
+            '''.format(pred_plu, pred_promo_type)
+            con = engine.connect()
+            try:
+                res_avg = pd.read_sql_query(q,con)
+            except Exception as e:
+                if is_debug:
+                    print(e)
+                pass
+            con.close()
+            engine.dispose()
+
+
+            if len(res_avg) > 0:
+                num_target_avg =  int(res_avg['avg_num_member'][0])
+            else:
+                num_target_avg =  100
 
             ##### FORM
             pred_df = pd.DataFrame()
@@ -1247,6 +1270,7 @@ def calculate_promo_simulation(
             ####
 
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
+            pred_val = (input_num_target / num_target_avg) * pred_val
             if pred_val < 0:
                 pred_val = 0
 
