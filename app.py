@@ -981,10 +981,13 @@ def update_plot_sapa_count(value):
     ],
 
     [
-        Input(component_id='dropdown_promo_type', component_property='value')
+        Input(component_id='dropdown_promo_type', component_property='value'),
+        Input(component_id='dropdown_plu', component_property='value'),
+        Input(component_id='dropdown_app', component_property='value')
+
     ]
 )
-def show_hide_element(dropdown_promo_type_val):
+def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
     if dropdown_promo_type_val == '201':
         return True, False, True, True, False, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black', 'black'
     elif dropdown_promo_type_val == '103':
