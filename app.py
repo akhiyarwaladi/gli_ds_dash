@@ -989,20 +989,62 @@ def update_plot_sapa_count(value):
     ]
 )
 def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
+    def get_num_target(dropdown_plu, dropdown_promo_type_val):
+        engine = create_engine(engine_stmt)
+        q = '''
+            SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
+            FROM TEMP_SALES_PROMO_ALFAGIFT tspa 
+            WHERE tspa.PLU = {}
+            AND tspa.TYPE = {}
+
+        '''.format(dropdown_plu, dropdown_promo_type_val)
+        con = engine.connect()
+        try:
+            res_avg = pd.read_sql_query(q,con)
+        except Exception as e:
+            if is_debug:
+                print(e)
+            pass
+        con.close()
+        engine.dispose()
+
+        return res_avg['AVG_NUM_MEMBER'][0]
+
+
     if dropdown_promo_type_val == '201':
-        return 200, True, False, True, True, False, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black', 'black'
+
+        val_target = get_num_target(dropdown_plu, dropdown_promo_type_val)
+
+        return val_target, True, False, True, True, False, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black', 'black'
     elif dropdown_promo_type_val == '103':
-        return 200, True, False, True, True, True, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black'
+
+        val_target = get_num_target(dropdown_plu, dropdown_promo_type_val)
+
+        return val_target, True, False, True, True, True, False, '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == '801':
-        return 200, False, True, False, True, True, False, 'black', '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black'
+
+        val_target = get_num_target(dropdown_plu, dropdown_promo_type_val)
+
+        return val_target, False, True, False, True, True, False, 'black', '#C8C9CB', 'black', '#C8C9CB', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == '803':
-        return 200, True, False, False, True, True, False, '#C8C9CB', 'black', 'black', '#C8C9CB', '#C8C9CB', 'black'
+
+        val_target = get_num_target(dropdown_plu, dropdown_promo_type_val)
+
+        return val_target, True, False, False, True, True, False, '#C8C9CB', 'black', 'black', '#C8C9CB', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == '807':
-        return 200, False, False, True, False, True, False, 'black', 'black', '#C8C9CB', 'black', '#C8C9CB', 'black'
+
+        val_target = get_num_target(dropdown_plu, dropdown_promo_type_val)
+
+        return val_target, False, False, True, False, True, False, 'black', 'black', '#C8C9CB', 'black', '#C8C9CB', 'black'
     elif dropdown_promo_type_val == 'general_voucher':
-        return 200, False, True, True, True, False, False, 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black', 'black'
+
+        val_target = get_num_target(dropdown_plu, dropdown_promo_type_val)
+
+        return val_target, False, True, True, True, False, False, 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black', 'black'
     else:
         return 200, True, True, True, True, True, True, '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB'
+
+
 
 @app.callback(
     Output('dropdown_promo_type', 'options'),
