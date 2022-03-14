@@ -989,6 +989,7 @@ def update_plot_sapa_count(value):
     ]
 )
 def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
+
     def get_num_target(dropdown_plu, dropdown_promo_type_val):
         engine = create_engine(engine_stmt)
         q = '''
@@ -1008,7 +1009,11 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
         con.close()
         engine.dispose()
 
-        return res_avg['AVG_NUM_MEMBER'][0]
+
+        if len(res_avg) > 0:
+            return res_avg['avg_num_member'][0]
+        else:
+            return 100
 
 
     if dropdown_promo_type_val == '201':
@@ -1042,7 +1047,7 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
 
         return val_target, False, True, True, True, False, False, 'black', '#C8C9CB', '#C8C9CB', '#C8C9CB', 'black', 'black'
     else:
-        return 200, True, True, True, True, True, True, '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB'
+        return 100, True, True, True, True, True, True, '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB', '#C8C9CB'
 
 
 
