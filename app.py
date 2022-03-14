@@ -1011,7 +1011,7 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
 
 
         if len(res_avg) > 0:
-            return res_avg['avg_num_member'][0]
+            return int(res_avg['avg_num_member'][0])
         else:
             return 100
 
