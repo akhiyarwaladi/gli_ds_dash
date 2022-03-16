@@ -18,7 +18,7 @@ def infer_image():
 
 
     res = {
-    	'sales':1000
+    	'sales':1000,
     	'sales_increase_by':['duration']
 
     }
