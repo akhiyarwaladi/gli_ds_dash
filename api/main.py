@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from sqlalchemy import event,create_engine,types
 
 import pandas as pd
+import numpy as np
 import json
 import ast
 
