@@ -191,6 +191,7 @@ def infer_image():
 			return jsonify(res)
 		    
 		except Exception as e:
+			print('='*30)
 			print(e)
 
 			engine = create_engine(engine_stmt)
