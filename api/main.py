@@ -60,7 +60,7 @@ def infer_image():
 	input_extra_point = request.args.get('input_extra_point', None)
 	input_discount_amount = request.args.get('input_discount_amount', None)
 	input_num_target = request.args.get('input_num_target', None)
-	pred_promo_type = str(request.args.get('pred_promo_type', None))
+	pred_promo_type = request.args.get('pred_promo_type', default=None, type=None)
 	pred_plu = request.args.get('pred_plu', None)
 	pred_app = request.args.get('pred_app', None)
 	# Return on a JSON format
@@ -71,7 +71,7 @@ def infer_image():
 
 	print(pred_promo_type)
 	print(promo_feature)
-
+	print(promo_feature[pred_promo_type])
 
 	if pred_app == 'alfagift':
 
