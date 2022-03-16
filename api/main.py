@@ -8,6 +8,7 @@ import ast
 from joblib import dump, load
 from helper import transform_to_rupiah_format,transform_format,transform_to_rupiah,rupiah_format
 
+from dateutil import parser
 
 driver = 'cx_oracle'
 server = '10.234.152.61' 
