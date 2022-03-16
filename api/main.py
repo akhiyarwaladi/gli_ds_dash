@@ -152,12 +152,12 @@ def infer_image():
                 #     'duration',
                 #     ''
                 # )
-			    res = {
-			    	'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
-			    	'sales_increase_by':[]
+				res = {
+					'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
+					'sales_increase_by':[]
 
-			    }
-			    return jsonify(res)
+				}
+				return jsonify(res)
             ####    
             clf = load(modul_path)
             adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
@@ -182,12 +182,12 @@ def infer_image():
             #     ', '.join(li_adder_plus),
             #     ', '.join(li_adder_min)
             # )
-		    res = {
-		    	'sales':rupiah_format(pred_val, with_prefix=True),
-		    	'sales_increase_by':li_adder_plus
+			res = {
+				'sales':rupiah_format(pred_val, with_prefix=True),
+				'sales_increase_by':li_adder_plus
 
-		    }
-		    return jsonify(res)
+			}
+			return jsonify(res)
             
         except Exception as e:
             # return (
@@ -226,12 +226,12 @@ def infer_image():
             #     'duration',
             #     ''
             # )
-		    res = {
-		    	'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
-		    	'sales_increase_by':[]
+			res = {
+				'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
+				'sales_increase_by':[]
 
-		    }
-		    return jsonify(res)
+			}
+			return jsonify(res)
 
 
 
