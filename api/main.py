@@ -2,20 +2,32 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-incomes = [
-  { 'description': 'salary', 'amount': 5000 }
-]
+
+def predict_result(img):
+    return 1 if model.predict(img)[0][0] > 0.5 else 0
 
 
-@app.route('/incomes')
-def get_incomes():
-  return jsonify(incomes)
+@app.route('/predict', methods=['POST'])
+def infer_image():
+    # Catch the image file from a POST request
+
+    discount_amount = request.args.get('discount_amount', None)
 
 
-@app.route('/incomes', methods=['POST'])
-def add_income():
-  incomes.append(request.get_json())
-  return '', 204
+    # Return on a JSON format
+
+
+    res = {
+    	'sales':1000
+    	'sales_increase_by':['duration']
+
+    }
+    return jsonify(res)
+    
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'Machine Learning Inference'
 
 
 if __name__ == '__main__':
