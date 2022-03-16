@@ -5,6 +5,8 @@ import pandas as pd
 import json
 import ast
 
+from joblib import dump, load
+
 
 driver = 'cx_oracle'
 server = '10.234.152.61' 
