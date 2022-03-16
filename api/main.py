@@ -41,7 +41,7 @@ def get_promo_feature():
 
 promo_feature, promo_feature_offline, promo_feature_map = get_promo_feature()
 
-
+print(promo_feature)
 def predict_result(img):
     return 1 if model.predict(img)[0][0] > 0.5 else 0
 
