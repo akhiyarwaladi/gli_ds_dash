@@ -16,3 +16,7 @@ def get_incomes():
 def add_income():
   incomes.append(request.get_json())
   return '', 204
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=105)
