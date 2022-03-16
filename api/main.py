@@ -184,7 +184,7 @@ def infer_image():
 			return jsonify(res)
 		    
 		except Exception as e:
-
+			print(e)
 
 			engine = create_engine(engine_stmt)
 			q = '''
