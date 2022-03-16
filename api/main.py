@@ -124,34 +124,28 @@ def infer_image():
 
 			### #END FORM
 			if not os.path.exists(modul_path):
-			    engine = create_engine(engine_stmt)
-			    q = '''
-			    SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
-			    FROM(
-			        SELECT 
-			            ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
-			        FROM TEMP_SALES_PROMO_ALFAGIFT
-			        WHERE PLU = {}
-			    )
+				engine = create_engine(engine_stmt)
+				q = '''
+				SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
+				FROM(
+				    SELECT 
+				        ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
+				    FROM TEMP_SALES_PROMO_ALFAGIFT
+				    WHERE PLU = {}
+				)
 
 
-			    '''.format(pred_plu)
-			    con = engine.connect()
-			    try:
-			        res_avg = pd.read_sql_query(q,con)
-			    except Exception as e:
-			        if is_debug:
-			            print(e)
-			        pass
-			    con.close()
-			    engine.dispose()
-			    # return (
-			    #     rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
-			    #     {'display': 'block'}, 
-			    #     {'display': 'block'},
-			    #     'duration',
-			    #     ''
-			    # )
+				'''.format(pred_plu)
+				con = engine.connect()
+				try:
+				    res_avg = pd.read_sql_query(q,con)
+				except Exception as e:
+				    if is_debug:
+				        print(e)
+				    pass
+				con.close()
+				engine.dispose()
+
 				res = {
 					'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
 					'sales_increase_by':[]
@@ -175,13 +169,7 @@ def infer_image():
 			    pred_val = 0
 
 			time.sleep(1)
-			# return (
-			#     rupiah_format(pred_val, with_prefix=True), 
-			#     {'display': 'block'}, 
-			#     {'display': 'block'},
-			#     ', '.join(li_adder_plus),
-			#     ', '.join(li_adder_min)
-			# )
+
 			res = {
 				'sales':rupiah_format(pred_val, with_prefix=True),
 				'sales_increase_by':li_adder_plus
@@ -213,13 +201,7 @@ def infer_image():
 			    pass
 			con.close()
 			engine.dispose()
-			# return (
-			#     rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
-			#     {'display': 'block'}, 
-			#     {'display': 'block'},
-			#     'duration',
-			#     ''
-			# )
+
 			res = {
 				'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
 				'sales_increase_by':[]
