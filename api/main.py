@@ -279,6 +279,14 @@ def infer_image():
 			}
 			return jsonify(res)
 
+
+		except Exception as e:
+			res = {
+				'error':e
+
+			}
+			return jsonify(res)
+
 # @app.route('/', methods=['GET'])
 # def index():
 # 	return 'Machine Learning Inference'
