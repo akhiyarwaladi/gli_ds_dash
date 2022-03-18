@@ -61,7 +61,7 @@ def infer_image():
 	input_num_target = request.args.get('input_num_target', default=None, type=int)
 	pred_promo_type = request.args.get('pred_promo_type', default=None, type=str)
 	pred_plu = request.args.get('pred_plu', None)
-	pred_app = request.args.get('pred_app', None)
+	pred_app = request.args.get('pred_app', type=str)
 	# Return on a JSON format
 
 	print(promo_start_date)
