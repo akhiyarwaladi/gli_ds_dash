@@ -137,7 +137,7 @@ def infer_image():
 				print(res_avg)
 				print(len(res_avg))
 
-				if len(res_avg) <= 0:
+				if res_avg['avg_daily'][0] is None:
 					res = {
 						'error':'historical PLU data this promo type not exists',
 						'sales':0
