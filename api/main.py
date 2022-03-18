@@ -72,8 +72,10 @@ def infer_image():
 	print(promo_feature)
 	print(promo_feature[pred_promo_type])
 
-	if pred_app == 'alfagift':
+	print(pred_app)
 
+	if pred_app == 'alfagift':
+		print('in alfagift flow')
 		try:
 			parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
 			modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
@@ -223,6 +225,7 @@ def infer_image():
 			return jsonify(res)
 
 	elif pred_app == 'alfamart':
+		print('in alfamart flow')
 		try:
 			parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
 			modul_path = '{}/model/plu_linear_offline/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
