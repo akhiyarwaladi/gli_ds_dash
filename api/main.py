@@ -81,30 +81,6 @@ def infer_image():
 			modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
 
-			engine = create_engine(engine_stmt)
-			q = '''
-			    SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
-			    FROM TEMP_SALES_PROMO_ALFAGIFT tspa 
-			    WHERE tspa.PLU = {}
-			    AND tspa.TYPE = {}
-
-			'''.format(pred_plu, pred_promo_type)
-			con = engine.connect()
-			try:
-			    res_avg = pd.read_sql_query(q,con)
-			except Exception as e:
-			    if is_debug:
-			        print(e)
-			    pass
-			con.close()
-			engine.dispose()
-
-
-			if len(res_avg) > 0:
-			    num_target_avg =  int(res_avg['avg_num_member'][0])
-			else:
-			    num_target_avg =  100
-
 			##### FORM
 			pred_df = pd.DataFrame()
 
@@ -175,6 +151,30 @@ def infer_image():
 			li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
 
 			####
+
+			engine = create_engine(engine_stmt)
+			q = '''
+			    SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
+			    FROM TEMP_SALES_PROMO_ALFAGIFT tspa 
+			    WHERE tspa.PLU = {}
+			    AND tspa.TYPE = {}
+
+			'''.format(pred_plu, pred_promo_type)
+			con = engine.connect()
+			try:
+			    res_avg = pd.read_sql_query(q,con)
+			except Exception as e:
+			    if is_debug:
+			        print(e)
+			    pass
+			con.close()
+			engine.dispose()
+
+
+			if len(res_avg) > 0:
+			    num_target_avg =  int(res_avg['avg_num_member'][0])
+			else:
+			    num_target_avg =  100
 
 			pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
 			pred_val = (input_num_target / num_target_avg) * pred_val
