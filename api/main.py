@@ -135,6 +135,14 @@ def infer_image():
 				con.close()
 				engine.dispose()
 
+
+				if len(res_avg) <= 0:
+					res = {
+						'error':'historical PLU data this promo type not exists',
+						'sales':0
+					}
+					return jsonify(res)
+
 				res = {
 					'sales':rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
 					'sales_increase_by':[]
