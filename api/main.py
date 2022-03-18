@@ -285,7 +285,7 @@ def infer_image():
 
 		except Exception as e:
 			res = {
-				'error':e
+				'error':e,
 				'sales':0
 			}
 			return jsonify(res)
