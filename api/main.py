@@ -134,7 +134,8 @@ def infer_image():
 				    pass
 				con.close()
 				engine.dispose()
-
+				print(res_avg)
+				print(len(res_avg))
 
 				if len(res_avg) <= 0:
 					res = {
