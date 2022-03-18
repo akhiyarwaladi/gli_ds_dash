@@ -230,6 +230,14 @@ def infer_image():
 			parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
 			modul_path = '{}/model/plu_linear_offline/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
+
+			if not os.path.exists(modul_path):
+				res = {
+					'error':'model not exists',
+					'sales':0
+				}
+				return jsonify(res)
+
 			clf = load(modul_path)
 
 
