@@ -30,7 +30,7 @@ def get_promo_feature():
 
 
 	with open('/home/server/gli-data-science/akhiyar/sales_prediction/feature/promo_feature_offline.json','r') as f:
-	    s = f.read()
+		s = f.read()
 
 	promo_feature_offline = dict(ast.literal_eval(s))
 
@@ -42,9 +42,7 @@ def get_promo_feature():
 
 promo_feature, promo_feature_offline, promo_feature_map = get_promo_feature()
 
-# print(promo_feature)
-def predict_result(img):
-    return 1 if model.predict(img)[0][0] > 0.5 else 0
+
 
 
 @app.route('/predict', methods=['POST'])
@@ -283,14 +281,10 @@ def infer_image():
 			return jsonify(res)
 
 
-
-
-    
-
 @app.route('/', methods=['GET'])
 def index():
-    return 'Machine Learning Inference'
+	return 'Machine Learning Inference'
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8049, debug=True)
+	app.run(host='0.0.0.0', port=8049, debug=True)
