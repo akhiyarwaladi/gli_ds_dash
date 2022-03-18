@@ -225,6 +225,63 @@ def infer_image():
 			}
 			return jsonify(res)
 
+	elif pred_app == 'alfamart':
+		try:
+			parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
+			modul_path = '{}/model/plu_linear_offline/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+
+			clf = load(modul_path)
+
+
+			adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
+
+			df_res = pd.concat([pd.DataFrame(promo_feature_offline[pred_promo_type], columns=['variabel']), 
+			           pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
+
+			li_adder_plus = [i for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+			li_adder_min = [i for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
+
+			pred_df = pd.DataFrame()
+
+
+			date_object = parser.parse(promo_start_date)
+			promo_start_date_str = date_object.strftime('%Y-%m-%d')
+
+			date_object = parser.parse(promo_end_date)
+			promo_end_date_str = date_object.strftime('%Y-%m-%d')
+
+			pred_df['tbmproi_start_date'] = [promo_start_date_str]
+			pred_df['tbmproi_end_date'] = [promo_end_date_str]
+
+			pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
+			pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
+			pred_df['start_week'] = pred_df['tbmproi_start_date'] .apply(lambda d: (d.day-1) // 7 + 1)
+			pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
+			                            .astype('timedelta64[D]') + 1).astype(int)
+
+
+
+			pred_df['MIN_QTY'] = [input_min_qty]
+			if pred_promo_type == '807':
+			    pred_df['POT'] = [input_extra_point]
+			elif pred_promo_type == '201':
+			    pred_df['POT'] = [input_discount_amount]
+			pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
+
+
+
+			pred_val = clf.predict(pred_df[promo_feature_offline[pred_promo_type]])[0]
+			if pred_val < 0:
+			    pred_val = 0
+
+
+			res = {
+				'sales':rupiah_format(pred_val, with_prefix=True),
+				'sales_increase_by':li_adder_plus
+
+			}
+			return jsonify(res)
+
 
 
 
