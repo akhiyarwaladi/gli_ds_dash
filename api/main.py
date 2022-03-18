@@ -274,7 +274,7 @@ def infer_image():
 			if pred_val < 0:
 			    pred_val = 0
 
-
+			print(pred_val)
 			res = {
 				'sales':rupiah_format(pred_val, with_prefix=True),
 				'sales_increase_by':li_adder_plus
@@ -286,7 +286,7 @@ def infer_image():
 		except Exception as e:
 			res = {
 				'error':e
-
+				'sales':0
 			}
 			return jsonify(res)
 
