@@ -312,9 +312,9 @@ def infer_image():
 			}
 			return jsonify(res)
 
-# @app.route('/', methods=['GET'])
-# def index():
-# 	return 'Machine Learning Inference'
+@app.route('/', methods=['GET'])
+def index():
+	return 'Machine Learning Inference'
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=8049, debug=True)
