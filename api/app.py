@@ -46,7 +46,7 @@ promo_feature, promo_feature_offline, promo_feature_map = get_promo_feature()
 
 
 @app.route('/predict', methods=['POST'])
-def infer_image():
+def infer_sales():
     # Catch the image file from a POST request
 
 
@@ -311,6 +311,34 @@ def infer_image():
 				'sales':0
 			}
 			return jsonify(res)
+
+
+
+@app.route('/list_plu', methods=['POST'])
+def infer_plu():
+
+	pred_app = request.args.get('pred_app', type=str)
+
+	pred_app = 'alfamart'
+	if pred_app == 'alfagift':
+		parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_test/'
+
+		tree_split = [li.split('_')[0] for li in os.listdir(parent_path)]
+
+	elif pred_app == 'alfamart':
+		parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_offline/'
+
+		tree_split = [li.split('_')[0] for li in os.listdir(parent_path)]
+
+
+	res = {
+		'list_plu':tree_split
+
+	}
+	return jsonify(res)
+
+
+
 
 @app.route('/', methods=['GET'])
 def index():
