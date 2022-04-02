@@ -1145,6 +1145,7 @@ def update_date_dropdown(app_select):
         State('input_extra_point', 'value'),
         State('input_discount_amount', 'value'),
         State('input_num_target', 'value'),
+        State('input_num_branch', 'value'),
         State('dropdown_promo_type', 'value'),
         State('dropdown_plu', 'value'),
         State('dropdown_app', 'value')
@@ -1161,6 +1162,7 @@ def calculate_promo_simulation(
     input_extra_point, 
     input_discount_amount, 
     input_num_target,
+    input_num_branch,
     pred_promo_type, 
     pred_plu,
     pred_app
@@ -1222,7 +1224,7 @@ def calculate_promo_simulation(
             pred_df['tbmproi_star'] = [input_extra_star]
             pred_df['tbmproi_extra_point'] = [input_extra_point]
             pred_df['tbmproi_disc_amount'] = [input_discount_amount]
-            pred_df['count_branch'] = 32
+            pred_df['count_branch'] = [input_num_branch]
             pred_df['Non Member'] = 1
             pred_df['SSP Member'] = 1
             pred_df['Regular'] = 1

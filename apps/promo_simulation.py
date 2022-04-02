@@ -176,6 +176,27 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                                         ),
                                         width=4,
                                     ),
+                                    dbc.Col(
+                                        dbc.FormGroup(
+                                            [
+                                                dbc.Label("Number of Branch", id='input_num_branch_label'),
+                                                dbc.InputGroup([
+                                                    
+                                                    dbc.InputGroupText("#"),
+                                                    dbc.Input(
+                                                        type="number",
+                                                        id="input_num_branch",
+                                                        placeholder="Enter",
+                                                        value=32,
+                                                        disabled=False
+                                                    ),
+
+                                                ]),
+                                                
+                                            ]
+                                        ),
+                                        width=4,
+                                    ),
                                 ], style={"margin-bottom": "15px"}),
                                 dbc.Row([
                                     dbc.Col(
