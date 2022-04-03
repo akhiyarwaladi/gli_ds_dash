@@ -20,13 +20,14 @@ def get_promo_feature():
 		s = f.read()
 
 	promo_feature_map = dict(ast.literal_eval(s))
+	
 	return promo_feature, promo_feature_offline, promo_feature_map
 
 	
 
 def get_plu_list():
 
-	low_label = pd.read_csv('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_list.csv'
+	low_label = pd.read_csv('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_list_test.csv'
 		, skiprows=[0],  names=['value','label'])
 	label_alfagift = low_label.to_dict(orient='records')
 
