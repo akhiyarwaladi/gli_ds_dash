@@ -1010,7 +1010,7 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
         engine.dispose()
 
 
-        if len(res_avg) > 0:
+        if res_avg['avg_num_member'][0] is not None:
             return int(res_avg['avg_num_member'][0])
         else:
             return 100
@@ -1194,10 +1194,10 @@ def calculate_promo_simulation(
             engine.dispose()
 
 
-            if len(res_avg) > 0:
-                num_target_avg =  int(res_avg['avg_num_member'][0])
+            if res_avg['avg_num_member'][0] is not None:
+                return int(res_avg['avg_num_member'][0])
             else:
-                num_target_avg =  100
+                return 100
 
             ##### FORM
             pred_df = pd.DataFrame()
@@ -1286,13 +1286,7 @@ def calculate_promo_simulation(
             )
             
         except Exception as e:
-            # return (
-            #     str(e),
-            #     {'display': 'block'}, 
-            #     {'display': 'block'},
-            #     '',
-            #     ''
-            # )     
+ 
 
             engine = create_engine(engine_stmt)
             q = '''
