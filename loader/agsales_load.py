@@ -48,7 +48,7 @@ def get_agsales_promo():
 
     sales_dict = {}
     for ps in promo_selector:
-        print(ps['str_con'], ps['value'])
+        # print(ps['str_con'], ps['value'])
         promo_str_con = ps['str_con']
         df = pd.read_csv('/home/server/gli-data-science/akhiyar/sales_prediction/train_data/all_{}.csv'.format(promo_str_con))
         df = df.rename(columns={'TRO_DATE_ORDER':'ds','TRO_NET':'y'})
