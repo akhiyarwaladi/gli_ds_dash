@@ -1460,7 +1460,7 @@ def calculate_promo_simulation(
             pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
                                         .astype('timedelta64[D]') + 1).astype(int)
 
-            pred_df['count_branch'] = [input_num_branch]
+            pred_df['BRANCH'] = [input_num_branch]
 
             pred_df['MIN_QTY'] = [input_min_qty]
             if pred_promo_type == '807':
