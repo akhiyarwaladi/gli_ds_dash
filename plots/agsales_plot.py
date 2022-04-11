@@ -22,6 +22,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	# give anotation text every x gap
 	gap_anot = 30
 	tickformat_str = "%d%b%y"
+	dtick_str = ""
 
 	# change grouping if selected monthly
 	if value == 'Monthly':
@@ -29,6 +30,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 		sales_plot['index'] = pd.to_datetime(sales_plot['index'].dt.strftime('%Y-%m'))
 		gap_anot = 1
 		tickformat_str = "%b%y"
+		dtick_str = "M1"
 
 	fig = go.Figure()
 	fig.add_trace(
@@ -107,7 +109,7 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	    hovertemplate='%{x}<br>%{text}')
 
 	fig.update_xaxes(
-	 
+	 	dtick=dtick_str,
 	    tickformat=tickformat_str,
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
