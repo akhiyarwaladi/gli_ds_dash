@@ -888,8 +888,8 @@ def update_plot_sales(model_algo, target_member, target_sapa_store):
         sales_plot.iloc[:,1:] = np.where(sales_plot.iloc[:,1:] < 0, 0, sales_plot.iloc[:,1:])
 
 
-    target_member_enter = "entered: {}".format(rupiah_format(4640121))
-    target_sapa_store_enter = "entered: {}".format(rupiah_format(3840))
+    target_member_enter = "entered: {}".format(rupiah_format(70000))
+    target_sapa_store_enter = "entered: {}".format(rupiah_format(3000))
 
 
     sales_plot_store = sales_plot.to_json(date_format='iso', orient='split')

@@ -11,8 +11,8 @@ sales_plot_general = get_agsales()
 # target_member_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['member']
 # target_sapa_store_value = sales_plot_general['fbprophet'][2].iloc[-1,:]['sapa']
 
-target_member_value = 4640121
-target_sapa_store_value = 3840
+target_member_value = 70000
+target_sapa_store_value = 3000
 
 
 sales_plot_promo = get_agsales_promo()
