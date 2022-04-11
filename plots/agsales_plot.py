@@ -109,7 +109,8 @@ def plot_sales_all(sales_plot, value, date_start, date_end):
 	    hovertemplate='%{x}<br>%{text}')
 
 	fig.update_xaxes(
-	 	dtick=dtick_str,
+		## to show tick every month
+	 	# dtick=dtick_str,
 	    tickformat=tickformat_str,
 	    showgrid=True, gridwidth=1, gridcolor='LightPink', title=''
 	)
