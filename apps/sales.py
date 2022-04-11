@@ -181,7 +181,7 @@ sales_tab = dac.TabItem(id='content_sales',
                                     dbc.Col(
                                         dbc.FormGroup(
                                             [
-                                                dbc.Label("Target member", html_for="example-email-grid"),
+                                                dbc.Label("Target member shopper", html_for="example-email-grid"),
                                                 dbc.Input(
                                                     type="number",
                                                     id="target_member",
