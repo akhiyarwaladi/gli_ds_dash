@@ -942,8 +942,12 @@ def update_actual(date_start, date_end, p_date_start, p_date_end, sales_plot_sto
     sales_plot_sel = sales_plot[(sales_plot['index'] >= date_start) &
                                 (sales_plot['index'] <= date_end) ]
 
+    print(sales_plot_sel.tail())
+
     p_sales_plot_sel = sales_plot[(sales_plot['index'] >= p_date_start) &
                                 (sales_plot['index'] <= p_date_end) ]
+    print(p_sales_plot_sel.tail())
+
     return ('[ {} ]'.format(transform_to_rupiah(sales_plot_sel['TRO_NET'].sum())),
         '[ {} ]'.format(transform_to_rupiah(p_sales_plot_sel['TRO_NET_PRED'].sum())))
 
