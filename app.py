@@ -933,7 +933,7 @@ def update_fig(date_start, date_end, group_dropdown, sales_plot_store):
 )
 def update_actual(date_start, date_end, p_date_start, p_date_end, sales_plot_store):
     sales_plot = pd.read_json(sales_plot_store, orient='split')
-    sales_plot['index'] = pd.to_datetime(sales_plot['index']).strftime('%Y-%m-%d')
+    sales_plot['index'] = pd.to_datetime(sales_plot['index']).dt.strftime('%Y-%m-%d')
     
     print(sales_plot.dtypes)
     print(date_start, date_end)
