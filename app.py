@@ -934,6 +934,8 @@ def update_fig(date_start, date_end, group_dropdown, sales_plot_store):
 def update_actual(date_start, date_end, p_date_start, p_date_end, sales_plot_store):
     sales_plot = pd.read_json(sales_plot_store, orient='split')
     print(sales_plot.dtypes)
+    print(date_start, date_end)
+    print(type(date_start), type(date_end))
     print(p_date_start, p_date_end)
     print(type(p_date_start), type(p_date_end))
 
