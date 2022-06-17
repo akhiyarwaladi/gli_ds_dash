@@ -1017,7 +1017,7 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
         engine = create_engine(engine_stmt)
         q = '''
             SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
-            FROM TEMP_SALES_PROMO_ALFAGIFT tspa 
+            FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
             WHERE tspa.PLU = {}
             AND tspa.TYPE = {}
 
@@ -1201,7 +1201,7 @@ def calculate_promo_simulation(
             engine = create_engine(engine_stmt)
             q = '''
                 SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
-                FROM TEMP_SALES_PROMO_ALFAGIFT tspa 
+                FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
                 WHERE tspa.PLU = {}
                 AND tspa.TYPE = {}
 
@@ -1261,7 +1261,7 @@ def calculate_promo_simulation(
                 FROM(
                     SELECT 
                         ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
-                    FROM TEMP_SALES_PROMO_ALFAGIFT
+                    FROM GLI_REPORT_FAKTUR_SALES_ONLINE
                     WHERE PLU = {}
                 )
 
@@ -1317,7 +1317,7 @@ def calculate_promo_simulation(
             FROM(
                 SELECT 
                     ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
-                FROM TEMP_SALES_PROMO_ALFAGIFT
+                FROM GLI_REPORT_FAKTUR_SALES_ONLINE
                 WHERE PLU = {}
             )
 
@@ -1391,7 +1391,7 @@ def calculate_promo_simulation(
                 FROM(
                     SELECT 
                         ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
-                    FROM TEMP_SALES_PROMO_ALFAGIFT
+                    FROM GLI_REPORT_FAKTUR_SALES_ONLINE
                     WHERE PLU = {}
                 )
 
