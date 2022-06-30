@@ -677,7 +677,7 @@ def update_low_review(rows, derived_virtual_selected_rows):
 
 class HelloWorld(Resource):
     def get(self):
-        return {'hello': update_date_dropdown('alfagift')}
+        return {'hello': update_date_dropdown_plu('alfagift')}
 
 api.add_resource(HelloWorld, '/hello')
 
@@ -1040,7 +1040,7 @@ def update_date_dropdown(app_select, plu_select):
         Input('dropdown_app', 'value')
     ]
 )
-def update_date_dropdown(app_select):
+def update_date_dropdown_plu(app_select):
     app_select = str(app_select)
 
     if app_select == 'alfagift':
