@@ -1,6 +1,10 @@
 import os
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+from flask import Flask
+from flask_restful import Resource, Api
+
+
 
 import json
 import dash
@@ -110,6 +114,10 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, FONT_AWESO
 app.title = "Data Science Dashboard"
 server = app.server 
 app.config.suppress_callback_exceptions = True
+
+
+server_flask = Flask('my_app')
+api = Api(server_flask)
 
 # =============================================================================
 # Dash Admin Components
@@ -666,99 +674,11 @@ def update_low_review(rows, derived_virtual_selected_rows):
 
 
 
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
 
-
-# @app.callback(
-#     [
-#         Output('price_whitelist_output', 'children'),
-#         Output('sum_discount_amount_output', 'children'),
-#         Output('prediction_promo_sales', 'children'),
-#         Output('sales_promo_fig', 'figure')
-#     ],
-#     [
-#         Input('promo_start_date', 'date'),
-#         Input('promo_end_date', 'date'),
-#         Input('sales_promo_picker', 'start_date'),
-#         Input('sales_promo_picker', 'end_date'),
-#         Input('sales_promo_dropdown', 'value'),
-#         Input('count_whitelist', 'value'),
-#         Input('price_whitelist', 'value'),
-#         Input('sum_discount_amount', 'value'),
-#         Input('promo_name', 'value'),
-#     ]
-# )
-# def update_prediction(date_start, date_end, range_start, range_end, agg_value, count_whitelist, 
-#     price_whitelist, sum_discount_amount, promo_name):
-#     date_start = datetime.fromisoformat(date_start)
-#     date_end = datetime.fromisoformat(date_end)
-
-#     price_whitelist_output = "entered: {}".format(rupiah_format(price_whitelist))
-#     sum_discount_amount_output = "entered: {}".format(rupiah_format(sum_discount_amount))
-
-#     if promo_name != 'gantung':
-#         fig = plot_sales_jsm(sales_plot_jsm[promo_name], range_start, range_end, promo_name, agg_value)
-#         return price_whitelist_output, sum_discount_amount_output, '-', fig
-
-#     if (count_whitelist and price_whitelist and sum_discount_amount and promo_name) is not None:
-        
-#         start_year = date_start.year
-#         start_month = date_start.month
-#         start_week = (date_start.day-1) // 7 + 1
-#         whitelist_product_count = int(count_whitelist)
-#         whitelist_product_price = int(price_whitelist)
-#         discount_amount = int(sum_discount_amount)
-
-#         min_purchase_qty = 1
-#         promo_duration = (date_end - date_start + timedelta(days=1)).days
-
-#         sum_weekend = pd.date_range(date_start,date_end).weekday.isin([5,6]).sum()
-#         sum_weekday = pd.date_range(date_start,date_end).weekday.isin([0,1,2,3,4]).sum()
-#         sum_libur = pd.date_range(date_start,date_end).isin(df_libur['holiday_date']).sum()
-
-
-#         df_test = pd.DataFrame([
-#             start_month,
-#             start_week,
-#             whitelist_product_count,
-#             whitelist_product_price,
-#             discount_amount,
-#             min_purchase_qty,
-#             promo_duration,
-#             sum_weekend,
-#             sum_weekday,
-#             sum_libur
-            
-
-#         ]).T
-        
-#         df_test = normalize.transform(df_test)
-#         res_pred = clf.predict(df_test)[0]
-
-
-#         sales_prediction = rupiah_format(res_pred, True)
-            
-#         ######
-#         df_pred = pd.DataFrame([
-#             'PAYDAY GANTUNG',
-#             start_year,
-#             start_month,
-#             np.nan,
-#             float(int(res_pred)),
-#             date(int(start_year),int(start_month),1).strftime('%Y-%m')
-#         ]).T
-#         df_pred.columns = list(sales_plot_promo)
-#         sales_plot_promo_pred = pd.concat([sales_plot_promo,df_pred])
-
-#         ######
-
-#     else:
-#         sales_prediction = 'fill all form'
-
-
-
-#     fig = plot_sales_promo(sales_plot_promo_pred)
-#     return price_whitelist_output, sum_discount_amount_output, sales_prediction, fig
-
+api.add_resource(HelloWorld, '/hello')
 
 
 
@@ -814,6 +734,7 @@ def update_plot_sales(promo_name, target_member, target_sapa_store):
     return (sales_plot_store, target_member_enter, 
         target_sapa_store_enter, '')
 
+
 @app.callback(
     
     Output('sales_promo_fig', 'figure'),
@@ -834,20 +755,6 @@ def update_fig(date_start, date_end, promo_name, group_dropdown, sales_plot_stor
     ## return figure
     fig = plot_sales_promo(sales_plot, date_start, date_end, promo_name, group)
     return fig
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
