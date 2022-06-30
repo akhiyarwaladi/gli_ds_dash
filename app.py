@@ -687,7 +687,7 @@ class HelloWorld(Resource):
         # elif app_select == 'targeted_voucher':
         #     li_opt = [{'value': 'alfagift', 'label': 'Alfagift'}]
      
-        li_opt = update_date_dropdown_plu('alfagift')
+        li_opt = update_date_dropdown_plu_func('alfagift')
         return {'hello': li_opt}
 
 api.add_resource(HelloWorld, '/hello')
@@ -1045,13 +1045,8 @@ def update_date_dropdown(app_select, plu_select):
         return [{"label":"General", "value":"general_voucher", "disabled": False}]
 
 
-@app.callback(
-    Output('dropdown_plu', 'options'),
-    [
-        Input('dropdown_app', 'value')
-    ]
-)
-def update_date_dropdown_plu(app_select):
+
+def update_date_dropdown_plu_func(app_select):
     app_select = str(app_select)
 
     if app_select == 'alfagift':
@@ -1060,7 +1055,22 @@ def update_date_dropdown_plu(app_select):
         li_opt = plu_list_offline_dropdown
     elif app_select == 'targeted_voucher':
         li_opt = [{'value': 'alfagift', 'label': 'Alfagift'}]
+
     return li_opt
+
+
+@app.callback(
+    Output('dropdown_plu', 'options'),
+    [
+        Input('dropdown_app', 'value')
+    ]
+)
+def update_date_dropdown_plu(app_select):
+
+
+    li_opt = update_date_dropdown_plu_func(app_select)
+    return li_opt
+
 
 
 
