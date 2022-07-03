@@ -699,6 +699,8 @@ class HelloWorld(Resource):
         input_extra_point = request.args.get('input_extra_point', None)
         input_discount_amount = request.args.get('input_discount_amount', None)
         input_num_target = request.args.get('input_num_target', default=None, type=int)
+        input_num_branch = request.args.get('input_num_branch', default=None, type=int)
+
         pred_promo_type = request.args.get('pred_promo_type', default=None, type=str)
         pred_plu = request.args.get('pred_plu', None)
         pred_app = request.args.get('pred_app', type=str)
