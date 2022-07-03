@@ -704,9 +704,92 @@ class HelloWorld(Resource):
         pred_app = request.args.get('pred_app', type=str)
 
 
+        parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
+        modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
+
+
+
+        ##### FORM
+        pred_df = pd.DataFrame()
+
+
+        date_object = parser.parse(promo_start_date)
+        promo_start_date_str = date_object.strftime('%Y-%m-%d')
+
+        date_object = parser.parse(promo_end_date)
+        promo_end_date_str = date_object.strftime('%Y-%m-%d')
+
+        pred_df['tbmproi_start_date'] = [promo_start_date_str]
+        pred_df['tbmproi_end_date'] = [promo_end_date_str]
+
+        pred_df['tbmproi_start_date'] = pd.to_datetime(pred_df['tbmproi_start_date'])
+        pred_df['tbmproi_end_date'] = pd.to_datetime(pred_df['tbmproi_end_date'])
+        pred_df['start_week'] = pred_df['tbmproi_start_date'] .apply(lambda d: (d.day-1) // 7 + 1)
+        pred_df['duration'] = ((pred_df['tbmproi_end_date'] - pred_df['tbmproi_start_date'])
+                                    .astype('timedelta64[D]') + 1).astype(int)
+
+
+        pred_df['tbmproi_min_purchase_amount'] = [input_min_amount]
+        pred_df['tbmproi_min_purchase_qty'] = [input_min_qty]
+        pred_df['tbmproi_star'] = [input_extra_star]
+        pred_df['tbmproi_extra_point'] = [input_extra_point]
+        pred_df['tbmproi_disc_amount'] = [input_discount_amount]
+        pred_df['count_branch'] = [input_num_branch]
+        pred_df['Non Member'] = 1
+        pred_df['SSP Member'] = 1
+        pred_df['Regular'] = 1
+        pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
+
+        ### #END FORM
+        # if not os.path.exists(modul_path):
+        #     engine = create_engine(engine_stmt)
+        #     q = '''
+        #     SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
+        #     FROM(
+        #         SELECT 
+        #             ACTUAL / ((END_DATE - START_DATE) + 1) AS ACTUAL_DAILY
+        #         FROM GLI_REPORT_FAKTUR_SALES_ONLINE
+        #         WHERE PLU = {}
+        #     )
+
+
+        #     '''.format(pred_plu)
+        #     con = engine.connect()
+        #     try:
+        #         res_avg = pd.read_sql_query(q,con)
+        #     except Exception as e:
+        #         if is_debug:
+        #             print(e)
+        #         pass
+        #     con.close()
+        #     engine.dispose()
+        #     return (
+        #         rupiah_format(res_avg['avg_daily'][0] * pred_df['duration'][0], with_prefix=True),
+        #         {'display': 'block'}, 
+        #         {'display': 'block'},
+        #         'duration',
+        #         ''
+        #     )
+        # ####    
+        clf = load(modul_path)
+        adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
+
+        df_res = pd.concat([pd.DataFrame(promo_feature[pred_promo_type], columns=['variabel']), 
+                   pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
+        li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
+        li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
+
+        ####
+
+        pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
+
+
+        time.sleep(1)
+        print(pred_val)
+
         res = {
-            'promo_start_date':promo_start_date,
-            'promo_end_date':promo_end_date
+            'sales':rupiah_format(pred_val, with_prefix=True),
+            'sales_increase_by':li_adder_plus
 
         }
         return jsonify(res)
