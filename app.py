@@ -1,9 +1,9 @@
 import os
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-from flask import Flask
-from flask_restful import Resource, Api
 
+from flask_restful import Resource, Api
+from flask import Flask, jsonify, request
 
 
 import json
@@ -689,6 +689,27 @@ class HelloWorld(Resource):
      
         li_opt = update_date_dropdown_plu_func('alfagift')
         return {'hello': li_opt}
+
+    def post(self):
+        promo_start_date = request.args.get('promo_start_date', None)
+        promo_end_date = request.args.get('promo_end_date', None)
+        input_min_amount = request.args.get('input_min_amount', None)
+        input_min_qty = request.args.get('input_min_qty', None)
+        input_extra_star = request.args.get('input_extra_star', None)
+        input_extra_point = request.args.get('input_extra_point', None)
+        input_discount_amount = request.args.get('input_discount_amount', None)
+        input_num_target = request.args.get('input_num_target', default=None, type=int)
+        pred_promo_type = request.args.get('pred_promo_type', default=None, type=str)
+        pred_plu = request.args.get('pred_plu', None)
+        pred_app = request.args.get('pred_app', type=str)
+
+
+        res = {
+            'promo_start_date':promo_start_date,
+            'promo_end_date':promo_end_date
+
+        }
+        return jsonify(res)
 
 api.add_resource(HelloWorld, '/hello')
 
