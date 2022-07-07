@@ -687,8 +687,8 @@ class HelloWorld(Resource):
         # elif app_select == 'targeted_voucher':
         #     li_opt = [{'value': 'alfagift', 'label': 'Alfagift'}]
      
-        li_opt = update_date_dropdown_plu_func('alfagift')
-        return {'hello': li_opt}
+        # li_opt = update_date_dropdown_plu_func('alfagift')
+        return {'message': 'hello world'}
 
     def post(self):
         promo_start_date = request.args.get('promo_start_date', None)
