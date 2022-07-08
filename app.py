@@ -673,22 +673,19 @@ def update_low_review(rows, derived_virtual_selected_rows):
         derived_virtual_selected_rows = []
     return '({})'.format(len(rows))
 
-
-
 class HelloWorld(Resource):
 
     def get(self):
-        # app_select = 'alfagift'
 
-        # if app_select == 'alfagift':
-        #     li_opt = plu_list_dropdown
-        # elif app_select == 'offline':
-        #     li_opt = plu_list_offline_dropdown
-        # elif app_select == 'targeted_voucher':
-        #     li_opt = [{'value': 'alfagift', 'label': 'Alfagift'}]
-     
-        # li_opt = update_date_dropdown_plu_func('alfagift')
         return {'message': 'hello world'}
+
+class PredictSales(Resource):
+
+    def get(self, app_id):
+
+     
+        li_opt = update_date_dropdown_plu_func(app_id)
+        return {'message': li_opt}
 
     def post(self):
         promo_start_date = request.args.get('promo_start_date', None)
@@ -796,7 +793,9 @@ class HelloWorld(Resource):
         }
         return jsonify(res)
 
+
 api.add_resource(HelloWorld, '/hello')
+api.add_resource(PredictSales, '/predict')
 
 
 
@@ -1157,7 +1156,7 @@ def update_date_dropdown_plu_func(app_select):
 
     if app_select == 'alfagift':
         li_opt = plu_list_dropdown
-    elif app_select == 'offline':
+    elif app_select == 'alfamart':
         li_opt = plu_list_offline_dropdown
     elif app_select == 'targeted_voucher':
         li_opt = [{'value': 'alfagift', 'label': 'Alfagift'}]
