@@ -693,7 +693,7 @@ class FeatureType(Resource):
 
     def get(self, app_id, plu_id):
 
-        li_opt = update_dropdown_promo_type(app_id)
+        li_opt = update_dropdown_promo_type(app_id, plu_id)
         return {'message': li_opt}
 
 
@@ -816,7 +816,7 @@ class PredictSales(Resource):
 
 api.add_resource(HelloWorld, '/hello')
 api.add_resource(FeaturePlu, '/feature/plu/<string:app_id>', endpoint='plu')
-api.add_resource(FeatureType, 'feature/type/<string:app_id>/<int:plu_id>', endpoint='type')
+api.add_resource(FeatureType, '/feature/type/<string:app_id>/<int:plu_id>', endpoint='type')
 api.add_resource(PredictSales, '/predict')
 
 
