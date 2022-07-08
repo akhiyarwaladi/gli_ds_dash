@@ -795,7 +795,7 @@ class PredictSales(Resource):
 
 
 api.add_resource(HelloWorld, '/hello')
-api.add_resource(PredictSales, '/predict/<string:app_id>')
+#api.add_resource(PredictSales, '/predict/<string:app_id>')
 api.add_resource(PredictSales, '/predict')
 
 
