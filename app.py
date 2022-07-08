@@ -683,9 +683,9 @@ class PredictSales(Resource):
 
     def get(self, app_id):
 
-     
         li_opt = update_date_dropdown_plu_func(app_id)
         return {'message': li_opt}
+
 
     def post(self):
         promo_start_date = request.args.get('promo_start_date', None)
@@ -795,6 +795,7 @@ class PredictSales(Resource):
 
 
 api.add_resource(HelloWorld, '/hello')
+api.add_resource(PredictSales, '/predict/<string:app_id>')
 api.add_resource(PredictSales, '/predict')
 
 
