@@ -786,7 +786,7 @@ class PredictSales(Resource):
             return jsonify(res)
 
 
-        else pred_app == 'alfamart':
+        elif pred_app == 'alfamart':
 
             try:
                 parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
