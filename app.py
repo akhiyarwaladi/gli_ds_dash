@@ -682,11 +682,18 @@ class HelloWorld(Resource):
 
 
 
-class FeatureList(Resource):
+class FeaturePlu(Resource):
 
     def get(self, app_id):
 
         li_opt = update_date_dropdown_plu_func(app_id)
+        return {'message': li_opt}
+
+class FeatureType(Resource):
+
+    def get(self, app_id, plu_id):
+
+        li_opt = update_dropdown_promo_type(app_id)
         return {'message': li_opt}
 
 
@@ -781,7 +788,8 @@ class PredictSales(Resource):
         #         'duration',
         #         ''
         #     )
-        # ####    
+        # ####
+
         clf = load(modul_path)
         adder_blacklist = ['Non Member','SSP Member', 'Regular', 'timestamp']
 
@@ -807,7 +815,8 @@ class PredictSales(Resource):
 
 
 api.add_resource(HelloWorld, '/hello')
-api.add_resource(FeatureList, '/feature/plu/<string:app_id>', endpoint='plu')
+api.add_resource(FeaturePlu, '/feature/plu/<string:app_id>', endpoint='plu')
+api.add_resource(FeatureType, 'feature/type/<string:app_id>/<int:plu_id>', endpoint='type')
 api.add_resource(PredictSales, '/predict')
 
 
@@ -827,9 +836,6 @@ api.add_resource(PredictSales, '/predict')
 )
 def update_plot_sales(promo_name, target_member, target_sapa_store):
     
-
-
-
     df_forecast = adjust_promo_feature_target(int(target_member), 'trx_member'
         , sales_plot_promo[promo_name][1])
     df_forecast = adjust_promo_feature_target(int(target_sapa_store), 'sapa'
@@ -935,6 +941,7 @@ def update_plot_sales(model_algo, target_member, target_sapa_store):
 
     return (sales_plot_store, target_member_enter, 
         target_sapa_store_enter, '')
+
 
 @app.callback(
     
@@ -1111,17 +1118,7 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
 
 
 
-@app.callback(
-    Output('dropdown_promo_type', 'options'),
-    [
-        Input('dropdown_app', 'value'),
-        Input('dropdown_plu', 'value')
-    ]
-)
-def update_date_dropdown(app_select, plu_select):
-    app_select = str(app_select)
-    plu_select = str(plu_select)
-
+def update_dropdown_promo_type(app_select, plu_select):
     if app_select == 'alfagift':
         model_type_map = {"201":"201 potongan langsung",
                   "103":"103 gratis product",
@@ -1161,6 +1158,19 @@ def update_date_dropdown(app_select, plu_select):
 
     elif app_select == 'targeted_voucher':
         return [{"label":"General", "value":"general_voucher", "disabled": False}]
+
+
+@app.callback(
+    Output('dropdown_promo_type', 'options'),
+    [
+        Input('dropdown_app', 'value'),
+        Input('dropdown_plu', 'value')
+    ]
+)
+def update_date_dropdown(app_select, plu_select):
+    app_select = str(app_select)
+    plu_select = str(plu_select)
+
 
 
 
