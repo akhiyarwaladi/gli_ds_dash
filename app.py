@@ -673,18 +673,30 @@ def update_low_review(rows, derived_virtual_selected_rows):
         derived_virtual_selected_rows = []
     return '({})'.format(len(rows))
 
+
 class HelloWorld(Resource):
 
     def get(self):
 
         return {'message': 'hello world'}
 
-class PredictSales(Resource):
+
+
+class FeatureList(Resource):
 
     def get(self, app_id):
 
         li_opt = update_date_dropdown_plu_func(app_id)
         return {'message': li_opt}
+
+
+
+class PredictSales(Resource):
+
+    def get(self, app_id):
+
+        #li_opt = update_date_dropdown_plu_func(app_id)
+        return 0
 
 
     def post(self):
@@ -795,7 +807,7 @@ class PredictSales(Resource):
 
 
 api.add_resource(HelloWorld, '/hello')
-#api.add_resource(PredictSales, '/predict/<string:app_id>')
+api.add_resource(FeatureList, '/feature/plu/<string:app_id>', endpoint='plu')
 api.add_resource(PredictSales, '/predict')
 
 
