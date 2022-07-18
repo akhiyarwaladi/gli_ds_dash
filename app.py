@@ -722,12 +722,36 @@ class PredictSales(Resource):
         pred_app = request.args.get('pred_app', type=str)
 
 
+
+
         if pred_app == 'alfagift':
             try:
                 parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
                 modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
+                engine = create_engine(engine_stmt)
+                q = '''
+                    SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
+                    FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
+                    WHERE tspa.PLU = {}
+                    AND tspa.TYPE = {}
 
+                '''.format(pred_plu, pred_promo_type)
+                con = engine.connect()
+                try:
+                    res_avg = pd.read_sql_query(q,con)
+                except Exception as e:
+                    if is_debug:
+                        print(e)
+                    pass
+                con.close()
+                engine.dispose()
+
+
+                if res_avg['avg_num_member'][0] is not None:
+                    res_avg = int(res_avg['avg_num_member'][0])
+                else:
+                    res_avg = 100
 
                 ##### FORM
                 pred_df = pd.DataFrame()
@@ -779,6 +803,7 @@ class PredictSales(Resource):
                 print(pred_val)
 
                 res = {
+                    'average_num_member':res_avg,
                     'predicted_sales':rupiah_format(pred_val, with_prefix=True),
                     'sales_increase_by':li_adder_plus
 
