@@ -696,15 +696,12 @@ class FeatureType(Resource):
         li_opt = update_dropdown_promo_type(app_id, plu_id)
         return {'message': li_opt}
 
-
-
 class PredictSales(Resource):
 
     def get(self, app_id):
 
         #li_opt = update_date_dropdown_plu_func(app_id)
         return 0
-
 
     def post(self):
         promo_start_date = request.args.get('promo_start_date', None)
@@ -1239,6 +1236,9 @@ def update_dropdown_promo_type(app_select, plu_select):
 def update_date_dropdown(app_select, plu_select):
     app_select = str(app_select)
     plu_select = str(plu_select)
+
+    li_opt = update_dropdown_promo_type(app_select, plu_select)
+    return li_opt
 
 
 
