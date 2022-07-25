@@ -1378,7 +1378,8 @@ def calculate_promo_simulation(
             pred_df['SSP Member'] = 1
             pred_df['Regular'] = 1
             pred_df['timestamp'] = pred_df['tbmproi_start_date'].values.astype(np.int64) // 10 ** 9
-
+            print('AFTER GET ALL PARAMETER')
+            print(pred_df)
             ### #END FORM
             if not os.path.exists(modul_path):
                 engine = create_engine(engine_stmt)
@@ -1417,10 +1418,12 @@ def calculate_promo_simulation(
                        pd.DataFrame(pd.Series(clf.coef_), columns=['bobot'])], 1)
             li_adder_plus = [promo_feature_map[i] for i in list(df_res[df_res['bobot']>0]['variabel']) if i not in adder_blacklist]
             li_adder_min = [promo_feature_map[i] for i in list(df_res[df_res['bobot']<0]['variabel']) if i not in adder_blacklist]
-
+            print('SALES INCREASE BY {}'.format(li_adder_plus))
+            print('SALES DECRESE BY {}'.format(li_adder_min))
             ####
 
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
+            print('PREDICTED VAL {}'.format(pred_val))
             pred_val = (input_num_target / num_target_avg) * pred_val
             if pred_val < 0:
                 pred_val = 0
