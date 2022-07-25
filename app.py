@@ -1358,6 +1358,7 @@ def calculate_promo_simulation(
             print(pred_df)
             ### #END FORM
             if not os.path.exists(modul_path):
+                print('MODUL NOT EXISTS IN TRAINING DATA')
                 engine = create_engine(engine_stmt)
                 q = '''
                 SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
