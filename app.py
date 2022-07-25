@@ -1405,7 +1405,7 @@ def calculate_promo_simulation(
             print('INPUTE NUMBER OF TARGET {}'.format(input_num_target))
             print('AVERAGE NUMBER OF TARGET {}'.format(num_target_avg))
 
-            print('PREDICTED VAL AFTER DIVIDE BY NUMBER OF TARGET {}'.format(pred_val))
+            print('PREDICTED VAL AFTER PORTION BY NUMBER OF TARGET {}'.format(pred_val))
             if pred_val < 0:
                 pred_val = 0
 
