@@ -1323,6 +1323,35 @@ def calculate_promo_simulation(
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
             modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
+            print("BEGIN GET AVERAGE NUMBER TARGET MEMBER")
+            engine = create_engine(engine_stmt)
+            q = '''
+                SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
+                FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
+                WHERE tspa.PLU = {}
+                AND tspa.TYPE = {}
+
+            '''.format(pred_plu, pred_promo_type)
+            con = engine.connect()
+            try:
+                res_avg = pd.read_sql_query(q,con)
+            except Exception as e:
+                if is_debug:
+                    print(e)
+                pass
+            con.close()
+            engine.dispose()
+
+
+            if res_avg['avg_num_member'][0] is not None:
+                
+                avg_num_target = int(res_avg['avg_num_member'][0])
+                print('PLU AND TYPE EXISTS IN REPORT TABLE, {}'.format(avg_num_target))
+            else:
+                
+                avg_num_target = 100
+                print('PLU AND TYPE NOT EXISTS IN REPORT TABLE, {}'.format(avg_num_target))
+
 
             ##### FORM
             pred_df = pd.DataFrame()
@@ -1398,13 +1427,15 @@ def calculate_promo_simulation(
             print('SALES INCREASE BY {}'.format(li_adder_plus))
             print('SALES DECRESE BY {}'.format(li_adder_min))
             ####
+            print('INPUTE NUMBER OF TARGET {}'.format(input_num_target))
+            print('AVERAGE NUMBER OF TARGET {}'.format(avg_num_target))
+
 
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
             print('PREDICTED VAL {}'.format(pred_val))
-            pred_val = (input_num_target / num_target_avg) * pred_val
+            pred_val = (input_num_target / avg_num_target) * pred_val
 
-            print('INPUTE NUMBER OF TARGET {}'.format(input_num_target))
-            print('AVERAGE NUMBER OF TARGET {}'.format(num_target_avg))
+
 
             print('PREDICTED VAL AFTER PORTION BY NUMBER OF TARGET {}'.format(pred_val))
             if pred_val < 0:
@@ -1421,7 +1452,7 @@ def calculate_promo_simulation(
             
         except Exception as e:
  
-
+            print('EXCEPTION')
             engine = create_engine(engine_stmt)
             q = '''
             SELECT AVG(ACTUAL_DAILY) AS AVG_DAILY
