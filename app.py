@@ -1323,30 +1323,6 @@ def calculate_promo_simulation(
             parent_path = '/home/server/gli-data-science/akhiyar/sales_prediction'
             modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
-            
-            # engine = create_engine(engine_stmt)
-            # q = '''
-            #     SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
-            #     FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
-            #     WHERE tspa.PLU = {}
-            #     AND tspa.TYPE = {}
-
-            # '''.format(pred_plu, pred_promo_type)
-            # con = engine.connect()
-            # try:
-            #     res_avg = pd.read_sql_query(q,con)
-            # except Exception as e:
-            #     if is_debug:
-            #         print(e)
-            #     pass
-            # con.close()
-            # engine.dispose()
-
-
-            # if res_avg['avg_num_member'][0] is not None:
-            #     return int(res_avg['avg_num_member'][0])
-            # else:
-            #     return 100
 
             ##### FORM
             pred_df = pd.DataFrame()
@@ -1425,6 +1401,11 @@ def calculate_promo_simulation(
             pred_val = clf.predict(pred_df[promo_feature[pred_promo_type]])[0]
             print('PREDICTED VAL {}'.format(pred_val))
             pred_val = (input_num_target / num_target_avg) * pred_val
+
+            print('INPUTE NUMBER OF TARGET {}'.format(input_num_target))
+            print('AVERAGE NUMBER OF TARGET {}'.format(num_target_avg))
+
+            print('PREDICTED VAL AFTER DIVIDE BY NUMBER OF TARGET {}'.format(pred_val))
             if pred_val < 0:
                 pred_val = 0
 
