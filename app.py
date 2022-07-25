@@ -1324,29 +1324,29 @@ def calculate_promo_simulation(
             modul_path = '{}/model/plu_linear_test/{}_{}.joblib'.format(parent_path, pred_plu, pred_promo_type)
 
             
-            engine = create_engine(engine_stmt)
-            q = '''
-                SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
-                FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
-                WHERE tspa.PLU = {}
-                AND tspa.TYPE = {}
+            # engine = create_engine(engine_stmt)
+            # q = '''
+            #     SELECT AVG(NUM_MEMBER) AS AVG_NUM_MEMBER
+            #     FROM GLI_REPORT_FAKTUR_SALES_ONLINE tspa 
+            #     WHERE tspa.PLU = {}
+            #     AND tspa.TYPE = {}
 
-            '''.format(pred_plu, pred_promo_type)
-            con = engine.connect()
-            try:
-                res_avg = pd.read_sql_query(q,con)
-            except Exception as e:
-                if is_debug:
-                    print(e)
-                pass
-            con.close()
-            engine.dispose()
+            # '''.format(pred_plu, pred_promo_type)
+            # con = engine.connect()
+            # try:
+            #     res_avg = pd.read_sql_query(q,con)
+            # except Exception as e:
+            #     if is_debug:
+            #         print(e)
+            #     pass
+            # con.close()
+            # engine.dispose()
 
 
-            if res_avg['avg_num_member'][0] is not None:
-                return int(res_avg['avg_num_member'][0])
-            else:
-                return 100
+            # if res_avg['avg_num_member'][0] is not None:
+            #     return int(res_avg['avg_num_member'][0])
+            # else:
+            #     return 100
 
             ##### FORM
             pred_df = pd.DataFrame()
