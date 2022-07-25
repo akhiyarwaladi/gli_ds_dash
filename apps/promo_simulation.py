@@ -30,7 +30,6 @@ promo_simulation_tab = dac.TabItem(id='content_promo_simulation',
                               
     children=[
         
-
         html.Div([
            
             dbc.Row([

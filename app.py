@@ -1136,8 +1136,7 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
         try:
             res_avg = pd.read_sql_query(q,con)
         except Exception as e:
-            if is_debug:
-                print(e)
+            print(e)
             pass
         con.close()
         engine.dispose()
@@ -1187,10 +1186,12 @@ def show_hide_element(dropdown_promo_type_val, dropdown_plu, dropdown_app):
 def update_dropdown_promo_type(app_select, plu_select):
     if app_select == 'alfagift':
         model_type_map = {"201":"201 potongan langsung",
-                  "103":"103 gratis product",
-                  "801":"801 beli minimum rupiah dapat star",
-                  "803":"803 beli minimum kuantitas dapat star",
-                  "807":"807 minimum (kuantitas/rupiah) dapat point"}
+                "103":"103 gratis product",
+                "801":"801 beli minimum rupiah dapat star",
+                "803":"803 beli minimum kuantitas dapat star",
+                "807":"807 minimum (kuantitas/rupiah) dapat point",
+                "voucher":"Voucher lock payment targeted"
+        }
 
         li_opt = []
         li_model = glob.glob('/home/server/gli-data-science/akhiyar/sales_prediction/model/plu_linear_test/{}_*'.format(plu_select))
@@ -1336,8 +1337,7 @@ def calculate_promo_simulation(
             try:
                 res_avg = pd.read_sql_query(q,con)
             except Exception as e:
-                if is_debug:
-                    print(e)
+                print('EXCEPTION IN {}'.format(e))
                 pass
             con.close()
             engine.dispose()
